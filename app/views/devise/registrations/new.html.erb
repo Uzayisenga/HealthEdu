@@ -23,7 +23,7 @@
 
    <div class="field">
     <%= f.label :image %>
-    <%= f.text_field :image %>
+    <%= f.file_field :image %>
   </div>
 
   <div class="field">
@@ -61,28 +61,25 @@
   </div>
 
   <div class="field">
-    <%= f.label :reguratory_body %>
-    <%= f.text_field :reguratory_body %>
+      <%= f.select :reguratory_body, [ 'RAHPC', 'NPC','RMDC' ], :prompt => 'Regulatory_body', class:"form-control input-lg", placeholder:"RAHPC, NPC,RMDC" %>
+      </div>
+
+  <div class="field">
+      <%= f.select :level, [ 'Advanced_Diploma', 'Bachelor_Degree','certificate(A2)','Masters_Degree','PHD','Others' ], :prompt => 'Levels', class:"form-control input-lg", placeholder:"Advanced_Diploma, Bachelor_Degree,certificate(A2),Masters_Degree,PHD,Others" %>
+      </div>
+
+  <div class="field">
+      <%= f.select :user_role, [ 'professional', 'admin','instructor','council' ], :prompt => 'User_role', class:"form-control input-lg", placeholder:"proffessional,admin,instructor,council" %>
+      </div>
+
+  <div class="field">
+    <%= f.label :upload_diploma %>
+    <%= f.file_field :apload_diploma %>
   </div>
 
   <div class="field">
-    <%= f.label :level %>
-    <%= f.text_field :level %>
-  </div>
-
-  <div class="field">
-    <%= f.label :user_role %>
-    <%= f.text_field :user_role %>
-  </div>
-
-  <div class="field">
-    <%= f.label :apload_diploma %>
-    <%= f.text_field :apload_diploma %>
-  </div>
-
-  <div class="field">
-    <%= f.label :apload_cv %>
-    <%= f.text_field :apload_cv %>
+    <%= f.label :upload_cv %>
+    <%= f.file_field :apload_cv %>
   </div>
 
   <div class="field">
@@ -91,9 +88,8 @@
   </div>
   
   <div class="field">
-    <%= f.label :working_place %>
-    <%= f.text_field :working_place %>
-  </div>
+      <%= f.select :working_place, [ 'Refferal_hospitals', 'District_hospital','Province','Health_center','Private_clinic/polyclinic','NGO','jobless' ], :prompt => 'working_place', class:"form-control input-lg", placeholder:"Refferal_hospitals,District_hospital,Province,Health_center,Private_clinic/polyclinic,NGO,jobless" %>
+      </div>
 
 
   <div class="actions">

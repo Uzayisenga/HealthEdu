@@ -1,9 +1,10 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-
+  before_action :only_admin, only: [:edit, :new]
   # GET /courses
   # GET /courses.json
   def index
+    @currentUser = current_user.id
     @courses = Course.all
   end
 
@@ -14,7 +15,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
-    @course = Course.new
+    @course = current_user.courses.build
   end
 
   # GET /courses/1/edit
@@ -24,7 +25,7 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
-    @course = Course.new(course_params)
+    @course = current_user.courses.build(course_params)
 
     respond_to do |format|
       if @course.save
@@ -62,6 +63,10 @@ class CoursesController < ApplicationController
   end
 
   private
+  
+  def course_params
+    params.require(:course).permit(:image, :image_cache)
+  end
     # Use callbacks to share common setup or constraints between actions.
     def set_course
       @course = Course.find(params[:id])
@@ -70,5 +75,10 @@ class CoursesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def course_params
       params.require(:course).permit(:image, :title, :credit_number, :content, :upload_file, :course_price, :status, :marks, :attemption, :user_id)
+    end
+    def only_admin
+      unless current_user.user_role == 'instructor'
+         redirect_to courses_url, notice: 'you are not allowed to access this page.' 
+      end
     end
 end

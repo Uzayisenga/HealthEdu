@@ -1,0 +1,22 @@
+<h1>Users#index</h1>
+<p>Find me in app/views/users/index.html.erb</p>
+<% @users = User.all %>
+<% @users.each do |user| %>
+  <%= user.names %><br/>
+  <%= user.email %><br/>
+  <%= user.user_role %><br/>
+  <%= user.reguratory_body %><br/>
+  <%= user.level %><br/>
+  <%= user.availabity_hour %><br/>
+  <%= user.province %><br/>
+  <%= user.district %><br/>
+  <%= user.sector %><br/>
+  <%= user.cell %><br/>
+  <%= user.gender %><br/>
+  <%= user.working_place %><br/>
+  <%= user.apload_diploma %><br/>
+  <%= user.apload_cv %><br/>
+  <%=  user.image if user.image %><br/>
+  <%= user.phone %><br/>
+
+<% end %>

@@ -1,8 +1,9 @@
 <p>
-  <strong>Image:</strong>
-  <%= @course.image %>
-</p>
 
+<p>
+  <strong>Image:</strong>
+   <%= image_tag @course.image.url  style:"height:100px;width:100px;"%>
+</p>
 <p>
   <strong>Title:</strong>
   <%= @course.title %>
