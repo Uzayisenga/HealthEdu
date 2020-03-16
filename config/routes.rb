@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'course/assesment'
+  get 'welcome/index'
   # get 'users/index'
   match '/users',   to: 'users#index',   via: 'get'
   match '/users/:id',     to: 'users#show',       via: 'get'
