@@ -1,100 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<title>Quiz</title>
+    <title>The example shows how to create a Quiz, jQuery Survey Library Example</title>
 
-<style>
-div#test{ border:#5AB029 3px solid; padding:10px 40px 40px 40px; background-color:#E5FCE3; width:50%;}
+
+    <script src="https://unpkg.com/jquery"></script>
+<script src="https://surveyjs.azureedge.net/1.5.15/survey.jquery.js"></script>
+<link href="https://surveyjs.azureedge.net/1.5.15/modern.css" type="text/css" rel="stylesheet" />
+<style type='text/css'>
+
+
 </style>
 
-<script type="text/javascript">
-// pos is position of where the user in the test or which question they're up to
-var pos = 0, test, test_status, question, choice, choices, chA, chB, chC, correct = 0;
-// this is a multidimensional array with 4 inner array elements with 5 elements inside them
-// if you don't want answers viewable in the code, then you should use PHP and mySQL database
-var questions = [
-  ["What is 36 + 42", "64", "78", "76", "B"],
-  ["What is 7 x 4?", "21", "27", "28", "C"],
-  ["What is 16 / 4?", "4", "6", "3", "A"],
-  ["What is 8 x 12?", "88", "112", "96", "C"]
-  ];
-// this get function is short for the getElementById function	
-function get(x){
-  return document.getElementById(x);
-}
-function renderQuestion(){
-  test = get("test");
-  if(pos >= questions.length){
-    test.innerHTML = "<h2>You got "+correct+" of "+questions.length+" questions correct</h2>";
-    get("test_status").innerHTML = "Test completed";
-    // resets the variable to allow users to restart the test
-    pos = 0;
-    correct = 0;
-    // stops rest of renderQuestion function running when test is completed
-    return false;
-  }
-  get("test_status").innerHTML = "Question "+(pos+1)+" of "+questions.length;
-  question = questions[pos][0];
-  chA = questions[pos][1];
-  chB = questions[pos][2];
-  chC = questions[pos][3];
-  test.innerHTML = "<h3>"+question+"</h3>";
-  // the += appends to the data we started on the line above
-  test.innerHTML += "<input type='radio' name='choices' value='A'> "+chA+"<br>";
-  test.innerHTML += "<input type='radio' name='choices' value='B'> "+chB+"<br>";
-  test.innerHTML += "<input type='radio' name='choices' value='C'> "+chC+"<br><br>";
-  test.innerHTML += "<button onclick='checkAnswer()'>Submit Answer</button>";
-}
-function checkAnswer(){
-  // use getElementsByName because we have an array which it will loop through
-  choices = document.getElementsByName("choices");
-  for(var i=0; i<choices.length; i++){
-    if(choices[i].checked){
-      choice = choices[i].value;
-    }
-  }
-  // checks if answer matches the correct choice
-  if(choice == questions[pos][4]){
-    //each time there is a correct answer this value increases
-    correct++;
-  }
-  // changes position of which character user is on
-  pos++;
-  // then the renderQuestion function runs again to go to next question
-  renderQuestion();
-}
-window.addEventListener("load", renderQuestion, false);
-
-
-function CallClientOM()
-{
-var context = new SP.ClientContext.get_current();
-this.website = context.get_web();
-this.currentUser = website.get_currentUser();
-context.load(currentUser);
-context.executeQueryAsync(Function.createDelegate(this, this.onQuerySucceeded), Function.createDelegate(this, this.onQueryFailed));
-}
-
-
-
-function onQuerySucceeded(sender, args)
- {
- alert(currentUser.get_loginName());
- }
-
-
-
-function onQueryFailed(sender, args)
-{
-alert('request failed ' + args.get_message() + '\n'+ args.get_stackTrace());
-}
-</script>
 </head>
 <body>
-<h2 id="test_status"></h2>
-<div id="test"></div>
+    
+            <div id="surveyElement" style="display:inline-block;width:100%;">
+            </div>
+    <div id="surveyResult"></div>
+
+<script type="text/javascript">
+
+
+    
+  
+Survey
+.StylesManager
+.applyTheme("modern");
+
+var json = {
+title: "Health Edu Exam",
+showProgressBar: "bottom",
+showTimerPanel: "top",
+maxTimeToFinishPage: 10,
+maxTimeToFinish: 25,
+firstPageIsStarted: true,
+startSurveyText: "Start Quiz",
+pages: [
+    {
+        questions: [
+            {
+                type: "html",
+                html: "Thank you for your interest in the CPD Examination.<br/>You have 10 seconds for every page and 25 seconds for the whole survey of 3 questions.<br/>Please click on <b>'Start Quiz'</b> button when you are ready."
+            }
+        ]
+    }, {
+        questions: [
+            {
+                type: "radiogroup",
+                name: "cornaVirus",
+                title: "What the sign of corona virus?",
+                choices: [
+                    "Laziness", "caughing", "diarhee", "headeche", "Vommiting"
+                ],
+                correctAnswer: "caughing"
+            }
+        ]
+    }, {
+        questions: [
+            {
+                type: "radiogroup",
+                name: "familyplanning",
+                title: "At which time the women should stop giving birth'",
+                choicesOrder: "random",
+                choices: [
+                    "3", "4", "0", "1"
+                ],
+                correctAnswer: "3"
+            }
+        ]
+    }, {
+        maxTimeToFinish: 15,
+        questions: [
+            {
+                type: "radiogroup",
+                name: "magnacarta",
+                title: "What is the Magna Carta?",
+                choicesOrder: "random",
+                choices: [
+                    "The foundation of the British parliamentary system", "The Great Seal of the monarchs of England", "The French Declaration of the Rights of Man", "The charter signed by the Pilgrims on the Mayflower"
+                ],
+                correctAnswer: "The foundation of the British parliamentary system"
+            }
+        ]
+    }
+],
+completedHtml: "<h4>You have answered correctly <b>{correctedAnswers}</b> questions from <b>{questionCount}</b>.</h4>"
+};
+
+window.survey = new Survey.Model(json);
+
+survey
+.onComplete
+.add(function (result) {
+    document
+        .querySelector('#surveyResult')
+        .textContent = "Result JSON:\n" + JSON.stringify(result.data, null, 3);
+});
+
+$("#surveyElement").Survey({model: survey});
+</script>
+
 </body>
-
 </html>
-
