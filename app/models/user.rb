@@ -4,4 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          has_many :courses
+         mount_uploader :image, ImageUploader
+         mount_uploader :apload_diploma, AploadDiplomaUploader
+         mount_uploader :apload_cv, AploadCvUploader
 end
