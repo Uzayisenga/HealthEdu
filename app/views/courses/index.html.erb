@@ -22,7 +22,11 @@
   <tbody>
     <% @courses.each do |course| %>
       <tr>
-        <td><%= course.image.url style:"height:100px;width:100px;" %></td>
+      <td>
+        <% if course.image_url %>
+          <%= image_tag course.image_url, style:"width:100px;height:100px;" %>
+        <% end %>
+      </td>
         <td><%= course.title %></td>
         <td><%= course.credit_number %></td>
         <td><%= course.content %></td>
