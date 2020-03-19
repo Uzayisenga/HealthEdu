@@ -1,16 +1,18 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :only_admin, only: [:edit, :new]
+  before_action :authenticate_user!
+  
+  # before_action :only_admin, only: [:edit, :new]
   # GET /courses
   # GET /courses.json
   def index
-    @currentUser = current_user.id
     @courses = Course.all
   end
 
   # GET /courses/1
   # GET /courses/1.json
   def show
+   @comment = Comment.all
   end
 
   # GET /courses/new
@@ -76,9 +78,9 @@ class CoursesController < ApplicationController
     def course_params
       params.require(:course).permit(:image, :title, :credit_number, :content, :upload_file, :course_price, :status, :marks, :attemption, :user_id)
     end
-    def only_admin
-      unless current_user.user_role == 'instructor'
-         redirect_to courses_url, notice: 'you are not allowed to access this page.' 
-      end
-    end
+    # def only_admin
+    #   unless current_user.user_role == 'instructor'
+    #      redirect_to courses_url, notice: 'you are not allowed to access this page.' 
+    #   end
+    # end
 end
