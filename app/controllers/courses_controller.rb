@@ -1,8 +1,13 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
+
   before_action :authenticate_user!
   
   # before_action :only_admin, only: [:edit, :new]
+
+  before_action :only_admin, only: [:edit, :new]
+  
+
   # GET /courses
   # GET /courses.json
   def index
@@ -38,11 +43,14 @@ class CoursesController < ApplicationController
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end
+   
   end
 
   # PATCH/PUT /courses/1
   # PATCH/PUT /courses/1.json
   def update
+    @course = Course.find(params[:id])
+    
     respond_to do |format|
       if @course.update(course_params)
         format.html { redirect_to @course, notice: 'Course was successfully updated.' }
@@ -76,11 +84,23 @@ class CoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def course_params
-      params.require(:course).permit(:image, :title, :credit_number, :content, :upload_file, :course_price, :status, :marks, :attemption, :user_id)
+      params.require(:course).permit(:image, :title, :credit_number, :content, :upload_file, :course_price, :status, :marks, :attemption, :user_id ,{file: []})
     end
+
     # def only_admin
     #   unless current_user.user_role == 'instructor'
     #      redirect_to courses_url, notice: 'you are not allowed to access this page.' 
     #   end
     # end
+
+    def only_admin
+      unless current_user.user_role == 'instructor'
+         redirect_to courses_url, notice: 'you are not allowed to access this page.' 
+      end
+    end
+    def uploadFile
+      course = Course.save(params[:upload])
+      render :text => "File has been uploaded successfully"
+  end
+
 end

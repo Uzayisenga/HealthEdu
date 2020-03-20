@@ -1,3 +1,9 @@
+<% if !flash[:notice].blank? %>
+   <div class = "alert alert-info">
+      <%= flash[:notice] %>
+   </div>
+<% end %>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Courses</h1>
@@ -22,13 +28,21 @@
   <tbody>
     <% @courses.each do |course| %>
       <tr>
+
       <%if course.image.url%>
         <td><%= image_tag course.image.url style:"height:100px;width:100px;" %></td>
         <%end%>
+
+      <td>
+        <% if course.image_url %>
+          <%= image_tag course.image_url, style:"width:100px;height:100px;" %>
+        <% end %>
+      </td>
+
         <td><%= course.title %></td>
         <td><%= course.credit_number %></td>
         <td><%= course.content %></td>
-        <td><%= course.upload_file %></td>
+        <td><%= link_to "Download", course.upload_file_url %></td>
         <td><%= course.course_price %></td>
         <td><%= course.status %></td>
         <td><%= course.marks %></td>
