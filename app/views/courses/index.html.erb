@@ -1,11 +1,17 @@
-<% if !flash[:notice].blank? %>
-   <div class = "alert alert-info">
-      <%= flash[:notice] %>
-   </div>
-<% end %>
-
 <p id="notice"><%= notice %></p>
-
+<div class= "row">
+  <div class= "col-sm-4">
+    <% if current_user.user_role == 'council' %>
+      <%= search_form_for @search do |f|  %>
+        <div class="field">
+        <%= f.label :names, "Search" %>
+        <%= f.text_field :names %>
+        </div>
+        <div><%= f.submit %></div>
+     <% end %>
+   <% end %>
+ </div>
+</div>
 <h1>Courses</h1>
 
 <table>
