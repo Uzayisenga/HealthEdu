@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
+ActiveRecord::Schema.define(version: 2020_03_19_170635) do
+
 ActiveRecord::Schema.define(version: 2020_03_19_151237) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "course_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_comments_on_course_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -34,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_151237) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+
   end
 
   create_table "courses", force: :cascade do |t|
@@ -51,6 +66,26 @@ ActiveRecord::Schema.define(version: 2020_03_19_151237) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "file"
     t.index ["user_id"], name: "index_courses_on_user_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.float "amount"
+    t.bigint "user_id", null: false
+    t.bigint "course_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_payments_on_course_id"
+    t.index ["user_id"], name: "index_payments_on_user_id"
+  end
+
+  create_table "replies", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "comment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_replies_on_comment_id"
+    t.index ["user_id"], name: "index_replies_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -80,6 +115,15 @@ ActiveRecord::Schema.define(version: 2020_03_19_151237) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+
+  add_foreign_key "comments", "courses"
+  add_foreign_key "comments", "users"
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+
   add_foreign_key "courses", "users"
+  add_foreign_key "payments", "courses"
+  add_foreign_key "payments", "users"
+  add_foreign_key "replies", "comments"
+  add_foreign_key "replies", "users"
 end
