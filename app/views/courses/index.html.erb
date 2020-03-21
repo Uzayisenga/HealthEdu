@@ -1,0 +1,67 @@
+<% if !flash[:notice].blank? %>
+   <div class = "alert alert-info">
+      <%= flash[:notice] %>
+   </div>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Courses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Title</th>
+      <th>Credit number</th>
+      <th>Content</th>
+      <th>Upload file</th>
+      <th>Course price</th>
+      <th>Status</th>
+      <th>Marks</th>
+      <th>Attemption</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+
+      <%if course.image.url%>
+        <td><%= image_tag course.image.url style:"height:100px;width:100px;" %></td>
+        <%end%>
+
+      <td>
+        <% if course.image_url %>
+          <%= image_tag course.image_url, style:"width:100px;height:100px;" %>
+        <% end %>
+      </td>
+
+        <td><%= course.title %></td>
+        <td><%= course.credit_number %></td>
+        <td><%= course.content %></td>
+        <td><%= link_to "Download", course.upload_file_url %></td>
+        <td><%= course.course_price %></td>
+        <td><%= course.status %></td>
+        <td><%= course.marks %></td>
+        <td><%= course.attemption %></td>
+        <td><%= course.user_id %></td>
+        <td><%= link_to 'Buy course', new_payment_path(:course_id => course.id), :"data-no-turbolink" => true, method: "get"  %></td>
+        <td><%= link_to 'view questions', course_comments_path(course)%></td>
+        <td><%= link_to 'ask question', new_course_comment_path(course) %></td>
+        <%if current_user.user_role=='instructor'%>
+        <td><%= link_to 'Show', course %></td>
+        <td><%= link_to 'Edit', edit_course_path(course) %></td>
+        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%if current_user.user_role=='instructor'%>
+<%= link_to 'New Course', new_course_path %>
+<% end %>

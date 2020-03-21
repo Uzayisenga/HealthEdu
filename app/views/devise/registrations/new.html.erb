@@ -1,0 +1,100 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+   <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= f.label :names %>
+    <%= f.text_field :names %>
+  </div>
+
+   <div class="field">
+    <%= f.label :gender %>
+    <%= f.radio_button :gender, 'Male' %> Male <%= f.radio_button :gender, 'Female' %> Female
+  </div>
+
+  <div class="form-group">
+    <%= f.label :Phone %>
+    <%= f.number_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :province %>
+    <%= f.text_field :province %>
+  </div>
+
+  <div class="field">
+    <%= f.label :district %>
+    <%= f.text_field :district %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sector %>
+    <%= f.text_field :sector %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cell %>
+    <%= f.text_field :cell %>
+  </div>
+
+  <div class="field">
+      <%= f.select :reguratory_body, [ 'RAHPC', 'NPC','RMDC' ], :prompt => 'Regulatory_body', class:"form-control input-lg", placeholder:"RAHPC, NPC,RMDC" %>
+      </div>
+
+  <div class="field">
+      <%= f.select :level, [ 'Advanced_Diploma', 'Bachelor_Degree','certificate(A2)','Masters_Degree','PHD','Others' ], :prompt => 'Levels', class:"form-control input-lg", placeholder:"Advanced_Diploma, Bachelor_Degree,certificate(A2),Masters_Degree,PHD,Others" %>
+      </div>
+
+  <div class="field">
+      <%= f.select :user_role, [ 'professional', 'admin','instructor','council' ], :prompt => 'User_role', class:"form-control input-lg", placeholder:"proffessional,admin,instructor,council" %>
+      </div>
+
+  <div class="field">
+    <%= f.label :upload_diploma %>
+    <%= f.file_field :apload_diploma %>
+  </div>
+
+  <div class="field">
+    <%= f.label :upload_cv %>
+    <%= f.file_field :apload_cv %>
+  </div>
+
+  <div class="field">
+    <%= f.label :availabity_hour %>
+    <%= f.text_field :availabity_hour %>
+  </div>
+  
+  <div class="field">
+      <%= f.select :working_place, [ 'Refferal_hospitals', 'District_hospital','Province','Health_center','Private_clinic/polyclinic','NGO','jobless' ], :prompt => 'working_place', class:"form-control input-lg", placeholder:"Refferal_hospitals,District_hospital,Province,Health_center,Private_clinic/polyclinic,NGO,jobless" %>
+      </div>
+
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

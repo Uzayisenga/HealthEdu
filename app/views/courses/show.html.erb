@@ -1,0 +1,56 @@
+<p>
+
+<p>
+  <strong>Image:</strong>
+  <%if @course.image.url%>
+   <%= image_tag @course.image.url  style:"height:100px;width:100px;"%>
+<% end%>
+   </p>
+<p>
+  <strong>Title:</strong>
+  <%= @course.title %>
+</p>
+
+<p>
+  <strong>Credit number:</strong>
+  <%= @course.credit_number %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @course.content %>
+</p>
+
+<p>
+  <strong>Upload file:</strong>
+  <%= @course.upload_file %>
+</p>
+
+<p>
+  <strong>Course price:</strong>
+  <%= @course.course_price %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @course.status %>
+</p>
+
+<p>
+  <strong>Marks:</strong>
+  <%= @course.marks %>
+</p>
+
+<p>
+  <strong>Attemption:</strong>
+  <%= @course.attemption %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @course.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %>
+
