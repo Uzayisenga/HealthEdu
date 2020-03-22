@@ -1,3 +1,4 @@
+<div class="container", style="background-color: whitesmoke;">
 <%= form_with(model: course, local: true) do |form| %>
   <% if course.errors.any? %>
     <div id="error_explanation">
@@ -11,57 +12,58 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :image %>
-    <%= form.file_field :image %>
+    <%= form.file_field :image, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :credit_number %>
-    <%= form.text_field :credit_number %>
+    <%= form.text_field :credit_number, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :content %>
-    <%= form.text_area :content %>
+    <%= form.text_area :content, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :upload_file %>
-    <%= form.file_field :upload_file %>
+    <%= form.file_field :upload_file, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :course_price %>
-    <%= form.text_field :course_price %>
+    <%= form.text_field :course_price, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :status %>
-    <%= form.text_field :status %>
+    <%= form.text_field :status, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :marks %>
-    <%= form.text_field :marks %>
+    <%= form.text_field :marks, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :attemption %>
-    <%= form.text_field :attemption %>
+    <%= form.text_field :attemption, class:"form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :user_id %>
-    <%= form.hidden_field :user_id %>
+    <%= form.hidden_field :user_id, class:"form-control" %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+</div>
