@@ -50,7 +50,8 @@
   <strong>User:</strong>
   <%= @course.user_id %>
 </p>
-<%= link_to 'Take assement', exam_path %> <br><br>
+
 <%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<%= link_to 'Back', courses_path %><br>
+<a href="/exam/assesment">Assesment</a>
 
