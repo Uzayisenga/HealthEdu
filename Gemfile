@@ -57,4 +57,9 @@ gem 'carrierwave', '~> 2.0'
 gem 'mini_magick'
 gem 'bootstrap', '~> 4.4.1'
 gem 'bootstrap-sass'
+
+gem 'ransack'
+gem 'bootstrap-will_paginate', '0.0.6'
+
 gem "font-awesome-rails"
+
