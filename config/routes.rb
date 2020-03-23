@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  get 'exam/assesment'
   resources :payments
   resources :replies
   get 'comments/create'
-  get 'quizes/assesment'
+  get 'course/assesment'
   get 'welcome/index'
   # get 'users/index'
   match '/users',   to: 'users#index',   via: 'get'
