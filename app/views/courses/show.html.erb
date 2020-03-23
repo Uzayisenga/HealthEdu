@@ -1,35 +1,52 @@
-<p>
+<style>
+  .card-img-top{
 
-<p>
-  <strong>Image:</strong>
-   <%= image_tag @course.image.url  style:"height:100px;width:100px;"%>
-</p>
-<p>
-  <strong>Title:</strong>
-  <%= @course.title %>
-</p>
+  }
+</style>
 
-<p>
-  <strong>Credit number:</strong>
-  <%= @course.credit_number %>
-</p>
+<%= link_to 'Edit', edit_course_path(@course) %> 
+<%= link_to 'Back', courses_path %>
 
-<p>
-  <strong>Content:</strong>
-  <%= @course.content %>
-</p>
+<div style="background:whitesmoke;width:100%">
+<div class="card p-5" style='width:70%;margin:auto'>
+<!-- Card content -->
+<div class="card-body">
 
-<p>
-  <strong>Upload file:</strong>
-  <%= @course.upload_file %>
-</p>
+  <!-- Title -->
+  <h3 class="card-title"><b><%=@course.title%>&nbsp;/&nbsp;<%=@course.credit_number%> &nbsp;Credits</b></h3>
+  <!-- Text -->
+  <div class="A" style="background:yellow">
+    <div style="width:50%;float:left;border-right:1px solid whitesmoke">
+      <h5 class="card-text">Instructor:</p>
+      <p class="card-text"><%=@course.user.email%></p>
+    </div>
+    <div style="width:50%;float:right;padding-left:30px">
+      <!-- Button -->
+      <p class="card-text" style="color:green;font-weight:bolder;font-size:20px"><%=@course.course_price %> RWF</p>
+      <%= link_to 'Take Course', new_payment_path, class:"btn btn-success", style:"border-radius:5px" %>
+    </div>
+  </div>
+</div>
+  <!-- Card image -->
+  <div class="view overlay">
+      <%if @course.image.url%>
+        <%= image_tag @course.image.url, class:"card-img-top",alt:"Card image cap"%>
+      <% end%>
+    <a href="#!">
+      <div class="mask rgba-white-slight">salute</div>
+    </a>
+  </div>
 
-<p>
-  <strong>Course price:</strong>
-  <%= @course.course_price %>
-</p>
+  <!-- Card content -->
+  <div class="card-body">
 
-<p>
+    <!-- Title -->
+    <h4 class="card-title">Course Description</h4>
+    <!-- Text -->
+    <p class="card-text"><%=@course.content%></p>
+    <!-- Button -->
+
+  <buton class="btn btn-lg">
   <strong>Status:</strong>
   <%= @course.status %>
 </p>
@@ -44,10 +61,25 @@
   <%= @course.attemption %>
 </p>
 
+<p><%= link_to "Download", @course.upload_file_url %></p>
+</button>
+  </div>
+  <%if current_user.user_role=='instructor'%>
+  <%= link_to 'Edit', edit_course_path(@course), class:'btn btn-sm' %>
+  <a href="/exam/assesment">Assesment</a>
+  <%end%>
+</div>
+</div>
+<!-- Card -->
+
+
 <p>
   <strong>User:</strong>
   <%= @course.user_id %>
 </p>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<%= link_to 'Edit', edit_course_path(@course) %> 
+<%= link_to 'Back', courses_path %><br>
+<a href="/exam/assesment">Assesment</a>
+
+

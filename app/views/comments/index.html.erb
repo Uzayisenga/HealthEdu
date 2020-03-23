@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Questions and Answers</h1>
+
+<br>
+<% @comments.each do |comment| %>
+<div class="col-lg-4 col-md-6">
+<div class="card">
+<li class="list-group-item d-flex justify-content-between align-items-center">
+<%= comment.content %>
+<td><%= link_to 'Edit', [comment.course, comment], method: :edit%></td>
+        <td><%= link_to 'Delete', [comment.course, comment], method: :delete, data: { confirm: 'Are you sure?' }%></td>
+<%if current_user.id==comment.user_id %>
+<span class="badge badge-primary badge-pill"><%= link_to 'reply', new_reply_path(:comment_id => comment.id), :"data-no-turbolink" => true, method: "get"  %></span>
+<%end%>
+</li>
+</div>
+</div>
+<div class="col-lg-4 col-md-6"></br>
+
+    <!--Card Primary-->
+    
+    
+      <div class="card-body">
+        <% comment.replies.each do |reply| %>
+        <h5 class="font-weight-bold amber-text mt-2 mb-3"><%=reply.content%><i class="far fa-heart ml-3"></i></h5>
+        
+          <%end%></p>
+      </div>
+    <!--/.Card Primary-->
+
+  </div></br>
+<% end %>
+<%= link_to 'New Question', new_course_comment_path %>
