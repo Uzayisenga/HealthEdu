@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'comments/create'
   get 'course/assesment'
   get 'welcome/index'
+  get 'exam/assesment'
   # get 'users/index'
   match '/users',   to: 'users#index',   via: 'get'
   match '/users/:id',     to: 'users#show',       via: 'get'
