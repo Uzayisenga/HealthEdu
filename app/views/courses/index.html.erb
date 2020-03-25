@@ -1608,6 +1608,7 @@ section {
             </ul>
           </li>
           <li><a href="#contact">Contact Us</a></li>
+          <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
         </ul>
       </nav><!-- .nav-menu -->
 
@@ -2136,6 +2137,7 @@ section {
 
         <div class="section-title">
           <h2>Contact Us</h2>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
         </div>
 
         <div class="row">
