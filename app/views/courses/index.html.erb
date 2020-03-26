@@ -1720,6 +1720,12 @@ section {
           </div>
         </div>
         <div class="row row-cols-1 row-cols-md-3">
+<% if current_user && current_user.user_role == 'council' %>
+      <%= form_tag(users_path, method: :get,class:'form-inline') do %>
+        <%= text_field_tag :term, params[:term],class:'form-control mr-sm-2',placeholder:'Search by names' %>
+        <%= submit_tag 'search', user_id: nil, class:'btn btn-outline-success my-2 my-sm-0' %>
+      <% end %>
+<% end %>
         <% @courses.each do |course| %>
   <div class="col mb-4">
     <div class="card h-100">

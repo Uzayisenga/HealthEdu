@@ -11,6 +11,7 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
+    @currentUser = current_user.id
     @courses = Course.all
   end
 
@@ -87,11 +88,11 @@ class CoursesController < ApplicationController
       params.require(:course).permit(:image, :title, :credit_number, :content, :upload_file, :course_price, :status, :marks, :attemption, :user_id ,{file: []})
     end
 
-    # def only_admin
-    #   unless current_user.user_role == 'instructor'
-    #      redirect_to courses_url, notice: 'you are not allowed to access this page.' 
-    #   end
-    # end
+    def only_admin
+      unless current_user.user_role == 'instructor'
+         redirect_to courses_url, notice: 'you are not allowed to access this page.' 
+      end
+    end
 
     def only_admin
       unless current_user.user_role == 'instructor'

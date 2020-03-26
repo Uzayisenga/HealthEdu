@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   before_action :only_council  
   def index
+    if params[:id]
+      @users = User.where(" names Like ?", "%#{params[:id]}%")
+    else
+      @users = User.all
+    end
   end
   def show
     @user = User.find_by_names(params[:id])

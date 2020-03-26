@@ -11,5 +11,10 @@ class User < ApplicationRecord
          mount_uploader :image, ImageUploader
          mount_uploader :apload_diploma, AploadDiplomaUploader
          mount_uploader :apload_cv, AploadCvUploader
-
+        
+        def self.search(search)
+          if term
+            where('names LIKE ?', "%#{search}%")
+          end
+        end
 end
