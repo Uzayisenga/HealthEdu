@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
   
   # before_action :only_admin, only: [:edit, :new]
 
-  before_action :only_admin, only: [:edit, :new]
+  # before_action :only_admin, only: [:edit, :new]
   
 
   # GET /courses
