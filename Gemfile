@@ -58,3 +58,4 @@ gem 'mini_magick'
 gem 'bootstrap', '~> 4.4.1'
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
+gem 'rails_admin', '~> 2.0'
