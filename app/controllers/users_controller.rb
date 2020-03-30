@@ -15,6 +15,13 @@ class UsersController < ApplicationController
       redirect_to courses_url, notice: 'go to courses'
     end
   end
+  def professional
+    @professionals = User.where(user_role: 'professional')
+  end
+
+  def instructor
+    @instructors = User.where(user_role: 'instructor')
+  end
 
   def create
     @user = User.new(params[:user])

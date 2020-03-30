@@ -1708,6 +1708,7 @@ section {
 
       </div>
     </section><!-- End About Us Section -->
+    
     <!-- ======= About Lists Section ======= -->
     <section class="about-lists">
     <section class="section-padding" id="pricing">
@@ -1719,12 +1720,16 @@ section {
             <span class="st-border"></span>
           </div>
         </div>
+        <% if current_user && current_user.user_role == 'council' %>
+        <%= link_to 'see list of instructor', instructor_path, class: 'btn btn-success' %>
+        <% end %>
         <div class="row row-cols-1 row-cols-md-3">
 <% if current_user && current_user.user_role == 'council' %>
       <%= form_tag(users_path, method: :get,class:'form-inline') do %>
         <%= text_field_tag :term, params[:term],class:'form-control mr-sm-2',placeholder:'Search by names' %>
         <%= submit_tag 'search', user_id: nil, class:'btn btn-outline-success my-2 my-sm-0' %>
       <% end %>
+      <%= link_to 'see list of professionals', professional_path, class: 'btn btn-success' %>
 <% end %>
         <% @courses.each do |course| %>
   <div class="col mb-4">
@@ -1735,18 +1740,26 @@ section {
       <div class="card-body">
         <h5 class="card-title" style="color:green"><b><%= course.title%>/<%= course.credit_number %>credits &nbsp;&nbsp; - &nbsp;&nbsp;<%= course.course_price%>&nbsp;Frws</b></h5>
         <p class="card-text content"><b><%= course.content[0,100]..%></b></p>
+        <%if current_user.user_role=='professional'%>
         <td><%= link_to 'Buy course', new_payment_path(:course_id => course.id), :"data-no-turbolink" => true, method: "get"  %></td>
         <td><%= link_to 'view questions', course_comments_path(course)%></td>
         <td><%= link_to 'ask question', new_course_comment_path(course) %></td>
         <td><%= link_to "Download", course.upload_file_url %></td>
+        <%end%>
         <%if current_user.user_role=='instructor'%>
+        <td><%= link_to 'view questions', course_comments_path(course)%></td>
+        <td><%= link_to 'ask question', new_course_comment_path(course) %></td>
         <%= link_to 'New Course', new_course_path %>
         <td><%= link_to 'Show', course %></td>
         <td><%= link_to 'Edit', edit_course_path(course) %></td>
         <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <%end%>
+        
+        <%if current_user.user_role=='professional'%>
         <%= link_to 'Start Now', course, class:"btn btn-success" %>
+        <%end%>
       </div>
+      
       <div class="card-footer">
       <small class="text-muted">Updated
       <% start_time = course.created_at %>
@@ -1759,7 +1772,7 @@ section {
 </div>
       </div>
     </section><!-- End About Lists Section -->
-
+    
     <!-- ======= Counts Section ======= -->
     <section class="counts section-bg">
       <div class="container">
