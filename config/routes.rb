@@ -6,11 +6,13 @@ Rails.application.routes.draw do
   get 'course/assesment'
   get 'welcome/index'
   get 'exam/assesment'
-  # get 'users/index'
-  match '/users',   to: 'users#index',   via: 'get'
-  match '/users/:id',     to: 'users#show',       via: 'get'
-  match '/signout', to: 'sessions#destroy', via: :delete
-  devise_for :users, :path_prefix => 'd'
+  get 'users/index'
+  
+  devise_for :users, controllers: {
+    registrations: "users/registrations",
+    # Add this
+    omniauth_callbacks: "users/omniauth_callbacks"
+  }
   resources :users, :only =>[:show]
 resources :courses do
   resources :comments
