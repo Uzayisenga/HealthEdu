@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   before_action :only_council  
   def index
+    if params[:id]
+      @users = User.where(" names Like ?", "%#{params[:id]}%")
+    else
+      @users = User.all
+    end
   end
   def show
     @user = User.find_by_names(params[:id])
@@ -9,6 +14,13 @@ class UsersController < ApplicationController
     if current_user.user_role != 'council'
       redirect_to courses_url, notice: 'go to courses'
     end
+  end
+  def professional
+    @professionals = User.where(user_role: 'professional')
+  end
+
+  def instructor
+    @instructors = User.where(user_role: 'instructor')
   end
 
   def create

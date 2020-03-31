@@ -1,0 +1,19 @@
+<% @professionals.each do |professional| %>
+    <%= professional.names %><br>
+    <%= professional.working_place %><br>
+    <%= professional.email %><br/>
+    <%= professional.reguratory_body %><br/>
+    <%= professional.level %><br/>
+    <%= professional.availabity_hour %><br/>
+    <%= professional.province %><br/>
+    <%= professional.district %><br/>
+    <%= professional.sector %><br/>
+    <%= professional.cell %><br/>
+    <%= professional.gender %><br/>
+    <%= professional.working_place %><br/>
+    <%= professional.apload_diploma %><br/>
+    <%= professional.apload_cv %><br/>
+    <%= professional.image if professional.image %><br/>
+    <%= professional.phone %><br/>
+    <%= professional.courses.count %><br>
+  <% end %>
