@@ -1608,6 +1608,7 @@ section {
             </ul>
           </li>
           <li><a href="#contact">Contact Us</a></li>
+          <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
         </ul>
       </nav><!-- .nav-menu -->
 
@@ -1707,7 +1708,6 @@ section {
 
       </div>
     </section><!-- End About Us Section -->
-
     <!-- ======= About Lists Section ======= -->
     <section class="about-lists">
     <section class="section-padding" id="pricing">
@@ -1715,90 +1715,42 @@ section {
       <div class="row">
         <div class="col-lg-12">
           <div class="section-title">
-            <h2>Pricing</h2>
+            <h2>All Courses</h2>
             <span class="st-border"></span>
           </div>
         </div>
         <div class="row row-cols-1 row-cols-md-3">
+        <% @courses.each do |course| %>
   <div class="col mb-4">
     <div class="card h-100">
-    <%= image_tag("doctor.jpg", :alt => "doctor feed", :size => "358x300") %>
+    <% if course.image_url %>
+          <%= image_tag course.image_url,:alt => "doctor feed", style:'width:100%;height:40%' %>
+
+        <% end %>
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <a class="btn btn-primary" href="#" role="button">Start Now</a>
+        <h5 class="card-title" style="color:green"><b><%= course.title%>/<%= course.credit_number %>credits &nbsp;&nbsp; - &nbsp;&nbsp;<%= course.course_price%>&nbsp;Frws</b></h5>
+        <p class="card-text content"><b><%= course.content[0,100]..%></b></p>
+        <td><%= link_to 'Buy course', new_payment_path(:course_id => course.id), :"data-no-turbolink" => true, method: "get"  %></td>
+        <td><%= link_to 'view questions', course_comments_path(course)%></td>
+        <td><%= link_to 'ask question', new_course_comment_path(course) %></td>
+        <td><%= link_to "Download", course.upload_file_url %></td>
+        <%if current_user.user_role=='instructor'%>
+        <%= link_to 'New Course', new_course_path %>
+        <td><%= link_to 'Show', course %></td>
+        <td><%= link_to 'Edit', edit_course_path(course) %></td>
+        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
+        <%= link_to 'Start Now', course, class:"btn btn-success" %>
       </div>
       <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
+      <small class="text-muted">Updated
+      <% start_time = course.created_at %>
+      <% end_time   =  DateTime.now %>
+      <%= distance_of_time_in_words(start_time, end_time)  %> &nbsp; ago by <%= course.user.email%></small>
     </div>
     </div>
   </div>
-  <div class="col mb-4">
-    <div class="card h-100">
-      <%= image_tag("nurse.jpg", :alt => "nurse feed", :size => "358x300") %>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a short card.</p>
-        <a class="btn btn-primary" href="#" role="button">Start Now</a>
-      </div>
-      <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card h-100">
-      <%= image_tag("lab.jpeg", :alt => "lab feed", :size => "358x300") %>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-        <a class="btn btn-primary" href="#" role="button">Start Now</a>
-        </div>
-      <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card h-100">
-      <%= image_tag("lab.jpeg", :alt => "lab feed", :size => "358x300") %>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-        <a class="btn btn-primary" href="#" role="button">Start Now</a>
-        </div>
-      <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card h-100">
-      <%= image_tag("lab.jpeg", :alt => "lab feed", :size => "358x300") %>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="badge badge-danger">Rwf8000</a><br><br><br>
-        <a class="btn btn-primary" href="<%= courses_path(@courses) %>" role="button">Start Now</a>
-        </div>
-      <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card h-100">
-      <%= image_tag("doct2.jpeg", :alt => "doct2 feed", :size => "358x300") %>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <a class="btn btn-primary" href="#" role="button">Start Now</a>
-        </div>
-      <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-    </div>
-  </div>
+  <% end %>
 </div>
       </div>
     </section><!-- End About Lists Section -->
@@ -2186,6 +2138,7 @@ section {
 
         <div class="section-title">
           <h2>Contact Us</h2>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
         </div>
 
         <div class="row">
@@ -2257,10 +2210,10 @@ section {
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-info">
-            <h3>Mamba</h3>
+            <h3>HealthEdu</h3>
             <p>
-              A108 Adam Street <br>
-              NY 535022, USA<br><br>
+              A108 Adam Kicukiro Street <br>
+              KK 535022, RWANDA<br><br>
               <strong>Phone:</strong> +1 5589 55488 55<br>
               <strong>Email:</strong> info@example.com<br>
             </p>
@@ -2310,14 +2263,14 @@ section {
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Mamba</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>HealthEdu</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/mamba-one-page-bootstrap-template-free/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designed by <a href="https://bootstrapmade.com/">Three sistor's developer</a>
       </div>
     </div>
   </footer><!-- End Footer -->

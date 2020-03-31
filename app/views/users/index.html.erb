@@ -13,8 +13,10 @@
   <%= user.cell %><br/>
   <%= user.gender %><br/>
   <%= user.working_place %><br/>
-  <%= user.apload_diploma %><br/>
-  <%= user.apload_cv %><br/>
-  <%=  user.image if user.image %><br/>
+  <%= link_to "Download", user.apload_diploma_url %><br/>
+  <%= link_to "Download", user.apload_cv_url %><br/>
+  <% if user.image_url %>
+     <%= image_tag user.image_url, style:"width:100px;height:100px;" %>
+  <% end %><br/>
   <%= user.phone %><br/>
 <% end %>
