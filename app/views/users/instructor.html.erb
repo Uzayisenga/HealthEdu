@@ -1,0 +1,19 @@
+<% @instructors.each do |instructor| %>
+    <%= instructor.names %><br>
+    <%= instructor.working_place %><br>
+    <%= instructor.email %><br/>
+    <%= instructor.reguratory_body %><br/>
+    <%= instructor.level %><br/>
+    <%= instructor.availabity_hour %><br/>
+    <%= instructor.province %><br/>
+    <%= instructor.district %><br/>
+    <%= instructor.sector %><br/>
+    <%= instructor.cell %><br/>
+    <%= instructor.gender %><br/>
+    <%= instructor.working_place %><br/>
+    <%= instructor.apload_diploma %><br/>
+    <%= instructor.apload_cv %><br/>
+    <%= instructor.image if instructor.image %><br/>
+    <%= instructor.phone %><br/>
+    
+  <% end %>

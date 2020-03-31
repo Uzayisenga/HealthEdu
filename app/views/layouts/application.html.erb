@@ -47,23 +47,26 @@
                  <li class="nav-item">
                     <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %>&nbsp;&nbsp;&nbsp;
                 </li>
-                <li class="nav-item">
-                  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>&nbsp;&nbsp;
-                 </li>
-                  <% if current_user.user_role?%>
+                <% if user_signed_in? %>
+                  <li class="nav-item">
+                     <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+                    <% else %>
+                    <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
 
-          <li class="nav-item">
-               <li class="nav-item"><%= link_to "Admin Panel",  rails_admin.dashboard_path, class: "nav-link" %></li>
-             </li>
-<% end %>
+                  </li>
+                <% end %>
+                  <% if current_user.user_role?%>
+                    <li class="nav-item"><%= link_to "Admin Panel",  rails_admin.dashboard_path, class: "nav-link" %></li>
+                 <% end %>
                  <% else %>                    
              <li class="nav-item">
                <li class="nav-item"><%= link_to "Login", new_user_session_path, class: "nav-link" %></li> 
              </li>
              <li class="nav-item"><%= link_to "Home", courses_path, class: "nav-link" %>
              </li>
-             
-
+            
+  
+  
 
              <% end %>
            </ul>
@@ -71,7 +74,7 @@
          </div>
        </div>
      </nav>
-    
+     <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
     <%= yield %>
     <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
