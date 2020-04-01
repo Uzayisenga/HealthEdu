@@ -55,7 +55,7 @@
 
                   </li>
                 <% end %>
-                  <% if current_user.user_role?%>
+                  <% if current_user.user_role== 'admin'%>
                     <li class="nav-item"><%= link_to "Admin Panel",  rails_admin.dashboard_path, class: "nav-link" %></li>
                  <% end %>
                  <% else %>                    

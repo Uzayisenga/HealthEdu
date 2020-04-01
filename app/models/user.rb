@@ -40,7 +40,6 @@ class User < ApplicationRecord
           user.save
           user
         end
-      
 
         
         def self.search(search)
