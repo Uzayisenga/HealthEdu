@@ -40,8 +40,8 @@ class User < ApplicationRecord
           user.save
           user
         end
-
         
+      
         def self.search(search)
           if term
             where('names LIKE ?', "%#{search}%")

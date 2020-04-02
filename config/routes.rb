@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'welcome/index'
   get 'exam/assesment'
   get 'users/index'
+  get 'professional', to: 'users#professional', as: 'professional'
+  get 'instructor', to: 'users#instructor', as: 'instructor'
   
   devise_for :users, controllers: {
     registrations: "users/registrations",
