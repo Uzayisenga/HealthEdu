@@ -32,3 +32,6 @@
 #services{
   min-height: 75vh;
 }
+#third, #fourth, #fifth{
+  min-height: 75vh;
+}
