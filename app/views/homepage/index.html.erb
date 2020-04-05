@@ -26,40 +26,517 @@
     </div>
 </header>
 <!-- main section -->
-<main class="c bg-transparent">
+<main class="container bg-transparent">
   <!-- about us section -->
   <section id="about_us" class="my-4 bg-light">
-    <div class="video bg-dark text-light text-center w-100">
-      <h3>Topupgrade platform</h3>
+    <div class="video bg-#e3f2fd blue lighten-5 text-light text-center w-100">
+    <h3 class="green-text">Topupgrade platform</h3>
       <div class="embed-responsive embed-responsive-16by9">
   <iframe class="embed-responsive-item" <%= video_tag "healthEdu.mp4", :controls => true %> allowfullscreen></iframe>
 </div>
     </div>
     <div class="text-center w-100">
-      <h3>about us</h3>
+      <!-- Card -->
+<div class="card card-image"
+  style="background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);">
+
+  <!-- Content -->
+  <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+    <div><br>
+      <h5 class="green-text"><i class="fas fa-chart-pie"></i> E-learning</h5>
+      <h3 class="card-title pt-2"><strong>HealthEdu Ltd</strong></h3>
+      <p>HealthEdu Ltd is a Company created with the support of Health Volunteers Overseas (HVO) – United States of America;
+       it was initiated by Jean Damascene Bigirimana, who developed a web-based platform for online trainings in 2016. 
+       With the support of Student Alumni of Misercodia University (USA),
+       Jean Damascene Bigirimana was able to establish the online training.</p>
+      <a class="btn btn-green"><i class="fas fa-clone left"></i> View project</a>
     </div>
+  </div>
+
+</div>
+<!-- Card -->
+     </div>
   </section>
 
   <!-- our services section -->
-  <section id="services" class="text-center bg-info">
-    <h3>our services</h3>
+  <section id="services" class="text-center bg-#e0f2f1 teal lighten-5">
+    <h3>All Courses</h3>
+    <% if current_user && current_user.user_role == 'council' %>
+        <%= link_to 'see list of instructor', instructor_path, class: 'btn btn-success' %>
+        <%= link_to 'see list of professionals', professional_path, class: 'btn btn-success' %>
+        <% end %>
+<div class="container style='margin = 500px'">
+<div class="row">
+  
+  <div class="row row-cols-1 row-cols-md-3">
+  <% @courses.each do |course| %>
+<div class="col mb-4">
+<div class="card h-100">
+<% if course.image_url %>
+    <%= image_tag course.image_url,:alt => "doctor feed", style:'width:100%;height:40%' %>
+
+  <% end %>
+<div class="card-body">
+  <h5 class="card-title" style="color:green"><b><%= course.title%>/<%= course.credit_number %>credits &nbsp;&nbsp; - &nbsp;&nbsp;<%= course.course_price%>&nbsp;Frws</b></h5>
+  <p class="card-text"><b><%= course.content[0,100]..%></b></p>
+  <%if current_user.user_role=='professional'%>
+  <td><%= link_to 'Buy course', new_payment_path(:course_id => course.id), :"data-no-turbolink" => true, method: "get"  %></td>
+  <td><%= link_to 'view questions', course_comments_path(course)%></td>
+  <td><%= link_to 'ask question', new_course_comment_path(course) %></td>
+  <td><%= link_to "Download", course.upload_file_url %></td>
+  <%= link_to 'Start Now', course, class:"btn btn-success" %>
+  <%end%>
+  <%if current_user.user_role=='instructor'%>
+  <%= link_to 'New Course', new_course_path %>
+  <td><%= link_to 'Show', course %></td>
+  <td><%= link_to 'Edit', edit_course_path(course) %></td>
+  <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <td><%= link_to 'view questions', course_comments_path(course)%></td>
+  <td><%= link_to 'ask question', new_course_comment_path(course) %></td>
+  <%end%>
+</div>
+<div class="card-footer">
+<small class="text-muted">Updated
+<% start_time = course.created_at %>
+<% end_time   =  DateTime.now %>
+<%= distance_of_time_in_words(start_time, end_time)  %> &nbsp; ago by <%= course.user.email%></small>
+</div>
+</div>
+</div>
+<% end %>
+</div>
+</div>
   </section>
 
   <!-- the third section -->
-  <section id="third" class="bg-success text-center my-4">
-    <h3>third section</h3>
+  <section id="third" class="bg-#e3f2fd blue lighten-5 text-center my-4">
+    <section id="best-features" class="text-center">
+
+                <!-- Heading -->
+                <h2 class="mb-5 font-weight-bold">Our Services</h2>
+
+                <!--Grid row-->
+                <div class="row d-flex justify-content-center mb-4">
+
+                    <!--Grid column-->
+                    <div class="col-md-8">
+
+                        <!-- Description -->
+                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi voluptate
+                            hic
+                            provident nulla repellat
+                            facere esse molestiae ipsa labore porro minima quam quaerat rem, natus repudiandae debitis
+                            est
+                            sit pariatur.</p>
+
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+
+                <!--Grid row-->
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-4 mb-5">
+                        <i class="fa fa-camera-retro fa-4x green-text"></i>
+                        <h4 class="my-4 font-weight-bold">Experience</h4>
+                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
+                            maiores nam,
+                            aperiam minima
+                            assumenda deleniti hic.</p>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-4 mb-1">
+                        <i class="fa fa-heart fa-4x green-text"></i>
+                        <h4 class="my-4 font-weight-bold">Happiness</h4>
+                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
+                            maiores nam,
+                            aperiam minima
+                            assumenda deleniti hic.</p>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-4 mb-1">
+                        <i class="fa fa-bicycle fa-4x green-text"></i>
+                        <h4 class="my-4 font-weight-bold">Adventure</h4>
+                        <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
+                            maiores nam,
+                            aperiam minima
+                            assumenda deleniti hic.</p>
+                    </div>
   </section>
   <!-- the fourth section -->
-  <section id="fourth" class="bg-warning text-center my-4">
-    <h3>fourth section</h3>
+  <section id="fourth" class="bg-#f9fbe7 lime lighten-5 text-center my-4">
+    <h3>.</h3>
+    <section id="testimonials" class="text-center py-5" style="background-color: #eee;">
+
+            <!-- Container -->
+            <div class="container">
+
+                <!-- Section heading -->
+                <h2 class="h1-responsive font-weight-bold mb-5">Testimonials</h2>
+
+                <!-- Carousel Wrapper -->
+                <div id="carousel-example-1" class="carousel no-flex testimonial-carousel slide carousel-fade"
+                    data-ride="carousel" data-interval="false">
+                    <!--Slides-->
+                    <div class="carousel-inner" role="listbox">
+                        <!--First slide-->
+                        <div class="carousel-item active">
+                            <div class="testimonial">
+                                <!--Avatar-->
+                                <div class="avatar mx-auto mb-4">
+                                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg" class="rounded-circle img-fluid"
+                                        alt="First sample avatar image" style="width:200px">
+                                </div>
+                                <!--Content-->
+                                <p>
+                                    <i class="fa fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur
+                                    adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab. Lorem
+                                    ipsum dolor sit amet, consectetur adipisicing elit. Dolore cum accusamus eveniet
+                                    molestias voluptatum inventore laboriosam labore sit, aspernatur praesentium iste
+                                    impedit quidem dolor veniam.
+                                </p>
+                                <h4 class="font-weight-bold">Anna Deynah</h4>
+                                <h6 class="font-weight-bold my-3">Founder at ET Company</h6>
+                                <!--Review-->
+                                <i class="fa fa-star amber-text"> </i>
+                                <i class="fa fa-star amber-text"> </i>
+                                <i class="fa fa-star amber-text"> </i>
+                                <i class="fa fa-star amber-text"> </i>
+                                <i class="fa fa-star-half-full amber-text"> </i>
+                            </div>
+                        </div>
+                        <!--First slide-->
+                        <!--Second slide-->
+                        <div class="carousel-item">
+                            <div class="testimonial">
+                                <!--Avatar-->
+                                <div class="avatar mx-auto mb-4">
+                                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(31).jpg" class="rounded-circle img-fluid"
+                                        alt="Second sample avatar image">
+                                </div>
+                                <!--Content-->
+                                <p>
+                                    <i class="fa fa-quote-left"></i> Nemo enim ipsam voluptatem quia voluptas sit
+                                    aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
+                                    voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor
+                                    sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora
+                                    incidunt ut labore. </p>
+                                <h4 class="font-weight-bold">Maria Kate</h4>
+                                <h6 class="font-weight-bold my-3">Photographer at Studio LA</h6>
+                                <!--Review-->
+                                <i class="fa fa-star amber-text"> </i>
+                                <i class="fa fa-star amber-text"> </i>
+                                <i class="fa fa-star amber-text"> </i>
+                                <i class="fa fa-star amber-text"> </i>
+                                <i class="fa fa-star amber-text"> </i>
+                            </div>
+                        </div>
+                        <!--Second slide-->
+                        <!--Third slide-->
+                        <div class="carousel-item">
+                            <div class="testimonial">
+                                <!--Avatar-->
+                                <div class="avatar mx-auto mb-4">
+                                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(3).jpg" class="rounded-circle img-fluid"
+                                        alt="Third sample avatar image">
+                                </div>
+                                <!--Content-->
+                                <p>
+                                    <i class="fa fa-quote-left"></i> Duis aute irure dolor in reprehenderit in
+                                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+                                    est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                    accusantium doloremque laudantium.</p>
+                                <h4 class="font-weight-bold">John Doe</h4>
+                                <h6 class="font-weight-bold my-3">Front-end Developer in NY</h6>
+                                <!--Review-->
+                                <i class="fa fa-star amber-text"> </i>
+                                <i class="fa fa-star amber-text"> </i>
+                                <i class="fa fa-star amber-text"> </i>
+                                <i class="fa fa-star amber-text"> </i>
+                                <i class="fa fa-star-o amber-text"> </i>
+                            </div>
+                        </div>
+                        <!--Third slide-->
+                    </div>
+                    <!--Slides-->
+                    <!--Controls-->
+                    <a class="carousel-item-prev left carousel-control" href="#carousel-example-1" role="button"
+                        data-slide="prev">
+                        <span class="icon-prev" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-item-next right carousel-control" href="#carousel-example-1" role="button"
+                        data-slide="next">
+                        <span class="icon-next" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                    <!--Controls-->
+                </div>
+                <!-- Carousel Wrapper -->
+
+            </div>
+            <!-- Container -->
+
+        </section>
+        <!--Section: testimonials-->
   </section>
   <!-- the fifth section -->
-  <section id="fifth" class="bg-secondary text-center my-4">
+  <section id="fifth" class="bg-#e0f2f1 teal lighten-5 text-center my-4">
     <h3>fifth section</h3>
+    <div class="container">
+
+                <!-- Section heading -->
+                <h2 class="h1-responsive font-weight-bold text-center mb-5">Contact us</h2>
+                <!-- Section description -->
+                <p class="text-center w-responsive mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur veniam.</p>
+
+                <!-- Grid row -->
+                <div class="row">
+
+                    <!-- Grid column -->
+                    <div class="col-md-9 mb-md-0 mb-5">
+
+                    <form>
+
+                        <!-- Grid row -->
+                        <div class="row">
+
+                        <!-- Grid column -->
+                        <div class="col-md-6">
+                            <div class="md-form mb-0">
+                            <input type="text" id="contact-name" class="form-control">
+                            <label for="contact-name" class="">Your name</label>
+                            </div>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-6">
+                            <div class="md-form mb-0">
+                            <input type="text" id="contact-email" class="form-control">
+                            <label for="contact-email" class="">Your email</label>
+                            </div>
+                        </div>
+                        <!-- Grid column -->
+
+                        </div>
+                        <!-- Grid row -->
+
+                        <!-- Grid row -->
+                        <div class="row">
+
+                        <!-- Grid column -->
+                        <div class="col-md-12">
+                            <div class="md-form mb-0">
+                            <input type="text" id="contact-Subject" class="form-control">
+                            <label for="contact-Subject" class="">Subject</label>
+                            </div>
+                        </div>
+                        <!-- Grid column -->
+
+                        </div>
+                        <!-- Grid row -->
+
+                        <!-- Grid row -->
+                        <div class="row">
+
+                        <!-- Grid column -->
+                        <div class="col-md-12">
+                            <div class="md-form">
+                            <textarea type="text" id="contact-message" class="form-control md-textarea" rows="3"></textarea>
+                            <label for="contact-message">Your message</label>
+                            </div>
+                        </div>
+                        <!-- Grid column -->
+
+                        </div>
+                        <!-- Grid row -->
+
+                    </form>
+
+                    <div class="text-center text-md-left">
+                        <a class="btn btn-success btn-md">Send</a>
+                    </div>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 text-center">
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                        <i class="fa fa-map-marker fa-2x green-text"></i>
+                        <p>San Francisco, CA 94126, USA</p>
+                        </li>
+                        <li>
+                        <i class="fa fa-phone fa-2x mt-4 green-text"></i>
+                        <p>+ 01 234 567 89</p>
+                        </li>
+                        <li>
+                        <i class="fa fa-envelope fa-2x mt-4 green-text"></i>
+                        <p class="mb-0">contact@example.com</p>
+                        </li>
+                    </ul>
+                    </div>
+                    <!-- Grid column -->
+
+                </div>
+                <!-- Grid row -->
+
+            </div>
+
   </section>
 </main>
 
 <!-- footer section -->
-<footer class="bg-dark text-white text-center p-4">
-  <h5>Health education application developed by Nadine and Aminatha &#128523; aba programmer bambere kwisi no muri africa</h5>
+<!-- Footer -->
+<footer class="page-footer font-small blue-grey lighten-5">
+
+  <div style="background-color: #21d192;">
+    <div class="container">
+
+      <!-- Grid row-->
+      <div class="row py-4 d-flex align-items-center">
+
+        <!-- Grid column -->
+        <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+          <h6 class="mb-0">Get connected with us on social networks!</h6>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+          <!-- Facebook -->
+          <a class="fb-ic">
+            <i class="fab fa-facebook-f white-text mr-4"> </i>
+          </a>
+          <!-- Twitter -->
+          <a class="tw-ic">
+            <i class="fab fa-twitter white-text mr-4"> </i>
+          </a>
+          <!-- Google +-->
+          <a class="gplus-ic">
+            <i class="fab fa-google-plus-g white-text mr-4"> </i>
+          </a>
+          <!--Linkedin -->
+          <a class="li-ic">
+            <i class="fab fa-linkedin-in white-text mr-4"> </i>
+          </a>
+          <!--Instagram-->
+          <a class="ins-ic">
+            <i class="fab fa-instagram white-text"> </i>
+          </a>
+
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row-->
+
+    </div>
+  </div>
+
+  <!-- Footer Links -->
+  <div class="container text-center text-md-left mt-5">
+
+    <!-- Grid row -->
+    <div class="row mt-3 dark-grey-text">
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+
+        <!-- Content -->
+        <h6 class="text-uppercase font-weight-bold">HealthEdu</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
+          consectetur
+          adipisicing elit.</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Products</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <a class="dark-grey-text" href="#!">MDBootstrap</a>
+        </p>
+        <p>
+          <a class="dark-grey-text" href="#!">MDWordPress</a>
+        </p>
+        <p>
+          <a class="dark-grey-text" href="#!">BrandFlow</a>
+        </p>
+        <p>
+          <a class="dark-grey-text" href="#!">Bootstrap Angular</a>
+        </p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Useful links</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <a class="dark-grey-text" href="#!">Your Account</a>
+        </p>
+        <p>
+          <a class="dark-grey-text" href="#!">Become an Affiliate</a>
+        </p>
+        <p>
+          <a class="dark-grey-text" href="#!">Shipping Rates</a>
+        </p>
+        <p>
+          <a class="dark-grey-text" href="#!">Help</a>
+        </p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Contact</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+        <p>
+          <i class="fas fa-envelope mr-3"></i> info@example.com</p>
+        <p>
+          <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+        <p>
+          <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center text-black-50 py-3">© 2020 Copyright:
+    <a class="dark-grey-text" href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+
 </footer>
+<!-- Footer -->
