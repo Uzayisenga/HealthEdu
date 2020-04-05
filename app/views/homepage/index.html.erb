@@ -1,0 +1,65 @@
+<header>
+  <!-- this is the division of the header where you can find the slideshow images tht describe your web applivation -->
+    <div id="carouselExampleControls" class="carousel slide bg-dark text-light text-center" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <%= image_tag ("doctor_resize_md.jpg") %>
+          <h1>first slide</h1>
+        </div>
+        <div class="carousel-item">
+          <%= image_tag("midwives-nurses.jpg") %>
+          <h1>second slide</h1>
+        </div>
+        <div class="carousel-item">
+          <%= image_tag("shutterstock.jpg") %>
+          <h1>third slide</h1>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+</header>
+<!-- main section -->
+<main class="c bg-transparent">
+  <!-- about us section -->
+  <section id="about_us" class="my-4 bg-light">
+    <div class="video bg-dark text-light text-center w-100">
+      <h3>Topupgrade platform</h3>
+      <div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" <%= video_tag "healthEdu.mp4", :controls => true %> allowfullscreen></iframe>
+</div>
+    </div>
+    <div class="text-center w-100">
+      <h3>about us</h3>
+    </div>
+  </section>
+
+  <!-- our services section -->
+  <section id="services" class="text-center bg-info">
+    <h3>our services</h3>
+  </section>
+
+  <!-- the third section -->
+  <section id="third" class="bg-success text-center my-4">
+    <h3>third section</h3>
+  </section>
+  <!-- the fourth section -->
+  <section id="fourth" class="bg-warning text-center my-4">
+    <h3>fourth section</h3>
+  </section>
+  <!-- the fifth section -->
+  <section id="fifth" class="bg-secondary text-center my-4">
+    <h3>fifth section</h3>
+  </section>
+</main>
+
+<!-- footer section -->
+<footer class="bg-dark text-white text-center p-4">
+  <h5>Health education application developed by Nadine and Aminatha &#128523; aba programmer bambere kwisi no muri africa</h5>
+</footer>
