@@ -66,24 +66,19 @@
         <strong><%= current_user.email %></strong>
         <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"btn btn-success btn-sm" %>
       <% else %>
-        <%= link_to "Admin Panel",  rails_admin.dashboard_path, class: "btn btn-outline-success btn-small" %>
+        <%= link_to "Log in",  new_user_session_path, class: "btn btn-outline-success btn-small" %>
       <% end %>
     </div>
 
   </div>
 </nav>
-
-
-
     <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
+      <p class="alert alert-success", style='margin:90px'><%= notice %></p>
     <% end %>
     <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
+      <p class="alert alert-danger", style='margin:90px'><%= alert %></p>
     <% end %>
-     <header>
-
-    <%= yield %>
+ <%= yield %>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Bootstrap tooltips -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>

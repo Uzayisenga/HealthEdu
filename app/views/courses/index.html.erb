@@ -1,8 +1,9 @@
+
 <% if current_user && current_user.user_role == 'council' %>
         <%= link_to 'see list of instructor', instructor_path, class: 'btn btn-success' %>
         <%= link_to 'see list of professionals', professional_path, class: 'btn btn-success' %>
         <% end %>
-<div class="container style='margin = 500px'">
+<div class="container", style='margin:100px'>
 <div class="row">
   
   <div class="row row-cols-1 row-cols-md-3">
@@ -31,6 +32,7 @@
   <td><%= link_to 'view questions', course_comments_path(course)%></td>
   <td><%= link_to 'ask question', new_course_comment_path(course) %></td>
   <%end%>
+  <%= link_to 'New Course', new_course_path %>
 </div>
 <div class="card-footer">
 <small class="text-muted">Updated
