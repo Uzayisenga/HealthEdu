@@ -55,9 +55,9 @@ class User < ApplicationRecord
         end
         
       
-        def self.search(search)
-          if term
-            where('names LIKE ?', "%#{search}%")
-          end
-        end
+        # def self.search(search)
+          
+        #   #  where('names LIKE ?', "%#{search}%")
+          
+        # end
 end
