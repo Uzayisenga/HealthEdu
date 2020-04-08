@@ -1,3 +1,4 @@
+<div class="container"
 <%= form_with(model: payment, local: true) do |form| %>
   <% if payment.errors.any? %>
     <div id="error_explanation">
@@ -32,3 +33,4 @@
     <%= form.submit %>
   </div>
 <% end %>
+</div>
