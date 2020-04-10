@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :credits
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :payments
   resources :replies

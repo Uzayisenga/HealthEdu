@@ -19,6 +19,7 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
    @comment = Comment.all
+   @credit = Credit.all
   end
 
   # GET /courses/new
