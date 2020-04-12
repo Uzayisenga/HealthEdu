@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
          has_many :courses, dependent: :destroy
          has_many :comments
+         has_many :requests
 
          has_many :courses
          mount_uploader :image, ImageUploader

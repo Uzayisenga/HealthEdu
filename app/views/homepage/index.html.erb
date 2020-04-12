@@ -60,8 +60,13 @@
 
   <!-- our services section -->
   <section id="services" class="text-center bg-#e0f2f1 teal lighten-5">
-    <h3>All Courses</h3>
-    <%= link_to 'New Course', new_course_path %>
+  <h2 class="mb-5 font-weight-bold">All courses</h2>
+  <%if current_user.user_role=='professional'%>
+    <h2> your Requests </h2>
+      <%= current_user.requests.each do |request| %>
+        You requested this course: <%= link_to request.course.title %><br>
+      <% end %>
+  <% end %>
     <% if current_user && current_user.user_role == 'council' %>
         <%= link_to 'see list of instructor', instructor_path, class: 'btn btn-success' %>
         <%= link_to 'see list of professionals', professional_path, class: 'btn btn-success' %>
@@ -144,7 +149,7 @@
                     <!--Grid column-->
                     <div class="col-md-4 mb-5">
                         <i class="fa fa-camera-retro fa-4x green-text"></i>
-                        <h4 class="my-4 font-weight-bold">Experience</h4>
+                        <h4 class="my-4 font-weight-bold">Face to Face CDP Courses</h4>
                         <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
                             maiores nam,
                             aperiam minima
@@ -155,7 +160,7 @@
                     <!--Grid column-->
                     <div class="col-md-4 mb-1">
                         <i class="fa fa-heart fa-4x green-text"></i>
-                        <h4 class="my-4 font-weight-bold">Happiness</h4>
+                        <h4 class="my-4 font-weight-bold">Online CPD Courses</h4>
                         <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
                             maiores nam,
                             aperiam minima
@@ -166,7 +171,7 @@
                     <!--Grid column-->
                     <div class="col-md-4 mb-1">
                         <i class="fa fa-bicycle fa-4x green-text"></i>
-                        <h4 class="my-4 font-weight-bold">Adventure</h4>
+                        <h4 class="my-4 font-weight-bold">On site Workshop</h4>
                         <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
                             maiores nam,
                             aperiam minima
@@ -293,7 +298,6 @@
   </section>
   <!-- the fifth section -->
   <section id="fifth" class="bg-#e0f2f1 teal lighten-5 text-center my-4">
-    <h3>fifth section</h3>
     <div class="container">
 
                 <!-- Section heading -->
@@ -471,10 +475,10 @@
       <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
 
         <!-- Links -->
-        <h6 class="text-uppercase font-weight-bold">Products</h6>
+        <h6 class="text-uppercase font-weight-bold">Home</h6>
         <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
-          <a class="dark-grey-text" href="#!">MDBootstrap</a>
+          <a class="dark-grey-text" href="#!">About Us</a>
         </p>
         <p>
           <a class="dark-grey-text" href="#!">MDWordPress</a>
