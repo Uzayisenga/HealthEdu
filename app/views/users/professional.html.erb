@@ -1,15 +1,16 @@
 <% @professionals.each do |professional| %>
-    <%= professional.names %><br>
-    <%= professional.working_place %><br>
-    <%= professional.email %><br/>
-    <%= professional.reguratory_body %><br/>
-    <%= professional.level %><br/>
-    <%= professional.district %><br/>
-    <%= professional.gender %><br/>
-    <%= professional.working_place %><br/>
-    <%= professional.apload_diploma %><br/>
-    <%= professional.apload_cv %><br/>
-    <%= professional.image if professional.image %><br/>
-    <%= professional.phone %><br/>
-    <%= professional.courses.count %><br>
+  <td><%= professional.names %></td><br/>
+  <td><%= professional.email %></td><br/>
+  <td><%= professional.user_role %></td><br/>
+  <td><%= professional.reguratory_body %></td><br/>
+  <td><%= professional.level %></td><br/>
+  <td><%= professional.district %></td><br/>
+  <td><%= professional.gender %></td><br/>
+  <td><%= professional.working_place %></td><br/>
+  <td><%= link_to "Download", professional.apload_diploma_url %></td><br/>
+  <td><%= link_to "Download", professional.apload_cv_url %></td><br/>
+  <td><%= professional.phone %><br/></td><br/>
+  <% if professional.image_url %>
+          <%= image_tag professional.image_url, style:"width:100px;height:100px;" %>
+        <% end %>
   <% end %>

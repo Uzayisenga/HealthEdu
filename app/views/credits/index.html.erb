@@ -19,7 +19,7 @@
     <% @credits.each do |credit| %>
       <tr>
         <td><%= credit.name %></td>
-        <td><%= credit.upload_file %></td>
+        <td><%= link_to "Download", credit.upload_file_url %></td>
         <td><%= credit.course.title %></td>
         <td><%= link_to 'Show', credit %></td>
         <td><%= link_to 'Edit', edit_credit_path(credit) %></td>

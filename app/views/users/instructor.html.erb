@@ -1,15 +1,17 @@
 <% @instructors.each do |instructor| %>
-    <%= instructor.names %><br>
-    <%= instructor.working_place %><br>
-    <%= instructor.email %><br/>
-    <%= instructor.reguratory_body %><br/>
-    <%= instructor.level %><br/>
-    <%= instructor.district %><br/>
-    <%= instructor.gender %><br/>
-    <%= instructor.working_place %><br/>
-    <%= instructor.apload_diploma %><br/>
-    <%= instructor.apload_cv %><br/>
-    <%= instructor.image if instructor.image %><br/>
-    <%= instructor.phone %><br/>
+  <td><%= instructor.names %></td><br/>
+  <td><%= instructor.email %></td><br/>
+  <td><%= instructor.user_role %></td><br/>
+  <td><%= instructor.reguratory_body %></td><br/>
+  <td><%= instructor.level %></td><br/>
+  <td><%= instructor.district %></td><br/>
+  <td><%= instructor.gender %></td><br/>
+  <td><%= instructor.working_place %></td><br/>
+  <td><%= link_to "Download", instructor.apload_diploma_url %></td><br/>
+  <td><%= link_to "Download", instructor.apload_cv_url %></td><br/>
+  <td><%= instructor.phone %><br/></td><br/>
+  <% if instructor.image_url %>
+          <%= image_tag instructor.image_url, style:"width:100px;height:100px;" %>
+        <% end %>
     
   <% end %>

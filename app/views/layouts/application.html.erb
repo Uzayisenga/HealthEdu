@@ -62,6 +62,7 @@
      <% end %>
     </ul>
     <div class="w-25 d-flex">
+    
       <% if user_signed_in? %>
         <strong><%= current_user.email %></strong>
         <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"btn btn-success btn-sm" %>

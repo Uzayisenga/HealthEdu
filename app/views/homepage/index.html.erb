@@ -68,6 +68,9 @@
       <% end %>
   <% end %>
     <% if current_user && current_user.user_role == 'council' %>
+      <%= form_tag search_path, method: :get do %>
+        <%= text_field_tag :q, nil %>
+      <% end %>
         <%= link_to 'see list of instructor', instructor_path, class: 'btn btn-success' %>
         <%= link_to 'see list of professionals', professional_path, class: 'btn btn-success' %>
         <% end %>
