@@ -133,3 +133,45 @@ input[type=submit]:hover {
   border: 3px solid #00C851;
   border-radius: 3px;
 }
+.tank{
+  width: 100%;
+  margin-top: 40px;
+ 
+}
+.menu{
+  width: 20%;
+  background-color: #81c784;
+  margin-top: 70px;
+  float: left;
+  height: 1000px;
+}
+.list{
+  border: 1px, darkgoldenrod solid;
+  list-style: none;
+  border-radius: 1px;
+  width: 200px;
+  padding: 20px;
+
+}
+.list li{
+  font-size: 20px;
+  line-height: 2.4em;
+  border-bottom: dotted 1px rgb(26, 22, 22)
+
+}
+.list li a:hover{
+  color:blue;
+}
+.list li a {
+  text-decoration: none;
+ 
+}
+.courses{
+  width: 80%;
+  padding:20px;
+  background:whitesmoke;
+  float: right;
+  border-end-end-radius: 20px red;
+  margin-top: 70px;
+  height: 1000px;
+}
