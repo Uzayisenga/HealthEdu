@@ -156,11 +156,11 @@ input[type=submit]:hover {
 .list li{
   font-size: 20px;
   line-height: 2.4em;
-  border-bottom: dotted 1px rgb(26, 22, 22)
+  border-bottom: dotted 1px white;
 
 }
 .list li a:hover{
-  color:blue;
+  color:white;
 }
 .list li a {
   text-decoration: none;
@@ -171,7 +171,7 @@ input[type=submit]:hover {
   padding:20px;
   background:whitesmoke;
   float: right;
-  border-end-end-radius: 20px red;
+  border-end-end-radius: 20px white;
   margin-top: 70px;
   height: 1000px;
 }
