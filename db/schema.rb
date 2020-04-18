@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_01_163003) do
+ActiveRecord::Schema.define(version: 2020_04_12_174825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,15 @@ ActiveRecord::Schema.define(version: 2020_04_01_163003) do
     t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
+  create_table "credits", force: :cascade do |t|
+    t.string "name"
+    t.string "upload_file"
+    t.bigint "course_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_credits_on_course_id"
+  end
+
   create_table "payments", force: :cascade do |t|
     t.float "amount"
     t.bigint "user_id", null: false
@@ -83,6 +92,15 @@ ActiveRecord::Schema.define(version: 2020_04_01_163003) do
     t.index ["user_id"], name: "index_replies_on_user_id"
   end
 
+  create_table "requests", force: :cascade do |t|
+    t.bigint "course_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_requests_on_course_id"
+    t.index ["user_id"], name: "index_requests_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -95,16 +113,12 @@ ActiveRecord::Schema.define(version: 2020_04_01_163003) do
     t.string "names"
     t.string "gender"
     t.string "phone"
-    t.string "province"
     t.string "district"
-    t.string "sector"
-    t.string "cell"
     t.string "reguratory_body"
     t.string "level"
     t.string "user_role", default: "professional"
     t.string "apload_diploma"
     t.string "apload_cv"
-    t.string "availabity_hour"
     t.string "working_place"
     t.string "uid", default: "", null: false
     t.string "provider", default: "", null: false
@@ -117,8 +131,11 @@ ActiveRecord::Schema.define(version: 2020_04_01_163003) do
   add_foreign_key "comments", "courses"
   add_foreign_key "comments", "users"
   add_foreign_key "courses", "users"
+  add_foreign_key "credits", "courses"
   add_foreign_key "payments", "courses"
   add_foreign_key "payments", "users"
   add_foreign_key "replies", "comments"
   add_foreign_key "replies", "users"
+  add_foreign_key "requests", "courses"
+  add_foreign_key "requests", "users"
 end
