@@ -1,0 +1,35 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+<h1>courses Module</h1>
+<hr class="hr">
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Upload file</th>
+      <th>Course Name</th>
+      <th colspan="3">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @credits.each do |credit| %>
+      <tr>
+        <td><%= credit.name %></td>
+        <td><%= credit.upload_file %></td>
+        <td><%= credit.course.title %></td>
+        <td><%= link_to 'Show', credit %></td>
+        <td><%= link_to 'Edit', edit_credit_path(credit) %></td>
+        <td><%= link_to 'Destroy', credit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<br>
+
+<%= link_to 'Add Module', new_credit_path %>

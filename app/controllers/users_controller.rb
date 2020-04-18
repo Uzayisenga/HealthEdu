@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
   before_action :only_council  
+  def search
+    q = params[:q]
+    @users    = User.search(names_cont: q).result
+    @courses = Course.search(title_cont: q).result
+    #@users    = User.search(name_cont: q).result
+  end
   def index
     if params[:id]
       @users = User.where(" names Like ?", "%#{params[:id]}%")

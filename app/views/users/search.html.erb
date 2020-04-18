@@ -1,0 +1,48 @@
+<h1>Search is working</h1>
+<% if @users %>
+<i><h1>List of Users</h1></i>
+<% @users.each do |user| %>
+  <%= user.names %><br/>
+  <%= user.email %><br/>
+  <%= user.user_role %><br/>
+  <%= user.reguratory_body %><br/>
+  <%= user.level %><br/>
+  <%= user.availabity_hour %><br/>
+  <%= user.province %><br/>
+  <%= user.district %><br/>
+  <%= user.sector %><br/>
+  <%= user.cell %><br/>
+  <%= user.gender %><br/>
+  <%= user.working_place %><br/>
+  <%= user.apload_diploma %><br/>
+  <%= user.apload_cv %><br/>
+  <%=  user.image if user.image %><br/>
+  <%= user.phone %><br/>
+<% end %>
+<% end %>
+<% if @courses %>
+<% @courses.each do |course| %>
+    <div class="col mb-4">
+      <div class="card h-100">
+      <% if course.image_url %>
+            <%= image_tag course.image_url,:alt => "doctor feed", style:'width:100%;height:40%' %>
+          <% end %>
+        <div class="card-body">
+          <h5 class="card-title" style="color:green"><b><%= course.title%>/<%= course.credit_number %>credits &nbsp;&nbsp; - &nbsp;&nbsp;<%= course.course_price%>&nbsp;Frws</b></h5>
+          <p class="card-text content"><b><%= course.content[0,100]..%></b></p>
+          <%if current_user.user_role=='professional'%>
+          <td><%= link_to 'Buy course', new_payment_path(:course_id => course.id), :"data-no-turbolink" => true, method: "get"  %></td>
+          <td><%= link_to 'view questions', course_comments_path(course)%></td>
+          <td><%= link_to 'ask question', new_course_comment_path(course) %></td>
+          <td><%= link_to "Download", course.upload_file_url %></td>
+          <% end %>
+          <%if current_user.user_role=='instructor'%>
+          <td><%= link_to 'view questions', course_comments_path(course)%></td>
+          <td><%= link_to 'ask question', new_course_comment_path(course) %></td>
+          <%= link_to 'New Course', new_course_path %>
+          <td><%= link_to 'Show', course %></td>
+          <td><%= link_to 'Edit', edit_course_path(course) %></td>
+          <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <%end%>
+          <% end %>   
+<% end %>

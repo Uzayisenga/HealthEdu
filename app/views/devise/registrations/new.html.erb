@@ -1,102 +1,104 @@
-<div class="container", style="background-color: whitesmoke; width:40%;">
-<h2>Sign up</h2>
+<style>
+.container {
+    background-color: #f2f2f2;
+    padding: 5px 20px 15px 20px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    
+  }
+  </style>
+<div class="row" >
+  <div class="col-75">
+    <div class="container" style='margin:100px'>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+       <%= render "devise/shared/error_messages", resource: resource %>
+    
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="row">
+          <div class="col-50">
+            <h3>Sign up</h3>
+            <i class="fa fa-envelope"></i> <%= f.label :email %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+            <i class="fa fa-user"></i><%= f.label :names %> 
+            <%= f.text_field :names, class:"form-control" %>
+            <i class="fa fa-key icon"></i>
+            <%= f.label :password %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
+            <i class="fa fa-key icon"></i> <%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
+            
+           
 
-  <div class="form-group">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
-  </div>
+            <div class="row">
+              <div class="col-50">
+              <%= f.label :image %>
+                <%= f.label :image %>
+                <%= f.file_field :image, class:"form-control" %>
+              </div>
+              <div class="col-50">
+              <%= f.label :gender %>
+              <%= f.radio_button :gender, 'Male' %> Male <%= f.radio_button :gender, 'Female' %> Female
+              </div>
+            </div>
+          </div>
+          <div class="col-50">
+           
+            <div class="icon-container">
+              
+            </div>
 
-  <div class="form-group">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
-  </div>
+            <i class="fa fa-phone"></i><%= f.label :Phone %>
+            <%= f.number_field :phone, class:"form-control" %>
+            <i class="fa fa-institution"></i><%= f.label :district %>
+            <%= f.text_field :district, class:"form-control" %>
+            <%= f.select :reguratory_body, options_for_select([
+                  ["Regulatory Body:", ""], 
+                  "RAHPC", 
+                  "NPC", 
+                  "RMDC", 
+                  "NCNM"]), 
+                  {}, { class: "form form-group form-control" } %>
+            <%= f.label :upload_diploma %>
+            <%= f.file_field :apload_diploma, class:"form-control" %>
+            <%= f.label :upload_cv %>
+            <%= f.file_field :apload_cv, class:"form-control" %><br><br>
+             <div class="row">
+              <div class="col-50">
+                <%= f.select :level, options_for_select([
+                  ["Upload your
+                  Certicate", ""], 
+                  "certificate(A2)", 
+                  "Advanced_Diploma", 
+                  "Bachelor_Degree", 
+                  "Masters_Degree",
+                  "PHD",
+                  "Others"]), 
+                  {}, { class: "form form-group form-control" } %>
+                </div>
+              <div class="col-50">
+                <%= f.select :user_role, options_for_select([
+                  ["Choose Your role", ""], 
+                  "professional", 
+                  "admin", 
+                  "instructor", 
+                  "council"]), 
+                  {}, { class: "form form-group form-control" } %>
+              </div>
+            </div>
+          </div>
 
-  <div class="form-group">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :image %>
-    <%= f.file_field :image, class:"form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :names %>
-    <%= f.text_field :names, class:"form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :gender %>
-    <%= f.radio_button :gender, 'Male' %> Male <%= f.radio_button :gender, 'Female' %> Female
-  </div>
-
-  <div class="form-group">
-    <%= f.label :Phone %>
-    <%= f.number_field :phone, class:"form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :province %>
-    <%= f.text_field :province, class:"form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :district %>
-    <%= f.text_field :district, class:"form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :sector %>
-    <%= f.text_field :sector, class:"form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :cell %>
-    <%= f.text_field :cell, class:"form-control" %>
-  </div>
-
-  <div class="form-group">
-      <%= f.select :reguratory_body, [ 'RAHPC', 'NPC','RMDC' ], :prompt => 'Regulatory_body', class:"form-control input-lg", placeholder:"RAHPC, NPC,RMDC" %>
-  </div>
-
-  <div class="form-group">
-      <%= f.select :level, [ 'Advanced_Diploma', 'Bachelor_Degree','certificate(A2)','Masters_Degree','PHD','Others' ], :prompt => 'Levels', class:"form-control input-lg", placeholder:"Advanced_Diploma, Bachelor_Degree,certificate(A2),Masters_Degree,PHD,Others" %>
-  </div>
- 
-  <div class="form-group">
-      <%= f.select :user_role, [ 'professional', 'admin','instructor','council' ], :prompt => 'User_role', class:"form-control input-lg", placeholder:"proffessional,admin,instructor,council" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :upload_diploma %>
-    <%= f.file_field :apload_diploma, class:"form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :upload_cv %>
-    <%= f.file_field :apload_cv, class:"form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :availabity_hour %>
-    <%= f.text_field :availabity_hour, class:"form-control" %>
-  </div>
-  
-  <div class="form-group">
-      <%= f.select :working_place, [ 'Refferal_hospitals', 'District_hospital','Province','Health_center','Private_clinic/polyclinic','NGO','jobless' ], :prompt => 'working_place', class:"form-control input-lg", placeholder:"Refferal_hospitals,District_hospital,Province,Health_center,Private_clinic/polyclinic,NGO,jobless" %>
+        </div>
+    
+        <div class="actions">
+        <%= f.submit "Sign up" %>
       </div>
-
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+    <% end %>
+    
+    <%= render "devise/shared/links" %>
+    </div>
   </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
-</div>
+

@@ -5,9 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,:omniauthable, omniauth_providers: [:google, :facebook, :twitter]
 
          has_many :courses, dependent: :destroy
-         has_many :comments
+         has_many :comments, dependent: :destroy
+         has_many :requests, dependent: :destroy
 
-         has_many :courses
+         has_many :courses, dependent: :destroy
          mount_uploader :image, ImageUploader
          mount_uploader :apload_diploma, AploadDiplomaUploader
          mount_uploader :apload_cv, AploadCvUploader
@@ -55,9 +56,9 @@ class User < ApplicationRecord
         end
         
       
-        def self.search(search)
-          if term
-            where('names LIKE ?', "%#{search}%")
-          end
-        end
+        # def self.search(search)
+          
+        #   #  where('names LIKE ?', "%#{search}%")
+          
+        # end
 end

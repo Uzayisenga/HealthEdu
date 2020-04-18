@@ -14,6 +14,28 @@
  *= require_self
  *= require font-awesome
  */
-
- 
- 
+ html{
+   scroll-behavior: smooth;
+ }
+.carousel{
+  height: 75vh;
+  overflow-y: hidden;
+}
+.carousel-item img{
+  width: 100%;
+}
+#about_us{
+  width: 100%;
+  display: flex;
+  min-height: 75vh;
+}
+#services{
+  min-height: 75vh;
+}
+#third, #fourth, #fifth{
+  min-height: 75vh;
+}
+.container{
+  
+  margin-top: 70px;
+}

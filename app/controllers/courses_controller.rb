@@ -19,6 +19,7 @@ class CoursesController < ApplicationController
   # GET /courses/1.json
   def show
    @comment = Comment.all
+   @request_exists = Request.where(course: @course, user: current_user) == []? false : true
   end
 
   # GET /courses/new

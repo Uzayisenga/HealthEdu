@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<div class="container">
 <h1>Questions and Answers</h1>
 
 <br>
@@ -24,11 +25,16 @@
       <div class="card-body">
         <% comment.replies.each do |reply| %>
         <h5 class="font-weight-bold amber-text mt-2 mb-3"><%=reply.content%><i class="far fa-heart ml-3"></i></h5>
-        
+        <%if current_user.id==comment.user_id %>
+<span class="badge badge-success badge-pill"><%= link_to 'reply', new_reply_path(:comment_id => comment.id), :"data-no-turbolink" => true, method: "get"  %></span>
+<%end%>
+
           <%end%></p>
       </div>
     <!--/.Card Primary-->
 
   </div></br>
+  <%= link_to 'New Question', new_course_comment_path %>
 <% end %>
-<%= link_to 'New Question', new_course_comment_path %>
+</div>
+
