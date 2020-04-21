@@ -195,10 +195,17 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     orm_adapter (0.5.0)
+    pdf-core (0.7.0)
+    pdfkit (0.8.4.2)
+    pdfkit-amd64 (0.9.9.2)
+      pdfkit
     pg (1.2.3)
     polyamorous (2.3.2)
       activerecord (>= 5.2.1)
     popper_js (1.16.0)
+    prawn (2.2.2)
+      pdf-core (~> 0.7.0)
+      ttfunk (~> 1.5)
     public_suffix (4.0.3)
     puma (4.3.3)
       nio4r (~> 2.0)
@@ -259,6 +266,8 @@ GEM
       ffi (~> 1.0)
     regexp_parser (1.7.0)
     remotipart (1.4.4)
+    render_anywhere (0.0.12)
+      rails (>= 3.0.7)
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -294,6 +303,7 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
+    ttfunk (1.6.2.1)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -341,11 +351,15 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-google-oauth2
   omniauth-twitter
+  pdfkit
+  pdfkit-amd64
   pg (>= 0.18, < 2.0)
+  prawn
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.1)
   rails_admin (~> 2.0)
   ransack
+  render_anywhere
   sass-rails (>= 6)
   selenium-webdriver
   spring

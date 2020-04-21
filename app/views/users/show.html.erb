@@ -13,3 +13,4 @@
 <h1><%= @user.working_place %><br/></h1>
 <h1><%= @user.apload_diploma %><br/></h1>
 <h1><%= @user.apload_cv %><br/></h1>
+<%= link_to 'get a certificate(PDF)', user_path(@user, format: 'pdf') %>

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     # Add this
     omniauth_callbacks: "users/omniauth_callbacks"
   }
-  resources :users, :only =>[:show]
+  resources :users, :only =>[:show, :index]
 resources :courses do
   resources :comments
 end
