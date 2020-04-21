@@ -14,7 +14,14 @@ class UsersController < ApplicationController
     end
   end
   def show
-    @user = User.find_by_names(params[:id])
+    @user = User.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = UserPdf.new(@user)
+        send_data pdf.render, filename: "user_#{@user.id}.pdf", type: "application/pdf", disposition: "inline"
+      end
+    end
   end
   def only_council
     if current_user.user_role != 'council'

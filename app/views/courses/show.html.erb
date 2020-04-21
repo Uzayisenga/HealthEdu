@@ -75,12 +75,15 @@
   <%= link_to 'Edit', edit_course_path(@course), class:'btn btn-sm' %>
   <%= link_to 'Back', courses_path,class:'btn btn-sm' %>
   <%end%>
-
-  <% @course.credits.each do  |credit| %>
-
-    <%= credit.name %>
-
-     <% end %>
+  <h3 class="card-title"><b>Modules course of <%=@course.title%></b></h3>
+  <hr class="hr">
+  
+    <% @course.credits.each do  |credit| %>
+      <div class="module">
+      <i class="fa fa-file-pdf-o fa_custom"></i> <%= credit.name %>
+      </div><br>
+    <% end %>
+    
 </div>
 </div>
 <!-- Card -->

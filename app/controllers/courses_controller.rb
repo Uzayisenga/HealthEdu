@@ -20,6 +20,7 @@ class CoursesController < ApplicationController
   def show
    @comment = Comment.all
    @favorite = current_user.favorites.find_by(course_id: @course.id)
+   
   end
 
   # GET /courses/new
