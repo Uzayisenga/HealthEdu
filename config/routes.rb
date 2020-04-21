@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+  get 'certificate/index'
   get 'requests/update'
   resources :credits
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :payments
   resources :replies
   resources :homepage
+  resources :favorites, only: [:create, :destroy, :index]
   get 'comments/create'
   get 'course/assesment'
   get 'welcome/index'

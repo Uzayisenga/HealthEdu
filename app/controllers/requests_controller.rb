@@ -1,10 +1,19 @@
 class RequestsController < ApplicationController
+  
+  def index
+   @requests=Request.all
+  end
+  
+  
+
+  
   def update
-    request = Request.where(Course: Course.find(params[:course]), user: current_user)
+    request = Request.where(Course: Course.find(params[:course]), user: email)
     if request = []
       #create request
-      Request.create(course: Course.find(params[:course]), user: current_user)
+      Request.create(course: Course.find(params[:course]), user: email)
       @request_exists = true
+
     else
       #delete request
       request.destroy_all

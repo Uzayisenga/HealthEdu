@@ -23,8 +23,13 @@
     <div style="width:50%;float:right;padding-left:30px">
       <!-- Button -->
       <p class="card-text" style="color:green;font-weight:bolder;font-size:20px"><%=@course.course_price %> RWF</p>
-      <%if current_user.user_role=='professional'%>
-      <%= link_to request_text, requests_update_path(course: @course), id:'request_link', remote: true, class:"btn btn-success", style:"border-radius:5px" %>
+   
+      <% unless @course.user_id == current_user.id %>
+      <% if @favorite.present? %>
+        <%= link_to 'Cancel request', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+      <% else %>
+        <%= link_to 'Make it a request', favorites_path(course_id: @course.id), method: :post, class: 'btn btn-success' %>
+    <% end %>
       <% end %>
       </div>
   </div>
@@ -71,6 +76,11 @@
   <%= link_to 'Back', courses_path,class:'btn btn-sm' %>
   <%end%>
 
+  <% @course.credits.each do  |credit| %>
+
+    <%= credit.name %>
+
+     <% end %>
 </div>
 </div>
 <!-- Card -->
