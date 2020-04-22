@@ -23,9 +23,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :course_id %>
-    <%= form.hidden_field :course_id, :value => params[:course_id] %>
+    <%= form.label :video %>
+    <%= form.file_field :video, id: :video_file %>
   </div>
+
+
+    <%= form.hidden_field :course_id, :value => params[:course_id] %>
+  
 
   <div class="actions">
     <%= form.submit %>

@@ -106,4 +106,9 @@ class CoursesController < ApplicationController
       render :text => "File has been uploaded successfully"
   end
 
+  def check_payment
+    unless current_user && @course.status == "paid"
+    end
+  end
+
 end

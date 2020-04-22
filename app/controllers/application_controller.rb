@@ -12,8 +12,8 @@ class ApplicationController < ActionController::Base
     protected
         def configure_permitted_parameters
             # devise_parameter_sanitizer.for(:sign_up)  {|u| u.permit(:names, :email, :password, :user_role, :reguratory_body, :level, :working_place, :gender,:province, :district, :sector, :cell, :upload_diploma, :upload_cv, :availability_hour, :image, :phone) }
-            devise_parameter_sanitizer.permit(:sign_up, keys: [:names, :email, :password, :user_role, :reguratory_body, :level, :working_place, :gender,:province, :district, :sector, :cell, :apload_diploma, :apload_cv, :availabity_hour, :image, :phone])
-            devise_parameter_sanitizer.permit(:account_update, keys: [:names, :email, :password, :user_role, :reguratory_body, :level, :working_place, :gender,:province, :district, :sector, :cell, :apload_diploma, :apload_cv, :availabity_hour, :image, :phone])   
+            devise_parameter_sanitizer.permit(:sign_up, keys: [:names, :last_name, :email, :password, :user_role, :reguratory_body, :level, :working_place, :gender,:province, :district, :sector, :cell, :apload_diploma, :apload_cv, :availabity_hour, :image, :phone])
+            devise_parameter_sanitizer.permit(:account_update, keys: [:names, :last_name, :email, :password, :user_role, :reguratory_body, :level, :working_place, :gender,:province, :district, :sector, :cell, :apload_diploma, :apload_cv, :availabity_hour, :image, :phone])   
         end
 
 

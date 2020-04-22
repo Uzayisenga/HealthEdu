@@ -80,7 +80,7 @@
   
     <% @course.credits.each do  |credit| %>
       <div class="module">
-      <i class="fa fa-file-pdf-o fa_custom"></i> <%= credit.name %>
+      <i class="fa fa-file-pdf-o fa_custom"></i> <%= link_to credit.name, credit_path%>
       </div><br>
     <% end %>
     
