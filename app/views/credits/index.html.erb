@@ -22,7 +22,7 @@
         <td><%= credit.name %></td>
         <td><%= link_to "Download", credit.upload_file_url %></td>
         <td><%= credit.course.title %></td>
-        <td><%= credit.video %></td>
+        <td><video controls width="300" src="<%= credit.video %>"></video></td>
         <td><%= link_to 'Show', credit %></td>
         <td><%= link_to 'Edit', edit_credit_path(credit) %></td>
         <td><%= link_to 'Destroy', credit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
