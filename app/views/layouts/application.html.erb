@@ -65,6 +65,11 @@
         <%= link_to 'Instractor Panel', courses_path, class: "nav-link" %>
         </li>
      <% end %>
+     <% if user_signed_in? && current_user.user_role== 'council'%>
+        <li class="nav-item">
+        <%= link_to 'Check', instructor_path, class: "nav-link" %>
+        </li>
+     <% end %>
      
     </ul>
     <div class="w-25 d-flex">

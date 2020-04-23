@@ -1,15 +1,53 @@
-<% @professionals.each do |professional| %>
-    <%= professional.names %><br>
-    <%= professional.working_place %><br>
-    <%= professional.email %><br/>
-    <%= professional.reguratory_body %><br/>
-    <%= professional.level %><br/>
-    <%= professional.district %><br/>
-    <%= professional.gender %><br/>
-    <%= professional.working_place %><br/>
-    <%= professional.apload_diploma %><br/>
-    <%= professional.apload_cv %><br/>
-    <%= professional.image if professional.image %><br/>
-    <%= professional.phone %><br/>
-    <%= professional.courses.count %><br>
-  <% end %>
+<div class="tank">
+  <div class ="menu">
+    <ul class="list">
+      <li><%= link_to 'Instructors List', instructor_path %></li>
+      <li><%= link_to 'Professionals List', professional_path %></li>
+    </ul>
+  </div>
+  <div class="courses">
+  <h2>All Courses</h2>
+  <hr class="hr">
+  <div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Working_place</th>
+      <th>Email</th>
+      <th>Reguratory Body</th>
+      <th>Level</th>
+      <th>District</th>
+      <th>Gender</th>
+      <th>Working_place</th>
+      <th>Apload_diploma</th>
+      <th>Apload_cv </th>
+      <th>Image</th>
+      <th>Phone</th>
+      <th>Courses</th>
+    </tr>
+  </thead>
+
+    <tbody>
+      <% @professionals.each do |professional| %>
+        <tr>
+           <td><%= professional.names %></td>
+           <td><%= professional.working_place %></td>
+           <td><%= professional.email %></td>
+           <td><%= professional.reguratory_body %></td>
+           <td><%= professional.level %></td>
+           <td><%= professional.district %></td>
+           <td><%= professional.gender %></td>
+           <td><%= professional.working_place %></td>
+           <td><%= professional.apload_diploma %></td>
+           <td><%= professional.apload_cv %></td>
+           <td><%= professional.image if professional.image %></td>
+           <td><%= professional.phone %></td>
+           <td><%= professional.courses.count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
