@@ -1,6 +1,6 @@
 <div class="container">
 <p id="notice"><%= notice %></p>
-<h1>Favorites</h1>
+<h1>My Request Courses</h1>
 <% @favorites.each do |favorite| %>
     <%if favorite.user.names == current_user.names %>
     <%if favorite.present?%>
@@ -15,11 +15,10 @@
     <p> <%= favorite.course.user.email %></p>
     <h4 class="card-title"><%= favorite.course.title %></h4>
     <p> <%= favorite.user.names %></p> 
+    <span class="badge badge-success badge-pill"><br>Not pay<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    
    <%else%>
      <p>No favorite yet.</p>
-   
-
-  
     
   <% end %>
   </div><br>
@@ -29,4 +28,5 @@
 <%end%>
   
   </div>
+  
   
