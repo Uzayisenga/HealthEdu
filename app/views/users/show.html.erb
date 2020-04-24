@@ -1,4 +1,5 @@
 
+
 <h1><%= @user.names %></h1>
 <h1><%= @user.email %><br/></h1>
 <h1><%= @user.user_role %><br/></h1>
@@ -9,4 +10,25 @@
 <h1><%= @user.working_place %><br/></h1>
 <h1><%= @user.apload_diploma %><br/></h1>
 <h1><%= @user.apload_cv %><br/></h1>
+<<<<<<< HEAD
 <%= link_to 'get a certificate(PDF)', user_path(@user, format: 'pdf') %>
+=======
+
+<h1><i><%= @user.names %></i></h1>
+<h1><i><%= @user.email %><br/></i></h1>
+<h1><i><%= @user.user_role %><br/></i></h1>
+<h1><i><%= @user.reguratory_body %><br/></i></h1>
+<h1><i><%= @user.level %><br/></i></h1>
+<h1><i><%= @user.availabity_hour %><br/></i></h1>
+<h1><i><%= @user.province %><br/></i></h1>
+<h1><i><%= @user.district %><br/></i></h1>
+<h1><i><%= @user.sector %><br/></i></h1>
+<h1><i><%= @user.cell %><br/></i></h1>
+<h1><i><%= @user.gender %><br/></i></h1>
+<h1><i><%= @user.working_place %><br/></i></h1>
+<h1><i><%= @user.apload_diploma %><br/></i></h1>
+<h1><i><%= @user.apload_cv %><br/></i></h1>
+<h1><i><%= image_tag @user.image.url  style:"height:100px;width:100px;"%><br/></i></h1>
+<h1><i><%= @user.phone %><br/></i></h1>
+
+>>>>>>> 99a331aa1dd742f9ee23a1873856735e230ec8f3

@@ -3,7 +3,12 @@
 
   }
 </style>
+<<<<<<< HEAD
 <%= link_to 'Edit', edit_course_path(@course) %> |
+=======
+
+<%= link_to 'Edit', edit_course_path(@course) %> 
+>>>>>>> 99a331aa1dd742f9ee23a1873856735e230ec8f3
 <%= link_to 'Back', courses_path %>
 <div class="container"
 
@@ -67,13 +72,14 @@
   <strong>Attemption:</strong>
   <%= @course.attemption %>
 </p>
+
 <p><%= link_to "Download", @course.upload_file_url %></p>
 <a href="/exam/assesment">Assesment</a>
 </button>
   </div>
   <%if current_user.user_role=='instructor'%>
   <%= link_to 'Edit', edit_course_path(@course), class:'btn btn-sm' %>
-  <%= link_to 'Back', courses_path,class:'btn btn-sm' %>
+  <a href="/exam/assesment">Assesment</a>
   <%end%>
   <h3 class="card-title"><b>Modules course of <%=@course.title%></b></h3>
   <hr class="hr">
@@ -87,5 +93,20 @@
 </div>
 </div>
 <!-- Card -->
+<<<<<<< HEAD
 </div>
  
+=======
+
+
+<p>
+  <strong>User:</strong>
+  <%= @course.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_course_path(@course) %> 
+<%= link_to 'Back', courses_path %><br>
+<a href="/exam/assesment">Assesment</a>
+
+
+>>>>>>> 99a331aa1dd742f9ee23a1873856735e230ec8f3

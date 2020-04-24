@@ -58,11 +58,18 @@ gem 'carrierwave', '~> 2.0'
 gem 'mini_magick'
 gem 'bootstrap', '~> 4.4.1'
 gem 'bootstrap-sass'
+
+gem 'ransack'
+gem 'bootstrap-will_paginate', '0.0.6'
+
 gem "font-awesome-rails"
+
 gem 'rails_admin', '~> 2.0'
+
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
+<<<<<<< HEAD
 gem 'omniauth-twitter'
 gem 'ransack'
 gem 'pdfkit-amd64'
@@ -71,3 +78,6 @@ gem 'render_anywhere'
 # gem 'wkhtmltopdf-binary'
 #gem 'wkhtmltopdf-binary', '~> 0.12.3'
 gem 'prawn'
+=======
+
+>>>>>>> 99a331aa1dd742f9ee23a1873856735e230ec8f3

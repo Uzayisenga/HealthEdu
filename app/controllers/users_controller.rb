@@ -1,18 +1,28 @@
 class UsersController < ApplicationController
   before_action :only_council  
+<<<<<<< HEAD
   def search
     q = params[:q]
     @users    = User.search(names_cont: q).result
     @courses = Course.search(title_cont: q).result
     #@users    = User.search(name_cont: q).result
   end
+=======
+  
+>>>>>>> 99a331aa1dd742f9ee23a1873856735e230ec8f3
   def index
+
     if params[:id]
       @users = User.where(" names Like ?", "%#{params[:id]}%")
     else
       @users = User.all
     end
+
+    @q = User.ransack(params[:q])
+    @users = @q.result.includes(:user).page(params[:page])
+
   end
+
   def show
     @user = User.find(params[:id])
     respond_to do |format|
@@ -23,6 +33,7 @@ class UsersController < ApplicationController
       end
     end
   end
+
   def only_council
     if current_user.user_role != 'council'
       redirect_to courses_url, notice: 'go to courses'

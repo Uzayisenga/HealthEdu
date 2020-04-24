@@ -14,7 +14,17 @@
    
     <p> <%= favorite.course.user.email %></p>
     <h4 class="card-title"><%= favorite.course.title %></h4>
-    <p> <%= favorite.user.names %></p> 
+
+    <p>
+      <h5>Modules of this course</h5>
+     <%= favorite.course.credits.each do |credit| %>
+      
+      <%= credit.name %><br>
+      <%= credit.upload_file %><br>
+      <%= credit.video %><br>
+      <% end %>
+      </p> 
+    
    <%else%>
      <p>No favorite yet.</p>
    
