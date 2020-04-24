@@ -24,13 +24,13 @@
       <!-- Button -->
       <p class="card-text" style="color:green;font-weight:bolder;font-size:20px"><%=@course.course_price %> RWF</p>
    
-      <% unless @course.user_id == current_user.id %>
+     
       <% if @favorite.present? %>
         <%= link_to 'Cancel request', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
       <% else %>
         <%= link_to 'Make it a request', favorites_path(course_id: @course.id), method: :post, class: 'btn btn-success' %>
     <% end %>
-      <% end %>
+      
       </div>
   </div>
 </div>
