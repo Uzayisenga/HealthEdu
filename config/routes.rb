@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :payments
   resources :replies
   resources :homepage
-  resources :favorites, only: [:create, :destroy, :index]
+  resources :favorites, only: [:create, :destroy, :index, :certificate]
   get 'comments/create'
   get 'course/assesment'
   get 'welcome/index'
@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   get 'professional', to: 'users#professional', as: 'professional'
   get 'instructor', to: 'users#instructor', as: 'instructor'
   get 'search', to: 'users#search', as: :search
+  get 'certificates', to: 'favorites#certificate', as: 'certificate'
+  
+
   
   devise_for :users, controllers: {
     registrations: "users/registrations",
