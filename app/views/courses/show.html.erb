@@ -3,12 +3,7 @@
 
   }
 </style>
-<<<<<<< HEAD
 <%= link_to 'Edit', edit_course_path(@course) %> |
-=======
-
-<%= link_to 'Edit', edit_course_path(@course) %> 
->>>>>>> 99a331aa1dd742f9ee23a1873856735e230ec8f3
 <%= link_to 'Back', courses_path %>
 <div class="container"
 
@@ -87,16 +82,39 @@
     <% @course.credits.each do  |credit| %>
       <div class="module">
       <i class="fa fa-file-pdf-o fa_custom"></i> <%= link_to credit.name, credit_path%>
+      <%= link_to "Download", credit.upload_file_url %>
       </div><br>
     <% end %>
     
 </div>
 </div>
 <!-- Card -->
-<<<<<<< HEAD
 </div>
+<div style="width:1000px; height:800px; padding:16px; text-align:center; border: 10px solid #81c784 ">
+<div style="width:950px; height:750px; padding:16px; text-align:center; border: 5px solid #81c784 ">
+<%= image_tag("/assets/certificate.jpeg", :alt => "logo1 feed", style:"width:300px") %><br>
+       <span style="font-size:17px; color:#81c784"><i>HEALTHEDUCAT LTD</i></span>
+       <br>
+       <span style="font-size:17px; color:#81c784"><i>KG 622 ST 13Ave Kimihurura, Kigali, Rwanda</i></span>
+       <br>
+       <span style="font-size:17px; color:#81c784"><i>(+250) 7890444 | healthedultd@gmail | https://www.healtheducat.com</i></span>
+       <br><br/>
+       <span style="font-size:50px; font-weight:bold; color:#81c784">CERTIFICATE OF COMPLETION</span>
+       <br>
+       <span style="font-size:25px; color:#81c784"><i>This is to certify that</i></span>
+       <br><br>
+       <span style="font-size:30px; color:#81c784"><b><%=@course.user.email%></b></span><br/><br/>
+       <span style="font-size:25px; color:#81c784"><i>has successfully completed the course</i></span> <br/><br/>
+       <span style="font-size:30px; color:#81c784"><%=@course.title%></span><br/>
+       <span style="font-size:25px; color:#81c784"><i>dated</i></span><br>
+      
+      <span style="font-size:30px; color:#81c784">April 23, 2020</span><br/><br/><br/></br/><br/>
+      <span style="font-size:17px; color:#81c784"><i>BIGIRIMANA Jean Damascene</i></span><br>
+      <span style="font-size:17px; color:#81c784"><i>Managing Director</i></span>
+</div>
+</div>
+
  
-=======
 
 
 <p>
@@ -109,4 +127,3 @@
 <a href="/exam/assesment">Assesment</a>
 
 
->>>>>>> 99a331aa1dd742f9ee23a1873856735e230ec8f3

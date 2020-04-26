@@ -16,13 +16,7 @@ class ApplicationController < ActionController::Base
             devise_parameter_sanitizer.permit(:sign_up, keys: [:names, :last_name, :email, :password, :user_role, :reguratory_body, :level, :working_place, :gender,:province, :district, :sector, :cell, :apload_diploma, :apload_cv, :availabity_hour, :image, :phone])
             devise_parameter_sanitizer.permit(:account_update, keys: [:names, :last_name, :email, :password, :user_role, :reguratory_body, :level, :working_place, :gender,:province, :district, :sector, :cell, :apload_diploma, :apload_cv, :availabity_hour, :image, :phone])   
         end
-<<<<<<< HEAD
-
-
-        
-=======
         def set_search
             @search=User.search(params[:q])
           end
->>>>>>> 99a331aa1dd742f9ee23a1873856735e230ec8f3
 end

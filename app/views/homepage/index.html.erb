@@ -65,10 +65,7 @@
     <h2> your Requests </h2>
     <%= link_to 'my requests', favorites_path, class:"btn btn-info" %>
   
-    <% if current_user && current_user.user_role == 'council' %>
-        <%= link_to 'see list of instructor', instructor_path, class: 'btn btn-success' %>
-        <%= link_to 'see list of professionals', professional_path, class: 'btn btn-success' %>
-        <% end %>
+    
 <div class="container style='margin = 500px'">
 <div class="row">
   
@@ -90,6 +87,7 @@
   <td><%= link_to "Download", course.upload_file_url %></td>
   <%= link_to 'Start Now', course, class:"btn btn-success" %>
   <%end%>
+  
   <%if current_user.user_role=='instructor'%>
   <td><%= link_to 'Show', course %></td>
   <td><%= link_to 'Edit', edit_course_path(course) %></td>

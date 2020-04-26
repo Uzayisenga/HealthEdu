@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :mc_questions
+  resources :quizzes
   get 'certificate/index'
   get 'requests/update'
   resources :credits
@@ -6,7 +8,8 @@ Rails.application.routes.draw do
   resources :payments
   resources :replies
   resources :homepage
-  resources :favorites, only: [:create, :destroy, :index]
+  resources :favorites, only: [:create, :destroy, :index, :show]
+  get 'certificate', to: 'favorites#certificate', as: 'certificate'
   get 'comments/create'
   get 'course/assesment'
   get 'welcome/index'
@@ -27,10 +30,6 @@ resources :courses do
 end
 
   # devise_for :users
-<<<<<<< HEAD
   root to: "homepage#index"
-=======
-  root to: "welcome#index"
->>>>>>> 99a331aa1dd742f9ee23a1873856735e230ec8f3
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

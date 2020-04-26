@@ -1,6 +1,6 @@
 <div class="container">
 <p id="notice"><%= notice %></p>
-<h1>Favorites</h1>
+<h1>My Request Courses</h1>
 <% @favorites.each do |favorite| %>
     <%if favorite.user.names == current_user.names %>
     <%if favorite.present?%>
@@ -11,25 +11,14 @@
   <!-- Card content -->
   <div class="card-body">
   
-   
-    <p> <%= favorite.course.user.email %></p>
-    <h4 class="card-title"><%= favorite.course.title %></h4>
+  <h4 class="card-title"><%= favorite.course.title %></h4>
+    <p> Uploaded by:<%= favorite.course.user.email %></p>
+    <%= link_to 'view course', favorite %>
+    <span class="badge badge-success badge-pill"><br><%= favorite.status%><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 
-    <p>
-      <h5>Modules of this course</h5>
-     <%= favorite.course.credits.each do |credit| %>
-      
-      <%= credit.name %><br>
-      <%= credit.upload_file %><br>
-      <%= credit.video %><br>
-      <% end %>
-      </p> 
     
    <%else%>
      <p>No favorite yet.</p>
-   
-
-  
     
   <% end %>
   </div><br>
@@ -39,4 +28,5 @@
 <%end%>
   
   </div>
+  
   

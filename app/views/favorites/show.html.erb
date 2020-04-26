@@ -1,0 +1,39 @@
+<div class="container"
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @favorite.course.title %>
+</p>
+
+<p>
+  <strong>Buyer:</strong>
+  <%= @favorite.user.email %>
+</p>
+
+<p>
+  <strong>Uploaded by:</strong>
+  <%= @favorite.course.user.email %>
+</p>
+<% if @favorite.status == "paid" %>
+<p>
+<p> <h2> Modules of this course</h2>
+<% @favorite.course.credits.each do |credit| %>
+<ul>
+<li class = "user-tasks">
+
+<%= link_to credit.name, credit_path %>
+</li>
+</ul>
+
+<% end %>
+</p>
+
+<% else %>
+<p>
+<h2>Please pay <%= @favorite.course.course_price %> RWF on 0787939119 to access all modules</h2>
+</p>
+<% end %>
+
+<%= link_to 'Back', favorites_path %>
+</dev>

@@ -1,23 +1,21 @@
-<h1>Search is working</h1>
 <% if @users %>
-<i><h1>List of Users</h1></i>
+<i><h1>See the person you want</h1></i>
 <% @users.each do |user| %>
-  <%= user.names %><br/>
-  <%= user.email %><br/>
-  <%= user.user_role %><br/>
-  <%= user.reguratory_body %><br/>
-  <%= user.level %><br/>
-  <%= user.availabity_hour %><br/>
-  <%= user.province %><br/>
-  <%= user.district %><br/>
-  <%= user.sector %><br/>
-  <%= user.cell %><br/>
-  <%= user.gender %><br/>
-  <%= user.working_place %><br/>
-  <%= user.apload_diploma %><br/>
-  <%= user.apload_cv %><br/>
-  <%=  user.image if user.image %><br/>
-  <%= user.phone %><br/>
+  <td><%= user.names %></td><br/>
+  <td><%= user.email %></td><br/>
+  <td><%= user.user_role %></td><br/>
+  <td><%= user.reguratory_body %></td><br/>
+  <td><%= user.level %></td><br/>
+  <td><%= user.district %></td><br/>
+  <td><%= user.gender %></td><br/>
+  <td><%= user.working_place %></td><br/>
+  <td><%= link_to "Download", user.apload_diploma_url %></td><br/>
+  <td><%= link_to "Download", user.apload_cv_url %></td><br/>
+  <td><%= user.phone %><br/></td><br/>
+  <% if user.image_url %>
+      <%= image_tag user.image_url, style:"width:100px;height:100px;" %>
+  <% end %>
+  
 <% end %>
 <% end %>
 <% if @courses %>

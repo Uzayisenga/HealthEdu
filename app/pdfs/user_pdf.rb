@@ -9,7 +9,7 @@ class UserPdf < Prawn::Document
     end
 
     def company
-        text "HEALTHEDUCAT LTD" size: 30, style: :bold, color: :green
+        text "HEALTHEDUCAT LTD" size: 30, style: :bold
     end
 
     def user_id
