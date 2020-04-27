@@ -69,7 +69,7 @@ class CreditsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def credit_params
-      params.require(:credit).permit(:name, :upload_file, :user_id, :course_id)
+      params.require(:credit).permit(:name, :upload_file, :user_id, :course_id, :video)
     end
     def uploadFile
       credit = Credit.save(params[:upload])

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_180752) do
+ActiveRecord::Schema.define(version: 2020_04_26_093040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2020_04_20_180752) do
     t.bigint "course_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "video"
     t.index ["course_id"], name: "index_credits_on_course_id"
   end
 
@@ -77,8 +78,21 @@ ActiveRecord::Schema.define(version: 2020_04_20_180752) do
     t.bigint "course_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "status", default: 0
     t.index ["course_id"], name: "index_favorites_on_course_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "mc_questions", force: :cascade do |t|
+    t.string "question"
+    t.string "answer"
+    t.string "distractor_1"
+    t.string "distractor_2"
+    t.string "distractor_3"
+    t.bigint "quiz_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["quiz_id"], name: "index_mc_questions_on_quiz_id"
   end
 
   create_table "payments", force: :cascade do |t|
@@ -89,6 +103,15 @@ ActiveRecord::Schema.define(version: 2020_04_20_180752) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["course_id"], name: "index_payments_on_course_id"
     t.index ["user_id"], name: "index_payments_on_user_id"
+  end
+
+  create_table "quizzes", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.bigint "course_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_quizzes_on_course_id"
   end
 
   create_table "replies", force: :cascade do |t|
@@ -131,6 +154,7 @@ ActiveRecord::Schema.define(version: 2020_04_20_180752) do
     t.string "working_place"
     t.string "uid", default: "", null: false
     t.string "provider", default: "", null: false
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
@@ -143,8 +167,10 @@ ActiveRecord::Schema.define(version: 2020_04_20_180752) do
   add_foreign_key "credits", "courses"
   add_foreign_key "favorites", "courses"
   add_foreign_key "favorites", "users"
+  add_foreign_key "mc_questions", "quizzes"
   add_foreign_key "payments", "courses"
   add_foreign_key "payments", "users"
+  add_foreign_key "quizzes", "courses"
   add_foreign_key "replies", "comments"
   add_foreign_key "replies", "users"
   add_foreign_key "requests", "courses"

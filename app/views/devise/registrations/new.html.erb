@@ -19,8 +19,10 @@
             <h3>Sign up</h3>
             <i class="fa fa-envelope"></i> <%= f.label :email %>
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
-            <i class="fa fa-user"></i><%= f.label :names %> 
+            <i class="fa fa-user"></i><%= f.label :first_name %> 
             <%= f.text_field :names, class:"form-control" %>
+            <i class="fa fa-user"></i><%= f.label :last_name %> 
+            <%= f.text_field :last_name, class:"form-control" %>
             <i class="fa fa-key icon"></i>
             <%= f.label :password %>
             <% if @minimum_password_length %>

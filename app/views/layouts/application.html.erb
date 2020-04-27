@@ -26,7 +26,7 @@
 
    </p>
    <body>
-     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+     <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
      <a href="index.html"><%= image_tag("logo1.png", :alt => "logo1 feed") %></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -36,6 +36,9 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <%= link_to "Home", homepage_index_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Courses you have bought", favorites_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
         <%= link_to 'Edit profile', edit_user_registration_path, class:'navbar-link text-dark mt-2' %>&nbsp;&nbsp;&nbsp;
@@ -63,6 +66,11 @@
      <% if user_signed_in? && current_user.user_role== 'instructor'%>
         <li class="nav-item">
         <%= link_to 'Instractor Panel', courses_path, class: "nav-link" %>
+        </li>
+     <% end %>
+     <% if user_signed_in? && current_user.user_role== 'council'%>
+        <li class="nav-item">
+        <%= link_to 'Check', instructor_path, class: "nav-link" %>
         </li>
      <% end %>
      

@@ -11,11 +11,18 @@
   <%= @credit.upload_file %>
 </p>
 
+
+
 <p>
   <strong>Course:</strong>
   <%= @credit.course_id %>
 </p>
 
-<%= link_to 'Edit', edit_credit_path(@credit) %> |
-<%= link_to 'Back', credits_path %>
+<p>
+  <strong>Video:</strong>
+  <video controls width="640" height="480" src="<%= @credit.video %>"></video>
+</p>
+
+
+<%= link_to 'Back', favorites_path %>
 </div>

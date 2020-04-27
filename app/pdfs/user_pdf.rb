@@ -8,6 +8,10 @@ class UserPdf < Prawn::Document
         
     end
 
+    def company
+        text "HEALTHEDUCAT LTD" size: 30, style: :bold
+    end
+
     def user_id
         text "#{@user.names} has completed #{@user.courses.size} courses", size: 30, style: :bold
     end

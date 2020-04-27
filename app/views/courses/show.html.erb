@@ -24,13 +24,13 @@
       <!-- Button -->
       <p class="card-text" style="color:green;font-weight:bolder;font-size:20px"><%=@course.course_price %> RWF</p>
    
-      <% unless @course.user_id == current_user.id %>
+     
       <% if @favorite.present? %>
         <%= link_to 'Cancel request', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
       <% else %>
         <%= link_to 'Make it a request', favorites_path(course_id: @course.id), method: :post, class: 'btn btn-success' %>
     <% end %>
-      <% end %>
+      
       </div>
   </div>
 </div>
@@ -67,20 +67,22 @@
   <strong>Attemption:</strong>
   <%= @course.attemption %>
 </p>
+
 <p><%= link_to "Download", @course.upload_file_url %></p>
 <a href="/exam/assesment">Assesment</a>
 </button>
   </div>
   <%if current_user.user_role=='instructor'%>
   <%= link_to 'Edit', edit_course_path(@course), class:'btn btn-sm' %>
-  <%= link_to 'Back', courses_path,class:'btn btn-sm' %>
+  <a href="/exam/assesment">Assesment</a>
   <%end%>
   <h3 class="card-title"><b>Modules course of <%=@course.title%></b></h3>
   <hr class="hr">
   
     <% @course.credits.each do  |credit| %>
       <div class="module">
-      <i class="fa fa-file-pdf-o fa_custom"></i> <%= credit.name %>
+      <i class="fa fa-file-pdf-o fa_custom"></i> <%= link_to credit.name, credit_path%>
+      <%= link_to "Download", credit.upload_file_url %>
       </div><br>
     <% end %>
     
@@ -88,4 +90,40 @@
 </div>
 <!-- Card -->
 </div>
+<div style="width:1000px; height:800px; padding:16px; text-align:center; border: 10px solid #81c784 ">
+<div style="width:950px; height:750px; padding:16px; text-align:center; border: 5px solid #81c784 ">
+<%= image_tag("/assets/certificate.jpeg", :alt => "logo1 feed", style:"width:300px") %><br>
+       <span style="font-size:17px; color:#81c784"><i>HEALTHEDUCAT LTD</i></span>
+       <br>
+       <span style="font-size:17px; color:#81c784"><i>KG 622 ST 13Ave Kimihurura, Kigali, Rwanda</i></span>
+       <br>
+       <span style="font-size:17px; color:#81c784"><i>(+250) 7890444 | healthedultd@gmail | https://www.healtheducat.com</i></span>
+       <br><br/>
+       <span style="font-size:50px; font-weight:bold; color:#81c784">CERTIFICATE OF COMPLETION</span>
+       <br>
+       <span style="font-size:25px; color:#81c784"><i>This is to certify that</i></span>
+       <br><br>
+       <span style="font-size:30px; color:#81c784"><b><%=@course.user.email%></b></span><br/><br/>
+       <span style="font-size:25px; color:#81c784"><i>has successfully completed the course</i></span> <br/><br/>
+       <span style="font-size:30px; color:#81c784"><%=@course.title%></span><br/>
+       <span style="font-size:25px; color:#81c784"><i>dated</i></span><br>
+      
+      <span style="font-size:30px; color:#81c784">April 23, 2020</span><br/><br/><br/></br/><br/>
+      <span style="font-size:17px; color:#81c784"><i>BIGIRIMANA Jean Damascene</i></span><br>
+      <span style="font-size:17px; color:#81c784"><i>Managing Director</i></span>
+</div>
+</div>
+
  
+
+
+<p>
+  <strong>User:</strong>
+  <%= @course.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_course_path(@course) %> 
+<%= link_to 'Back', courses_path %><br>
+<a href="/exam/assesment">Assesment</a>
+
+
