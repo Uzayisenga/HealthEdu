@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :only_council  
+  before_action :only_council, except: [:show]
   def search
     q = params[:q]
     @users    = User.search(names_cont: q).result
@@ -7,12 +7,18 @@ class UsersController < ApplicationController
     #@users    = User.search(name_cont: q).result
   end
   def index
+
     if params[:id]
       @users = User.where(" names Like ?", "%#{params[:id]}%")
     else
       @users = User.all
     end
+
+    @q = User.ransack(params[:q])
+    @users = @q.result.includes(:user).page(params[:page])
+
   end
+
   def show
     @user = User.find(params[:id])
     respond_to do |format|
@@ -23,6 +29,7 @@ class UsersController < ApplicationController
       end
     end
   end
+
   def only_council
     if current_user.user_role != 'council'
       redirect_to courses_url, notice: 'go to courses'
@@ -41,8 +48,9 @@ class UsersController < ApplicationController
  
     respond_to do |format|
       if @user.save
+
         # Tell the UserMailer to send a welcome email after save
-        UserMailer.with(user: @user).welcome_email.deliver_later
+        UserMailer.with(user: @user).welcome_email.deliver_now
  
         format.html { redirect_to(@user, notice: 'User was successfully created.') }
         format.json { render json: @user, status: :created, location: @user }

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :mc_questions
+  resources :quizzes
   get 'certificate/index'
   get 'requests/update'
   resources :credits
@@ -6,7 +8,8 @@ Rails.application.routes.draw do
   resources :payments
   resources :replies
   resources :homepage
-  resources :favorites, only: [:create, :destroy, :index, :certificate]
+  resources :favorites, only: [:create, :destroy, :index, :show]
+  get 'certificates', to: 'favorites#certificate', as: 'certificate'
   get 'comments/create'
   get 'course/assesment'
   get 'welcome/index'
@@ -15,7 +18,7 @@ Rails.application.routes.draw do
   get 'professional', to: 'users#professional', as: 'professional'
   get 'instructor', to: 'users#instructor', as: 'instructor'
   get 'search', to: 'users#search', as: :search
-  get 'certificates', to: 'favorites#certificate', as: 'certificate'
+ 
   
 
   

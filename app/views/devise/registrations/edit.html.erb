@@ -1,48 +1,113 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="container" style="width:100%">
 
+<div style="background:blue;width:40%;height:300px;float:left">
+  <h4>Profile Picture</h4>
+</div>
+
+<!-- Default form register -->
+<div class="ml-4 text-center border border-light p-5" style="width:50%;float:right;background:white;">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-  
-  <i class="fa fa-user"></i><%= f.label :first_name %> 
-            <%= f.text_field :names, class:"form-control" %>
-            <i class="fa fa-user"></i><%= f.label :last_name %> 
-            <%= f.text_field :last_name, class:"form-control" %>
+    <p class="h4 mb-4">Profile</p>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div class="form-row mb-4">
+        <div class="col">
+            <!-- First name -->
+            <%= f.text_field :names, class:"form-control", id:"defaultRegisterFormFirstName"  %>
+            </div>
+        <div class="col">
+            <!-- Last name -->
+            <%= f.text_field :last_name, class:"form-control" %>
+        </div>
+    </div>
+
+    <div class="form-row mb-4">
+        <div class="col">
+            <!--email -->
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+        </div>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
+        <div class="col">
+            <!-- Phone Number -->
+            <%= f.number_field :phone, class:"form-control" %>
+        </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
+    <div class="field">
+      <%= f.label :password %> <i>(leave blank if you dont want to change it)</i><br />
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="form-row mb-4">
+        <div class="col">
+          <%= f.password_field :password, autocomplete: "new-password",class:"form-control",placeholder:'Enter new Pasword if you want to change it' %>
+        </div>
+        <div class="col">
+            <!-- password confirmation -->
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control",placeholder:'Confirm Password' %>
+        </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+    <div class="form-row mb-4">
+        <div class="col">
+            <!-- current_password -->
+            <%= f.password_field :current_password, autocomplete: "current-password",class:"form-control",placeholder:'Old Password' %>
+        </div>
+        <div class="col">
+            <!-- District -->
+            <%= f.text_field :district, class:"form-control" %>
+        </div>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+    <div class="form-row mb-4">
+        <div class="col">
+            <!-- First name -->
+            <%= f.select :reguratory_body, options_for_select([
+              ["Regulatory Body:", ""], 
+              "RAHPC", 
+              "NPC", 
+              "RMDC", 
+              "NCNM"]), 
+              {}, { class: "form form-group form-control" } %>
+        </div>
+        <div class="col">
+          <%= f.select :level, options_for_select([
+            ["Select Your Level", ""], 
+            "certificate(A2)", 
+            "Advanced_Diploma", 
+            "Bachelor_Degree", 
+            "Masters_Degree",
+            "PHD",
+            "Others"]), 
+            {}, { class: "form form-group form-control" } %>
+        </div>
+    </div>
+
+    <div class="form-row mb-4">
+        <div class="col">
+          <%= f.label :upload_diploma %>
+          <%= f.file_field :apload_diploma, class:"form-control" %>
+        </div>
+        <div class="col">
+            <%= f.label :upload_cv %>
+            <%= f.file_field :apload_cv, class:"form-control" %>
+        </div>
+    </div>
+
+    <!-- Sign up button -->
+    <%= f.submit "Save Details", class:"btn btn-info my-4 btn-block" %>
+</form>
+
+<%= f.label :image %>
+      <%= f.label :image %>
+      <%= f.file_field :image, class:"form-control" %>
 
 <h3>Cancel my account</h3>
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+</div>
+<% end %>

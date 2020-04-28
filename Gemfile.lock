@@ -75,6 +75,8 @@ GEM
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
+    bootstrap-will_paginate (0.0.6)
+      will_paginate
     builder (3.2.4)
     byebug (11.1.1)
     capybara (3.31.0)
@@ -327,6 +329,10 @@ GEM
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
+    wicked_pdf (1.4.0)
+      activesupport
+    will_paginate (3.3.0)
+    wkhtmltopdf-binary (0.12.5.4)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.3.0)
@@ -338,6 +344,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   bootstrap (~> 4.4.1)
   bootstrap-sass
+  bootstrap-will_paginate (= 0.0.6)
   byebug
   capybara (>= 2.15)
   carrierwave (~> 2.0)
@@ -345,6 +352,7 @@ DEPENDENCIES
   dotenv-rails
   font-awesome-rails
   jbuilder (~> 2.7)
+  jquery-rails
   listen (>= 3.0.5, < 3.2)
   mini_magick
   omniauth
@@ -357,7 +365,7 @@ DEPENDENCIES
   prawn
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.1)
-  rails_admin (~> 2.0)
+  rails_admin
   ransack
   render_anywhere
   sass-rails (>= 6)
@@ -369,6 +377,8 @@ DEPENDENCIES
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
+  wicked_pdf (= 1.4.0)
+  wkhtmltopdf-binary
 
 RUBY VERSION
    ruby 2.7.0p0

@@ -1,18 +1,26 @@
 <i><h1>List of All Users in This Project</h1></i>
 <% @users = User.all %>
 <% @users.each do |user| %>
+
   <td><%= user.names %></td><br/>
   <td><%= user.email %></td><br/>
   <td><%= user.user_role %></td><br/>
   <td><%= user.reguratory_body %></td><br/>
   <td><%= user.level %></td><br/>
-  <td><%= user.district %></td><br/>
-  <td><%= user.gender %></td><br/>
-  <td><%= user.working_place %></td><br/>
-  <td><%= link_to "Download", user.apload_diploma_url %></td><br/>
-  <td><%= link_to "Download", user.apload_cv_url %></td><br/>
-  <td><%= user.phone %><br/></td><br/>
+
+  <%= user.province %><br/>
+  <%= user.district %><br/>
+  <%= user.sector %><br/>
+  <%= user.cell %><br/>
+  <%= user.gender %><br/>
+  <%= user.working_place %><br/>
+  <%= link_to "Download", user.apload_diploma_url %><br/>
+  <%= link_to "Download", user.apload_cv_url %><br/>
   <% if user.image_url %>
-          <%= image_tag user.image_url, style:"width:100px;height:100px;" %>
-        <% end %>
+     <%= image_tag user.image_url, style:"width:100px;height:100px;" %>
+  <% end %><br/>
+
+  <%= user.phone %><br/>
+  
+
 <% end %>

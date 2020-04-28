@@ -11,11 +11,11 @@
   <!-- Card content -->
   <div class="card-body">
   
-   
-    <p> <%= favorite.course.user.email %></p>
-    <h4 class="card-title"><%= favorite.course.title %></h4>
-    <p> <%= favorite.user.names + favorite.user.last_name%></p> 
-    <span class="badge badge-success badge-pill"><br><%= favorite.status %><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  <h4 class="card-title"><%= favorite.course.title %></h4>
+    <p> Uploaded by:<%= favorite.course.user.email %></p>
+    <%= link_to 'view course', favorite %>
+    <span class="badge badge-success badge-pill"><br><%= favorite.status%><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
     
    <%else%>
      <p>No favorite yet.</p>
