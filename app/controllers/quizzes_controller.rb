@@ -16,7 +16,7 @@ class QuizzesController < ApplicationController
   def new
     @quiz = Quiz.new
     3.times do
-      question = @quiz.questions.build
+      question = @quiz.mc_questions.build
     end
   end
 
