@@ -81,7 +81,7 @@ gem 'mini_racer'
 gem 'jquery-rails'
 gem 'wicked_pdf', '1.4.0'
 gem 'wkhtmltopdf-binary'
-gem 'noticent',   '~> 5.2.3'
+
 
 
 
