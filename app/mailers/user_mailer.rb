@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-    default from: 'aminauzayisenga@gmail.com'
+    default from: 'nadinantire@gmail.com'
     prepend_view_path "custom/path/to/mailer/view"
  
   def welcome_email

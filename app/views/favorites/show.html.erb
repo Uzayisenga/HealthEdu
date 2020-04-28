@@ -17,14 +17,18 @@
 </p>
 <% if @favorite.status == "paid" %>
 <p>
-<p> <h2> Modules of this course</h2>
+<h3 class="card-title"><b>Modules course of <%= @favorite.course.title %></b></h3>
+  <hr class="hr">
+  
+      
 <% @favorite.course.credits.each do |credit| %>
-<ul>
-<li class = "user-tasks">
+  <div class="module">
+ 
 
-<%= link_to credit.name, credit_path %>
-</li>
-</ul>
+  <i class="fa fa-file-pdf-o fa_custom"></i><%= link_to credit.name, credit_path %>
+  <%= link_to "Download", credit.upload_file_url %>
+  </div><br>
+
 
 <% end %>
 </p>
