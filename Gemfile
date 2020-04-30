@@ -77,10 +77,11 @@ gem 'render_anywhere'
 # gem 'wkhtmltopdf-binary'
 #gem 'wkhtmltopdf-binary', '~> 0.12.3'
 gem 'prawn'
+gem 'mini_racer'
 gem 'jquery-rails'
-
 gem 'wicked_pdf', '1.4.0'
 gem 'wkhtmltopdf-binary'
+
 
 
 
