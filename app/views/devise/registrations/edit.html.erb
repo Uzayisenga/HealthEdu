@@ -1,11 +1,20 @@
 <div class="container" style="width:100%">
 
-<div style="background:blue;width:40%;height:300px;float:left">
+<div class="profile_pic_div text-center ml-4 border border-light">
   <h4>Profile Picture</h4>
+  <% if current_user.profile == nil %>
+    <p><%= image_tag 'default.png', class:"rounded-circle" %></p>
+    <% else %>
+    <% if current_user.profile.image? %>        
+      <p><%= image_tag current_user.profile.image.url, class:"profile" %>
+      </p>    
+     <% end %> 
+    <% end %>
+    <%= link_to 'Edit Picture', profiles_path, class:'btn btn-success btn-sm' %>
 </div>
 
 <!-- Default form register -->
-<div class="ml-4 text-center border border-light p-5" style="width:50%;float:right;background:white;">
+<div class="profile_content_div ml-4 text-center border border-light p-5">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -100,14 +109,8 @@
     <%= f.submit "Save Details", class:"btn btn-info my-4 btn-block" %>
 </form>
 
-<%= f.label :image %>
-      <%= f.label :image %>
-      <%= f.file_field :image, class:"form-control" %>
-
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,class:'btn btn-danger' %></p>
 </div>
 <% end %>

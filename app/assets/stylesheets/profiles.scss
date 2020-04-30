@@ -1,0 +1,49 @@
+// Place all the styles related to the profiles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.profile_pic_div{
+    background:white;
+    width:40%;
+    float:left;
+    color: green;
+}
+.profile{
+    width: 40%;
+}
+.profile_pic_div h4{
+    font-weight: bolder;
+}
+.profile_pic_div .btn{
+    width: 50%;
+}
+.profile_content_div{
+  width:50%;
+  float:right;
+  background:white;
+}
+
+@media (max-width: 600px) {
+    .profile_pic_div{
+        background:white;
+        width:80%;
+        color: green;
+        margin:auto
+    }
+    .profile{
+        width: 40%;
+    }
+    .profile_pic_div h4{
+        font-weight: bolder;
+    }
+    .profile_pic_div .btn{
+        width: 50%;
+    }
+
+    .profile_content_div{
+        width:100%;
+        background:white;
+        margin-top: 3px;
+        margin-bottom: 3px;
+      }
+}
