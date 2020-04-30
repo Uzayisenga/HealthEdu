@@ -69,12 +69,13 @@
   <%= @course.attemption %>
 </p>
 
-
+<p><%= link_to "Download", @course.upload_file_url %></p>
+<p><%= link_to "Quizzes", quizzes_path %></p>Assesment</a>
 </button>
   </div>
   <%if current_user.user_role=='instructor'%>
   <%= link_to 'Edit', edit_course_path(@course), class:'btn btn-sm' %>
-  <a href="/exam/assesment">Assesment</a>
+  <p><%= link_to "Quizzes", quizzes_path %></p>Assesment</a>
   <%end%>
   <h3 class="card-title"><b>Modules course of <%=@course.title%></b></h3>
   <hr class="hr">
@@ -97,8 +98,8 @@
 
 
 
-
-
-<a href="/exam/assesment">Assesment</a>
+<%= link_to 'Edit', edit_course_path(@course) %> 
+<%= link_to 'Back', courses_path %><br>
+<p><%= link_to "Quizzes", quizzes_path %></p>Assesment</a>
 
 
