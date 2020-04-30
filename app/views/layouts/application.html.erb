@@ -78,6 +78,13 @@
     <div class="w-25 d-flex">
       <% if user_signed_in? %>
         <strong><%= current_user.email %></strong>
+        <% if current_user.image == nil %>
+        <%= image_tag 'default.png', class:"rounded-circle" %></p>
+        else
+          <% if current_user.image? %>
+            <%= image_tag current_user.image.url, class:"rounded-circle" %>
+          <% end %>
+      <% end %>
         <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"btn btn-success btn-sm" %>
       <% else %>
         <%= link_to "Log in",  new_user_session_path, class: "btn btn-outline-success btn-small" %>

@@ -8,13 +8,13 @@ Rails.application.routes.draw do
   resources :payments
   resources :replies
   resources :homepage
-  resources :favorites, only: [:create, :destroy, :index, :show]
-  get 'certificates', to: 'favorites#certificate', as: 'certificate'
+  resources :favorites, only: [:create, :destroy, :index, :show, :certificate]
   get 'comments/create'
   get 'course/assesment'
   get 'welcome/index'
   get 'exam/assesment'
   get 'users/index'
+  get 'certificate', to: 'favorites#certificate', as: 'certificate'
   get 'professional', to: 'users#professional', as: 'professional'
   get 'instructor', to: 'users#instructor', as: 'instructor'
   get 'search', to: 'users#search', as: :search

@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @currentUser = current_user.id
-    @courses = Course.all
+    @courses = current_user.courses.all
   end
 
   # GET /courses/1

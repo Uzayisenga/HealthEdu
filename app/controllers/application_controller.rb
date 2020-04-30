@@ -18,5 +18,7 @@ class ApplicationController < ActionController::Base
         end
         def set_search
             @search=User.search(params[:q])
-          end
+        end
+        
+        
 end
