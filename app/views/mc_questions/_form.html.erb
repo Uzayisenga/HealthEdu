@@ -1,47 +1,49 @@
-<%= form_with(model: mc_question, local: true) do |form| %>
-  <% if mc_question.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(mc_question.errors.count, "error") %> prohibited this mc_question from being saved:</h2>
+<div class="container">
+  <%= form_with(model: mc_question, local: true) do |form| %>
+    <% if mc_question.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(mc_question.errors.count, "error") %> prohibited this mc_question from being saved:</h2>
 
-      <ul>
-        <% mc_question.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% mc_question.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :question %>
+      <%= form.text_field :question %>
+    </div>
+
+    <div class="field">
+      <%= form.label :answer %>
+      <%= form.text_field :answer %>
+    </div>
+
+    <div class="field">
+      <%= form.label :distractor_1 %>
+      <%= form.text_field :distractor_1 %>
+    </div>
+
+    <div class="field">
+      <%= form.label :distractor_2 %>
+      <%= form.text_field :distractor_2 %>
+    </div>
+
+    <div class="field">
+      <%= form.label :distractor_3 %>
+      <%= form.text_field :distractor_3 %>
+    </div>
+
+    <div class="field">
+      <%= form.label :quiz_id %>
+      <%= form.collection_select :quiz_id, Quiz.order(:title),:id,:title, include_blank: true, id: 'pprice', class: 'form-control' %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :question %>
-    <%= form.text_field :question %>
-  </div>
-
-  <div class="field">
-    <%= form.label :answer %>
-    <%= form.text_field :answer %>
-  </div>
-
-  <div class="field">
-    <%= form.label :distractor_1 %>
-    <%= form.text_field :distractor_1 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :distractor_2 %>
-    <%= form.text_field :distractor_2 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :distractor_3 %>
-    <%= form.text_field :distractor_3 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :quiz_id %>
-    <%= form.collection_select :quiz_id, Quiz.order(:title),:id,:title, include_blank: true, id: 'pprice', class: 'form-control' %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

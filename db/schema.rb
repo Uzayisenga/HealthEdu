@@ -155,12 +155,12 @@ ActiveRecord::Schema.define(version: 2020_04_30_114454) do
     t.string "gender"
     t.string "phone"
     t.string "district"
-    t.string "reguratory_body"
-    t.string "level"
+    t.integer "reguratory_body"
+    t.integer "level"
     t.string "user_role", default: "professional"
     t.string "apload_diploma"
     t.string "apload_cv"
-    t.string "working_place"
+    t.integer "working_place"
     t.string "uid", default: "", null: false
     t.string "provider", default: "", null: false
     t.string "last_name"

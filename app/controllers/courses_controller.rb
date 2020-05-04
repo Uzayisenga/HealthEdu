@@ -110,5 +110,6 @@ class CoursesController < ApplicationController
     unless current_user && @course.status == "paid"
     end
   end
+ 
 
 end

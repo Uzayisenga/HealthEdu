@@ -1,3 +1,4 @@
+<div class="container">
 <p><%= @mc_question.question %></p>
 
 <%
@@ -10,3 +11,6 @@ choices.each do |c|
   </div>
   
 <% end %>
+<%= link_to 'Add questions', new_mc_question_path %>
+<li><%= link_to 'View questions', mc_questions_path %></li>
+</div>
