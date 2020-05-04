@@ -41,3 +41,39 @@
 
 <%= link_to 'Back', favorites_path %>
 </dev>
+
+<% if user_signed_in? && current_user.user_role== 'admin'%>
+        <li class="nav-item">
+          <%= link_to "Admin Panel",  rails_admin.dashboard_path, class: "nav-link" %>
+        </li>
+     <% end %>
+     <% if user_signed_in? && current_user.user_role== 'instructor'%>
+        <li class="nav-item">
+        <%= link_to 'Instractor Panel', courses_path, class: "nav-link" %>
+        </li>
+     <% end %>
+     <% if user_signed_in? && current_user.user_role== 'council'%>
+        <li class="nav-item">
+        <%= link_to 'Check', instructor_path, class: "nav-link" %>
+        </li>
+     <% end %>
+     
+    </ul>
+    <div class="w-25 d-flex">
+      <% if user_signed_in? %>
+        <strong><%= current_user.email %></strong>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"btn btn-success btn-sm" %>
+      <% else %>
+        <%= link_to "Log in",  new_user_session_path, class: "btn btn-outline-success btn-small" %>
+      <% end %>
+    </div>
+
+  </div>
+</nav>
+    <% if notice %>
+      <p class="alert alert-success", style='margin:90px'><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger", style='margin:90px'><%= alert %></p>
+    <% end %>
+ <%= yield %>

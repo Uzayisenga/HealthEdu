@@ -20,3 +20,5 @@ require("channels")
 //= require jqueryjsfile 
 //= require jquery_ujsjsfile
 //= require customjsfile
+//= require jquery
+//= require jquery_ujs

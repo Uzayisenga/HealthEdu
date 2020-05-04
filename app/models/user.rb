@@ -1,6 +1,15 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  acts_as_target email: :email, email_allowed: :confirmed_at
+  acts_as_target
+  acts_as_notifiable :users,
+         targets: :custom_notification_users,
+         group: :article,
+         notifier: :user,
+         email_allowed: :custom_notification_email_to_users_allowed?,
+         notifiable_path: :custom_notifiable_path
+         
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,:omniauthable, omniauth_providers: [:google, :facebook, :twitter]
          :confirmable

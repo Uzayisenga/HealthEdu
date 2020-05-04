@@ -18,10 +18,11 @@ Rails.application.routes.draw do
   get 'professional', to: 'users#professional', as: 'professional'
   get 'instructor', to: 'users#instructor', as: 'instructor'
   get 'search', to: 'users#search', as: :search
- 
-  
 
-  
+  notify_to :users, with_devise: :users
+  notify_to :users
+  notify_to :users, controllers: { notifcations: 'users/notifcations' }
+  notify_to :admins, with_devise: :users, controller: 'admins/notifications_with_devise'
   devise_for :users, controllers: {
     registrations: "users/registrations",
     # Add this
