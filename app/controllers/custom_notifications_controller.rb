@@ -4,3 +4,4 @@ class CustomNotificationsController < ApplicationController
 def index
     @notifications = @target.notifications.group_owners_only
   end
+end
