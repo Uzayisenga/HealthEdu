@@ -9,7 +9,8 @@ Bundler.require(*Rails.groups)
 module HealthEdu
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.0 # enables zeitwerk mode in CRuby
+    #config.load_defaults 6.0 # enables zeitwerk mode in CRuby
+    config.autoload = :classic
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.i18n.fallbacks = true
     config.assets.precompile += %w( templatemo-style.css )
