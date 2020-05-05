@@ -8,8 +8,8 @@ class Reply < ApplicationRecord
          notifier: :user,
          email_allowed: :custom_notification_email_to_users_allowed?,
          notifiable_path: :custom_notifiable_path
-         notification_index, notification_email_allowed?
-         notifiable_path, notification_email_allowed?
+         notification_index: :notification_email_allowed?
+         notifiable_path: :notification_email_allowed?
 
 
   # acts_as_notifiable configures your model as ActivityNotification::Notifiable
