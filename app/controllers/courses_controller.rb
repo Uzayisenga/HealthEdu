@@ -15,6 +15,10 @@ class CoursesController < ApplicationController
     @courses = current_user.courses.all
   end
 
+  def all_course
+    @courses = Course.all
+  end
+
   # GET /courses/1
   # GET /courses/1.json
   def show
@@ -110,6 +114,4 @@ class CoursesController < ApplicationController
     unless current_user && @course.status == "paid"
     end
   end
- 
-
 end

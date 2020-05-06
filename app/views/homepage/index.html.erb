@@ -29,13 +29,13 @@
 <main class="container bg-transparent">
   <!-- about us section -->
   <section id="about_us" class="my-4 bg-light">
-    <div class="video bg-#e3f2fd blue lighten-5 text-light text-center w-100">
+    <div class="f video bg-#e3f2fd blue lighten-5 text-light text-center w-100">
     <h3 class="green-text">Topupgrade platform</h3>
       <div class="embed-responsive embed-responsive-16by9">
-  <iframe class="embed-responsive-item" <%= video_tag "healthEdu.mp4", :controls => true %> allowfullscreen></iframe>
-</div>
+        <%= video_tag "healthEdu.mp4", :controls => true, class:"embed-responsive-item"%>
+      </div>
     </div>
-    <div class="text-center w-100">
+    <div class="rr text-center w-100">
       <!-- Card -->
 <div class="card card-image"
   style="background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);">
@@ -59,57 +59,51 @@
   </section>
 
   <!-- our services section -->
-  <section id="services" class="text-center bg-#e0f2f1 teal lighten-5">
+  <section id="services" class="text-center" style="background:white;">
   <h2 class="mb-5 font-weight-bold">All courses</h2>
-
-    <h2> your Requests </h2>
-    <%= link_to 'my requests', favorites_path, class:"btn btn-info" %>
   
     
-<div class="container style='margin = 500px'">
+<div class="container">
 <div class="row">
   
-  <div class="row row-cols-1 row-cols-md-3">
+  <div class="row row-cols-1 row-cols-md-3" style="width:90%;margin:auto">
   <% @courses.each do |course| %>
 <div class="col mb-4">
-<div class="card h-100">
+<div class="card" >
 <% if course.image_url %>
-    <%= image_tag course.image_url,:alt => "doctor feed", style:'width:100%;height:40%' %>
-
+    <%= image_tag course.image_url,:alt => "doctor feed",class:'card-image'%>
   <% end %>
-<div class="card-body">
-  <h5 class="card-title" style="color:green"><b><%= course.title%>/<%= course.credit_number %>credits &nbsp;&nbsp; - &nbsp;&nbsp;<%= course.course_price%>&nbsp;Frws</b></h5>
-  <p class="card-text"><b><%= course.content[0,100]..%></b></p>
-  <%if current_user.user_role=='professional'%>
-  <td><%= link_to 'view questions', course_comments_path(course)%></td>
+  
+    <small class="text-muted"> Updated
+      <% start_time = course.created_at %>
+      <% end_time   =  DateTime.now %>
+      <%= distance_of_time_in_words(start_time, end_time)  %> &nbsp; ago by <%= course.user.names + " " + course.user.last_name%>
+    </small>
+<div class="card-body" style="padding-bottom:0px">
+  <h6 class="card-title" style="color:green;text-transform:capitalize"><b><%= course.title%>/<%= course.credit_number %>credits &nbsp;&nbsp; - &nbsp;&nbsp;<%= course.course_price%>&nbsp;Frws</b></h5>
+  <p class="card-text"><b><%= course.content[0,80]..%></b></p>
+  <%if signed_in? && current_user.user_role=='professional'%>
+  <td><%= link_to 'Questions', course_comments_path(course)%></td>
   <td><%= link_to 'ask question', new_course_comment_path(course) %></td>
-  <td><%= link_to "Download", course.upload_file_url %></td>
+  <%end%>
   <%= link_to 'Start Now', course, class:"btn btn-success" %>
-  <%end%>
-  
-  <%if current_user.user_role=='instructor'%>
-  <td><%= link_to 'Show', course %></td>
-  <td><%= link_to 'Edit', edit_course_path(course) %></td>
-  <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  <td><%= link_to 'view questions', course_comments_path(course)%></td>
-  <td><%= link_to 'ask question', new_course_comment_path(course) %></td>
-  <td><%= link_to 'Add module', new_credit_path(:course_id => course.id) %></td>
-  
-  <%end%>
   
 </div>
 <div class="card-footer">
-<small class="text-muted">Updated
-<% start_time = course.created_at %>
-<% end_time   =  DateTime.now %>
-<%= distance_of_time_in_words(start_time, end_time)  %> &nbsp; ago by <%= course.user.email%></small>
+<small class="text-muted">
+  <%= link_to 'View Questions', course_comments_path(course), class:"text-muted"%>&nbsp;&nbsp;
+  <%= link_to 'Ask Question', new_course_comment_path(course), class:"text-muted"%>&nbsp;&nbsp;
+  <small class="rating">
+   Rate Us <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+  </small>
+</small>
 </div>
 </div>
 </div>
 <% end %>
 </div>
 </div>
-  </section>
+</section>
 
   <!-- the third section -->
   <section id="third" class="bg-#e3f2fd blue lighten-5 text-center my-4">
@@ -457,7 +451,7 @@
       <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
 
         <!-- Content -->
-        <h6 class="text-uppercase font-weight-bold">HealthEdu</h6>
+        <h6 class="text-capitalise font-weight-bold">HealthEdu</h6>
         <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
           consectetur

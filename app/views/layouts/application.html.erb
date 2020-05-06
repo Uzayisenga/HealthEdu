@@ -37,14 +37,16 @@
       <li class="nav-item">
         <%= link_to "Home", homepage_index_path, class: "nav-link" %>
       </li>
-      <li class="nav-item">
-        <%= link_to "My Courses", favorites_path, class: "nav-link" %>
-      </li>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "My Courses", favorites_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%=link_to 'All Courses',all_course_courses_path, class:"nav-link"%>
+        </li>
+      <% else %>
       <li class="nav-item">
         <a href="#abour_us" class="nav-link">About us</a>
-      </li>
-      <li class="nav-item">
-        <a href="#services" class="nav-link">All Courses</a>
       </li>
       <li class="nav-item">
         <a href="#third" class="nav-link">Services</a>
@@ -55,6 +57,7 @@
       <li class="nav-item">
         <a href="#fifth" class="nav-link">contact Us</a>
       </li>
+      <% end %>
       <% if user_signed_in? && current_user.user_role== 'admin'%>
         <li class="nav-item">
           <%= link_to "Admin Panel",  rails_admin.dashboard_path, class: "nav-link" %>
