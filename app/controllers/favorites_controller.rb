@@ -30,7 +30,7 @@ def destroy
     redirect_to homepage_index_url, notice: "#{favorite.course.user.names}'s has been unrequested #{favorite.course.title} course" 
 end
 def certificate
-  @favorites=Favorite.all 
+  @favorites=Favorite.all
 end
 
 end

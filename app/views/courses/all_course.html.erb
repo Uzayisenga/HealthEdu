@@ -1,0 +1,40 @@
+<div class="container">
+<div class="row">
+  
+  <div class="row row-cols-1 row-cols-md-3" style="width:90%;margin:auto">
+  <% @courses.each do |course| %>
+<div class="col mb-4">
+<div class="card" >
+<% if course.image_url %>
+    <%= image_tag course.image_url,:alt => "doctor feed",class:'card-image'%>
+  <% end %>
+  
+    <small class="text-muted"> Updated
+      <% start_time = course.created_at %>
+      <% end_time   =  DateTime.now %>
+      <%= distance_of_time_in_words(start_time, end_time)  %> &nbsp; ago by <%= course.user.names + " " + course.user.last_name%>
+    </small>
+<div class="card-body" style="padding-bottom:0px">
+  <h6 class="card-title" style="color:green;text-transform:capitalize"><b><%= course.title%>/<%= course.credit_number %>credits &nbsp;&nbsp; - &nbsp;&nbsp;<%= course.course_price%>&nbsp;Frws</b></h5>
+  <p class="card-text"><b><%= course.content[0,80]..%></b></p>
+  <%if signed_in? && current_user.user_role=='professional'%>
+  <td><%= link_to 'Questions', course_comments_path(course)%></td>
+  <td><%= link_to 'ask question', new_course_comment_path(course) %></td>
+  <%end%>
+  <%= link_to 'Start Now', course, class:"btn btn-success" %>
+  
+</div>
+<div class="card-footer">
+<small class="text-muted">
+  <%= link_to 'View Questions', course_comments_path(course), class:"text-muted"%>&nbsp;&nbsp;
+  <%= link_to 'Ask Question', new_course_comment_path(course), class:"text-muted"%>&nbsp;&nbsp;
+  <small class="rating">
+   Rate Us <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+  </small>
+</small>
+</div>
+</div>
+</div>
+<% end %>
+</div>
+</div>

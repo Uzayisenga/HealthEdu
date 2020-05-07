@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  has_one :profile, dependent: :destroy
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,:omniauthable, omniauth_providers: [:google, :facebook, :twitter]
          :confirmable
@@ -62,4 +64,9 @@ class User < ApplicationRecord
         #   #  where('names LIKE ?', "%#{search}%")
           
         # end
-end
+        enum reguratory_body: [:RAHPC, :NPC, :RMDC, :NCNM]
+        enum level: [:certificate_A2, :Advanced_Diploma, :Bachelor_Degree, :Masters_Degree, :PHD, :Others]
+        enum working_place: [:not_paid, :paid]
+        
+  
+end  

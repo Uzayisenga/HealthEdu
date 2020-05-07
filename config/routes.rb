@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :profiles
   resources :mc_questions
   resources :quizzes
   get 'certificate/index'
@@ -19,9 +20,7 @@ Rails.application.routes.draw do
   get 'instructor', to: 'users#instructor', as: 'instructor'
   get 'search', to: 'users#search', as: :search
  
-  
 
-  
   devise_for :users, controllers: {
     registrations: "users/registrations",
     # Add this
@@ -29,6 +28,9 @@ Rails.application.routes.draw do
   }
   resources :users, :only =>[:show, :index]
 resources :courses do
+  collection do
+    get :all_course
+  end
   resources :comments
 end
 

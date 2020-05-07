@@ -1,19 +1,22 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @quiz.title %>
-</p>
+  <p>
+    <strong>Title:</strong>
+    <%= @quiz.title %>
+  </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @quiz.description %>
-</p>
+  <p>
+    <strong>Description:</strong>
+    <%= @quiz.description %>
+  </p>
 
-<p>
-  <strong>Course:</strong>
-  <%= @quiz.course_id %>
-</p>
+  <p>
+    <strong>Course:</strong>
+    <%= @quiz.course_id %>
+  </p>
 
-<%= link_to 'Edit', edit_quiz_path(@quiz) %> |
-<%= link_to 'Back', quizzes_path %>
+  <%= link_to 'Edit', edit_quiz_path(@quiz) %> |
+  <%= link_to 'Back', quizzes_path %>
+  <%= link_to 'Add questions', new_mc_question_path %>
+</div>
