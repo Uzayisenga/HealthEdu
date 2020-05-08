@@ -1,0 +1,38 @@
+# Additional translations of ActivityNotification
+
+en:
+  notification:
+    default:
+      your_notifiable:
+        default:
+          mail_subject:
+notification:
+  user:
+    course:
+      create:
+        text: 'Course has been created'
+      destroy:
+        text: 'Some user removed an Course!'
+    comment:
+      post:
+        text: "<p>%{notifier_name} posted comments to your course %{course_title}</p>"
+      reply:
+        text: "<p>%{notifier_name} and %{group_member_count} other users replied for your comments</p>"
+  admin:
+    course:
+      post:
+        text: '[Admin] course has been created'
+
+        notification:
+  user:
+    comment:
+      post:
+        text: "<p>Someone posted comments to your course</p>"
+        mail_subject: 'New comment to your course'
+
+        notification:
+  user:
+    batch:
+      comment:
+        post:
+          mail_subject: 'New comments to your course'

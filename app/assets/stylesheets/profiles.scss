@@ -1,0 +1,115 @@
+// Place all the styles related to the profiles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.profile_pic_div{
+    background:white;
+    width:40%;
+    float:left;
+    color: green;
+}
+.profile{
+    width: 40%;
+}
+.profile_pic_div h4{
+    font-weight: bolder;
+}
+.profile_pic_div .btn{
+    width: 50%;
+}
+.profile_content_div{
+  width:50%;
+  float:right;
+  background:white;
+}
+.profile-page{
+    margin: auto;
+    width: 50%;
+    background-color: rgb(231, 235, 227);
+    border-radius: 5px;
+    margin-top: 20px;
+    align-items: center;
+    text-align: center;
+    padding:15px;
+}
+.brand_logo{
+    width: 40%;
+    margin:auto;
+}
+.profile-page h4{
+    font-weight: bolder;
+    font-size: 30px;
+    font-family: monospace
+}
+
+
+  @media only screen and (max-width: 920px) {
+    .profile_pic_div{
+        background:white;
+        width:80%;
+        color: green;
+        margin:auto
+    }
+    .profile{
+        width: 40%;
+    }
+    .profile_pic_div h4{
+        font-weight: bolder;
+    }
+    .profile_pic_div .btn{
+        width: 50%;
+    }
+
+    .profile_content_div{
+        width:100%;
+        background:white;
+        margin-top: 3px;
+        margin-bottom: 3px;
+      }
+      .profile-page{
+        margin: auto;
+        width: 80%;
+        background-color: rgb(231, 235, 227);
+        border-radius: 5px;
+        margin-top: 20px;
+        align-items: center;
+        text-align: center;
+        padding:15px;
+    }
+    .brand_logo{
+        width: 40%;
+        margin:auto;
+    }
+    .profile-page h4{
+        font-weight: bolder;
+        font-size: 30px;
+        font-family: monospace
+    }
+      
+  }
+
+
+  @media (max-width:1200px) and (min-width: 921px) {
+    .profile_pic_div{
+        background:white;
+        width:23%;
+        color: green;
+        margin:auto
+    }
+    .profile{
+        width: 40%;
+    }
+    .profile_pic_div h4{
+        font-weight: bolder;
+    }
+    .profile_pic_div .btn{
+        width: 50%;
+    }
+
+    .profile_content_div{
+        width:70%;
+        background:white;
+        margin-top: 3px;
+        margin-bottom: 3px;
+      }
+  }

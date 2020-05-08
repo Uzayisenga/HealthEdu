@@ -15,5 +15,10 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-// Animations init
-new WOW().init();
+//= require_tree .
+//= require bootstrap.minjsfile
+//= require jqueryjsfile 
+//= require jquery_ujsjsfile
+//= require customjsfile
+//= require jquery
+//= require jquery_ujs

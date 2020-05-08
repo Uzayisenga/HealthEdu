@@ -1,6 +1,6 @@
 class RepliesController < ApplicationController
   before_action :set_reply, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /replies
   # GET /replies.json
   def index
@@ -28,7 +28,7 @@ class RepliesController < ApplicationController
 
     respond_to do |format|
       if @reply.save
-        format.html { redirect_to courses_path, notice: 'Reply was successfully created.' }
+        format.html { redirect_to all_course_courses_path, notice: 'Reply was successfully created.' }
         format.json { render :show, status: :created, location: @reply }
       else
         format.html { render :new }

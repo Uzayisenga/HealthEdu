@@ -9,6 +9,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Discription</th>
       <th>Upload file</th>
       <th>Course Name</th>
       <th>Video</th>
@@ -20,6 +21,7 @@
     <% @credits.each do |credit| %>
       <tr>
         <td><%= credit.name %></td>
+        <td><%= credit.discription %></td>
         <td><%= link_to "Download", credit.upload_file_url %></td>
         <td><%= credit.course.title %></td>
         <td><video controls width="300" src="<%= credit.video %>"></video></td>
@@ -35,3 +37,4 @@
 <br>
 
 <%= link_to 'Add Module', new_credit_path %>
+<%= render_notifications(@notifications, target: :users) %>

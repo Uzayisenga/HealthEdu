@@ -5,103 +5,13 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-<!-- Google Fonts -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-<!-- Bootstrap core CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-<!-- Material Design Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/css/mdb.min.css" rel="stylesheet">
-<script>javascript_include_tag "js/vendor/jquery.js"
-<link href="//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  
+    <%= yield :javascript_includes %>
   </head>
 
-   </p>
-   <body>
-     <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
-     <a href="index.html"><%= image_tag("logo1.png", :alt => "logo1 feed") %></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <%= link_to "Home", main_app.homepage_index_path, class: "nav-link" %>
-      </li>
-      
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSf7p-VJXJtzIrcPXeMeS6-ivzseepshKefROjjmc0ncQFAl8Q/viewform?embedded=true" target="_blank" rel="noopener noreferrer">Link</a>
-      <li class="nav-item">
-        <%= link_to "Courses you have bought", main_app.favorites_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to 'Edit profile', main_app.edit_user_registration_path, class:'navbar-link text-dark mt-2' %>&nbsp;&nbsp;&nbsp;
-      </li>
-      <li class="nav-item">
-        <a href="#abour_us" class="nav-link">About us</a>
-      </li>
-      <li class="nav-item">
-        <a href="#services" class="nav-link">All Courses</a>
-      </li>
-      <li class="nav-item">
-        <a href="#third" class="nav-link">Services</a>
-      </li>
-      <li class="nav-item">
-        <a href="#fourth" class="nav-link">Testmony</a>
-      </li>
-      <li class="nav-item">
-        <a href="#fifth" class="nav-link">contact Us</a>
-      </li>
-      <% if user_signed_in? && current_user.user_role== 'admin'%>
-        <li class="nav-item">
-          <%= link_to "Admin Panel",  rails_admin.dashboard_path, class: "nav-link" %>
-        </li>
-     <% end %>
-     <% if user_signed_in? && current_user.user_role== 'instructor'%>
-        <li class="nav-item">
-        <%= link_to 'Instractor Panel', courses_path, class: "nav-link" %>
-        </li>
-     <% end %>
-     <% if user_signed_in? && current_user.user_role== 'council'%>
-        <li class="nav-item">
-        <%= link_to 'Check', main_app.instructor_path, class: "nav-link" %>
-        </li>
-     <% end %>
-     
-    </ul>
-    <div class="w-25 d-flex">
-      <% if user_signed_in? %>
-        <strong><%= current_user.email %></strong>
-        <%= link_to "Logout", main_app.destroy_user_session_path, method: :delete, class:"btn btn-success btn-sm" %>
-      <% else %>
-        <%= link_to "Log in",  new_user_session_path, class: "btn btn-outline-success btn-small" %>
-      <% end %>
-    </div>
-
-  </div>
-</nav>
-    <% if notice %>
-      <p class="alert alert-success", style='margin:90px'><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger", style='margin:90px'><%= alert %></p>
-    <% end %>
-    <br><br><br><br><br>
- <%= yield %>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/js/mdb.min.js"></script>
+  <body>
+    <%= yield %>
   </body>
 </html>

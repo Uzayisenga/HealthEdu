@@ -1,6 +1,6 @@
 class QuizzesController < ApplicationController
   before_action :set_quiz, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /quizzes
   # GET /quizzes.json
   def index
@@ -16,7 +16,7 @@ class QuizzesController < ApplicationController
   def new
     @quiz = Quiz.new
     3.times do
-      question = @quiz.questions.build
+      question = @quiz.mc_questions.build
     end
   end
 

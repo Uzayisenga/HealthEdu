@@ -1,5 +1,6 @@
 class McQuestionsController < ApplicationController
   before_action :set_mc_question, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /mc_questions
   # GET /mc_questions.json

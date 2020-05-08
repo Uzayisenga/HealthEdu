@@ -3,8 +3,22 @@ class User < ApplicationRecord
         
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
+  has_one :profile, dependent: :destroy
+
+  acts_as_target email: :email, email_allowed: :confirmed_at
+  acts_as_target
+  acts_as_notifiable :users,
+         targets: :custom_notification_users,
+         group: :article,
+         notifier: :user,
+         email_allowed: :custom_notification_email_to_users_allowed?,
+         notifiable_path: :custom_notifiable_path
+         
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,:omniauthable, omniauth_providers: [:google, :facebook, :twitter]
+         :confirmable
 
          has_many :courses
          has_many :comments
@@ -63,5 +77,9 @@ class User < ApplicationRecord
         #   #  where('names LIKE ?', "%#{search}%")
           
         # end
+        enum reguratory_body: [:RAHPC, :NPC, :RMDC, :NCNM]
+        enum level: [:certificate_A2, :Advanced_Diploma, :Bachelor_Degree, :Masters_Degree, :PHD, :Others]
+        enum working_place: [:not_paid, :paid]
         
-end
+  
+end  

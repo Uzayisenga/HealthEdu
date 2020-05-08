@@ -12,6 +12,10 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @currentUser = current_user.id
+    @courses = current_user.courses.all
+  end
+
+  def all_course
     @courses = Course.all
   end
 
@@ -36,7 +40,7 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = current_user.courses.build(course_params)
-
+    
     respond_to do |format|
       if @course.save
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
@@ -87,7 +91,7 @@ class CoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def course_params
-      params.require(:course).permit(:image, :title, :credit_number, :content, :upload_file, :course_price, :status, :marks, :attemption, :user_id ,{file: []})
+      params.require(:course).permit(:image, :title, :credit_number, :content, :upload_file, :course_price, :status, :marks, :attemption,:assessment, :user_id ,{file: []})
     end
 
     def only_admin
@@ -110,5 +114,4 @@ class CoursesController < ApplicationController
     unless current_user && @course.status == "paid"
     end
   end
-
 end

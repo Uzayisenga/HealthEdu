@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
     before_action :set_search
-    before_action :authenticate_user!
     protect_from_forgery with: :exception
     before_action :configure_permitted_parameters, if: :devise_controller?
     #request
@@ -18,8 +17,7 @@ class ApplicationController < ActionController::Base
         end
         def set_search
             @search=User.search(params[:q])
-          end
-    def can_administer?
-      current_user.try(:admin?)
-    end
+        end
+        
+        
 end

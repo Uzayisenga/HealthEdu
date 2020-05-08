@@ -1,6 +1,5 @@
 class HomepageController < ApplicationController
   def index
-    @currentUser = current_user.id
     @courses = Course.all
   end
 
@@ -39,5 +38,8 @@ class HomepageController < ApplicationController
     else
       params.require(:survey_attempt).permit(answers_attributes: [:id, :question_id, :option_id, :option_text, :option_number, :predefined_value_id, :_destroy, :finished])
     end
+  end
+  def notify
+    @notifications = @target.notification_index_with_attributes
   end
 end
