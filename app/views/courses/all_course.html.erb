@@ -17,10 +17,6 @@
 <div class="card-body" style="padding-bottom:0px">
   <h6 class="card-title" style="color:green;text-transform:capitalize"><b><%= course.title%>/<%= course.credit_number %>credits &nbsp;&nbsp; - &nbsp;&nbsp;<%= course.course_price%>&nbsp;Frws</b></h5>
   <p class="card-text"><b><%= course.content[0,80]..%></b></p>
-  <%if signed_in? && current_user.user_role=='professional'%>
-  <td><%= link_to 'Questions', course_comments_path(course)%></td>
-  <td><%= link_to 'ask question', new_course_comment_path(course) %></td>
-  <%end%>
   <%= link_to 'Start Now', course, class:"btn btn-success" %>
   
 </div>

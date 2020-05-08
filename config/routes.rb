@@ -31,7 +31,9 @@ resources :courses do
   collection do
     get :all_course
   end
-  resources :comments
+  resources :comments do
+    resources :replies
+  end
 end
 
   # devise_for :users

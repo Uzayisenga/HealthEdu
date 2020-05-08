@@ -28,7 +28,7 @@ class RepliesController < ApplicationController
 
     respond_to do |format|
       if @reply.save
-        format.html { redirect_to homepage_index_path, notice: 'Reply was successfully created.' }
+        format.html { redirect_to all_course_courses_path, notice: 'Reply was successfully created.' }
         format.json { render :show, status: :created, location: @reply }
       else
         format.html { render :new }
