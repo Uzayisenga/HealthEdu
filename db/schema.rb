@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2020_04_30_114454) do
+
 ActiveRecord::Schema.define(version: 2020_05_03_150323) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,6 +131,14 @@ ActiveRecord::Schema.define(version: 2020_05_03_150323) do
     t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.text "image"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "quizzes", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -187,12 +198,12 @@ ActiveRecord::Schema.define(version: 2020_05_03_150323) do
     t.string "gender"
     t.string "phone"
     t.string "district"
-    t.string "reguratory_body"
-    t.string "level"
+    t.integer "reguratory_body"
+    t.integer "level"
     t.string "user_role", default: "professional"
     t.string "apload_diploma"
     t.string "apload_cv"
-    t.string "working_place"
+    t.integer "working_place"
     t.string "uid", default: "", null: false
     t.string "provider", default: "", null: false
     t.string "last_name"
@@ -211,6 +222,7 @@ ActiveRecord::Schema.define(version: 2020_05_03_150323) do
   add_foreign_key "mc_questions", "quizzes"
   add_foreign_key "payments", "courses"
   add_foreign_key "payments", "users"
+  add_foreign_key "profiles", "users"
   add_foreign_key "quizzes", "courses"
   add_foreign_key "replies", "comments"
   add_foreign_key "replies", "users"

@@ -12,6 +12,10 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @currentUser = current_user.id
+    @courses = current_user.courses.all
+  end
+
+  def all_course
     @courses = Course.all
   end
 
@@ -110,5 +114,4 @@ class CoursesController < ApplicationController
     unless current_user && @course.status == "paid"
     end
   end
-
 end

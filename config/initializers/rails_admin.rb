@@ -45,4 +45,92 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+  config.model 'User' do
+    create do
+      configure :reset_password_sent_at do
+        hide
+      end
+      configure :remember_created_at do 
+        hide
+      end
+      configure :uid do
+        hide
+      end
+      configure :provider do
+        hide
+      end
+      configure :comments do
+        hide
+      end
+      configure :favorites do
+        hide
+      end
+      configure :profiles do
+        hide
+      end
+    end
+  end
+  config.model 'User' do
+    edit do
+      configure :reset_password_sent_at do
+        hide
+      end
+      configure :remember_created_at do 
+        hide
+      end
+      configure :uid do
+        hide
+      end
+      configure :provider do
+        hide
+      end
+      configure :comments do
+        hide
+      end
+      configure :favorites do
+        hide
+      end
+      configure :profiles do
+        hide
+      end
+    end
+  end
+  config.model 'Course' do
+    create do
+      configure :reset_password_sent_at do
+        hide
+      end
+      configure :credits do 
+        hide
+      end
+      configure :payments do
+        hide
+      end
+      configure :comments do
+        hide
+      end
+      configure :favorites do
+        hide
+      end
+    end
+  end
+  config.model 'Course' do
+    edit do
+      configure :reset_password_sent_at do
+        hide
+      end
+      configure :credits do 
+        hide
+      end
+      configure :payments do
+        hide
+      end
+      configure :comments do
+        hide
+      end
+      configure :favorites do
+        hide
+      end
+    end
+  end
 end

@@ -79,13 +79,17 @@
   <%end%>
   <h3 class="card-title"><b>Modules course of <%=@course.title%></b></h3>
   <hr class="hr">
-  
+  <h3 class="card-title"><b>Users requested course of <%=@course.title%></b></h3>
+  <hr class="hr">
     <% @course.credits.each do  |credit| %>
       <div class="module">
       <i class="fa fa-file-pdf-o fa_custom"></i> <%= link_to credit.name, credit_path%>
       <%= link_to "Download", credit.upload_file_url %>
       </div><br>
     <% end %>
+    <% @course.favorites.each do |favorite| %>
+      <li> <%= link_to(favorite.user.names, favorite.user) %></li>
+   <% end %>
 
     
 </div>

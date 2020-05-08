@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action:authenticate_user!
-before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   # GET /comments
   # GET /comments.json
@@ -31,7 +31,7 @@ before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to homepage_index_url, notice: 'question was successfully created.' }
+        format.html { redirect_to course_comments_url, notice: 'question was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
@@ -59,7 +59,7 @@ before_action :set_comment, only: [:show, :edit, :update, :destroy]
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to course_comments_url, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
