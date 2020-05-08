@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Correct:</strong>
+  <%= @result.correct %>
+</p>
+
+<p>
+  <strong>Possible:</strong>
+  <%= @result.possible %>
+</p>
+
+<p>
+  <strong>Answer:</strong>
+  <%= @result.answer %>
+</p>
+
+<p>
+  <strong>Distract:</strong>
+  <%= @result.distract %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @result.score %>
+</p>
+
+<p>
+  <strong>Marks:</strong>
+  <%= @result.marks %>
+</p>
+
+<p>
+  <strong>Mc question:</strong>
+  <%= @result.mc_question_id %>
+</p>
+
+<%= link_to 'Edit', edit_result_path(@result) %> |
+<%= link_to 'Back', results_path %>

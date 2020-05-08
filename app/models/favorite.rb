@@ -11,4 +11,5 @@ class Favorite < ApplicationRecord
   def course_modules_calculated
       self.course.credits.count
   end
+  
 end

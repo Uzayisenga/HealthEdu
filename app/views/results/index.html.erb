@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Results</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Correct</th>
+      <th>Possible</th>
+      <th>Answer</th>
+      <th>Distract</th>
+      <th>Score</th>
+      <th>Marks</th>
+      <th>Mc question</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @results.each do |result| %>
+      <tr>
+        <td><%= result.correct %></td>
+        <td><%= result.possible %></td>
+        <td><%= result.answer %></td>
+        <td><%= result.distract %></td>
+        <td><%= result.score %></td>
+        <td><%= result.marks %></td>
+        <td><%= result.mc_question_id %></td>
+        <td><%= link_to 'Show', result %></td>
+        <td><%= link_to 'Edit', edit_result_path(result) %></td>
+        <td><%= link_to 'Destroy', result, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Result', new_result_path %>

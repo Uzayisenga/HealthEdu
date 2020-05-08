@@ -1,12 +1,8 @@
-class HomepageController < ApplicationController
-  def index
-    @currentUser = current_user.id
-    @courses = Course.all
-  end
+class Contests::AttemptsController < ApplicationController
 
-  helper_method :survey, :participant
+  helper "contests/surveys"
+  #before_action :calculate_marks, only: [:create]
 
-  # create a new attempt to this survey
   def new
     @survey =  Survey::Survey.active.last
     @attempt = @survey.attempts.new
@@ -14,12 +10,11 @@ class HomepageController < ApplicationController
     @participant = current_user # you have to decide what to do here
   end
 
-  # create a new attempt in this survey
-  # an attempt needs to have a participant assigned
   def create
     @survey = Survey::Survey.active.last
     @attempt = @survey.attempts.new(attempt_params)
-    @attempt.participant = current_user
+    @attempt.participant = current_user  # you have to decide what to do here
+    
     if @attempt.valid? and @attempt.save
       redirect_to view_context.new_attempt_path, alert: I18n.t("attempts_controller.#{action_name}")
     else
@@ -27,17 +22,28 @@ class HomepageController < ApplicationController
       render :action => :new
     end
   end
-
+  
   #######
   private
   #######
+  def calculate_marks
+    @survey = Survey::Survey.active.last
+    @attempt = @survey.attempts.new(attempt_params)
+    marks = 0
+    @attempt.answers.each do
+    marks += 5
+    end
+    @attempt.marks = marks
+  end
 
   # Rails 4 Strong Params
+  
+    
   def attempt_params
     if Rails::VERSION::MAJOR < 4
       params[:survey_attempt]
     else
-      params.require(:survey_attempt).permit(answers_attributes: [:id, :question_id, :option_id, :option_text, :option_number, :predefined_value_id, :_destroy, :finished])
+      params.require(:survey_attempt).permit(answers_attributes: [:question_id, :option_id, :option_text, :option_number, :predefined_value_id])
     end
   end
 end

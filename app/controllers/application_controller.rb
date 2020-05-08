@@ -19,4 +19,7 @@ class ApplicationController < ActionController::Base
         def set_search
             @search=User.search(params[:q])
           end
+    def can_administer?
+      current_user.try(:admin?)
+    end
 end

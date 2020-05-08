@@ -1,14 +1,16 @@
 class User < ApplicationRecord
+  
+        
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,:omniauthable, omniauth_providers: [:google, :facebook, :twitter]
 
-         has_many :courses, dependent: :destroy
-         has_many :comments, dependent: :destroy
-         has_many :requests, dependent: :destroy
-         has_many :favorites, dependent: :destroy
-         has_many :courses, dependent: :destroy
+         has_many :courses
+         has_many :comments
+         has_many :requests
+         has_many :favorites
+         has_many :courses
          mount_uploader :image, ImageUploader
          mount_uploader :apload_diploma, AploadDiplomaUploader
          mount_uploader :apload_cv, AploadCvUploader
@@ -61,4 +63,5 @@ class User < ApplicationRecord
         #   #  where('names LIKE ?', "%#{search}%")
           
         # end
+        
 end

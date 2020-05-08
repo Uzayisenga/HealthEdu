@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :mc_questions
-  resources :quizzes
+  # resources :results
+  # resources :mc_questions
+  # resources :quizzes
   get 'certificate/index'
   get 'requests/update'
   resources :credits
@@ -31,5 +32,6 @@ end
 
   # devise_for :users
   root to: "homepage#index"
+  mount Rapidfire::Engine => "/rapidfire"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

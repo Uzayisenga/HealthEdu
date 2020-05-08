@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  correct: 1
+  possible: 1
+  answer: 1
+  distract: 1
+  score: 1
+  marks: 1
+  mc_question: one
+
+two:
+  correct: 1
+  possible: 1
+  answer: 1
+  distract: 1
+  score: 1
+  marks: 1
+  mc_question: two

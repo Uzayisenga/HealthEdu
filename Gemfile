@@ -81,6 +81,7 @@ gem 'jquery-rails'
 
 gem 'wicked_pdf', '1.4.0'
 gem 'wkhtmltopdf-binary'
-
-
-
+#gem "survey", "0.2"
+gem 'qwester'
+gem 'rapidfire'
+gem 'questionnaire_engine', '0.1', :require=>"survey"
