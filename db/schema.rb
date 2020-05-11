@@ -36,36 +36,6 @@ ActiveRecord::Schema.define(version: 2020_05_08_201928) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "answers", force: :cascade do |t|
-    t.bigint "choice_id", null: false
-    t.bigint "question_id", null: false
-    t.bigint "response_id", null: false
-    t.string "content"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["choice_id"], name: "index_answers_on_choice_id"
-    t.index ["question_id"], name: "index_answers_on_question_id"
-    t.index ["response_id"], name: "index_answers_on_response_id"
-  end
-
-  create_table "choices", force: :cascade do |t|
-    t.bigint "question_id", null: false
-    t.string "content"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["question_id"], name: "index_choices_on_question_id"
-  end
-
-  create_table "collaborations", force: :cascade do |t|
-    t.bigint "survey_id", null: false
-    t.bigint "user_id", null: false
-    t.integer "role"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["survey_id"], name: "index_collaborations_on_survey_id"
-    t.index ["user_id"], name: "index_collaborations_on_user_id"
-  end
-
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.bigint "user_id", null: false
@@ -167,15 +137,6 @@ ActiveRecord::Schema.define(version: 2020_05_08_201928) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "questions", force: :cascade do |t|
-    t.string "title"
-    t.integer "type"
-    t.bigint "survey_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["survey_id"], name: "index_questions_on_survey_id"
-  end
-
   create_table "quizzes", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -183,49 +144,6 @@ ActiveRecord::Schema.define(version: 2020_05_08_201928) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["course_id"], name: "index_quizzes_on_course_id"
-  end
-
-  create_table "rapidfire_answers", force: :cascade do |t|
-    t.bigint "attempt_id"
-    t.bigint "question_id"
-    t.text "answer_text"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["attempt_id"], name: "index_rapidfire_answers_on_attempt_id"
-    t.index ["question_id"], name: "index_rapidfire_answers_on_question_id"
-  end
-
-  create_table "rapidfire_attempts", force: :cascade do |t|
-    t.bigint "survey_id"
-    t.string "user_type"
-    t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["survey_id"], name: "index_rapidfire_attempts_on_survey_id"
-    t.index ["user_id", "user_type"], name: "index_rapidfire_attempts_on_user_id_and_user_type"
-    t.index ["user_type", "user_id"], name: "index_rapidfire_attempts_on_user_type_and_user_id"
-  end
-
-  create_table "rapidfire_questions", force: :cascade do |t|
-    t.bigint "survey_id"
-    t.string "type"
-    t.string "question_text"
-    t.string "default_text"
-    t.string "placeholder"
-    t.integer "position"
-    t.text "answer_options"
-    t.text "validation_rules"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["survey_id"], name: "index_rapidfire_questions_on_survey_id"
-  end
-
-  create_table "rapidfire_surveys", force: :cascade do |t|
-    t.string "name"
-    t.text "introduction"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.text "after_survey_content"
   end
 
   create_table "replies", force: :cascade do |t|
@@ -245,14 +163,6 @@ ActiveRecord::Schema.define(version: 2020_05_08_201928) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["course_id"], name: "index_requests_on_course_id"
     t.index ["user_id"], name: "index_requests_on_user_id"
-  end
-
-  create_table "responses", force: :cascade do |t|
-    t.bigint "survey_id", null: false
-    t.string "ip"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["survey_id"], name: "index_responses_on_survey_id"
   end
 
   create_table "results", force: :cascade do |t|
@@ -286,14 +196,6 @@ ActiveRecord::Schema.define(version: 2020_05_08_201928) do
     t.index ["target_type", "target_id"], name: "index_subscriptions_on_target_type_and_target_id"
   end
 
-  create_table "surveys", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "course_id", null: false
-    t.index ["course_id"], name: "index_surveys_on_course_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -307,12 +209,12 @@ ActiveRecord::Schema.define(version: 2020_05_08_201928) do
     t.string "gender"
     t.string "phone"
     t.string "district"
-    t.string "reguratory_body"
-    t.string "level"
+    t.integer "reguratory_body"
+    t.integer "level"
     t.string "user_role", default: "professional"
     t.string "apload_diploma"
     t.string "apload_cv"
-    t.string "working_place"
+    t.integer "working_place"
     t.string "uid", default: "", null: false
     t.string "provider", default: "", null: false
     t.string "last_name"
@@ -323,12 +225,6 @@ ActiveRecord::Schema.define(version: 2020_05_08_201928) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "answers", "choices"
-  add_foreign_key "answers", "questions"
-  add_foreign_key "answers", "responses"
-  add_foreign_key "choices", "questions"
-  add_foreign_key "collaborations", "surveys"
-  add_foreign_key "collaborations", "users"
   add_foreign_key "comments", "courses"
   add_foreign_key "comments", "users"
   add_foreign_key "courses", "users"
@@ -339,13 +235,10 @@ ActiveRecord::Schema.define(version: 2020_05_08_201928) do
   add_foreign_key "payments", "courses"
   add_foreign_key "payments", "users"
   add_foreign_key "profiles", "users"
-  add_foreign_key "questions", "surveys"
   add_foreign_key "quizzes", "courses"
   add_foreign_key "replies", "comments"
   add_foreign_key "replies", "users"
   add_foreign_key "requests", "courses"
   add_foreign_key "requests", "users"
-  add_foreign_key "responses", "surveys"
   add_foreign_key "results", "mc_questions"
-  add_foreign_key "surveys", "courses"
 end
