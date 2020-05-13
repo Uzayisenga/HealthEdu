@@ -82,5 +82,6 @@ gem 'jquery-rails'
 gem 'wicked_pdf', '1.4.0'
 gem 'wkhtmltopdf-binary'
 gem 'activity_notification'
-
+gem 'coffee-script-source'
+gem 'coffee-rails'
 

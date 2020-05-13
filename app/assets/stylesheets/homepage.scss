@@ -208,4 +208,11 @@ input[type=submit]:hover {
 .fa_custom {
   color: green;
   }
-
+  .hero-image {
+    height: 500px;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+    position: relative;
+    color: #ffffff !important;
+  }

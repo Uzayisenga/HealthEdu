@@ -4,8 +4,11 @@
 
      <title>Known - Education HTML Template</title>
 <!-- 
+
 Known Template 
+
 https://templatemo.com/tm-516-known
+
 -->
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -14,13 +17,13 @@ https://templatemo.com/tm-516-known
      <meta name="author" content="">
      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-     <link rel="stylesheet" href="css/bootstrap.min.css">
-     <link rel="stylesheet" href="css/font-awesome.min.css">
-     <link rel="stylesheet" href="css/owl.carousel.css">
-     <link rel="stylesheet" href="css/owl.theme.default.min.css">
+     <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+     <link rel="stylesheet" href="stylesheets/font-awesome.min.css">
+     <link rel="stylesheet" href="stylesheets/owl.carousel.css">
+     <link rel="stylesheet" href="stylesheets/owl.theme.default.min.css">
 
      <!-- MAIN CSS -->
-     <link rel="stylesheet" href="css/templatemo-style.css">
+     <link rel="stylesheet" href="stylesheets/templatemo-style.css">
 
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
@@ -71,56 +74,46 @@ https://templatemo.com/tm-516-known
 
 
      <!-- HOME -->
-     <section id="home">
-          <div class="row">
+     <div class="carousel-container">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
 
-                    <div class="owl-carousel owl-theme home-slider">
-                    <%= image_tag("slider-image1.jpg", :alt => "slider-image1 feed") %>
-                         <div class="item item-first">
-                         <%= image_tag("slider-image3.jpg", :alt => "slider-image3 feed") %>
-                              <div class="caption">
-                                   <div class="container">
-                                        <div class="col-md-6 col-sm-12">
-                                         
-                                             <h1>Distance Learning Education Center</h1>
-                                             <h3>Our online courses are designed to fit in your industry supporting all-round with latest technologies.</h3>
-                                             <a href="#feature" class="section-btn btn btn-default smoothScroll">Discover more</a>
-                                        </div>
-                                   </div>
-                              </div>
-                         </div>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+  <div class="item active">
+    <%= image_tag 'slider-image3.jpg' %>
+  </div>
 
-                         <div class="item item-second">
-                         <%= image_tag("slider-image2.jpg", :alt => "slider-image2 feed") %>
-                              <div class="caption">
-                                   <div class="container">
-                                        <div class="col-md-6 col-sm-12">
-                                        
-                                             <h1>Start your journey with our practical courses</h1>
-                                             <h3>Our online courses are built in partnership with technology leaders and are designed to meet industry demands.</h3>
-                                             <a href="#courses" class="section-btn btn btn-default smoothScroll">Take a course</a>
-                                        </div>
-                                   </div>
-                              </div>
-                         </div>
+  <div class="item">
+    <%= image_tag 'slider-image2.jpg' %>  
+  </div>
 
-                         <div class="item item-third">
-                         <%= image_tag("slider-image3.jpg", :alt => "slider-image3 feed") %>
-                              <div class="caption">
-                                   <div class="container">
-                                        <div class="col-md-6 col-sm-12">
-                                        
-                                             <h1>Efficient Learning Methods</h1>
-                                             <h3>Nam eget sapien vel nibh euismod vulputate in vel nibh. Quisque eu ex eu urna venenatis sollicitudin ut at libero. Visit <a rel="nofollow" href="https://www.facebook.com/templatemo">templatemo</a> page.</h3>
-                                             <a href="#contact" class="section-btn btn btn-default smoothScroll">Let's chat</a>
-                                        </div>
-                                   </div>
-                              </div>
-                         </div>
-                    </div>
-          </div>
-     </section>
+  <div class="item">
+    <%= image_tag 'slider-image1.jpg' %>  
+  </div>
 
+  <div class="item">
+    <%= image_tag 'slider-image3.jpg' %>   
+  </div>
+</div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
 
      <!-- FEATURE -->
      <section id="feature">
@@ -297,212 +290,56 @@ https://templatemo.com/tm-516-known
      <!-- Courses -->
      <section id="courses">
           <div class="container">
-               <div class="row">
-
-                    <div class="col-md-12 col-sm-12">
-                         <div class="section-title">
-                              <h2>Popular Courses <small>Upgrade your skills with newest courses</small></h2>
-                         </div>
+               
 
                          <div class="owl-carousel owl-theme owl-courses">
-                              <div class="col-md-4 col-sm-4">
+                           <% @courses.each do |course| %>
+                             <div class="col-md-4 col-sm-4">
                                    <div class="item">
                                         <div class="courses-thumb">
                                              <div class="courses-top">
                                                   <div class="courses-image">
-                                                  <%= image_tag("courses-image1.jpg", :alt => "courses-image1 feed") %>
+                                                       <% if course.image_url %>
+                                                       <%= image_tag course.image_url,:alt => "course-image feed", style:'width:100%;height:40%'%>                       
+                                                       <% end %>
                                                   </div>
                                                   <div class="courses-date">
-                                                       <span><i class="fa fa-calendar"></i> 12 / 7 / 2018</span>
-                                                       <span><i class="fa fa-clock-o"></i> 7 Hours</span>
+                                                       <span><i class="fa fa-calendar"></i> <%= course.created_at %></span>
+                                                       <span><i class="fa fa-clock-o"></i>
+                                                            <% start_time = course.created_at %>
+                                                            <% end_time   =  DateTime.now %>
+                                                            <%= distance_of_time_in_words(start_time, end_time)  %>
+                                                       </span>
                                                   </div>
                                              </div>
 
                                              <div class="courses-detail">
-                                                  <h3><a href="#">Social Media Management</a></h3>
-                                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                                  <h3 style="text-transform: capitalize;"><%= course.title%>&nbsp - <%= course.credit_number %>Credits</b></h3>
+                                                  <p><%= course.content[0,100]..%></p>
+                                                  <%= link_to 'Start Now', course, style:'font-weight:bolder;color:#81c784;background:white;padding:8px;border:1px;border-style:solid;border-color:#81c784' %>
                                              </div>
 
                                              <div class="courses-info">
                                                   <div class="courses-author">
-                                                  <%= image_tag("courses-image1.jpg", :alt => "courses-image1 feed") %>
-                                                       <span>Mark Wilson</span>
+                                                       <% if course.user.profile == nil %>
+                                                           <%= image_tag 'default.png', :alt => "courses-image1 feed" %>
+                                                       <% else %>
+                                                       <% if course.user.profile.image? %>        
+                                                            <%= image_tag course.user.profile.image.url, :alt => "courses-image1 feed" %>  
+                                                            <% end %> 
+                                                       <% end %>
+                                                       <span><%= course.user.names%>&nbsp;<%= course.user.last_name%></span>
+
                                                   </div>
                                                   <div class="courses-price">
-                                                       <a href="#"><span>USD 25</span></a>
+                                                       <a href="#"><span>RWfs <%= course.course_price%></span></a>
                                                   </div>
                                              </div>
                                         </div>
                                    </div>
                               </div>
-
-                              <div class="col-md-4 col-sm-4">
-                                   <div class="item">
-                                        <div class="courses-thumb">
-                                             <div class="courses-top">
-                                                  <div class="courses-image">
-                                                  <%= image_tag("courses-image2.jpg", :alt => "courses-image2 feed") %>
-                                                  </div>
-                                                  <div class="courses-date">
-                                                       <span><i class="fa fa-calendar"></i> 20 / 7 / 2018</span>
-                                                       <span><i class="fa fa-clock-o"></i> 4.5 Hours</span>
-                                                  </div>
-                                             </div>
-
-                                             <div class="courses-detail">
-                                                  <h3><a href="#">Graphic & Web Design</a></h3>
-                                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                             </div>
-
-                                             <div class="courses-info">
-                                                  <div class="courses-author">
-                                                  <%= image_tag("author-image2.jpg", :alt => "author-image2 feed") %>
-                                                       <span>Jessica</span>
-                                                  </div>
-                                                  <div class="courses-price">
-                                                       <a href="#"><span>USD 80</span></a>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                   </div>
-                              </div>
-
-                              <div class="col-md-4 col-sm-4">
-                                   <div class="item">
-                                        <div class="courses-thumb">
-                                             <div class="courses-top">
-                                                  <div class="courses-image">
-                                                  <%= image_tag("courses-image3.jpg", :alt => "courses-image3 feed") %>
-                                                  </div>
-                                                  <div class="courses-date">
-                                                       <span><i class="fa fa-calendar"></i> 15 / 8 / 2018</span>
-                                                       <span><i class="fa fa-clock-o"></i> 6 Hours</span>
-                                                  </div>
-                                             </div>
-
-                                             <div class="courses-detail">
-                                                  <h3><a href="#">Marketing Communication</a></h3>
-                                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                             </div>
-
-                                             <div class="courses-info">
-                                                  <div class="courses-author">
-                                                  <%= image_tag("courses-image3.jpg", :alt => "courses-image3 feed") %>
-                                                       <span>Catherine</span>
-                                                  </div>
-                                                  <div class="courses-price free">
-                                                       <a href="#"><span>Free</span></a>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                   </div>
-                              </div>
-
-
-
-
-
-                              <div class="col-md-4 col-sm-4">
-                              <div class="item">
-                                   <div class="courses-thumb">
-                                        <div class="courses-top">
-                                             <div class="courses-image">
-                                             <%= image_tag("courses-image3.jpg", :alt => "courses-image3 feed") %>
-                                             </div>
-                                             <div class="courses-date">
-                                                  <span><i class="fa fa-calendar"></i> 15 / 8 / 2018</span>
-                                                  <span><i class="fa fa-clock-o"></i> 6 Hours</span>
-                                             </div>
-                                        </div>
-
-                                        <div class="courses-detail">
-                                             <h3><a href="#">Marketing Communication</a></h3>
-                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                        </div>
-
-                                        <div class="courses-info">
-                                             <div class="courses-author">
-                                             <%= image_tag("courses-image3.jpg", :alt => "courses-image3 feed") %>
-                                                  <span>Catherine</span>
-                                             </div>
-                                             <div class="courses-price free">
-                                                  <a href="#"><span>Free</span></a>
-                                             </div>
-                                        </div>
-                                   </div>
-                              </div>
+                              <% end %>
                          </div>
-
-
-
-
-
-
-                              <div class="col-md-4 col-sm-4">
-                                   <div class="item">
-                                        <div class="courses-thumb">
-                                             <div class="courses-top">
-                                                  <div class="courses-image">
-                                                  <%= image_tag("courses-image4.jpg", :alt => "courses-image4 feed") %>
-                                                  </div>
-                                                  <div class="courses-date">
-                                                       <span><i class="fa fa-calendar"></i> 10 / 8 / 2018</span>
-                                                       <span><i class="fa fa-clock-o"></i> 8 Hours</span>
-                                                  </div>
-                                             </div>
-
-                                             <div class="courses-detail">
-                                                  <h3><a href="#">Summer Kids</a></h3>
-                                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                             </div>
-
-                                             <div class="courses-info">
-                                                  <div class="courses-author">
-                                                  <%= image_tag("author-image1.jpg", :alt => "author-image1 feed") %>
-                                                       
-                                                       <span>Mark Wilson</span>
-                                                  </div>
-                                                  <div class="courses-price">
-                                                       <a href="#"><span>USD 45</span></a>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                   </div>
-                              </div>
-
-                              <div class="col-md-4 col-sm-4">
-                                   <div class="item">
-                                        <div class="courses-thumb">
-                                             <div class="courses-top">
-                                                  <div class="courses-image">
-                                                       <%= image_tag("courses-image5.jpg", :alt => "courses-image5 feed") %>
-                                                  </div>
-                                                  <div class="courses-date">
-                                                       <span><i class="fa fa-calendar"></i> 5 / 10 / 2018</span>
-                                                       <span><i class="fa fa-clock-o"></i> 10 Hours</span>
-                                                  </div>
-                                             </div>
-
-                                             <div class="courses-detail">
-                                                  <h3><a href="#">Business &amp; Management</a></h3>
-                                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                             </div>
-
-                                             <div class="courses-info">
-                                                  <div class="courses-author">
-                                                       <%= image_tag("author-image2.jpg", :alt => "author-image2 feed") %>
-                                                       <span>Jessica</span>
-                                                  </div>
-                                                  <div class="courses-price free">
-                                                       <a href="#"><span>Free</span></a>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                   </div>
-                              </div>
-
-                         </div>
-
                </div>
           </div>
      </section>
@@ -631,7 +468,7 @@ https://templatemo.com/tm-516-known
 
                     <div class="col-md-6 col-sm-12">
                          <div class="contact-image">
-                         <%= image_tag("contact-image.jpg", :alt => "contact-image feed") %>
+                         <%= video_tag "healthEdu.mp4", :size => "600x540", :controls => true %>
    
                          </div>
                     </div>

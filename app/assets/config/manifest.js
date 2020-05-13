@@ -22,3 +22,10 @@
           //= link smoothscroll.js
            //= link custom.js
            //= link application.css
+           //= link healthEdu.mp4
+            //= link default.png
+            //= link lab.jpg
+            //= link nurse.jpg
+            //= link doct2.jpg
+             //= link owl.carousel.css
+             //= link owl.theme.default.min.css
