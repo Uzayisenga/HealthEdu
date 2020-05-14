@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_08_201928) do
+ActiveRecord::Schema.define(version: 2020_05_14_231826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,11 +112,13 @@ ActiveRecord::Schema.define(version: 2020_05_08_201928) do
     t.datetime "opened_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
     t.index ["group_owner_id"], name: "index_notifications_on_group_owner_id"
     t.index ["group_type", "group_id"], name: "index_notifications_on_group_type_and_group_id"
     t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id"
     t.index ["notifier_type", "notifier_id"], name: "index_notifications_on_notifier_type_and_notifier_id"
     t.index ["target_type", "target_id"], name: "index_notifications_on_target_type_and_target_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "payments", force: :cascade do |t|
@@ -232,6 +234,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_201928) do
   add_foreign_key "favorites", "courses"
   add_foreign_key "favorites", "users"
   add_foreign_key "mc_questions", "quizzes"
+  add_foreign_key "notifications", "users"
   add_foreign_key "payments", "courses"
   add_foreign_key "payments", "users"
   add_foreign_key "profiles", "users"

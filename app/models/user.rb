@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   
   validates :email, presence: true, uniqueness: true
-  validate :password_cannot_have_invalid_character
+  
   validates :phone, length: { maximum: 13 }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
