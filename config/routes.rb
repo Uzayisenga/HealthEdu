@@ -1,21 +1,17 @@
 Rails.application.routes.draw do
   resources :profiles
-  resources :mc_questions
-  resources :quizzes
   get 'certificate/index'
   get 'requests/update'
   resources :credits
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  resources :payments
   resources :replies
   resources :homepage
-  resources :favorites, only: [:create, :destroy, :index, :show, :certificate]
+  resources :favorites, only: [:create, :destroy, :index, :show]
   get 'comments/create'
   get 'course/assesment'
   get 'welcome/index'
   get 'exam/assesment'
   get 'users/index'
-  get 'certificate', to: 'favorites#certificate', as: 'certificate'
   get 'professional', to: 'users#professional', as: 'professional'
   get 'instructor', to: 'users#instructor', as: 'instructor'
   get 'search', to: 'users#search', as: :search

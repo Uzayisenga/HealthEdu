@@ -1,6 +1,5 @@
 class Course < ApplicationRecord
   has_many :comments, dependent: :destroy
-  has_many :payments, dependent: :destroy
   has_many :credits, dependent: :destroy
   has_many :favorites, dependent: :destroy
   

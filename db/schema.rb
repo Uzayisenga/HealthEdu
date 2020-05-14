@@ -84,43 +84,12 @@ ActiveRecord::Schema.define(version: 2020_04_30_114454) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "mc_questions", force: :cascade do |t|
-    t.string "question"
-    t.string "answer"
-    t.string "distractor_1"
-    t.string "distractor_2"
-    t.string "distractor_3"
-    t.bigint "quiz_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["quiz_id"], name: "index_mc_questions_on_quiz_id"
-  end
-
-  create_table "payments", force: :cascade do |t|
-    t.float "amount"
-    t.bigint "user_id", null: false
-    t.bigint "course_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["course_id"], name: "index_payments_on_course_id"
-    t.index ["user_id"], name: "index_payments_on_user_id"
-  end
-
   create_table "profiles", force: :cascade do |t|
     t.text "image"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
-  end
-
-  create_table "quizzes", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
-    t.bigint "course_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["course_id"], name: "index_quizzes_on_course_id"
   end
 
   create_table "replies", force: :cascade do |t|
@@ -131,15 +100,6 @@ ActiveRecord::Schema.define(version: 2020_04_30_114454) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["comment_id"], name: "index_replies_on_comment_id"
     t.index ["user_id"], name: "index_replies_on_user_id"
-  end
-
-  create_table "requests", force: :cascade do |t|
-    t.bigint "course_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["course_id"], name: "index_requests_on_course_id"
-    t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -176,13 +136,7 @@ ActiveRecord::Schema.define(version: 2020_04_30_114454) do
   add_foreign_key "credits", "courses"
   add_foreign_key "favorites", "courses"
   add_foreign_key "favorites", "users"
-  add_foreign_key "mc_questions", "quizzes"
-  add_foreign_key "payments", "courses"
-  add_foreign_key "payments", "users"
   add_foreign_key "profiles", "users"
-  add_foreign_key "quizzes", "courses"
   add_foreign_key "replies", "comments"
   add_foreign_key "replies", "users"
-  add_foreign_key "requests", "courses"
-  add_foreign_key "requests", "users"
 end

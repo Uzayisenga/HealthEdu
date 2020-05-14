@@ -6,9 +6,7 @@
       <li><%= link_to 'Add module', courses_path %></li>
       <li><%= link_to 'View Question', courses_path %></li>
       <li><%= link_to 'Reply Question', courses_path %></li>
-      <li><%= link_to 'Create Quiz', new_quiz_path %></li>
-      <li><%= link_to 'Add questions', new_mc_question_path %></li>
-      <li><%= link_to 'View questions', mc_questions_path %></li>
+      
     </ul>
   </div>
   
@@ -35,14 +33,14 @@
     <td><%= link_to "Download", course.upload_file_url %></td>
     <%= link_to 'Start Now', course, class:"btn btn-success" %>
     <%end%>
-    <%if current_user.user_role=='instructor'%>
+    
     <td><%= link_to 'Show', course %></td>
     <td><%= link_to 'Edit', edit_course_path(course) %></td>
     <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <td><%= link_to 'view questions', course_comments_path(course)%></td>
     <td><%= link_to 'ask question', new_course_comment_path(course) %></td>
     <td><%= link_to 'Add module', new_credit_path(:course_id => course.id) %></td>
-    <%end%>
+    
     
   </div>
   <br><br><br><br>
