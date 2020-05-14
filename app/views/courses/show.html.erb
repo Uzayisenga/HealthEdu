@@ -6,7 +6,8 @@
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>
 <div class="container"
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 <div style="background:whitesmoke;width:100%">
 <div class="card p-5" style='width:70%;margin:auto'>
 <!-- Card content -->
@@ -37,12 +38,12 @@
   <!-- Card image -->
   <div class="view overlay">
       <%if @course.image.url%>
-        <%= image_tag @course.image.url, class:"card-img-top",alt:"Card image cap"%>
+        <%= image_tag @course.image.url, class:"card-img-top",alt:"Card image cap" , :size => "260x260"%>
       <% end%>
     <a href="#!">
       <div class="mask rgba-white-slight">salute</div>
     </a>
-  </div>
+  
 
   <!-- Card content -->
   <div class="card-body">
