@@ -19,5 +19,7 @@ class ApplicationController < ActionController::Base
             @search=User.search(params[:q])
         end
         
-        
+        def local_request?
+            false
+          end
 end
