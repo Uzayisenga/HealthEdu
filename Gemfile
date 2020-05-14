@@ -85,3 +85,8 @@ gem 'activity_notification'
 gem 'coffee-script-source'
 gem 'coffee-rails'
 
+#gem 'notifications-rails'
+gem 'notifications', '~> 0.6.0'
+
+gem 'serviceworker-rails'
+gem 'letter_opener'

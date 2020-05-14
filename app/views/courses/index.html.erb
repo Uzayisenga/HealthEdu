@@ -30,14 +30,14 @@
     <h5 class="card-title" style="color:green"><b><%= course.title%>/<%= course.credit_number %>credits &nbsp;&nbsp; - &nbsp;&nbsp;<%= course.course_price%>&nbsp;Frws</b></h5>
     <p class="card-text"><b><%= course.content[0,100]..%></b></p>
     
-    <a href="<%= course.assessment%>" target="_blank" rel="noopener noreferrer">Take quiz here</a>
+    <a href="<%= course.assessment%>" target="_blank" rel="noopener noreferrer" class= "btn btn-info">Take quiz here</a>
     <%if current_user.user_role=='professional'%>
     <td><%= link_to 'view questions', course_comments_path(course)%></td>
     <td><%= link_to 'ask question', new_course_comment_path(course) %></td>
     <td><%= link_to "Download", course.upload_file_url %></td>
     <%= link_to 'Start Now', course, class:"btn btn-success" %>
     <%end%>
-    <%if current_user.user_role=='instructor'%>
+    <%if current_user.user_role=='instructor' || current_user.user_role=='admin'%>
     <td><%= link_to 'Show', course %></td>
     <td><%= link_to 'Edit', edit_course_path(course) %></td>
     <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
