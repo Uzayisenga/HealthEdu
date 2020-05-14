@@ -82,5 +82,8 @@ gem 'jquery-rails'
 gem 'wicked_pdf', '1.4.0'
 gem 'wkhtmltopdf-binary'
 gem 'activity_notification'
+#gem 'notifications-rails'
+gem 'notifications', '~> 0.6.0'
 
-
+gem 'serviceworker-rails'
+gem 'letter_opener'

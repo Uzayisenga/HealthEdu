@@ -151,6 +151,10 @@ GEM
       activerecord
       kaminari-core (= 1.2.0)
     kaminari-core (1.2.0)
+    launchy (2.5.0)
+      addressable (~> 2.7)
+    letter_opener (1.7.0)
+      launchy (~> 2.2)
     libv8 (7.3.492.27.1)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -179,6 +183,9 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
+    notifications (0.6.1)
+      kaminari (>= 0.15)
+      rails (>= 5)
     oauth (0.5.4)
     oauth2 (1.4.4)
       faraday (>= 0.8, < 2.0)
@@ -298,6 +305,8 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    serviceworker-rails (0.6.0)
+      railties (>= 3.1)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -363,9 +372,11 @@ DEPENDENCIES
   font-awesome-rails
   jbuilder (~> 2.7)
   jquery-rails
+  letter_opener
   listen (>= 3.0.5, < 3.2)
   mini_magick
   mini_racer
+  notifications (~> 0.6.0)
   omniauth
   omniauth-facebook
   omniauth-google-oauth2
@@ -381,6 +392,7 @@ DEPENDENCIES
   render_anywhere
   sass-rails (>= 6)
   selenium-webdriver
+  serviceworker-rails
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

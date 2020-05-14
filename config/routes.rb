@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Notifications::Engine => "/notifications"
   resources :profiles
   resources :mc_questions
   resources :quizzes
