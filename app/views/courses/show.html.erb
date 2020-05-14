@@ -12,7 +12,9 @@
 <div class="card p-5" style='width:70%;margin:auto'>
 <!-- Card content -->
 <div class="card-body">
-
+<%if @course.image.url%>
+        <%= image_tag @course.image.url, class:"card-img-top",alt:"Card image cap" , :size => "860x460"%>
+      <% end%>
   <!-- Title -->
   <h3 class="card-title"><b><%=@course.title%>&nbsp;/&nbsp;<%=@course.credit_number%> &nbsp;Credits</b></h3>
   <!-- Text -->
@@ -35,14 +37,7 @@
       </div>
   </div>
 </div>
-  <!-- Card image -->
-  <div class="view overlay">
-      <%if @course.image.url%>
-        <%= image_tag @course.image.url, class:"card-img-top",alt:"Card image cap" , :size => "260x260"%>
-      <% end%>
-    <a href="#!">
-      <div class="mask rgba-white-slight">salute</div>
-    </a>
+  
   
 
   <!-- Card content -->
@@ -95,6 +90,7 @@
     
 </div>
 </div>
+
 <!-- Card -->
 
 
