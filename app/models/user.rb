@@ -83,5 +83,8 @@ class User < ApplicationRecord
         enum level: [:certificate_A2, :Advanced_Diploma, :Bachelor_Degree, :Masters_Degree, :PHD, :Others]
         enum working_place: [:not_paid, :paid]
         
+        def follow(user)
+          Notification.create(notify_type: 'follow', actor: self, user: user)
+        end
   
 end  

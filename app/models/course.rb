@@ -1,5 +1,5 @@
 class Course < ApplicationRecord
-  has_many :courses, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :payments, dependent: :destroy
   has_many :credits, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -37,4 +37,10 @@ class Course < ApplicationRecord
   def quiz_notifiable_path
     quiz_path(quiz)
   end
+
+  def follow(user)
+    Notification.create(notify_type: 'create', actor: current_user, user: user)
+  end
+  #after_commit :create_notifications, on: [:create]
+  
 end

@@ -12,7 +12,8 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @currentUser = current_user.id
-    @courses = current_user.courses.all
+    #@courses = current_user.courses.all
+    @courses = Course.all
   end
 
   def all_course
@@ -30,6 +31,7 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     @course = current_user.courses.build
+    #@item.current_user = current_user
   end
 
   # GET /courses/1/edit
@@ -41,8 +43,19 @@ class CoursesController < ApplicationController
   def create
     @course = current_user.courses.build(course_params)
     
+    #def create_notifications
+      
+  #end
+
     respond_to do |format|
       if @course.save
+        # User.where(user_role: 'professional').each do |user|
+        #   Notification.create(
+        #     notify_type: 'create',
+        #     actor: current_user,
+        #     user: @course.user,
+        #     target: @course)
+        # end
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course }
       else
