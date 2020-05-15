@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
     before_action :set_search
     protect_from_forgery with: :exception
     before_action :configure_permitted_parameters, if: :devise_controller?
-    #request
+    
     def request_text
         return @request_exists ? 'Requested' : 'Request'
     end
