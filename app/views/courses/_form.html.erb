@@ -1,5 +1,4 @@
 
-  
    <%= form_with(model: course, local: true) do |form| %>
      <% if course.errors.any? %>
          <div id="error_explanation">
@@ -74,7 +73,8 @@
     </div>
   <% end %>
 </div>
-<br><br><br>
+<br><br><br><br><br><br><br><br><br>
+<div>
 <% if user_signed_in? && current_user.user_role== 'admin'%>
         <li class="nav-item">
           <%= link_to "Admin Panel",  rails_admin.dashboard_path, class: "nav-link" %>
@@ -110,3 +110,4 @@
       <p class="alert alert-danger", style='margin:90px'><%= alert %></p>
     <% end %>
  <%= yield %>
+ </div>
