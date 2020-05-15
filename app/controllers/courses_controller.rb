@@ -8,7 +8,7 @@ class CoursesController < ApplicationController
   # before_action :only_admin, only: [:edit, :new]
   
 
-  # GET /courses
+  
   # GET /courses.json
   def index
     @currentUser = current_user.id
