@@ -65,7 +65,7 @@ class User < ApplicationRecord
         # end
         enum reguratory_body: [:RAHPC, :NPC, :RMDC, :NCNM]
         enum level: [:certificate_A2, :Advanced_Diploma, :Bachelor_Degree, :Masters_Degree, :PHD, :Others]
-        enum working_place: [:private, :public]
+       
         
   
 end  

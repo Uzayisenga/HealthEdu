@@ -12,7 +12,7 @@
 
     <div class="custom-breadcrumns border-bottom">
       <div class="container">
-        <a href="index.html">Home</a>
+        <%= link_to "Home", homepage_index_path,:"data-no-turbolink"=>true,method:"get" %>
         <span class="mx-3 icon-keyboard_arrow_right"></span>
         <span class="current">Courses</span>
       </div>
@@ -40,7 +40,7 @@
                           <h2><%= course.title%>/<%= course.credit_number %></h2>
                           
                           <p class="desc mb-4"><%= course.content[0,80]..%></p>
-                          <p><%= link_to 'Enroll In This Course', course, class:"btn btn-primary rounded-0 px-4" %></p>
+                          <p><%= link_to 'Enroll In This Course', course, class:"btn btn-primary rounded-0 px-4",:"data-no-turbolink"=>true,method:"get" %></p>
                           </div>
                       </div>
                 </div>
