@@ -1,5 +1,6 @@
 class FavoritesController < ApplicationController
   before_action :authenticate_user!
+  before_action :buy_course, only: [:create]
   def index
     @favorites=Favorite.all        
 end
@@ -32,6 +33,12 @@ def destroy
 end
 def certificate
   @favorites=Favorite.all
+end
+
+def buy_course
+  if current_user && current_user.user_role == "instructor"
+    redirect_to courses_url, notice: 'Teacher can not buy courses'
+  end
 end
 
 end

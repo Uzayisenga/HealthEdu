@@ -2,6 +2,7 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   before_action :authenticate_user!
+  before_action :course_creation, except: [:index, :show]
   
   # before_action :only_admin, only: [:edit, :new]
 
@@ -127,4 +128,11 @@ class CoursesController < ApplicationController
     unless current_user && @course.status == "paid"
     end
   end
+  def course_creation
+    if current_user && current_user.user_role == "professional"
+      redirect_to courses_url, notice: 'Only teachers can create courses'
+    end
+  end
+
+  
 end

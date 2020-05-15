@@ -15,6 +15,7 @@
   <strong>Uploaded by:</strong>
   <%= @favorite.course.user.email %>
 </p>
+
 <% if @favorite.status == "paid" %>
 <p>
 <h3 class="card-title"><b>Modules course of <%= @favorite.course.title %></b></h3>
@@ -32,7 +33,7 @@
 
 <% end %>
 </p>
-
+<a href="<%= @favorite.course.assessment%>" target="_blank" rel="noopener noreferrer" class= "btn btn-info">Take quiz here</a>
 <% else %>
 <p>
 <h2>Please pay <%= @favorite.course.course_price %> RWF on 0787939119 to access all modules</h2>
@@ -46,7 +47,7 @@
 
 <div class="container" style="background:white">
 
-    <%if @favorite.user.names == current_user.names %>
+    <%if @favorite.user.id == current_user.id %>
     <%if @favorite.present?%>
     <div style="width:1000px; height:800px; padding:16px; text-align:center; border: 10px solid #81c784 ">
 <div style="width:950px; height:750px; padding:16px; text-align:center; border: 5px solid #81c784 ">
