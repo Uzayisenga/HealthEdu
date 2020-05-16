@@ -42,6 +42,9 @@ class UsersController < ApplicationController
   def instructor
     @instructors = User.where(user_role: 'instructor')
   end
+  def quiz
+    
+  end
 
   def create
     @user = User.new(params[:user])

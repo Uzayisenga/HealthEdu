@@ -1,59 +1,56 @@
 
-<div class="tank">
-  <div class ="menu">
-    <ul class="list">
-      <li><%= link_to 'New Course', new_course_path,:"data-no-turbolink"=>true,method:"get" %></li>
-      <li><%= link_to 'Add module', courses_path,:"data-no-turbolink"=>true,method:"get" %></li>
-      <li><%= link_to 'View Question', courses_path,:"data-no-turbolink"=>true,method:"get" %></li>
-      <li><%= link_to 'Reply Question', courses_path,:"data-no-turbolink"=>true,method:"get" %></li>
-      
+<div class="container">
+<h5 style="text-align:center;">My Request Courses</h5>
+
+<div class="card text-center">
+
+
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <%= link_to "Courses", courses_path, class: "nav-link active",:"data-no-turbolink"=>true,method:"get" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "New Course", new_course_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Create Quiz", pages_quiz_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
+      </li>
     </ul>
   </div>
-  
-  <div class="courses">
-  <h2>All Courses</h2>
-  <hr class="hr">
-  
-  <div class="row">
-    
-    <div class="row row-cols-1 row-cols-md-3">
-    <% @courses.each do |course| %>
-  <div class="col mb-4">
-  <div class="card h-100">
-  <% if course.image_url %>
-      <%= image_tag course.image_url,:alt => "doctor feed", style:'width:100%;height:40%' %>
-  
-    <% end %>
   <div class="card-body">
-    <h5 class="card-title" style="color:green"><b><%= course.title%>/<%= course.credit_number %>credits &nbsp;&nbsp; - &nbsp;&nbsp;<%= course.course_price%>&nbsp;Frws</b></h5>
-    <p class="card-text"><b><%= course.content[0,100]..%></b></p>
-    <%if current_user.user_role=='professional'%>
-    <td><%= link_to 'view questions', course_comments_path(course), :"data-no-turbolink"=>true,method:"get"%></td>
-    <td><%= link_to 'ask question', new_course_comment_path(course), :"data-no-turbolink"=>true,method:"get" %></td>
-    <td><%= link_to "Download", course.upload_file_url %></td>
-    <%= link_to 'Start Now', course, class:"btn btn-success", :"data-no-turbolink"=>true,method:"get" %>
-    <%end%>
-    
-    <td><%= link_to 'Show', course, :"data-no-turbolink"=>true,method:"get" %></td>
-    <td><%= link_to 'Edit', edit_course_path(course), :"data-no-turbolink"=>true,method:"get" %></td>
-    <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, :"data-no-turbolink"=>true,method:"get" %></td>
-    <td><%= link_to 'view questions', course_comments_path(course), :"data-no-turbolink"=>true,method:"get"%></td>
-    <td><%= link_to 'ask question', new_course_comment_path(course), :"data-no-turbolink"=>true,method:"get" %></td>
-    <td><%= link_to 'Add module', new_credit_path(:course_id => course.id), :"data-no-turbolink"=>true,method:"get" %></td>
-    
-    
+    <div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Credit</th>
+      <th>Price</th>
+      <th>Content</th>
+      <th colspan="5">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.title%></td>
+        <td><%= course.credit_number %></td>
+        <td><%= course.course_price%></td>
+        <td><%= course.content[0,20]..%></td>
+        <td><%= link_to 'Show', course %></td>
+        <td><%= link_to 'Edit', edit_course_path(course),:"data-no-turbolink"=>true,method:"get" %></td>
+        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' },:"data-no-turbolink"=>true,method:"get" %></td>
+        <td><%= link_to 'Add module', new_credit_path(:course_id => course.id), :"data-no-turbolink"=>true,method:"get" %></td>
+        <td><%= link_to 'questions', course_comments_path(course), :"data-no-turbolink"=>true,method:"get"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
   </div>
-  <br><br><br><br>
-  <div class="card-footer">
-  <small class="text-muted">Updated
-  <% start_time = course.created_at %>
-  <% end_time   =  DateTime.now %>
-  <%= distance_of_time_in_words(start_time, end_time)  %> &nbsp; ago by <%= course.user.email%></small>
-  </div>
-  </div>
-  </div>
-  <% end %>
-  </div>
-  </div>
+  
 </div>
+</div>
+</div>
+
 

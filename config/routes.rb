@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'pages/quiz'
   resources :profiles
   get 'certificate/index'
   get 'requests/update'
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
   get 'professional', to: 'users#professional', as: 'professional'
   get 'instructor', to: 'users#instructor', as: 'instructor'
   get 'search', to: 'users#search', as: :search
- 
+  get 'quiz', to: 'users#quiz', as: 'quiz'
  
   devise_for :users, controllers: {
     registrations: "users/registrations",

@@ -1,56 +1,100 @@
-<!-- Modal -->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+    <title>Bootstrap 4 Login/Register Form</title>
+</head>
+<body>
 <div class="container">
-    <!--Content-->
-    <div class="modal-content form-elegant" style="width:50%;margin:auto">
-      <!--Header-->
-      <div class="modal-header text-center">
-        <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Sign in</strong></h3>
-      </div>
-      <!--Body-->
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="modal-body mx-4">
-        <!--Body-->
-        <div class="md-form mb-3">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email",id:"Form-email1", class:"form-control validate" %>
-          <label data-error="wrong" data-success="right" for="Form-email1">Your email</label>
-        </div>
-
-        <div class="md-form">
-          <%= f.password_field :password, autocomplete: "current-password",id:"Form-pass1", class:"form-control validate" %>
-          <label data-error="wrong" data-success="right" for="Form-pass1">Your password</label>
-          <p class="font-small blue-text d-flex justify-content-end">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div id="logreg-forms">
+        <form class="form-signin">
+            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
+            <div class="social-login">
+              <div class="row">
+              <div class="col-md-6">
+              <%= link_to "f Sign in with Facebook", user_facebook_omniauth_authorize_path, class:"btn facebook-btn social-btn" %>
+              </div>
+              <div class="col-md-6">
+              <%= link_to 'G+  Login with Google +', user_google_omniauth_authorize_path, class:"btn google-btn social-btn" %>
+              </div>
+              </div>
+            </div>
+            <p style="text-align:center"> OR  </p>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email",id:"inputEmail", class:"form-control", placeholder:"Email Address" %>
+            <%= f.password_field :password, autocomplete: "current-password",id:"inputPassword", class:"form-control", placeholder:"Password" %>
+            <%= f.submit class:"btn btn-success btn-block" %>
             <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-              <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+              <%= link_to "Forgot your password?", new_password_path(resource_name), id:"forgot_pswd" %>
             <% end %>
-          </p>
-        </div>
+            <hr>
+            <!-- <p>Don't have an account!</p>  -->
+            <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+            <%= link_to "Sign up", new_registration_path(resource_name), class:"btn btn-primary btn-block",id:"btn-signup",:"data-no-turbolink"=>true,method:"get" %>
+            <% end %>
+            </form>
 
-        <div class="text-center mb-1">
-          
-          <%= f.submit class:"btn blue-gradient btn-block btn-rounded z-depth-1a" %>
-        </div>
-        <% end %>
-        <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> or Sign in
-          with:</p>
+            <form action="/reset/password/" class="form-reset">
+                <input type="email" id="resetEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+                <button class="btn btn-primary btn-block" type="submit">Reset Password</button>
+                <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
+            </form>
+            
+            <form action="/signup/" class="form-signup">
+                <div class="social-login">
+                    <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Sign up with Facebook</span> </button>
+                </div>
+                <div class="social-login">
+                    <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Sign up with Google+</span> </button>
+                </div>
+                
+                <p style="text-align:center">OR</p>
 
-        <div class="row my-3 d-flex justify-content-center">
-          <!--Facebook-->
-          
-          <%= link_to "f Sign in with Facebook", user_facebook_omniauth_authorize_path, class:"btn btn-primary btn-rounded mr-md-3 z-depth-1a"%>
-          <%= link_to 'G+  Login with Google +', user_google_omniauth_authorize_path, class:"btn btn-danger btn-rounded mr-md-3 z-depth-1a" %>
-          <button type="button" class="btn btn-info btn-rounded mr-md-3 z-depth-1a"><i class="fab fa-linkedin-in pr-1"></i> Login with Linkedin</button>
-        </div>
-      </div>
-      <!--Footer-->
-      <div class="modal-footer mx-5 pt-3 mb-1">
-        <p class="font-small grey-text d-flex justify-content-end">Not a member? 
-          <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-            <%= link_to "Sign up", new_registration_path(resource_name),:"data-no-turbolink"=>true,method:"get" %><br />
-          <% end %></p>
-      </div>
-    </div>
-    <!--/.Content-->
+                <input type="text" id="user-name" class="form-control" placeholder="Full name" required="" autofocus="">
+                <input type="email" id="user-email" class="form-control" placeholder="Email address" required autofocus="">
+                <input type="password" id="user-pass" class="form-control" placeholder="Password" required autofocus="">
+                <input type="password" id="user-repeatpass" class="form-control" placeholder="Repeat Password" required autofocus="">
+
+                <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Sign Up</button>
+                <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Back</a>
+            </form>
+            <br>
+            <% end %>
+    </div> 
+  <script>
+    function toggleResetPswd(e){
+    e.preventDefault();
+    $('#logreg-forms .form-signin').toggle() // display:block or none
+    $('#logreg-forms .form-reset').toggle() // display:block or none
+}
+
+function toggleSignUp(e){
+    e.preventDefault();
+    $('#logreg-forms .form-signin').toggle(); // display:block or none
+    $('#logreg-forms .form-signup').toggle(); // display:block or none
+}
+
+$(()=>{
+    // Login Register Form
+    $('#logreg-forms #forgot_pswd').click(toggleResetPswd);
+    $('#logreg-forms #cancel_reset').click(toggleResetPswd);
+    $('#logreg-forms #btn-signup').click(toggleSignUp);
+    $('#logreg-forms #cancel_signup').click(toggleSignUp);
+})
+  </script>
 </div>
+</body>
+</html>
 
 
 

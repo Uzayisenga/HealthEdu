@@ -81,7 +81,10 @@
             </div>
           </div>
           <% else %>
-            <%= link_to "Log in",  new_user_session_path, class: "btn btn-outline-success btn-small",:"data-no-turbolink"=>true,method:"get" %>
+            <i class="fas fa-user" style="color:#8bc34a;text-decoration:none;"></i>
+            <%= link_to "Register",  new_user_session_path, :"data-no-turbolink"=>true,method:"get" %>&nbsp;&nbsp;&nbsp;
+            <i class="fas fa-user-plus" style="color:#8bc34a;"></i>
+            <%= link_to "Log in",  new_user_session_path,:"data-no-turbolink"=>true,method:"get" %>
         <% end %>
       </div>
     </div>
