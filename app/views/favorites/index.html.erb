@@ -1,7 +1,9 @@
 <div class="container">
 <h5 style="text-align:center;">My Request Courses</h5>
+<div class="card">
 <% @favorites.each do |favorite| %>
-<div class="card text-center">
+
+
 <%if favorite.user.names == current_user.names %>
 <%if favorite.present?%>
   <div class="card-header">
@@ -23,6 +25,9 @@
   <p class="card-text">No favorite yet.</p>
   <% end %>
 <% end %>
-</div><br>
+
 <% end %>
 </div>
+</div><br>
+
+

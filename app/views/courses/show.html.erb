@@ -12,9 +12,9 @@
 
     <div class="custom-breadcrumns border-bottom">
       <div class="container">
-        <a href="index.html">Home</a>
+        <%= link_to "Home", homepage_index_path,:"data-no-turbolink"=>true,method:"get" %>
         <span class="mx-3 icon-keyboard_arrow_right"></span>
-        <a href="courses.html">Courses</a>
+        <%= link_to "Courses", courses_path,:"data-no-turbolink"=>true,method:"get" %>
         <span class="mx-3 icon-keyboard_arrow_right"></span>
         <span class="current">Courses</span>
       </div>
@@ -57,9 +57,9 @@
         <!-- Text -->
         <p class="card-text"><%=@course.content%></p>
       </div>
-      <%if current_user.user_role=='instructor'%>
+      <% if user_signed_in? && current_user.user_role== 'instructor'%>
           <%= link_to 'Edit', edit_course_path(@course), class:'btn btn-sm' %>
-      <%end%>
+     
       <div class="card">
         <div class="card-body">
           <h3 class="card-title"><b>Modules course of <%=@course.title%></b></h3>
@@ -82,14 +82,10 @@
         <li> <%= link_to(favorite.user.names, favorite.user) %></li>
       <% end %>
     </div>
+    <%end%>
   </div>
-
-<%= link_to 'Edit', edit_course_path(@course) %> 
-<%= link_to 'Back', courses_path %><br>
-
-
-    
-    <div class="section-bg style-1" style="background-image: url('/assets/hero_1.jpg');">
+  
+  <div class="section-bg style-1" style="background-image: url('/assets/hero_1.jpg');">
         <div class="container">
           <div class="row">
             <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">

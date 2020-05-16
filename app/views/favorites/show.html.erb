@@ -25,21 +25,22 @@
   <div class="module">
  
 
-  <i class="fa fa-file-pdf-o fa_custom"></i><%= link_to credit.name, credit_path %>
+  <i class="fa fa-file-pdf-o fa_custom"></i><%= credit.name %>
   <%= link_to "Download", credit.upload_file_url %>
   </div><br>
 
 
 <% end %>
 </p>
+<a href="<%= @favorite.course.status%>" target="_blank" rel="noopener noreferrer" class= "btn btn-info">Take quiz here</a>
 
 <% else %>
 <p>
-<h2>Please pay <%= @favorite.course.course_price %> RWF on 0787939119 to access all modules</h2>
+<h2>Please pay <%= @favorite.course.course_price %> RWF on 0788898262 to access all modules</h2>
 </p>
 <% end %>
 
 <%= link_to 'Back', favorites_path %>
-</dev>
+</div>
 
 
