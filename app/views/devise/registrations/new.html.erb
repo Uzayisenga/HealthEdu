@@ -87,7 +87,7 @@
                   "admin", 
                   "instructor", 
                   "council"]), 
-                  {}, { class: "form form-group form-control" } %>
+                  {}, disabled: (true unless current_user && current_user.user_role == 'admin') %>
               </div>
             </div>
           </div>
