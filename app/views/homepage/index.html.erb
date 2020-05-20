@@ -1,6 +1,6 @@
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 <div class="container-fluid bg-overlay">
-	<div class="row text-center">
+	<div class="home ">
 		<h1>CPD COURSES IN HEALTH PROVIDER SKILLS.</h1>
         <h4>This platform will connect you to many "<strong>Specialist,</strong>" across Rwanda,<br>
         the Region and Internationally_ keep updated with us</h4>
@@ -84,7 +84,7 @@
                   <% end %>
                   </a>
                   <div class="price"><%= course.course_price%>&nbsp;Frws</div>
-                  <div class="category"><h3>Updated
+                  <div class="category"><h3><i class="fa fa-calendar"></i> Updated
                   <% start_time = course.created_at %>
                   <% end_time   =  DateTime.now %>
                   <%= distance_of_time_in_words(start_time, end_time)  %></h3></div>  
