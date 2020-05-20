@@ -1,106 +1,111 @@
-<style>
-  .card-img-top{
+<div class="site-section ftco-subscribe-1 site-blocks-cover pb-4" style="background-image: url('/assets/bg_1.jpg')">
+        <div class="container">
+          <div class="row align-items-end">
+            <div class="col-lg-7">
+              <h2 class="mb-0">How To Create Mobile Apps Using Ionic</h2>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+            </div>
+          </div>
+        </div>
+      </div> 
+    
 
-  }
-</style>
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
-<div class="container"
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-<div style="background:whitesmoke;width:100%">
-<div class="card p-5" style='width:70%;margin:auto'>
-<!-- Card content -->
-<div class="card-body">
-<%if @course.image.url%>
-        <%= image_tag @course.image.url, class:"card-img-top",alt:"Card image cap" , :size => "860x480"%>
-      <% end%>
-  <!-- Title -->
-  <h3 class="card-title"><b><%=@course.title%>&nbsp;/&nbsp;<%=@course.credit_number%> &nbsp;Credits</b></h3>
-  <!-- Text -->
-  <div class="A" style="background:yellow">
-    <div style="width:50%;float:left;border-right:1px solid whitesmoke">
-      <h5 class="card-text">Instructor:</p>
-      <p class="card-text"><%=@course.user.email%></p>
-    </div>
-    <div style="width:50%;float:right;padding-left:30px">
-      <!-- Button -->
-      <p class="card-text" style="color:green;font-weight:bolder;font-size:20px"><%=@course.course_price %> RWF</p>
-   
-     
-      <% if @favorite.present? %>
-        <%= link_to 'Cancel request', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
-      <% else %>
-        <%= link_to 'Make it a request', favorites_path(course_id: @course.id), method: :post, class: 'btn btn-success' %>
-    <% end %>
-      
+    <div class="custom-breadcrumns border-bottom">
+      <div class="container">
+        <%= link_to "Home", homepage_index_path,:"data-no-turbolink"=>true,method:"get" %>
+        <span class="mx-3 icon-keyboard_arrow_right"></span>
+        <%= link_to "Courses", courses_path,:"data-no-turbolink"=>true,method:"get" %>
+        <span class="mx-3 icon-keyboard_arrow_right"></span>
+        <span class="current">Courses</span>
       </div>
-  </div>
-</div>
-  
-  
-
-  <!-- Card content -->
-  <div class="card-body">
-
-    <!-- Title -->
-    <h4 class="card-title">Course Description</h4>
-    <!-- Text -->
-    <p class="card-text"><%=@course.content%></p>
+    </div><br>
     
-    <!-- Button -->
 
-  <buton class="btn btn-lg">
-  <strong>Status:</strong>
-  <%= @course.status %>
-</p>
-
-<p>
-  <strong>Marks:</strong>
-  <%= @course.marks %>
-</p>
-
-<p>
-  <strong>Attemption:</strong>
-  <%= @course.attemption %>
-</p>
-
-<p><%= link_to "Download", @course.upload_file_url %></p>
-<p><%= link_to "Quizzes", quizzes_path %></p>Assesment</a>
-</button>
-  </div>
-  <%if current_user.user_role=='instructor'%>
-  <%= link_to 'Edit', edit_course_path(@course), class:'btn btn-sm' %>
-  <p><%= link_to "Quizzes", quizzes_path %></p>Assesment</a>
-  <%end%>
-  <h3 class="card-title"><b>Modules course of <%=@course.title%></b></h3>
-  <hr class="hr">
-  <h3 class="card-title"><b>Users requested course of <%=@course.title%></b></h3>
-  <hr class="hr">
-    <% @course.credits.each do  |credit| %>
-      <div class="module">
-      <i class="fa fa-file-pdf-o fa_custom"></i> <%= link_to credit.name, credit_path%>
-      <%= link_to "Download", credit.upload_file_url %>
-      </div><br>
-    <% end %>
-    <% @course.favorites.each do |favorite| %>
-      <li> <%= link_to(favorite.user.names, favorite.user) %></li>
-   <% end %>
-
+   <div class="card p-5" style='width:70%;margin:auto'>
+     <!-- Card content -->
+     <div class="card-body">
+       <!-- Title -->
+       <h3 class="card-title"><b><%=@course.title%>&nbsp;/&nbsp;<%=@course.credit_number%> &nbsp;Credits</b></h3>
+       <!-- Text -->
+       <div class="A" style="background:yellow">
+          <div style="width:50%;float:left;border-right:1px solid whitesmoke">
+            <h5 class="card-text">Instructor:</p>
+            <p class="card-text"><%=@course.user.email%></p>
+          </div>
+          <div style="width:50%;float:right;padding-left:30px">
+             <!-- Button -->
+             <p class="card-text" style="color:green;font-weight:bolder;font-size:20px"><%=@course.course_price %> RWF</p>
+             <% if @favorite.present? %>
+                <%= link_to 'Cancel request', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+                <% else %>
+                  <%= link_to 'Make it a request', favorites_path(course_id: @course.id), method: :post, class: 'btn btn-success' %>
+              <% end %>
+            </div>
+        </div>
+      </div>
     
+      <!-- Card image -->
+      <div class="view overlay">
+          <%if @course.image.url%>
+            <%= image_tag @course.image.url, class:"card-img-top",alt:"Card image cap"%>
+          <% end%>
+      </div>
+      <!-- Card content -->
+      <div class="card-body">
+        <!-- Title -->
+        <h4 class="card-title">Course Description</h4>
+        <!-- Text -->
+        <p class="card-text"><%=@course.content%></p>
+      </div>
+      <% if user_signed_in? && current_user.user_role== 'instructor'%>
+          <%= link_to 'Edit', edit_course_path(@course), class:'btn btn-sm' %>
+     
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title"><b>Modules course of <%=@course.title%></b></h3>
+          <hr class="hr">
+        </div>
+      </div><br><br>
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title"><b>Users requested course of <%=@course.title%></b></h3>
+          <hr class="hr">
+          <% @course.credits.each do  |credit| %>
+            <div class="module">
+              <i class="fa fa-file-pdf-o fa_custom"></i> <%= link_to credit.name, credit_path%>
+              <%= link_to "Download", credit.upload_file_url %>
+            </div><br>
+          <% end %>
+        </div>
+      </div>
+      <% @course.favorites.each do |favorite| %>
+        <li> <%= link_to(favorite.user.names, favorite.user) %></li>
+      <% end %>
+    </div>
+    <%end%>
+  </div>
+  
+  <div class="section-bg style-1" style="background-image: url('/assets/hero_1.jpg');">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+              <span class="icon flaticon-mortarboard"></span>
+              <h3>Our Philosphy</h3>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea? Dolore, amet reprehenderit.</p>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+              <span class="icon flaticon-school-material"></span>
+              <h3>Academics Principle</h3>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea?
+                Dolore, amet reprehenderit.</p>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
+              <span class="icon flaticon-library"></span>
+              <h3>Key of Success</h3>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea?
+                Dolore, amet reprehenderit.</p>
+            </div>
+          </div>
+        </div>
+      </div>
 </div>
-</div>
-
-<!-- Card -->
-
-
-
- 
-
-
-
-<%= link_to 'Edit', edit_course_path(@course) %> 
-<%= link_to 'Back', courses_path %><br>
-<p><%= link_to "Quizzes", quizzes_path %></p>Assesment</a>
-
-

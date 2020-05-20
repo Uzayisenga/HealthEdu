@@ -22,11 +22,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,:omniauthable, omniauth_providers: [:google, :facebook, :twitter]
          :confirmable
 
-         has_many :courses
-         has_many :comments
-         has_many :requests
-         has_many :favorites
-         has_many :courses
+         has_many :courses, dependent: :destroy
+         has_many :comments, dependent: :destroy
+         has_many :favorites, dependent: :destroy
+         has_many :courses, dependent: :destroy
          mount_uploader :image, ImageUploader
          mount_uploader :apload_diploma, AploadDiplomaUploader
          mount_uploader :apload_cv, AploadCvUploader
@@ -81,7 +80,7 @@ class User < ApplicationRecord
         # end
         enum reguratory_body: [:RAHPC, :NPC, :RMDC, :NCNM]
         enum level: [:certificate_A2, :Advanced_Diploma, :Bachelor_Degree, :Masters_Degree, :PHD, :Others]
-        enum working_place: [:not_paid, :paid]
+       
         
         def follow(user)
           Notification.create(notify_type: 'follow', actor: self, user: user)

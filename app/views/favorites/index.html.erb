@@ -1,31 +1,33 @@
 <div class="container">
-<p id="notice"><%= notice %></p>
-<h1>My Request Courses</h1>
-<% @favorites.each do |favorite| %>
-    <%if favorite.user.names == current_user.names %>
-    <%if favorite.present?%>
-<!-- Card -->
+<h5 style="text-align:center;">My Request Courses</h5>
 <div class="card">
+<% @favorites.each do |favorite| %>
 
 
-  <!-- Card content -->
-  <div class="card-body">
-  
-  <h4 class="card-title"><%= favorite.course.title %></h4>
-    <p> Uploaded by:<%= favorite.course.user.email %></p>
-    <%= link_to 'view course', favorite %>
-    <span class="badge badge-success badge-pill"><br><%= favorite.status%><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-
-    
-   <%else%>
-     <p>No favorite yet.</p>
-    
-  <% end %>
-  </div><br>
-  </div></br>
-<%end%>
-
-<%end%>
-  
+<%if favorite.user.names == current_user.names %>
+<%if favorite.present?%>
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Courses</a>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'view course', favorite, class:"nav-link",:"data-no-turbolink"=>true,method:"get" %>
+      </li>
+    </ul>
   </div>
-  <%= link_to 'Certificate', certificate_path %>
+  <div class="card-body">
+    <h5 class="card-title"><%= favorite.course.title %></h5>
+    <p class="card-text">Uploaded by:<%= favorite.course.user.email %></p>
+    <center><div class="favorite"><%= favorite.status%></div><center>
+  </div>
+  <%else%>
+  <p class="card-text">No favorite yet.</p>
+  <% end %>
+<% end %>
+
+<% end %>
+</div>
+</div><br>
+
+

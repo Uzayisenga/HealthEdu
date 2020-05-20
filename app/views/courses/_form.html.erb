@@ -12,101 +12,58 @@
             </ul>
           </div>
       <% end %>
-
-    <div class="form-group">
-      <%= form.label :image %>
-      <%= form.file_field :image, class:"form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :title %>
-      <%= form.text_field :title, class:"form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :credit_number %>
-      <%= form.text_field :credit_number, class:"form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :content %>
-      <%= form.text_area :content, class:"form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :upload_file %>
-      <%= form.file_field :upload_file, class:"form-control" %>
-      <input type="file" name="upload" accept="application/pdf" />
-    </div>
-
-    <div class="form-group">
-      <%= form.label :course_price %>
-      <%= form.text_field :course_price, class:"form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :status %>
-      <%= form.text_field :status, class:"form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :marks %>
-      <%= form.text_field :marks, class:"form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :attemption %>
-      <%= form.text_field :attemption, class:"form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :assessment_link %>
-      <%= form.text_field :assessment, class:"form-control" %>
-    </div>
-
-    <div class="field">
-      
-      <%= form.hidden_field :user_id, class:"form-control" %>
-    </div>
-
-    <div class="actions">
-      <%= form.submit %>
-    </div>
-  <% end %>
-</div>
-<br><br><br>
-<% if user_signed_in? && current_user.user_role== 'admin'%>
-        <li class="nav-item">
-          <%= link_to "Admin Panel",  rails_admin.dashboard_path, class: "nav-link" %>
-        </li>
-     <% end %>
-     <% if user_signed_in? && current_user.user_role== 'instructor'%>
-        <li class="nav-item">
-        <%= link_to 'Instractor Panel', courses_path, class: "nav-link" %>
-        </li>
-     <% end %>
-     <% if user_signed_in? && current_user.user_role== 'council'%>
-        <li class="nav-item">
-        <%= link_to 'Check', instructor_path, class: "nav-link" %>
-        </li>
-     <% end %>
-     
+<div class="container">
+<h5 style="text-align:center;">New Courses</h5>
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <%= link_to "Courses", courses_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "New Course", new_course_path, class: "nav-link active",:"data-no-turbolink"=>true,method:"get" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Add module', courses_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Reply Question', courses_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
+      </li>
     </ul>
-    <div class="w-25 d-flex">
-      <% if user_signed_in? %>
-        <strong><%= current_user.email %></strong>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"btn btn-success btn-sm" %>
-      <% else %>
-        <%= link_to "Log in",  new_user_session_path, class: "btn btn-outline-success btn-small" %>
-      <% end %>
-    </div>
-
   </div>
-</nav>
-    <% if notice %>
-      <p class="alert alert-success", style='margin:90px'><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger", style='margin:90px'><%= alert %></p>
-    <% end %>
- <%= yield %>
+  <div class="card-body">
+    <div class="table-responsive">
+    <form>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <%= form.file_field :image, class:"form-control", placeholder:"Image", :required => true %>
+      </div>
+      <div class="form-group col-md-6">
+        <%= form.text_field :title, class:"form-control", placeholder:"Enter Title", :required => true %>
+      </div>
+    </div>
+      <div class="form-group">
+        <%= form.text_field :credit_number, class:"form-control", placeholder:"Enter Credit Number", :required => true %>
+      </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <%= form.text_field :status, class:"form-control", placeholder:"Enter Quiz Link", :required => true %>
+      </div>
+      <div class="form-group col-md-6">
+        <%= form.text_field :course_price, class:"form-control", placeholder:"Enter Course Price", :required => true %>
+      </div>
+    </div>
+    <div class="form-group">
+        <%= form.hidden_field :user_id, class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.text_area :content, class:"form-control", placeholder:"Enter Content", :required => true %>
+    </div>
+    <%= form.submit class:"btn btn-primary" %>
+  </form>
+  </div>
+</div>
+</div>
+</div>
+<% end %>
+

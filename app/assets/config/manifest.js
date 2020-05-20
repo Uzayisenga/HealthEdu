@@ -29,6 +29,11 @@
             //= link doct2.jpg
              //= link owl.carousel.css
              //= link owl.theme.default.min.css
+             
+//= link blog_large_1.jpg
+//= link blog_1.jpg
 
-
+//= link blog_2.jpg
+//= link course_5.jpg
+//= link logo1.png
           

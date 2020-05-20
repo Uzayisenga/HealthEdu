@@ -90,3 +90,5 @@ gem 'notifications', '~> 0.6.0'
 
 gem 'serviceworker-rails'
 gem 'letter_opener'
+gem 'sprockets-rails'
+gem 'sendgrid-actionmailer', '~> 2.4.0'

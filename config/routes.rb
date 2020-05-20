@@ -1,33 +1,25 @@
 Rails.application.routes.draw do
-  
   mount Notifications::Engine => "/notifications"
+  get 'pages/quiz'
+  get 'pages/about'
   resources :profiles
-  resources :mc_questions
-  resources :quizzes
   get 'certificate/index'
   get 'requests/update'
   resources :credits
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  resources :payments
   resources :replies
   resources :homepage
-  resources :favorites, only: [:create, :destroy, :index, :show, :certificate]
+  resources :favorites, only: [:create, :destroy, :index, :show]
   get 'comments/create'
   get 'course/assesment'
   get 'welcome/index'
   get 'exam/assesment'
   get 'users/index'
-  get 'certificate', to: 'favorites#certificate', as: 'certificate'
   get 'professional', to: 'users#professional', as: 'professional'
   get 'instructor', to: 'users#instructor', as: 'instructor'
   get 'search', to: 'users#search', as: :search
-
-
-  notify_to :users, with_devise: :users
-  notify_to :users
-  notify_to :users, controllers: { notifcations: 'users/notifcations' }
-  notify_to :admins, with_devise: :users, controller: 'admins/notifications_with_devise'
-
+  get 'quiz', to: 'users#quiz', as: 'quiz'
+ 
   devise_for :users, controllers: {
     registrations: "users/registrations",
     # Add this

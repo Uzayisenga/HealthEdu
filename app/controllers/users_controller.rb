@@ -42,6 +42,9 @@ class UsersController < ApplicationController
   def instructor
     @instructors = User.where(user_role: 'instructor')
   end
+  def quiz
+    
+  end
 
   def create
     @user = User.new(params[:user])
@@ -52,7 +55,8 @@ class UsersController < ApplicationController
         # Tell the UserMailer to send a welcome email after save
         #UserMailer.with(user: @user).welcome_email.deliver_later
         #UserNotifierMailer.send_signup_email(@user).deliver
-        UserMailer.signup_confirmation(@user).deliver_now!
+        #UserMailer.signup_confirmation(@user).deliver_now!
+        MessageMailer.with(user: @user).email.deliver_now!
  
         format.html { redirect_to(@user, notice: 'User was successfully created.') }
         format.json { render json: @user, status: :created, location: @user }

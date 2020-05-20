@@ -1,18 +1,5 @@
-<div class="tank">
-   <div class ="menu">
-      <ul class="list">
-        <li><%= link_to 'New Course', new_course_path %></li>
-        <li><%= link_to 'Add module', courses_path %></li>
-        <li><%= link_to 'View Question', courses_path %></li>
-        <li><%= link_to 'Reply Question', courses_path %></li>
-      </ul>
-    </div>
-    <div class="courses">
-<h1>New Course</h1>
-<hr class="hr">
-<%= render 'form', course: @course %>
 
-<%= link_to 'Back', courses_path %>
+<%= render 'form', course: @course %>
 </div>
 </div>
 
