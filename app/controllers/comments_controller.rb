@@ -30,7 +30,8 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
 
     respond_to do |format|
-      if @comment.save
+      if @comment.savNotification.create(
+        
         format.html { redirect_to course_comments_url, notice: 'question was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
