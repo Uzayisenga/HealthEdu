@@ -70,6 +70,48 @@
                   {}, { class: "form form-group form-control" } %>
                 </div>
                 <div class="col-50">
+                <%= f.select :working_place, options_for_select([
+                  ["Anaesthesia Practitioner", ""], 
+                  "Biomedical Engineer", 
+                  "Medical Laboratory Practitioner", 
+                  "BOccupational Therapist", 
+                  "Dental Therapist",
+                  "Nutritionist",
+                  "Environmental Health_Professional",
+                  "Clinial Psychologist", 
+                  "Chiropractor", 
+                  "Clinical Medicine Practitioner", 
+                  "Speech and Language Pathologist",
+                  "Clinical Perfusionist",
+                  "Emergency Care Practitioner",
+                  "Physiotherapist", 
+                  "Medical Imaging Practitioner", 
+                  "Prosthetists and Orthotist", 
+                  "Orthopeadic Clinical Officer", 
+                  "Public Health Practitioner",
+                  "Ophthalmic Clinical Officer",
+                  "Social Work Practitioner",
+                  "Optometry Practitioner", 
+                  "Theatre Operating Therapist", 
+                  "Nurse", 
+                  "Midwife",
+                  "Medical Doctor (GP)",
+                  "Dental Surgion",
+                  "Emergency Care Practitioner",
+                  "Physiotherapist",
+                  "Ophthalmologist", 
+                  "Pathologist", 
+                  "Oncologist", 
+                  "Orthopaedic Surgeon",
+                  "Cardiologist",
+                  "Neurosurgeons",
+                  "Radiologists ", 
+                  "Internists practitioners", 
+                  "Pharmacists", 
+                  "Others"]), 
+                  {}, { class: "form form-group form-control" } %>
+                </div>
+                <div class="col-50">
                 <%= f.select :user_role, options_for_select([
                   ["professional", ""], 
                   "admin", 

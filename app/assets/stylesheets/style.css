@@ -911,7 +911,8 @@ h1, h2, h3, h4, h5,
     -ms-transform: translatey(-100%);
     transform: translatey(-100%);
     padding: 10px 20px;
-    background: #183661;
+    background: #ff4444
+    ;
     color: #fff; }
   .course-1-item .course-1-content {
     padding: 20px 40px;
