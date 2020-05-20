@@ -71,6 +71,7 @@
           <li class="nav-item">
           <%= link_to 'Courses', all_course_courses_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
           </li>
+
           
         <% end %>
         <% if user_signed_in? && current_user.user_role== 'admin'%>
