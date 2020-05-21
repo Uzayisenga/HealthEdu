@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_15_004000) do
+ActiveRecord::Schema.define(version: 2020_05_21_074420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,12 +115,112 @@ ActiveRecord::Schema.define(version: 2020_05_15_004000) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "mc_questions", force: :cascade do |t|
+    t.string "question"
+    t.string "answer"
+    t.string "distractor_1"
+    t.string "distractor_2"
+    t.string "distractor_3"
+    t.bigint "quiz_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["quiz_id"], name: "index_mc_questions_on_quiz_id"
+  end
+
+  create_table "notifications", id: :serial, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "actor_id"
+    t.string "notify_type", null: false
+    t.string "target_type"
+    t.integer "target_id"
+    t.string "second_target_type"
+    t.integer "second_target_id"
+    t.string "third_target_type"
+    t.integer "third_target_id"
+    t.datetime "read_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "notify_type"], name: "index_notifications_on_user_id_and_notify_type"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.float "amount"
+    t.bigint "user_id", null: false
+    t.bigint "course_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_payments_on_course_id"
+    t.index ["user_id"], name: "index_payments_on_user_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.text "image"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "title"
+    t.integer "type"
+    t.bigint "survey_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["survey_id"], name: "index_questions_on_survey_id"
+  end
+
+  create_table "quizzes", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.bigint "course_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_quizzes_on_course_id"
+  end
+
+  create_table "rapidfire_answers", force: :cascade do |t|
+    t.bigint "attempt_id"
+    t.bigint "question_id"
+    t.text "answer_text"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["attempt_id"], name: "index_rapidfire_answers_on_attempt_id"
+    t.index ["question_id"], name: "index_rapidfire_answers_on_question_id"
+  end
+
+  create_table "rapidfire_attempts", force: :cascade do |t|
+    t.bigint "survey_id"
+    t.string "user_type"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["survey_id"], name: "index_rapidfire_attempts_on_survey_id"
+    t.index ["user_id", "user_type"], name: "index_rapidfire_attempts_on_user_id_and_user_type"
+    t.index ["user_type", "user_id"], name: "index_rapidfire_attempts_on_user_type_and_user_id"
+  end
+
+  create_table "rapidfire_questions", force: :cascade do |t|
+    t.bigint "survey_id"
+    t.string "type"
+    t.string "question_text"
+    t.string "default_text"
+    t.string "placeholder"
+    t.integer "position"
+    t.text "answer_options"
+    t.text "validation_rules"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["survey_id"], name: "index_rapidfire_questions_on_survey_id"
+  end
+
+  create_table "rapidfire_surveys", force: :cascade do |t|
+    t.string "name"
+    t.text "introduction"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "after_survey_content"
   end
 
   create_table "replies", force: :cascade do |t|
@@ -131,6 +231,62 @@ ActiveRecord::Schema.define(version: 2020_05_15_004000) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["comment_id"], name: "index_replies_on_comment_id"
     t.index ["user_id"], name: "index_replies_on_user_id"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.bigint "course_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_requests_on_course_id"
+    t.index ["user_id"], name: "index_requests_on_user_id"
+  end
+
+  create_table "responses", force: :cascade do |t|
+    t.bigint "survey_id", null: false
+    t.string "ip"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["survey_id"], name: "index_responses_on_survey_id"
+  end
+
+  create_table "results", force: :cascade do |t|
+    t.integer "correct"
+    t.integer "possible"
+    t.integer "answer"
+    t.integer "distract"
+    t.integer "score"
+    t.integer "marks"
+    t.bigint "mc_question_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["mc_question_id"], name: "index_results_on_mc_question_id"
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.string "target_type", null: false
+    t.bigint "target_id", null: false
+    t.string "key", null: false
+    t.boolean "subscribing", default: true, null: false
+    t.boolean "subscribing_to_email", default: true, null: false
+    t.datetime "subscribed_at"
+    t.datetime "unsubscribed_at"
+    t.datetime "subscribed_to_email_at"
+    t.datetime "unsubscribed_to_email_at"
+    t.text "optional_targets"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["key"], name: "index_subscriptions_on_key"
+    t.index ["target_type", "target_id", "key"], name: "index_subscriptions_on_target_type_and_target_id_and_key", unique: true
+    t.index ["target_type", "target_id"], name: "index_subscriptions_on_target_type_and_target_id"
+  end
+
+  create_table "surveys", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "course_id", null: false
+    t.index ["course_id"], name: "index_surveys_on_course_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -174,7 +330,17 @@ ActiveRecord::Schema.define(version: 2020_05_15_004000) do
   add_foreign_key "credits", "courses"
   add_foreign_key "favorites", "courses"
   add_foreign_key "favorites", "users"
+  add_foreign_key "mc_questions", "quizzes"
+  add_foreign_key "payments", "courses"
+  add_foreign_key "payments", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "questions", "surveys"
+  add_foreign_key "quizzes", "courses"
   add_foreign_key "replies", "comments"
   add_foreign_key "replies", "users"
+  add_foreign_key "requests", "courses"
+  add_foreign_key "requests", "users"
+  add_foreign_key "responses", "surveys"
+  add_foreign_key "results", "mc_questions"
+  add_foreign_key "surveys", "courses"
 end
