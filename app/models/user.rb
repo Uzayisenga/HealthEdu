@@ -65,7 +65,14 @@ class User < ApplicationRecord
         # end
         enum reguratory_body: [:RAHPC, :NPC, :RMDC, :NCNM]
         enum level: [:certificate_A2, :Advanced_Diploma, :Bachelor_Degree, :Masters_Degree, :PHD, :Others]
+        enum working_place: [:Anaesthesia_Practitioner, :Biomedical_Engineer, :Medical_Laboratory_Practitioner, :BOccupational_Therapist,
+        :Chiropractor, :Nutritionist, :Environmental_Health_Professional, :Clinial_Psychologist,:Dental_Therapist,
+        :Emergency_Care_Practitioner, :Physiotherapist, :Speech_and_Language_Pathologist, :Medical_Imaging_Practitioner,
+        :Prosthetists_and_Orthotist, :Orthopeadic_Clinical_Officer, :Public_Health_Practitioner, :Ophthalmic_Clinical_Officer,
+        :Social_Work_Practitioner, :Optometry_Practitioner, :Theatre_Operating_Therapist, :Nurse,
+        :Midwife, :Medical_Doctor, :Dental_Surgion,
+        :Orthopaedic_Surgeon, :Cardiologist, :Pathologist, :Oncologist,
+        :Neurosurgeons, :Radiologists, :Internists_practitioners, :Pharmacists, :Other,] 
        
-        
-  
+                  
 end  

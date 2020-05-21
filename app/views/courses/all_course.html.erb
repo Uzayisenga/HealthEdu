@@ -3,7 +3,7 @@
           <div class="row align-items-end">
             <div class="col-lg-7">
               <h2 class="mb-0">Courses</h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+              <p>Increase your knowledge and get certificate</p>
             </div>
           </div>
         </div>
@@ -31,13 +31,13 @@
                           <% end %>
                           </a>
                           <div class="price"><%= course.course_price%>&nbsp;Frws</div>
-                          <div class="category"><h3>Updated
+                          <div class="category"><h3><i class="fa fa-calendar"></i> Updated
                           <% start_time = course.created_at %>
                           <% end_time   =  DateTime.now %>
                           <%= distance_of_time_in_words(start_time, end_time)  %></h3></div>  
                           </figure>
                           <div class="course-1-content pb-4">
-                          <h2><%= course.title%>/<%= course.credit_number %></h2>
+                          <h2><%= course.title%>/<%= course.credit_number %>CPD Credits</h2>
                           
                           <p class="desc mb-4"><%= course.content[0,80]..%></p>
                           <p><%= link_to 'Enroll In This Course', course, class:"btn btn-primary rounded-0 px-4",:"data-no-turbolink"=>true,method:"get" %></p>
@@ -49,27 +49,4 @@
         </div>
     </div>
 
-    <div class="section-bg style-1" style="background-image: url('/assets/hero_1.jpg');">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
-              <span class="icon flaticon-mortarboard"></span>
-              <h3>Our Philosphy</h3>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea? Dolore, amet reprehenderit.</p>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
-              <span class="icon flaticon-school-material"></span>
-              <h3>Academics Principle</h3>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea?
-                Dolore, amet reprehenderit.</p>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
-              <span class="icon flaticon-library"></span>
-              <h3>Key of Success</h3>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea?
-                Dolore, amet reprehenderit.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-  </div>
+   
