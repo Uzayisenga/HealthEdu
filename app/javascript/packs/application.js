@@ -16,6 +16,7 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 // Animations init
+//= require trix
 new WOW().init();
 AOS.init({
     duration: 800,

@@ -35,9 +35,12 @@
 <a href="<%= @favorite.course.status%>" target="_blank" rel="noopener noreferrer" class= "btn btn-info">Take quiz here</a>
 
 <% else %>
-<p>
-<h2>Please pay <%= @favorite.course.course_price %> RWF on 0788898262(Emmanuella Uwandamiye) to access all modules</h2>
-</p>
+<div class="msg">
+
+<h2 class="hdr">Notyet pay, Please Pay <%= @favorite.course.course_price %> on Bank of Kigali <br>Bank Account: 00262-06949899-22 / Top-Upgrade Ltd or use MTN Mobile Money on 0788848750 registered to Uwandamiye Emmanuella or 0730300074 registered to Jean Damascene BIGIRIMANA. In case you have a question, contact of of those phone numbers or e-mail: healthedultd@gmail.com to access all modules <b><br> Thank You!!</h2>
+
+</div>
+
 <% end %>
 
 <%= link_to 'Back', favorites_path %>
