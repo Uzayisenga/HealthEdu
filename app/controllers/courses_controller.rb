@@ -118,7 +118,7 @@ class CoursesController < ApplicationController
   end
 
   def can_create_course
-    unless current_user && current_user.user_role == "admin" || current_user && current_user.user_role == "council"
+    unless current_user && current_user.user_role == "admin" || current_user && current_user.user_role == "instructor"
       redirect_to courses_url, notice: "you are not allowed to upload a course"
     end
   end

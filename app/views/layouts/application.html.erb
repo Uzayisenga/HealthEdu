@@ -71,7 +71,7 @@
       <div class="w-25 d-flex">
         <% if user_signed_in? %>
           <strong><%= current_user.email %></strong>
-          <%= link_to pluralize(Notification.unread_count(current_user), 'Notification'), notifications_path, :class => 'navbar-link'  %>
+          <i class="fa fa-bell" aria-hidden="true"></i><%= link_to pluralize(Notification.unread_count(current_user), ''), notifications_path, :class => 'navbar-link'  %>
           <div class="dropdown">
             <button class="dropbtn btn-sm"><i class="fa fa-gear fa-spin" style="font-size:24px"></i>Settings</button>
             <div class="dropdown-content">
