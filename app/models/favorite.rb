@@ -11,4 +11,8 @@ class Favorite < ApplicationRecord
   def course_modules_calculated
       self.course.credits.count
   end
+
+  def week
+    self.created_at.strftime('%B')
+  end
 end

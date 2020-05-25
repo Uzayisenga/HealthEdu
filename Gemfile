@@ -81,7 +81,10 @@ gem 'mini_racer'
 gem 'jquery-rails'
 gem 'wicked_pdf', '1.4.0'
 gem 'wkhtmltopdf-binary'
-
-
-
-
+gem 'notifications'
+gem 'redcarpet'
+gem 'coderay'
+gem 'paperclip'
+gem 'ckeditor', :git => 'https://github.com/galetahub/ckeditor.git'
+gem "chartkick"
+gem 'groupdate'

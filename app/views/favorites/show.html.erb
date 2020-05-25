@@ -26,14 +26,14 @@
  
 
   <i class="fa fa-file-pdf-o fa_custom"></i><%= credit.name %>
-  <%= link_to "Download", credit.upload_file_url %>
+  <%= link_to "Download", credit.upload_file_url, target: '_blank' %>
   </div><br>
-
 
 <% end %>
 </p>
+<% if ((DateTime.now.to_time - @favorite.created_at.to_time)/1.hours).to_i > 5 %>
 <a href="<%= @favorite.course.status%>" target="_blank" rel="noopener noreferrer" class= "btn btn-info">Take quiz here</a>
-
+<% end %>
 <% else %>
 <p>
 <h2>Please pay <%= @favorite.course.course_price %> RWF on 0788898262(Emmanuella Uwandamiye) to access all modules</h2>

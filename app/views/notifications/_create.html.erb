@@ -1,0 +1,10 @@
+<div class="media-heading">
+  <%= link_to notification.actor.names, main_app.user_path(notification.actor) %> created  a new course
+  <% if false%>
+  <%= link_to (notification.second_target.names if notification.second_target), main_app.topic_path(notification.second_target) %>
+  <% end %>
+</div>
+<br><br><br>
+<div class="media-content">
+  <%= notification.target.title %>
+</div>

@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
     <meta name='viewport' content='initial-scale=1, viewport-fit=cover'>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag Ckeditor.cdn_url %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <%= stylesheet_link_tag 'style', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -30,27 +31,30 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <%= link_to "Home", homepage_index_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
+          <%= link_to "Home", main_app.homepage_index_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
         </li>
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "My Courses", favorites_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
+            <%= link_to "My Courses", main_app.favorites_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
           </li>
           <li class="nav-item">
-            <%=link_to 'All Courses',all_course_courses_path, class:"nav-link",:"data-no-turbolink"=>true,method:"get" %>
+            <%=link_to 'All Courses',main_app.all_course_courses_path, class:"nav-link",:"data-no-turbolink"=>true,method:"get" %>
           </li>
         <% else %>
           <li class="nav-item">
-          <%= link_to 'About Us', pages_about_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
+          <%= link_to 'About Us', main_app.pages_about_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
           </li>
           <li class="nav-item">
-          <%= link_to 'Courses', all_course_courses_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
+          <%= link_to 'Courses', main_app.all_course_courses_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
           </li>
           
         <% end %>
         <% if user_signed_in? && current_user.user_role== 'admin'%>
           <li class="nav-item">
               <%= link_to "Admin Panel",  rails_admin.dashboard_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
+          </li>
+          <li class="nav-item">
+              <%= link_to "reports",  report_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
           </li>
         <% end %>
         <% if user_signed_in? && current_user.user_role== 'instructor'%>
@@ -67,12 +71,12 @@
       <div class="w-25 d-flex">
         <% if user_signed_in? %>
           <strong><%= current_user.email %></strong>
-          
+          <%= link_to pluralize(Notification.unread_count(current_user), 'Notification'), notifications_path, :class => 'navbar-link'  %>
           <div class="dropdown">
             <button class="dropbtn btn-sm"><i class="fa fa-gear fa-spin" style="font-size:24px"></i>Settings</button>
             <div class="dropdown-content">
-              <%= link_to "Logout", destroy_user_session_path, class:"a", method: :delete %>
-              <%= link_to 'View Profile', edit_user_registration_path, class:'a',:"data-no-turbolink"=>true,method:"get" %>
+              <%= link_to "Logout", main_app.destroy_user_session_path, class:"a", method: :delete %>
+              <%= link_to 'View Profile', main_app.edit_user_registration_path, class:'a',:"data-no-turbolink"=>true,method:"get" %>
             </div>
           </div>
           <% else %>

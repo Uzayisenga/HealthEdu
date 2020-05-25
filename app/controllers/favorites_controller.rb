@@ -1,4 +1,5 @@
 class FavoritesController < ApplicationController
+  before_action :can_request_course, only: [:create]
   def index
     @favorites=Favorite.all        
 end
@@ -33,5 +34,15 @@ def certificate
   @favorites=Favorite.all
 end
 
+def can_request_course
+  unless current_user && current_user.user_role == "professional"
+    redirect_to favorites_url, notice: "only a student can request a course"
+  end
+end
+
+
+def report
+  @favorites = Favorite.all
+end
 end
 

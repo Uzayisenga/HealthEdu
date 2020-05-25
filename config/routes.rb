@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+  mount Notifications::Engine => "/notifications"
   get 'pages/quiz'
   get 'pages/about'
   resources :profiles
@@ -15,6 +17,7 @@ Rails.application.routes.draw do
   get 'exam/assesment'
   get 'users/index'
   get 'professional', to: 'users#professional', as: 'professional'
+  get 'report', to: 'favorites#report', as: 'report'
   get 'instructor', to: 'users#instructor', as: 'instructor'
   get 'search', to: 'users#search', as: :search
   get 'quiz', to: 'users#quiz', as: 'quiz'

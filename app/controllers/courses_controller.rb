@@ -2,6 +2,7 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   before_action :authenticate_user!
+  before_action :can_create_course, only: [:new, :create]
   
   # before_action :only_admin, only: [:edit, :new]
 
@@ -112,6 +113,12 @@ class CoursesController < ApplicationController
 
   def check_payment
     unless current_user && @course.status == "paid"
+    end
+  end
+
+  def can_create_course
+    unless current_user && current_user.user_role == "admin" || current_user && current_user.user_role == "council"
+      redirect_to courses_url, notice: "you are not allowed to upload a course"
     end
   end
 end

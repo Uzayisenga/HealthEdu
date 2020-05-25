@@ -1,0 +1,11 @@
+<% @favorites.group_by(&:week).each do |week, favorites| %>
+    <div id="week">
+      <h2>Month <%= week %></h2>
+      <% favorites.each do |favorite| %>
+    title: <%= favorite.course.title %><br>
+      uploaded by:<%= favorite.course.user.names %><br>
+      requested by: <%= favorite.user.names %><br>
+      <%end %>
+      <br><br><br>
+    </div>
+  <% end %>
