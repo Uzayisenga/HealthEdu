@@ -55,7 +55,7 @@
         <!-- Title -->
         <h4 class="card-title">Course Description</h4>
         <!-- Text -->
-        <p class="card-text"><%=@course.content%></p>
+        <p class="card-text"><%=@course.content.html_safe%></p>
       </div>
       <% if user_signed_in? && current_user.user_role== 'instructor'%>
       <div class="card">
@@ -82,7 +82,8 @@
       </div>
     </div>
     <%end%>
-  </div><br>
-  
-  
 
+    
+  </div><br>
+
+  

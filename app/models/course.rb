@@ -9,4 +9,18 @@ class Course < ApplicationRecord
   mount_uploader :upload_file, UploadFileUploader
   validates :content,  length: { minimum: 100 }
   validates :content, :course_price, :credit_number, :title, :status, :user_id, presence: true
+  after_commit :create_notifications, on: [:create]
+  def create_notifications
+    User.where(user_role: 'professional').each do |student|
+      Notification.create do |notification|
+        notification.notify_type = 'create'
+        notification.actor = self.user
+        
+        notification.user = student
+        
+        notification.target = self
+        # notification.second_target = self.course
+      end
+    end
+  end
 end
