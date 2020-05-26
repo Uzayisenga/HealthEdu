@@ -15,6 +15,7 @@
   <strong>Uploaded by:</strong>
   <%= @favorite.course.user.email %>
 </p>
+
 <% if @favorite.status == "paid" %>
 <p>
 <h3 class="card-title"><b>Modules course of <%= @favorite.course.title %></b></h3>
@@ -23,16 +24,14 @@
       
 <% @favorite.course.credits.each do |credit| %>
   <div class="module">
- 
-
-  <i class="fa fa-file-pdf-o fa_custom"></i><%= credit.name %>
-  <%= link_to "Download", credit.upload_file_url, target: '_blank' %>
+  <i class="fa fa-file-pdf-o fa_custom"></i> <%= link_to credit.name, credit_path%>
+  <%= link_to "Download", credit.upload_file_url, target: :_blank %>
   </div><br>
 
 <% end %>
 </p>
 <% if ((DateTime.now.to_time - @favorite.created_at.to_time)/1.hours).to_i > 5 %>
-<a href="<%= @favorite.course.status%>" target="_blank" rel="noopener noreferrer" class= "btn btn-info">Take quiz here</a>
+<a href="<%= @favorite.course.quiz_link%>" target="_blank" rel="noopener noreferrer" class= "btn btn-info">Take quiz here</a>
 <% end %>
 <% else %>
 <div class="msg">

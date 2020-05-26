@@ -36,7 +36,7 @@ end
 
 def can_request_course
   unless current_user && current_user.user_role == "professional"
-    redirect_to favorites_url, notice: "only a student can request a course"
+    redirect_to favorites_url, notice: "only a proffessional can request a course"
   end
 end
 

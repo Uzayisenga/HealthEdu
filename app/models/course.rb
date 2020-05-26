@@ -6,9 +6,8 @@ class Course < ApplicationRecord
   has_many :favorite_users, through: :favorites, source: :user
   belongs_to :user, optional: true
   mount_uploader :image, ImageUploader
-  mount_uploader :upload_file, UploadFileUploader
   validates :content,  length: { minimum: 100 }
-  validates :content, :course_price, :credit_number, :title, :status, :user_id, presence: true
+  validates :content, :course_price, :credit_number, :title, :quiz_link, :user_id, presence: true
   after_commit :create_notifications, on: [:create]
   def create_notifications
     User.where(user_role: 'professional').each do |student|

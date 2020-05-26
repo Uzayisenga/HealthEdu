@@ -93,7 +93,7 @@ class CoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def course_params
-      params.require(:course).permit(:image, :title, :credit_number, :content, :upload_file, :course_price, :status, :marks, :attemption, :user_id ,{file: []})
+      params.require(:course).permit(:image, :title, :credit_number, :content, :content_attract, :course_price, :quiz_link, :marks, :attemption, :user_id ,{file: []})
     end
 
     def only_admin

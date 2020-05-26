@@ -74,8 +74,9 @@
 
 <div class="container">
     <div class="row">
-    <% @courses.each do |course| %>
+      <% @courses.each do |course| %>
         <div class="col-lg-4 col-md-6 mb-4">
+        
               <div class="course-1-item">
                   <figure class="thumnail">
                   <a href="course-single.html">
@@ -85,19 +86,22 @@
                   </a>
                   <div class="price"><%= course.course_price%>&nbsp;Frws</div>
                   <div class="category"><h3><i class="fa fa-calendar"></i> Updated
-                  <% start_time = course.created_at %>
-                  <% end_time   =  DateTime.now %>
-                  <%= distance_of_time_in_words(start_time, end_time)  %></h3></div>  
-                  </figure>
-                  <div class="course-1-content pb-4">
-                  <h2><%= course.title%>/<%= course.credit_number %>CPD Credits</h2>
-                  
-                  <p class="desc mb-4"><%= course.content.html_safe %></p>
-                  <p><%= link_to 'Enroll In This Course', course, class:"btn btn-primary rounded-0 px-4",:"data-no-turbolink"=>true,method:"get" %></p>
+                    <% start_time = course.created_at %>
+                    <% end_time   =  DateTime.now %>
+                    <%= distance_of_time_in_words(start_time, end_time)  %></h3>
+                  </div>  
+                    </figure>
+                    <div class="course-1-content pb-4">
+                    <B>Instructor:</B><%= course.user.names + " " + course.user.last_name%>
+                    <h2><%= course.title%>/<%= course.credit_number %>CPD Credits</h2>
+                    
+                    <p class="desc mb-4"><%= course.content_attract.truncate(75)%>
+                      <p><%= link_to 'Enroll In This Course', course, class:"btn btn-primary rounded-0 px-4",:"data-no-turbolink"=>true,method:"get" %></p>
+                    
                   </div>
               </div>
         </div>
-      <% end %>
+       <% end %>
     </div>
     <%= link_to 'View All', all_course_courses_path, style:'font-weight:bolder;color:#81c784;background:green;padding:8px;border:1px;border-style:solid;border-color:#81c784;position:center' %>
 </div>

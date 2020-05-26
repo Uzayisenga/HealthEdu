@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_24_144217) do
+ActiveRecord::Schema.define(version: 2020_05_26_155026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,9 +62,9 @@ ActiveRecord::Schema.define(version: 2020_05_24_144217) do
     t.string "title"
     t.string "credit_number"
     t.text "content"
-    t.string "upload_file"
+    t.text "content_attract"
     t.string "course_price"
-    t.string "status"
+    t.string "quiz_link"
     t.string "marks"
     t.string "attemption"
     t.bigint "user_id", null: false
