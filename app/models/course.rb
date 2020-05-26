@@ -7,7 +7,7 @@ class Course < ApplicationRecord
   belongs_to :user, optional: true
   mount_uploader :image, ImageUploader
   validates :content,  length: { minimum: 100 }
-  validates :content, :course_price, :credit_number, :title, :quiz_link, :user_id, presence: true
+  validates :content, :course_price, :content_attract, :credit_number, :title, :quiz_link, :user_id, presence: true
   after_commit :create_notifications, on: [:create]
   def create_notifications
     User.where(user_role: 'professional').each do |student|

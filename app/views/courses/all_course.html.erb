@@ -40,7 +40,7 @@
                           <B>Instructor:</B><%= course.user.names + " " + course.user.last_name%><br>
                           <h2><%= course.title%>/<%= course.credit_number %>CPD Credits</h2>
                           
-                          <p class="desc mb-4"><%= course.content_attract%>
+                          <p class="desc mb-4"><%= course.content_attract.truncate(75)%>
                           <p><%= link_to 'Enroll In This Course', course, class:"btn btn-primary rounded-0 px-4",:"data-no-turbolink"=>true,method:"get" %></p>
                           </div>
                       </div>
