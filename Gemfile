@@ -88,3 +88,4 @@ gem 'paperclip'
 gem 'ckeditor', :git => 'https://github.com/galetahub/ckeditor.git'
 gem "chartkick"
 gem 'groupdate'
+gem 'kaminari'

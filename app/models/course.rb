@@ -1,4 +1,5 @@
 class Course < ApplicationRecord
+  paginates_per 2
   has_many :comments, dependent: :destroy
   has_many :credits, dependent: :destroy
   has_many :favorites, dependent: :destroy
