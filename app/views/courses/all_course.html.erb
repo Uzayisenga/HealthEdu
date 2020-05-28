@@ -38,8 +38,8 @@
                           </figure>
                           <div class="course-1-content pb-4">
                           <h2><%= course.title%>/<%= course.credit_number %>CPD Credits</h2>
-                          
-                          <p class="desc mb-4"><%= (course.content.html_safe)[0,80]..%></p>
+                  
+                          <p class="desc mb-4"> <%= raw(course.content)[0,80].. %></p>
                           <p><%= link_to 'Enroll In This Course', course, class:"btn btn-primary rounded-0 px-4",:"data-no-turbolink"=>true,method:"get" %></p>
                           </div>
                       </div>
