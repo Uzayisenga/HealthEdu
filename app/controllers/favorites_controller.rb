@@ -42,6 +42,7 @@ end
 
 
 def report
+  @initial = 0
   @favorites = Favorite.all
 end
 end

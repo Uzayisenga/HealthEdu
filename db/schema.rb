@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_155026) do
+ActiveRecord::Schema.define(version: 2020_05_28_123325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(version: 2020_05_26_155026) do
     t.string "credit_number"
     t.text "content"
     t.text "content_attract"
-    t.string "course_price"
     t.string "quiz_link"
     t.string "marks"
     t.string "attemption"
@@ -71,6 +70,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_155026) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "file"
+    t.integer "course_price"
     t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
