@@ -117,7 +117,7 @@
                   "admin", 
                   "instructor", 
                   "council"]), 
-                  {} %>
+                  {}, disabled: (true unless current_user && current_user.user_role == 'admin') %>
               </div>
             </div>
           </div>
