@@ -65,6 +65,7 @@ gem 'bootstrap-will_paginate', '0.0.6'
 gem "font-awesome-rails"
 
 gem 'rails_admin'
+gem 'rails_admin_import'
 
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
