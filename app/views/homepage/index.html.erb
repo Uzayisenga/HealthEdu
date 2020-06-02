@@ -111,7 +111,7 @@
 
 <!--/.Carousel Wrapper-->
     </div>
-    <div class="section-bg style-1" style="background-image: url('/assets/about.jpg');">
+    <div class="section-bg style-1" style="background-image: url('/assets/image1.jpg');">
       <div class="container">
         <div class="row">
           <div class="col-lg-4">
@@ -126,6 +126,54 @@
             </p>
             <p><%= link_to 'Read more', pages_about_path,:"data-no-turbolink"=>true,method:"get" %></p>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container text-center ">
+        <div class="row">
+           <div class="col-12 mb-5">
+              <div class="display-4 ">Our Clients</div>
+              <p class="lead">We work closely with a wide range of clients from different sectors</p>
+           </div>
+        </div>
+        <div class="clients-all-logo">
+         <div class="row text-center justify-content-center">
+           <div class="col-lg-3 col-md-3 ">
+              <h3> healthEdu</h3>
+              <img src="/assets/logo1.png" class="partner " alt="Web designer in India ">
+           </div>
+           <div class="col-lg-3 col-md-3 ">
+           <h3> healthEdu</h3>
+            <img src="/assets/logo1.png" class="img-fluid" alt="Freelance Web Developer india ">
+           </div>
+          <div class="col-lg-3 col-md-3 ">
+          <h3> healthEdu</h3>
+            <img src="/assets/logo1.png" class="img-fluid" alt="Freelance Web Developer india">
+          </div>
+          <div class="col-lg-3 col-md-3 ">
+               <h3> healthEdu</h3>
+                <img src="/assets/logo1.png" class="img-fluid" alt="Freelance Web Designer in Delhi, india ">
+           
+          </div>
+          <div class="col-lg-3 col-md-3 ">
+             <h3> healthEdu</h3>
+              <img src="/assets/logo1.png" class="img-fluid" alt="Freelance Web Developer in Noida ">
+              
+          </div>
+          <div class="col-lg-3 col-md-3 ">
+          <h3> healthEdu</h3>
+            <img src="/assets/logo1.png" class="img-fluid" alt=" Freelance Web Developer in delhi Ncr ">
+          </div>
+          <div class="col-lg-3 col-md-3">
+          <h3> healthEdu</h3>
+            <img src="/assets/logo1.png" class="img-fluid" alt="Freelance Web Developer in India">
+          </div>
+          <div class="col-lg-3 col-md-3">
+          <h3> healthEdu</h3>
+              <img src="/assets/logo1.png" class="img-fluid" alt="Best Freelance Web Developer in India ">
+          </div>
+          
         </div>
       </div>
     </div>
@@ -318,7 +366,7 @@
         <!--/.Carousel Wrapper-->       
       </div>
     </div>
-    <div class="section-bg style-1" style="background-image: url('/assets/hero_1.jpg');">
+    <div class="section-bg style-1" style="background-image: url('/assets/image1.jpg');">
       <div class="container">
         <div class="row">
           <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
@@ -360,7 +408,7 @@
               <div class="col-lg-6">
                 <div class="post-entry-big">
                   <a href="news-single.html" class="img-link">
-                  <%= image_tag("blog_large_1.jpg", class:"img-fluid") %>
+                  <%= image_tag("image2.jpg", class:"img-fluid") %>
                   </a>
                   <div class="post-content">
                     <div class="post-meta"> 
@@ -375,7 +423,7 @@
               <div class="col-lg-6">
                 <div class="post-entry-big horizontal d-flex mb-4">
                   <a href="news-single.html" class="img-link mr-4">
-                  <%= image_tag("blog_1.jpg", class:"img-fluid") %>
+                  <%= image_tag("image6.jpg", class:"img-fluid") %>
                   </a>
                   <div class="post-content">
                     <div class="post-meta">
@@ -389,7 +437,7 @@
 
                 <div class="post-entry-big horizontal d-flex mb-4">
                   <a href="news-single.html" class="img-link mr-4">
-                  <%= image_tag("blog_2.jpg", class:"img-fluid") %>
+                  <%= image_tag("study1.jpg", class:"img-fluid") %>
                   </a>
                   <div class="post-content">
                     <div class="post-meta">
@@ -403,7 +451,7 @@
 
                 <div class="post-entry-big horizontal d-flex mb-4">
                   <a href="news-single.html" class="img-link mr-4">
-                  <%= image_tag("blog_1.jpg", class:"img-fluid") %>
+                  <%= image_tag("study2.jpg", class:"img-fluid") %>
                   </a>
                   <div class="post-content">
                     <div class="post-meta">
@@ -422,18 +470,19 @@
               <h2 class="text-black">Professional</h2>
               <a href="#">View All Tools</a>
             </div>
-            <a href="https://vimeo.com/45830194" class="video-1 mb-4" data-fancybox="" data-ratio="2">
+            <a href="url('/assets/healthedu.mp4')" class="video-1 mb-4" data-fancybox="" data-ratio="2">
               <span class="play">
                 <span class="icon-play"></span>
               </span>
-              <%= image_tag("course_5.jpg", class:"img-fluid") %>
+              <%= image_tag("doct2.jpg", class:"img-fluid") %>
             </a>
-            <a href="https://vimeo.com/45830194" class="video-1 mb-4" data-fancybox="" data-ratio="2">
+            <a href= "healthedu.mp4" class="video-1 mb-4" data-fancybox="" data-ratio="2">
                 <span class="play">
                   <span class="icon-play"></span>
                 </span>
-                <%= image_tag("course_5.jpg", class:"img-fluid") %>
+                <%= image_tag("doct2.jpg", class:"img-fluid") %>
               </a>
+              <%= video_tag "healthEdu.mp4" %>
           </div>
         </div>
       </div>
