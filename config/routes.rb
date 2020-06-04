@@ -21,9 +21,13 @@ Rails.application.routes.draw do
   get 'instructor', to: 'users#instructor', as: 'instructor'
   get 'search', to: 'users#search', as: :search
   get 'quiz', to: 'users#quiz', as: 'quiz'
- get 'exit', to: 'sessions#destroy', as: :logout
+ 
 
-  
+  devise_for :users, controllers: {
+    registrations: "users/registrations",
+    # Add this
+    omniauth_callbacks: "users/omniauth_callbacks"
+  }
   resources :users, :only =>[:show, :index]
 resources :courses do
   collection do
