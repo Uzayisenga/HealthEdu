@@ -21,7 +21,8 @@ Rails.application.routes.draw do
   get 'instructor', to: 'users#instructor', as: 'instructor'
   get 'search', to: 'users#search', as: :search
   get 'quiz', to: 'users#quiz', as: 'quiz'
- 
+ get "/logout" => "devise/sessions#destroy", :as => :destroy_user_session
+
   devise_for :users, controllers: {
     registrations: "users/registrations",
     # Add this
