@@ -8,30 +8,30 @@
     flex-wrap: wrap;
     margin: 0 -16px;
   }
-  
+
   .col-25 {
     -ms-flex: 25%; /* IE10 */
     flex: 25%;
   }
-  
+
   .col-50 {
     -ms-flex: 50%; /* IE10 */
     flex: 50%;
   }
-  
+
   .col-75 {
     -ms-flex: 75%; /* IE10 */
     flex: 75%;
   }
-  
+
   .col-25,
   .col-50,
   .col-75 {
     padding: 0 16px;
   }
-  
-  
-  
+
+
+
   input[type=text] {
     width: 100%;
     margin-bottom: 20px;
@@ -39,18 +39,18 @@
     border: 1px solid #ccc;
     border-radius: 3px;
   }
-  
+
   label {
     margin-bottom: 10px;
     display: block;
   }
-  
+
   .icon-container {
     margin-bottom: 20px;
     padding: 7px 0;
     font-size: 24px;
   }
-  
+
   .btn {
     background-color: #4CAF50;
     color: white;
@@ -62,16 +62,16 @@
     cursor: pointer;
     font-size: 17px;
   }
-  
+
   .btn:hover {
     background-color: #45a049;
   }
-  
+
   span.price {
     float: right;
     color: grey;
   }
-  
+
   /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
   @media (max-width: 800px) {
     .row {
@@ -102,3 +102,64 @@
 
 .form-elegant .modal-body, .form-elegant .modal-footer {
     font-weight: 400; }
+
+/* The side navigation menu */
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: absolute;
+
+  overflow: auto;
+}
+
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+/* Active/current link */
+.sidebar a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 500px;
+}
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+.search{
+  width: 50%;
+  margin: 10px;
+}

@@ -6,11 +6,16 @@
       uploaded by:<%= favorite.course.user.names %><br>
       amount:<%= favorite.course.course_price %><br>
       requested by: <%= favorite.user.names %><br><br><br><br>
+      
+      <% @initial+= favorite.course.course_price if favorite.course.course_price %>
       <%end %>
       
-      
+     Total amount: <%= @initial %>
     </div>
   <% end %>
-
-
-  <%= pie_chart User.group(:names).count %>
+<h2>User registered per day(you can also display users per week, month,...)</h2>
+<%= line_chart User.group_by_day(:created_at).count %>
+<h2>courses registered per week</h2>
+<%= line_chart Course.group_by_week(:created_at).count %>
+<h2>Review courses request made per day</h2>
+<%= pie_chart Favorite.group_by_day(:created_at).count %>

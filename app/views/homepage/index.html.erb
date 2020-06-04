@@ -41,7 +41,7 @@
                 Countries</p>
                 <p><a href="#" class="btn btn-primary px-4 rounded-0">Learn More</a></p>
               </div>
-            </div> 
+            </div>
           </div>
           <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
             <div class="feature-1 border">
@@ -54,7 +54,7 @@
                 above in evaluation from different </p>
                 <p><a href="#" class="btn btn-primary px-4 rounded-0">Learn More</a></p>
               </div>
-            </div> 
+            </div>
           </div>
         </div>
       </div>
@@ -76,7 +76,7 @@
     <div class="row">
       <% @courses.each do |course| %>
         <div class="col-lg-4 col-md-6 mb-4">
-        
+
               <div class="course-1-item">
                   <figure class="thumnail">
                   <a href="course-single.html">
@@ -89,15 +89,15 @@
                     <% start_time = course.created_at %>
                     <% end_time   =  DateTime.now %>
                     <%= distance_of_time_in_words(start_time, end_time)  %></h3>
-                  </div>  
+                  </div>
                     </figure>
                     <div class="course-1-content pb-4">
-                    <B>Instructor:</B><%= course.user.names + " " + course.user.last_name%>
-                    <h2><%= course.title%>/<%= course.credit_number %>CPD Credits</h2>
-                    
-                    <p class="desc mb-4"><%= course.content_attract%>
+                    <B><%= course.title%>/<%= course.credit_number %>CPD Credits</B>
+                    <h5>Instructor:<%= course.user.names + " " + course.user.last_name%></h5>
+
+                    <p class="desc mb-4"><%= course.content_attract.truncate(75)%>
                       <p><%= link_to 'Enroll In This Course', course, class:"btn btn-primary rounded-0 px-4",:"data-no-turbolink"=>true,method:"get" %></p>
-                    
+
                   </div>
               </div>
         </div>
@@ -106,7 +106,7 @@
     <%= link_to 'View All', all_course_courses_path, style:'font-weight:bolder;color:#81c784;background:green;padding:8px;border:1px;border-style:solid;border-color:#81c784;position:center' %>
 </div>
 
-   
+
 
 
 <!--/.Carousel Wrapper-->
@@ -120,7 +120,7 @@
             </h2>
           </div>
           <div class="col-lg-8">
-            <p class="lead">HealthEdu Ltd is a Company created with the support of Health Volunteers Overseas (HVO) – United States of America; it was initiated by Jean Damascene Bigirimana, who developed a web-based platform for 
+            <p class="lead">HealthEdu Ltd is a Company created with the support of Health Volunteers Overseas (HVO) – United States of America; it was initiated by Jean Damascene Bigirimana, who developed a web-based platform for
             online trainings in 2016. With the support of Student Alumni of Misercodia University (USA), Jean Damascene Bigirimana was able to establish the online training.
 
             </p>
@@ -129,6 +129,54 @@
         </div>
       </div>
     </div>
+    <div class="container text-center ">
+    <div class="row">
+       <div class="col-12 mb-5">
+          <div class="display-4 ">Our Clients</div>
+          <p class="lead">We work closely with a wide range of clients from different sectors</p>
+       </div>
+    </div>
+    <div class="clients-all-logo">
+     <div class="row text-center justify-content-center">
+       <div class="col-lg-3 col-md-3 ">
+          <h3> healthEdu</h3>
+          <img src="/assets/logo1.png" class="partner " alt="Web designer in India ">
+       </div>
+       <div class="col-lg-3 col-md-3 ">
+       <h3> healthEdu</h3>
+        <img src="/assets/logo1.png" class="img-fluid" alt="Freelance Web Developer india ">
+       </div>
+      <div class="col-lg-3 col-md-3 ">
+      <h3> healthEdu</h3>
+        <img src="/assets/logo1.png" class="img-fluid" alt="Freelance Web Developer india">
+      </div>
+      <div class="col-lg-3 col-md-3 ">
+           <h3> healthEdu</h3>
+            <img src="/assets/logo1.png" class="img-fluid" alt="Freelance Web Designer in Delhi, india ">
+
+      </div>
+      <div class="col-lg-3 col-md-3 ">
+         <h3> healthEdu</h3>
+          <img src="/assets/logo1.png" class="img-fluid" alt="Freelance Web Developer in Noida ">
+
+      </div>
+      <div class="col-lg-3 col-md-3 ">
+      <h3> healthEdu</h3>
+        <img src="/assets/logo1.png" class="img-fluid" alt=" Freelance Web Developer in delhi Ncr ">
+      </div>
+      <div class="col-lg-3 col-md-3">
+      <h3> healthEdu</h3>
+        <img src="/assets/logo1.png" class="img-fluid" alt="Freelance Web Developer in India">
+      </div>
+      <div class="col-lg-3 col-md-3">
+      <h3> healthEdu</h3>
+          <img src="/assets/logo1.png" class="img-fluid" alt="Best Freelance Web Developer in India ">
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
 
     <!-- // 05 - Block -->
   <div class="site-section">
@@ -142,17 +190,17 @@
         </div>
         <!--Carousel Wrapper-->
         <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-        
+
           <!--Controls-->
-          
+
           <!--/.Indicators-->
-        
+
           <!--Slides-->
           <div class="carousel-inner" role="listbox">
-        
+
             <!--First slide-->
             <div class="carousel-item active">
-        
+
               <div class="col-md-3" style="float:left">
                <div class="card mb-2">
                <h4 class="card-title text-center">Marie Julie </h4>
@@ -168,7 +216,7 @@
                   </div>
                 </div>
               </div>
-        
+
               <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
                 <h4 class="card-title text-center"> Uwera Aline</h4>
@@ -185,7 +233,7 @@
                   </div>
                 </div>
               </div>
-        
+
               <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
                 <h4 class="card-title text-center"> Marie Fidele</h4>
@@ -202,7 +250,7 @@
                   </div>
                 </div>
               </div>
-              
+
                <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
                 <h4 class="card-title text-center">Ashimwe Amicale </h4>
@@ -218,13 +266,13 @@
                     </div>
                   </div>
               </div>
-        
+
             </div>
             <!--/.First slide-->
-        
+
             <!--Second slide-->
             <div class="carousel-item">
-        
+
               <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
                 <h4 class="card-title text-center"> Marie Julie </h4>
@@ -241,7 +289,7 @@
                   </div>
                 </div>
               </div>
-        
+
               <div class="col-md-3" style="float:left">
               <div class="card mb-2">
               <h4 class="card-title text-center">Uwera Aline  </h4>
@@ -258,7 +306,7 @@
                 </div>
               </div>
               </div>
-        
+
               <div class="col-md-3" style="float:left">
               <div class="card mb-2">
               <h4 class="card-title text-center"> Marie Fidele</h4>
@@ -275,7 +323,7 @@
                 </div>
               </div>
               </div>
-              
+
               <div class="col-md-3" style="float:left">
                 <div class="card mb-2">
                 <h4 class="card-title text-center">Ashimwe Amicale </h4>
@@ -286,17 +334,17 @@
                 </div>
                   <p class="card-text">"Healthedu courses enabled me to gain skills, I appreciated the service rendered to me, it is smart, saving maney and time.,"
                     </p>
-                  <a class="btn btn-primary">O.C.O 
+                  <a class="btn btn-primary">O.C.O
                   </a>
                     </div>
                   </div>
               </div>
-        
+
             </div>
             <!--/.Second slide-->
-        
-           
-        
+
+
+
           </div>
           <center>
           <!--/.Slides-->
@@ -306,7 +354,7 @@
               class="fas fa-chevron-right"></i></a>
           </div>
         <!--/.Controls-->
-        
+
         <!--Indicators-->
         <ol class="carousel-indicators">
           <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
@@ -314,11 +362,11 @@
         </ol>
         </center>
         </div>
-        
-        <!--/.Carousel Wrapper-->       
+
+        <!--/.Carousel Wrapper-->
       </div>
     </div>
-    <div class="section-bg style-1" style="background-image: url('/assets/hero_1.jpg');">
+    <div class="section-bg style-1" style="background-image: url('/assets/image1.jpg');">
       <div class="container">
         <div class="row">
           <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
@@ -346,10 +394,10 @@
         </div>
       </div>
     </div>
-    
+
     <div class="news-updates">
       <div class="container">
-         
+
         <div class="row">
           <div class="col-lg-9">
              <div class="section-heading">
@@ -360,10 +408,10 @@
               <div class="col-lg-6">
                 <div class="post-entry-big">
                   <a href="news-single.html" class="img-link">
-                  <%= image_tag("blog_large_1.jpg", class:"img-fluid") %>
+                  <%= image_tag("nurse.jpg", class:"img-fluid") %>
                   </a>
                   <div class="post-content">
-                    <div class="post-meta"> 
+                    <div class="post-meta">
                       <a href="#">June 6, 2019</a>
                       <span class="mx-1">/</span>
                       <a href="#">Admission</a>, <a href="#">Updates</a>
@@ -375,7 +423,7 @@
               <div class="col-lg-6">
                 <div class="post-entry-big horizontal d-flex mb-4">
                   <a href="news-single.html" class="img-link mr-4">
-                  <%= image_tag("blog_1.jpg", class:"img-fluid") %>
+                  <%= image_tag("study1.jpg", class:"img-fluid") %>
                   </a>
                   <div class="post-content">
                     <div class="post-meta">
@@ -389,7 +437,7 @@
 
                 <div class="post-entry-big horizontal d-flex mb-4">
                   <a href="news-single.html" class="img-link mr-4">
-                  <%= image_tag("blog_2.jpg", class:"img-fluid") %>
+                  <%= image_tag("study2.jpg", class:"img-fluid") %>
                   </a>
                   <div class="post-content">
                     <div class="post-meta">
@@ -403,7 +451,7 @@
 
                 <div class="post-entry-big horizontal d-flex mb-4">
                   <a href="news-single.html" class="img-link mr-4">
-                  <%= image_tag("blog_1.jpg", class:"img-fluid") %>
+                  <%= image_tag("lab.jpeg", class:"img-fluid") %>
                   </a>
                   <div class="post-content">
                     <div class="post-meta">
@@ -426,13 +474,13 @@
               <span class="play">
                 <span class="icon-play"></span>
               </span>
-              <%= image_tag("course_5.jpg", class:"img-fluid") %>
+              <%= image_tag("doct2.jpeg", class:"img-fluid") %>
             </a>
             <a href="https://vimeo.com/45830194" class="video-1 mb-4" data-fancybox="" data-ratio="2">
                 <span class="play">
                   <span class="icon-play"></span>
                 </span>
-                <%= image_tag("course_5.jpg", class:"img-fluid") %>
+                <%= image_tag("doct2.jpeg", class:"img-fluid") %>
               </a>
           </div>
         </div>
@@ -455,7 +503,7 @@
           </div>
         </div>
       </div>
-    </div> 
+    </div>
   </div>
 </body>
 </html>

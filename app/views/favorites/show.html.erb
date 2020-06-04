@@ -8,23 +8,23 @@
 
 <p>
   <strong>Buyer:</strong>
-  <%= @favorite.user.email %>
+  <%= @favorite.user.names + " " + @favorite.user.last_name %>
 </p>
 
 <p>
   <strong>Uploaded by:</strong>
-  <%= @favorite.course.user.email %>
+  <%= @favorite.course.user.names + " " + @favorite.course.user.last_name%>
 </p>
 
 <% if @favorite.status == "paid" %>
 <p>
 <h3 class="card-title"><b>Modules course of <%= @favorite.course.title %></b></h3>
   <hr class="hr">
-  
-      
+
+
 <% @favorite.course.credits.each do |credit| %>
   <div class="module">
-  <i class="fa fa-file-pdf-o fa_custom"></i> <%= link_to credit.name, credit_path%>
+  <i class="fa fa-file-pdf-o fa_custom"></i>  <%=  credit.name%><br><%=  credit.discription.html_safe%>
   <%= link_to "Download", credit.upload_file_url, target: :_blank %>
   </div><br>
 

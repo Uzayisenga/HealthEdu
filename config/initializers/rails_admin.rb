@@ -45,6 +45,7 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+  
   config.model 'User' do
     create do
       configure :reset_password_sent_at do
@@ -132,5 +133,9 @@ RailsAdmin.config do |config|
         hide
       end
     end
+  end
+  config.actions do
+    all
+    import
   end
 end

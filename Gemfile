@@ -65,6 +65,7 @@ gem 'bootstrap-will_paginate', '0.0.6'
 gem "font-awesome-rails"
 
 gem 'rails_admin'
+gem 'rails_admin_import'
 
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
@@ -88,3 +89,8 @@ gem 'paperclip'
 gem 'ckeditor', :git => 'https://github.com/galetahub/ckeditor.git'
 gem "chartkick"
 gem 'groupdate'
+gem 'kaminari'
+gem 'capistrano', '~> 3.11'
+gem 'capistrano-rails', '~> 1.4'
+gem 'capistrano-passenger', '~> 0.2.0'
+gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
