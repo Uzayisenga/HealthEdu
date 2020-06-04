@@ -31,11 +31,10 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
-<<<<<<< HEAD
+
 config.hosts << "healtheducat.rw"
   
-=======
->>>>>>> 0db788578c235dea756dd060aa824ee0c9055154
+
   # Don't care if the mailer can't send.
 
 
