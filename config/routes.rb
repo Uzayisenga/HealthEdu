@@ -21,9 +21,9 @@ Rails.application.routes.draw do
   get 'instructor', to: 'users#instructor', as: 'instructor'
   get 'search', to: 'users#search', as: :search
   get 'quiz', to: 'users#quiz', as: 'quiz'
-  devise_for :users do
-  delete "/logout" => "devise/sessions#destroy", :as => :destroy_user_session
-end
+  devise_scope :users do
+      get "sign_out", :to => "devise/sessions#destroy"
+    end
   resources :users, :only =>[:show, :index]
 resources :courses do
   collection do
