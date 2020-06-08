@@ -95,7 +95,7 @@
           <div class="dropdown">
             <button class="dropbtn btn-sm"><i class="fa fa-gear fa-spin" style="font-size:24px"></i>Settings</button>
             <div class="dropdown-content">
-              <%= link_to "Logout", destroy_user_session_path, :method => :get %>
+              <%= link_to "Logout", destroy_session_path, :method => :get %>
               <%= link_to 'View Profile', main_app.edit_user_registration_path, class:'a',:"data-no-turbolink"=>true,method:"get" %>
             </div>
           </div>
