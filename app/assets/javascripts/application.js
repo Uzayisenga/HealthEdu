@@ -1,5 +1,7 @@
 //= require ckeditor/init
 //= require_tree ./ckeditor
-//= require jquery
+
 
 //= require rails-ujs
+//= require jquery
+//= require jquery_ujs
