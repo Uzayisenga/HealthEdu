@@ -45,13 +45,13 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
-  
+
   config.model 'User' do
     create do
       configure :reset_password_sent_at do
         hide
       end
-      configure :remember_created_at do 
+      configure :remember_created_at do
         hide
       end
       configure :uid do
@@ -76,7 +76,7 @@ RailsAdmin.config do |config|
       configure :reset_password_sent_at do
         hide
       end
-      configure :remember_created_at do 
+      configure :remember_created_at do
         hide
       end
       configure :uid do
@@ -101,7 +101,7 @@ RailsAdmin.config do |config|
       configure :reset_password_sent_at do
         hide
       end
-      configure :credits do 
+      configure :credits do
         hide
       end
       configure :payments do
@@ -120,7 +120,7 @@ RailsAdmin.config do |config|
       configure :reset_password_sent_at do
         hide
       end
-      configure :credits do 
+      configure :credits do
         hide
       end
       configure :payments do
@@ -137,5 +137,22 @@ RailsAdmin.config do |config|
   config.actions do
     all
     import
+  end
+  config.model 'User' do
+    import do
+      field :email
+      field :password
+      field :names
+      field :gender
+      field :phone
+      field :district
+      field :reguratory_body
+      field :level
+      field :working_place
+      field :last_name
+      field :uid
+      field :provider
+
+    end
   end
 end
