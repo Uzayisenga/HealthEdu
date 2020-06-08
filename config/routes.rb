@@ -22,11 +22,7 @@ Rails.application.routes.draw do
   get 'search', to: 'users#search', as: :search
   get 'quiz', to: 'users#quiz', as: 'quiz'
   post "/logout" => "devise/sessions#destroy", :as => :destroy_user_session
-  devise_for :users, controllers: {
-    registrations: "users/registrations",
-    # Add this
-    omniauth_callbacks: "users/omniauth_callbacks"
-  }
+  
   resources :users, :only =>[:show, :index]
 resources :courses do
   collection do
