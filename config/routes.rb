@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get 'search', to: 'users#search', as: :search
   get 'quiz', to: 'users#quiz', as: 'quiz'
   devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' 
-
+  end
   resources :users, :only =>[:show, :index]
 resources :courses do
   collection do
