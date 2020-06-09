@@ -39,7 +39,7 @@
       <a href="https://web.facebook.com/HealthEdu-433949913673935/?eid=ARDKqokWU2Ib01gPms4Z-RceenkCySDZJA0xGWJA06sfR0nY4gn_yAqJBIc7kZRfkX3tuBafmju_w-G6" style="color:#51be78;" target="_blank"><i class="fab fa-facebook" style="font-size:30px;"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
       <a href="https://twitter.com/HEALTHEDULTD1" style="color:#51be78;" target="_blank"><i class="fab fa-twitter" style="font-size:30px;" ></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
       <a href="#" style="color:#51be78;"><i class="fab fa-linkedin" style="font-size:30px;"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-    </span>
+      </span>
   </div>
 </nav>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -95,15 +95,15 @@
           <div class="dropdown">
             <button class="dropbtn btn-sm"><i class="fa fa-gear fa-spin" style="font-size:24px"></i>Settings</button>
             <div class="dropdown-content">
-              <%= link_to "Logout", destroy_user_session_path, :method => :get %>
+              <%= link_to "Logout", destroy_user_session_path,class:'a', :method => :get %>
               <%= link_to 'View Profile', main_app.edit_user_registration_path, class:'a',:"data-no-turbolink"=>true,method:"get" %>
             </div>
           </div>
           <% else %>
-            <i class="fas fa-user" style="color:#8bc34a;text-decoration:none;"></i>
-            <%= link_to "Register",  new_user_registration_path, :"data-no-turbolink"=>true,method:"get" %>&nbsp;&nbsp;&nbsp;
-            <i class="fas fa-user-plus" style="color:#8bc34a;"></i>
-            <%= link_to "Log in",  new_user_session_path,:"data-no-turbolink"=>true,method:"get" %>
+            <button class="dropbtn btn-sm"><i class="fa fa-users" aria-hidden="true" style="color:white;text-decoration:none;"></i>
+            <%= link_to "Register",  new_user_registration_path,class:"text-white", :"data-no-turbolink"=>true,method:"get" %></button>&nbsp;&nbsp;&nbsp;
+            <button class="dropbtn btn-sm"><i class="fa fa-lock" aria-hidden="true" style="color:white;"></i>
+            <%= link_to "Log in",  new_user_session_path,class:"text-white",:"data-no-turbolink"=>true,method:"get" %></button>
         <% end %>
       </div>
     </div>
