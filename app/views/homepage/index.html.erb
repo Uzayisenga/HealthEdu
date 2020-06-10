@@ -1,7 +1,7 @@
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 <div class="container-fluid bg-overlay">
 	<div class="home ">
-		<h1>CPD COURSE FOR HEALTHCARE PROVIDERS</h1>
+		<h1 class="text-success">CPD COURSE FOR HEALTHCARE PROVIDERS</h1>
         <h4>This platform will expose you to a big number of health "<strong>specialists</strong>" in Rwanda,<br>
         Africa and worldwide.</h4><h1 class="aa text-center">Keep updated with us</h1>
 	</div>
@@ -457,20 +457,15 @@
           <div class="col-lg-3">
             <div class="section-heading">
               <h2 class="text-black">Professional</h2>
-              <a href="#">View All Tools</a>
+
             </div>
-            <a href="https://vimeo.com/45830194" class="video-1 mb-4" data-fancybox="" data-ratio="2">
-              <span class="play">
-                <span class="icon-play"></span>
-              </span>
-              <%= image_tag("doct2.jpeg", class:"img-fluid") %>
-            </a>
-            <a href="https://vimeo.com/45830194" class="video-1 mb-4" data-fancybox="" data-ratio="2">
-                <span class="play">
-                  <span class="icon-play"></span>
-                </span>
-                <%= image_tag("doct2.jpeg", class:"img-fluid") %>
-              </a>
+            <div class="embed-responsive embed-responsive-16by9">
+              <%= video_tag "healthEdu.mp4", :controls => true, class:"embed-responsive-item"%>
+            </div>
+
+            <div class="embed-responsive embed-responsive-16by9"></br>
+              <%= video_tag "adv.mp4", :controls => true, class:"embed-responsive-item"%>
+            </div>
           </div>
         </div>
       </div>
