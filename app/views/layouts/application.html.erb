@@ -79,7 +79,7 @@
         <% end %>
         <% if user_signed_in? && current_user.user_role== 'instructor'%>
           <li class="nav-item">
-            <%= link_to 'Instractor Panel', courses_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
+            <%= link_to 'Instractor Panel', main_app.courses_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
           </li>
         <% end %>
         <% if user_signed_in? && current_user.user_role== 'council'%>

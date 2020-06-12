@@ -33,7 +33,7 @@ Rails.application.configure do
 
 
 config.hosts << "healtheducat.rw"
-  
+
 
   # Don't care if the mailer can't send.
 

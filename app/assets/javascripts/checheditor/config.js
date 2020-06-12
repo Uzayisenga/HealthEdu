@@ -2,7 +2,7 @@ CKEDITOR.editorConfig = function (config) {
   // ... other configuration ...
 
   config.toolbar_mini = [
-    ["Bold",  "Italic",  "Underline",  "Strike",  "-",  "Subscript",  "Superscript", "Iframe"],
+    ["Bold",  "Italic",  "Underline",  "Strike",  "-",  "Subscript",  "Superscript", "Iframe", "Table"],
   ];
   config.toolbar = "mini";
 

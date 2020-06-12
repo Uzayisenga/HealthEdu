@@ -8,8 +8,8 @@
             </div>
           </div>
         </div>
-      </div> 
-    
+      </div>
+
 
     <div class="custom-breadcrumns border-bottom">
       <div class="container">
@@ -37,7 +37,7 @@
       </li>
     </ul>
   </div>
-  
+
   <div class="card-body">
     <div class="table-responsive">
   <table class="table table-striped table-bordered table-hover">
@@ -46,7 +46,7 @@
       <th>Title</th>
       <th>Credit</th>
       <th>Price</th>
-      <th>Content</th>
+
       <th colspan="5">Action</th>
     </tr>
   </thead>
@@ -57,7 +57,7 @@
         <td><%= course.title%></td>
         <td><%= course.credit_number %>CPD Credits</td>
         <td><%= course.course_price%></td>
-        <td><%= course.content[0,20].html_safe%></td>
+
         <td><%= link_to 'Show', course %></td>
         <td><%= link_to 'Edit', edit_course_path(course),:"data-no-turbolink"=>true,method:"get" %></td>
         <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' },:"data-no-turbolink"=>true,method:"get" %></td>
