@@ -1,10 +1,10 @@
 class FavoritesController < ApplicationController
 
-  def create
+  def index
     @favorites=Favorite.all
 end
 
-def index
+def create
     favorite = current_user.favorites.create(course_id: params[:course_id])
     redirect_to homepage_index_url, notice: "You have request this course, Please make payment on Bank of Kigali Bank Account: 00262-06949899-22 / Top-Upgrade Ltd or use MTN Mobile Money on 0788848750 registered to Uwandamiye Emmanuella or 0730300074 registered to Jean Damascene BIGIRIMANA. In case you have a question, contact of of those phone numbers or e-mail: healthedultd@gmail.com "
 
@@ -14,6 +14,16 @@ def show
     @favorite = Favorite.find(params[:id])
     respond_to do |format|
       format.html
+      format.pdf do
+          render pdf: "certiicate No. #{@favorite.id}",
+          page_size: 'A4',
+          template: "favorites/show.html.erb",
+          layout: "pdf.html",
+          orientation: "Landscape",
+          lowquality: true,
+          zoom: 1,
+          dpi: 75
+      end
     end
   end
 def destroy
