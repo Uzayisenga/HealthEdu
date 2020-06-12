@@ -14,16 +14,6 @@ def show
     @favorite = Favorite.find(params[:id])
     respond_to do |format|
       format.html
-      format.pdf do
-          render pdf: "certiicate No. #{@favorite.id}",
-          page_size: 'A4',
-          template: "favorites/show.html.erb",
-          layout: "pdf.html",
-          orientation: "Landscape",
-          lowquality: true,
-          zoom: 1,
-          dpi: 75
-      end
     end
   end
 def destroy
