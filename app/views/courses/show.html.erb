@@ -7,8 +7,8 @@
             </div>
           </div>
         </div>
-      </div> 
-    
+      </div>
+
 
     <div class="custom-breadcrumns border-bottom">
       <div class="container">
@@ -19,7 +19,7 @@
         <span class="current">Courses</span>
       </div>
     </div><br>
-    
+
 
    <div class="card p-5" style='width:70%;margin:auto'>
      <!-- Card content -->
@@ -35,15 +35,13 @@
           <div style="width:50%;float:right;padding-left:30px">
              <!-- Button -->
              <p class="card-text" style="color:green;font-weight:bolder;font-size:20px"><%=@course.course_price %> RWF</p>
-             <% if @favorite.present? %>
-                <%= link_to 'Cancel request', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
-                <% else %>
+
                   <%= link_to 'Make it a request', favorites_path(course_id: @course.id), method: :post, class: 'btn btn-success' %>
-              <% end %>
+
             </div>
         </div>
       </div>
-    
+
       <!-- Card image -->
       <div class="view overlay">
           <%if @course.image.url%>
@@ -81,10 +79,10 @@
         </div>
         <%end%>
         </div>
-      
-     
 
-    
+
+
+
   </div><br>
 
-  
+
