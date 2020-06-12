@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get 'search', to: 'users#search', as: :search
   get 'quiz', to: 'users#quiz', as: 'quiz'
 
+
   devise_for :users, controllers: {
     registrations: "users/registrations",
     # Add this

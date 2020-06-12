@@ -38,7 +38,7 @@
              <% if @favorite.present? %>
                 <%= link_to 'Cancel request', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
                 <% else %>
-                  <%= link_to 'Make it a request', favorites_path(course_id: @course), method: :post, class: 'btn btn-success' %>
+                  <%= link_to 'Make it a request', favorites_path(course_id: @course.id), method: :post, class: 'btn btn-success' %>
               <% end %>
             </div>
         </div>
