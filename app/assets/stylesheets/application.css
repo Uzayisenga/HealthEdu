@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  *= require font-awesome
- 
+
  */
  html{
    scroll-behavior: smooth;
@@ -37,7 +37,7 @@
   min-height: 75vh;
 }
 .container{
-  
+
   margin-top: 70px;
 }
 
