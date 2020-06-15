@@ -55,7 +55,7 @@
         </li>
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "My Courses", main_app.favorites_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
+            <%= link_to "My Courses", main_app.all_favorite_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
           </li>
           <li class="nav-item">
             <%=link_to 'All Courses',main_app.all_course_courses_path, class:"nav-link",:"data-no-turbolink"=>true,method:"get" %>

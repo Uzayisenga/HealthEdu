@@ -22,16 +22,13 @@
     <%= form.cktext_area :discription, :ckeditor => {:toolbar => 'img', :customConfig => asset_path('ckeditor/config.js')} %>
   </div>
 
+
   <div class="field">
     <%= form.label :upload_file %>
     <%= form.file_field :upload_file, class:"form-control" %>
   </div>
+ <%= form.hidden_field :course_id, :value => params[:course_id] %>
 
-  
-
-
-    <%= form.hidden_field :course_id, :value => params[:course_id] %>
-  
 
   <div class="actions">
     <%= form.submit %>

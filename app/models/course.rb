@@ -2,8 +2,8 @@ class Course < ApplicationRecord
   paginates_per 2
   has_many :comments, dependent: :destroy
   has_many :credits, dependent: :destroy
-  has_many :favorites
-  
+  has_many :favorites, dependent: :destroy
+
   has_many :favorite_users, through: :favorites, source: :user
   belongs_to :user, optional: true
   mount_uploader :image, ImageUploader
@@ -15,9 +15,9 @@ class Course < ApplicationRecord
       Notification.create do |notification|
         notification.notify_type = 'create'
         notification.actor = self.user
-        
+
         notification.user = student
-        
+
         notification.target = self
         # notification.second_target = self.course
       end
