@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :replies
   resources :homepage
-  resources :favorites, only: [:destroy, :create, :show]
+  resources :favorites, only: [:destroy, :create]
 
   get 'comments/create'
   get 'course/assesment'
