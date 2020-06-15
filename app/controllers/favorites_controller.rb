@@ -1,8 +1,6 @@
 class FavoritesController < ApplicationController
 before_action :can_request_course, only: [:create]
-def index
-  @favorites=Favorite.all
-end
+
 def all_favorite
     @favorites=Favorite.all
   end
