@@ -1,0 +1,36 @@
+<div class="container">
+<h5 style="text-align:center;">My Request Courses</h5>
+<div class="card">
+<% @favorites.each do |favorite| %>
+
+
+<%if favorite.user.names == current_user.names %>
+<%if favorite.present?%>
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Courses</a>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'view course', favorite, class:"nav-link",:"data-no-turbolink"=>true,method:"get" %>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= favorite.course.title %></h5>/<%= favorite.course.credit_number%>CPD Credits
+    <p class="card-text">Uploaded by:<%= favorite.course.user.names + " " + favorite.course.user.last_name%></p>
+
+    <h3>Course Description</h3>
+    <p class="card-text"><%= favorite.course.content.html_safe %></p>
+    <center><div class="favorite"><%= favorite.status%></div><center>
+  </div>
+  <%else%>
+  <p class="card-text">No favorite yet.</p>
+  <% end %>
+<% end %>
+
+<% end %>
+</div>
+</div><br>
+
+
