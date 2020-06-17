@@ -591,7 +591,7 @@ h1, h2, h3, h4, h5,
     max-width: 400px; }
 
 .custom-breadcrumns {
-  padding: 20px 0; }
+  padding: 1px 0; }
   .custom-breadcrumns span, .custom-breadcrumns a {
     font-size: 14px; }
   .custom-breadcrumns a {
@@ -928,7 +928,7 @@ h1, h2, h3, h4, h5,
         margin: 2px; }
     .course-1-item .course-1-content .desc {
       font-size: 15px; }
-      
+
 
 .footer {
   padding: 4rem 0;

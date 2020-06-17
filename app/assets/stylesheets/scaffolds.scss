@@ -22,8 +22,10 @@
     height: 100%;
 }
 .favorite{
-    background-color: mediumseagreen;
-    width: 10rem;
+    background-color: #ff4444;
+    width: 100%;
+
+
 }
 
 /* sign in FORM */
@@ -105,7 +107,7 @@
     #logreg-forms{
         width:300px;
     }
-    
+
     #logreg-forms  .social-login{
         width:200px;
         margin:0 auto;
@@ -117,7 +119,7 @@
         color:white;
         width:200px;
         height: 56px;
-        
+
     }
     #logreg-forms .social-btn:nth-child(1){
         margin-bottom: 5px;
@@ -128,9 +130,56 @@
     #logreg-forms  .facebook-btn:after{
         content:'Facebook';
     }
-  
+
     #logreg-forms  .google-btn:after{
         content:'Google+';
     }
-    
+
 }
+.rails-default-error-page {
+    background-color: #EFEFEF;
+    color: #2E2F30;
+    text-align: center;
+    font-family: arial, sans-serif;
+    margin: 0;
+  }
+
+  .rails-default-error-page div.dialog {
+    width: 100%;
+    max-width: 60em;
+    margin: 2em auto 0;
+  }
+
+  .rails-default-error-page div.dialog > div {
+    border: 1px solid #CCC;
+    border-right-color: #999;
+    border-left-color: #999;
+    border-bottom-color: #BBB;
+    border-top: #B00100 solid 4px;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    background-color: white;
+    padding: 7px 12% 0;
+    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  }
+
+  .rails-default-error-page h1 {
+    font-size: 100%;
+    color: #730E15;
+    line-height: 1.5em;
+  }
+
+  .rails-default-error-page div.dialog > p {
+    margin: 0 0 1em;
+    padding: 1em;
+    background-color: #F7F7F7;
+    border: 1px solid #CCC;
+    border-right-color: #999;
+    border-left-color: #999;
+    border-bottom-color: #999;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-top-color: #DADADA;
+    color: #666;
+    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  }

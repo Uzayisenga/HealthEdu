@@ -20,35 +20,12 @@
       </div>
     </div><br>
 
-    <div class="sidebar">
-    <a class="active"<%= link_to 'My Course', all_favorite_path %></a>
-       <% @favorites.each do |favorite| %>
+    <p id="notice"><%= notice %></p>
 
-
-      <%if favorite.user.names == current_user.names %>
-      <%if favorite.present?%>
-    <a <%= link_to favorite.course.title, favorite, class:"nav-link",:"data-no-turbolink"=>true,method:"get" %>
-    <%else%>
-    <p class="card-text">No favorite yet.</p>
-    <% end %>
-  <% end %>
-  <% end %>
-
-  </div>
-
-
-  <!-- Page content -->
-  <div class="content">
-
-
-  <h5 style="text-align:center;">My Request Courses</h5>
-
-
-</div>
-
-
-</div>
-</div>
+<p>
+  <strong>Title:</strong>
+  <%= @favorite.course.title %>
+</p>
 
 
 
