@@ -41,17 +41,35 @@
   <div class="content">
 
 
-  <h5 style="text-align:center;">My Request Courses</h5>
+  <h5 style="text-align:center;">My Requested Courses</h5>
+  <div class="site-section">
 
+      <div class="row">
+      <% @favorites.each do |favorite| %>
+
+
+        <%if favorite.user.names == current_user.names %>
+        <%if favorite.present?%>
+          <div class="col-lg-4 col-md-6 mb-4">
+                <div class="course-1-item">
+                  <div class="course-1-content pb-4">
+                    <b><%= favorite.course.title.truncate(30)%></b>
+                    <p class="desc mb-4"><%= favorite.course.content_attract.truncate(70)%>
+                    <p><%= link_to favorite.status, favorite, class:"btn btn-primary rounded-0 px-4",:"data-no-turbolink"=>true,method:"get" %></p>
+                    </div>
+                </div>
+          </div>
+          <%else%>
+          <p class="card-text">No favorite yet.</p>
+          <% end %>
+        <% end %>
+        <% end %>
+      </div>
+  </div>
+</div>
+</div>
 
 </div>
 
 
 </div>
-</div>
-
-
-
-
-
-

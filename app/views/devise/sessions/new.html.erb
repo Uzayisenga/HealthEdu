@@ -17,6 +17,7 @@
 <body>
 <div class="container">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <center>
     <div id="logreg-forms">
         <form class="form-signin">
             <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
@@ -31,16 +32,16 @@
               </div>
             </div>
             <p style="text-align:center"> OR  </p>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email",id:"inputEmail", class:"form-control", placeholder:"Email Address" %><br>
-            <%= f.password_field :password, autocomplete: "current-password",id:"inputPassword", class:"form-control", placeholder:"Password" %>
-            <%= f.submit "Log in", class:"btn btn-success" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email",id:"inputEmail", class:"form-control", placeholder:"Email Address", style:"width:80%;" %><br>
+            <%= f.password_field :password, autocomplete: "current-password",id:"inputPassword", class:"form-control", placeholder:"Password", style:"width:80%;" %>
+            <%= f.submit "Log in", class:"btn btn-success", style:"width:80%" %>
             <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
               <%= link_to "Forgot your password?", new_password_path(resource_name), id:"forgot_pswd" %>
             <% end %>
             <hr>
             <!-- <p>Don't have an account!</p>  -->
             <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-            <%= link_to "Sign up", new_registration_path(resource_name), class:"btn btn-primary btn-block",id:"btn-signup",:"data-no-turbolink"=>true,method:"get" %>
+            <%= link_to "Sign up", new_registration_path(resource_name), class:"btn btn-primary btn-block", style:"width:80%;", id:"btn-signup",:"data-no-turbolink"=>true,method:"get" %>
             <% end %>
             </form>
 
@@ -49,7 +50,7 @@
                 <button class="btn btn-primary btn-block" type="submit">Reset Password</button>
                 <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
             </form>
-            
+
             <form action="/signup/" class="form-signup">
                 <div class="social-login">
                     <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Sign up with Facebook</span> </button>
@@ -57,7 +58,7 @@
                 <div class="social-login">
                     <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Sign up with Google+</span> </button>
                 </div>
-                
+
                 <p style="text-align:center">OR</p>
 
                 <input type="text" id="user-name" class="form-control" placeholder="Full name" required="" autofocus="">
@@ -70,7 +71,8 @@
             </form>
             <br>
             <% end %>
-    </div> 
+            </center>
+    </div>
   <script>
     function toggleResetPswd(e){
     e.preventDefault();
