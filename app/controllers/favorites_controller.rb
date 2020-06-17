@@ -26,9 +26,7 @@ def show
       end
     end
   end
-  def single
-    @favorite = Favorite.find(params[:id])
-  end
+
 def destroy
     favorite = current_user.favorites.find_by(id: params[:id]).destroy
     redirect_to homepage_index_url, notice: "#{favorite.course.user.names}'s has been unrequested #{favorite.course.title} course"
