@@ -6,4 +6,6 @@ class PagesController < ApplicationController
   end
   def gallery
   end
+  def help
+  end
 end

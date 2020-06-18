@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'pages/quiz'
   get 'pages/about'
   get 'pages/gallery'
+  get 'pages/help'
   resources :profiles
   get 'certificate/index'
   get 'requests/update'
