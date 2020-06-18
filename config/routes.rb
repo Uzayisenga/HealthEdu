@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   mount Notifications::Engine => "/notifications"
   get 'pages/quiz'
   get 'pages/about'
+  get 'pages/gallery'
   resources :profiles
   get 'certificate/index'
   get 'requests/update'
