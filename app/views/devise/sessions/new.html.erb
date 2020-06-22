@@ -36,7 +36,7 @@
             <%= f.password_field :password, autocomplete: "current-password",id:"inputPassword", class:"form-control", placeholder:"Password", style:"width:80%;" %>
             <%= f.submit "Log in", class:"btn btn-success", style:"width:80%" %>
             <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-              <%= link_to "Forgot your password?", new_password_path(resource_name), id:"forgot_pswd" %>
+              <%= link_to "Forgot your password?", user_password_path(resource_name), id:"forgot_pswd" %>
             <% end %>
             <hr>
             <!-- <p>Don't have an account!</p>  -->
