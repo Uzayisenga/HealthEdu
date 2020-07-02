@@ -33,7 +33,7 @@ jQuery(document).ready(function($) {
 
  // loader
  var loader = function() {
-   setTimeout(function() { 
+   setTimeout(function() {
      if($('#loader').length > 0) {
        $('#loader').removeClass('show');
      }
@@ -41,7 +41,7 @@ jQuery(document).ready(function($) {
  };
  loader();
 
-   
+
 
    var siteMenuClone = function() {
 
@@ -52,11 +52,11 @@ jQuery(document).ready(function($) {
 
 
        setTimeout(function() {
-           
+
            var counter = 0;
      $('.site-mobile-menu .has-children').each(function(){
        var $this = $(this);
-       
+
        $this.prepend('<span class="arrow-collapse collapsed">');
 
        $this.find('.arrow-collapse').attr({
@@ -82,8 +82,8 @@ jQuery(document).ready(function($) {
      } else {
        $this.addClass('active');
      }
-     e.preventDefault();  
-     
+     e.preventDefault();
+
    });
 
        $(window).resize(function() {
@@ -108,7 +108,7 @@ jQuery(document).ready(function($) {
                $('body').addClass('offcanvas-menu');
                $this.addClass('active');
            }
-       }) 
+       })
 
        // click outisde offcanvas
        $(document).mouseup(function(e) {
@@ -119,7 +119,7 @@ jQuery(document).ready(function($) {
                }
        }
        });
-   }; 
+   };
    siteMenuClone();
 
 
@@ -156,7 +156,7 @@ jQuery(document).ready(function($) {
    // siteSliderRange();
 
 
-   
+
    var siteCarousel = function () {
 
        if ( $('.hero-slide').length > 0 ) {
@@ -210,18 +210,18 @@ jQuery(document).ready(function($) {
                navText: ['<span class="icon-arrow_back">', '<span class="icon-arrow_forward">'],
            responsive:{
            600:{
-               
+
                nav: true,
              items: 2
            },
            1000:{
-               
+
                stagePadding: 0,
                nav: true,
              items: 2
            },
            1200:{
-               
+
                stagePadding: 0,
                nav: true,
              items: 2
@@ -299,7 +299,7 @@ jQuery(document).ready(function($) {
            + '<span class="countdown-block"><span class="label">%M</span> min </span>'
            + '<span class="countdown-block"><span class="label">%S</span> sec</span>'));
        });
-               
+
    };
    siteCountDown();
 
@@ -337,7 +337,7 @@ jQuery(document).ready(function($) {
 
  var siteScroll = function() {
 
-     
+
 
      $(window).scroll(function() {
 
@@ -349,11 +349,11 @@ jQuery(document).ready(function($) {
              $('.js-sticky-header').removeClass('shrink');
          }
 
-     }) 
+     })
 
  };
    siteScroll();
-   
+
 
    $(function () {
        // $("#bgndVideo").YTPlayer();

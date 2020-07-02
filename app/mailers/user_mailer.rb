@@ -1,15 +1,19 @@
-class UserMailer < ApplicationMailer
-    default from: 'nadinantire@gmail.com'
-    prepend_view_path "custom/path/to/mailer/view"
- 
-  def welcome_email
-    @user = params[:user]
-    @url  = 'http://localhost:3000/users/sign_up'
-    mail(to: @user.email, subject: 'Welcome to Healthedu Site',
-    template_path: 'notifications',
-    template_name: 'another') do |format|
-    format.html { render 'another_template' }
-    format.text { render plain: 'Render text' }
+class UserMailer < Devise::Mailer
+  include Devise::Controllers::UrlHelpers
+  default template_path: 'users/mailer'
+
+  def welcome_reset_password_instructions(user)
+    create_reset_password_token(user)
+    mail(to: user.email, subject: 'Welcome to the New Site')
   end
+
+  private
+
+  def create_reset_password_token(user)
+    raw, hashed = Devise.token_generator.generate(User, :reset_password_token)
+    @token = raw
+    user.reset_password_token = hashed
+    user.reset_password_sent_at = Time.now.utc
+    user.save
   end
 end

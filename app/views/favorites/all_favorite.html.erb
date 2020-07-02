@@ -20,29 +20,124 @@
       </div>
     </div><br>
 
-    <div class="sidebar">
-    <a class="active"<%= link_to 'My Course', all_favorite_path %></a></i>
-       <% @favorites.each do |favorite| %>
+<!-- Bootstrap row -->
+<div class="barr" id="body-row">
+    <!-- Sidebar -->
+    <div class="menuu" id="sidebar-container" class="sidebar-expanded d-none d-md-block"><!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
+        <!-- Bootstrap List Group -->
+        <ul class="list-group">
+            <!-- Separator with title -->
+            <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+                <small>MY COURSES</small>
+            </li>
+            <!-- /END Separator -->
+            <!-- Menu with submenu -->
+            <% @favorites.each do |favorite| %>
+              <%if favorite.user.names == current_user.names %>
+              <%if favorite.present?%>
+              <span  class="bg-dark list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-start align-items-center">
+              <span class="fa fa-dashboard fa-fw mr-3" style="color:white;"></span>
+                  <span class="menu-collapsed"><%= link_to favorite.course.title[0,15], favorite, class:"menu-collapsed",:"data-no-turbolink"=>true,method:"get" %></span>
+
+              </div>
+          </span>
+
+            <%else%>
+            <p class="card-text">No favorite yet.</p>
+
+            <% end %>
+            <% end %>
+            <% end %>
+            <!-- Submenu content -->
+            <div id='submenu1' class="collapse sidebar-submenu">
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">Charts</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">Reports</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">Tables</span>
+                </a>
+            </div>
+            <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-user fa-fw mr-3"></span>
+                    <span class="menu-collapsed">Profile</span>
+                    <span class="submenu-icon ml-auto"></span>
+                </div>
+            </a>
+            <!-- Submenu content -->
+            <div id='submenu2' class="collapse sidebar-submenu">
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">Settings</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">Password</span>
+                </a>
+            </div>
+            <span class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-tasks fa-fw mr-3" style="color:white;"></span>
+                    <span class="menu-collapsed"><%= link_to 'Courses', main_app.all_course_courses_path, class: "menu-collapsed",:"data-no-turbolink"=>true,method:"get" %></span>
+                </div>
+            </span>
+            <!-- Separator with title -->
+            <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+                <small>OPTIONS</small>
+            </li>
+            <!-- /END Separator -->
+            <a href="#" class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-calendar fa-fw mr-3"></span>
+                    <span class="menu-collapsed">Calendar</span>
+                </div>
+            </a>
+            <span class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-envelope-o fa-fw mr-3" style="color:white;"></span>
+                    <span class="menu-collapsed" style="color:white;">Messages <span class="badge badge-pill badge-primary ml-2"><%= link_to pluralize(Notification.unread_count(current_user), ''), notifications_path, :class => 'menu-collapsed'  %></span></span>
+
+                </div>
+            </span>
+            <!-- Separator without title -->
+            <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+                <small>OTHERS</small>
+            </li>
+            <span  class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-paper-plane mr-3" style="color:white;"></span>
+                    <span class="menu-collapsed"><%= link_to 'Gallery', main_app.pages_gallery_path, class: "menu-collapsed",:"data-no-turbolink"=>true,method:"get" %></span>
+                </div>
+            </span>
+            <span  class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-question fa-fw mr-3" style="color:white;"></span>
+                    <span class="menu-collapsed"><%= link_to 'Help', main_app.pages_help_path, class: "menu-collapsed",:"data-no-turbolink"=>true,method:"get" %></span>
+                </div>
+            </span>
+            <span class="bg-dark list-group-item list-group-item-action d-flex align-items-center">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="fa fa-power-off mr-3" aria-hidden="true" style="color:white;"></span>
+                    <span class="menu-collapsed"><%= link_to "Logout", main_app.destroy_user_session_path, class:'menu-collapsed', :method => :get %></span>
+                </div>
+            </span>
+            <!-- Logo -->
+
+        </ul><!-- List Group END-->
+    </div><!-- sidebar-container END -->
+
+    <!-- MAIN -->
+    <div class="contentt">
+
+        <h1>
+           Click on the Button to view more details
+            <small class="text-muted">Healthedu CPD</small>
+        </h1>
 
 
-      <%if favorite.user.names == current_user.names %>
-      <%if favorite.present?%>
-    <a <%= link_to favorite.course.title, favorite, class:"nav-link",:"data-no-turbolink"=>true,method:"get" %>
-    <%else%>
-    <p class="card-text">No favorite yet.</p>
-    <% end %>
-  <% end %>
-  <% end %>
-
-  </div>
-
-
-  <!-- Page content -->
-  <div class="content">
-
-
-  <h5 style="text-align:center;">My Requested Courses</h5>
-  <div class="site-section">
+        <div class="site-section">
 
       <div class="row">
       <% @favorites.each do |favorite| %>
@@ -66,10 +161,9 @@
         <% end %>
       </div>
   </div>
-</div>
-</div>
-
-</div>
 
 
-</div>
+
+    </div><!-- Main Col END -->
+
+</div><!-- body-row END -->

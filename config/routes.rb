@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories
   mount Ckeditor::Engine => '/ckeditor'
   mount Notifications::Engine => "/notifications"
   get 'pages/quiz'
