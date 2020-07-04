@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :books
   resources :categories
   mount Ckeditor::Engine => '/ckeditor'
   mount Notifications::Engine => "/notifications"
