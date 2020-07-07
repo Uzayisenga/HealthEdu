@@ -1,19 +1,48 @@
 <p id="notice"><%= notice %></p>
+<div class="site-section ftco-subscribe-1 site-blocks-cover pb-4" style="background-image: url('/assets/bg_1.jpg')">
+        <div class="container">
+          <div class="row align-items-end">
+            <div class="col-lg-7">
+              <h2 class="mb-0">Books</h2>
+              <p>Create course, assign more module and create quiz</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<p>
-  <strong>Book name:</strong>
-  <%= @book.book_name %>
-</p>
+    <div class="custom-breadcrumns border-bottom">
+      <div class="container">
+        <%= link_to "Home", homepage_index_path,:"data-no-turbolink"=>true,method:"get" %>
+        <span class="mx-3 icon-keyboard_arrow_right"></span>
+        <span class="current">Books</span>
+      </div>
+    </div>
 
-<p>
-  <strong>Author name:</strong>
-  <%= @book.author_name %>
-</p>
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <p>
+                        <%if @book.image.url%>
+                        <%= image_tag @book.image.url, class:"img-fluid"%>
+                      <% end%>
+                    </p>
+                </div>
+                <div class="col-lg-5 ml-auto align-self-center">
+                        <h2 class="section-title-underline mb-5">
+                            <span><%= @book.book_name %> Details</span>
+                        </h2>
 
-<p>
-  <strong>Book:</strong>
-  <%= @book.book %>
-</p>
+                        <p><strong class="text-black d-block">Auther:</strong> <%= @book.author_name %></p>
+                        <p class="mb-5"><strong class="text-black d-block">Hours:</strong> 8:00 am &mdash; 9:30am</p>
+                        <p><%= @book.summary %> </p>
+                        <p>
+                            <button class="btn btn-primary rounded-0 btn-lg px-5"><i class="fa fa-download" aria-hidden="true" style="color:white;"></i>
+                            <%= link_to "Download", @book.book_url,class:"text-white", target: :_blank %></button>
+                        </p>
 
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+                    </div>
+            </div>
+        </div>
+    </div>
+

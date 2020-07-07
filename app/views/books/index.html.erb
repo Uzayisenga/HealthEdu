@@ -1,31 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Books</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Book name</th>
-      <th>Author name</th>
-      <th>Book</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @books.each do |book| %>
-      <tr>
-        <td><%= book.book_name %></td>
-        <td><%= book.author_name %></td>
-        <td><%= link_to "Download", book.book_url %></td>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<div class="container">
 
 <%= link_to 'New Book', new_book_path %>
+<% @books.each do |book| %>
+<div class="post-entry-big horizontal d-flex mb-4">
+<a  class="img-link mr-4">
+  <% if book.image_url %>
+  <%= image_tag book.image_url,:alt => "doctor feed",class:"img-thumbnail"  %>
+<% end %>
+</a>
+<div class="post-content">
+  <div class="post-meta">
+    <a href="#"><% start_time = book.created_at %>
+    <% end_time   =  DateTime.now %>
+    <%= distance_of_time_in_words(start_time, end_time)  %></a>
+    <span class="mx-1">/</span>
+    <a href="#"><%= book.author_name %></a>, <a href="#">great book</a>
+  </div>
+  <h3 class="post-heading"><%= link_to book.book_name[0,30], book,:"data-no-turbolink"=>true,method:"get" %></h3>
+  <div class="card" style="width: 90%;">
+    <center><p ><%= book.summary[0,200]... %></p></center>
+</div>
+</div>
+</div>
+<% end %>
+</div>
