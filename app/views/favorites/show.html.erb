@@ -156,9 +156,11 @@
               <% @favorite.course.credits.each do |credit| %>
                 <div class="module">
                 <i class="fa fa-file-pdf-o fa_custom"></i>  <%=  credit.name%><br><%=  credit.discription.html_safe%>
-                <%= link_to "Download", credit.upload_file_url, target: :_blank %>
+                <p>
+                  <button class="btn btn-primary rounded-0 btn-lg px-5"><i class="fa fa-download" aria-hidden="true" style="color:white;"></i>
+                  <%= link_to "Download", credit.upload_file_url,class:"text-white", target: :_blank %></button>
+                </p>
                 </div>
-
 
                 <h1><%=  credit.name%></h1>
                 <p>Thank Your for hard work!! continue to read next module.</p>
