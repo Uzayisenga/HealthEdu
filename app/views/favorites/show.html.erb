@@ -6,7 +6,7 @@
         <ul class="list-group">
             <!-- Separator with title -->
             <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
-                <small><%= @favorite.course.title %></small>
+                <small><%= @favorite.course.title[0,15] %></small>
             </li>
             <!-- /END Separator -->
             <!-- Menu with submenu -->
@@ -15,7 +15,9 @@
             <div class="d-flex w-100 justify-content-start align-items-center">
                 <span class="fa fa-tasks fa-fw mr-3" style="color:white;"></span>
                 <span class="menu-collapsed"><%=credit.name%></span>
-                <span class="fa fa-download ml-auto" aria-hidden="true" style="color:white;"><%= link_to "Download", credit.upload_file_url, target: :_blank %></span>
+                <% if @favorite.status == "paid" %>
+                  <span class="fa fa-download ml-auto" aria-hidden="true" style="color:white;"><%= link_to "Download", credit.upload_file_url, target: :_blank %></span>
+                <% end %>
             </div>
         </span>
             <% end %>
