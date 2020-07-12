@@ -14,7 +14,7 @@
             <span class="bg-dark list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-start align-items-center">
                 <span class="fa fa-tasks fa-fw mr-3" style="color:white;"></span>
-                <span class="menu-collapsed"><%=credit.name%></span>
+                <span class="menu-collapsed"><%=credit.name[0,15] %></span>
                 <% if @favorite.status == "paid" %>
                   <span class="fa fa-download ml-auto" aria-hidden="true" style="color:white;"><%= link_to "Download", credit.upload_file_url, target: :_blank %></span>
                 <% end %>
