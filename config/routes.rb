@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   get 'certificate/index'
   get 'requests/update'
   resources :credits
-  authenticate :user, lambda { |u| u.user_role == "admin" } do
+  
     mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  end
+  
   resources :replies
   resources :homepage
   resources :favorites, only: [:index, :destroy, :create, :show]
