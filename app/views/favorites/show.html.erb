@@ -136,7 +136,7 @@
 
         <p>
           <strong>Prepayed by:</strong>
-          <%= @favorite.course.user.names + " " + @favorite.course.user.last_name%>
+          <%= @favorite.course.user.names%>  <%=@favorite.course.user.last_name%>
         </p>
 
         <% if @favorite.status == "paid" %>

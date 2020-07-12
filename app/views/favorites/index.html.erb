@@ -18,7 +18,7 @@
   </div>
   <div class="card-body">
     <h5 class="card-title"><%= favorite.course.title %></h5>/<%= favorite.course.credit_number%>CPD Credits
-    <p class="card-text">Uploaded by:<%= favorite.course.user.names + " " + favorite.course.user.last_name%></p>
+    <p class="card-text">Uploaded by:<%= favorite.course.user.names%> <%=favorite.course.user.last_name%></p>
 
     <h3>Course Description</h3>
     <p class="card-text"><%= favorite.course.content.html_safe %></p>

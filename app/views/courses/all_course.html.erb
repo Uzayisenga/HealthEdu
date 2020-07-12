@@ -7,8 +7,8 @@
             </div>
           </div>
         </div>
-      </div> 
-    
+      </div>
+
 
     <div class="custom-breadcrumns border-bottom">
       <div class="container">
@@ -34,12 +34,12 @@
                           <div class="category"><h3><i class="fa fa-calendar"></i> Updated
                           <% start_time = course.created_at %>
                           <% end_time   =  DateTime.now %>
-                          <%= distance_of_time_in_words(start_time, end_time)  %></h3></div>  
+                          <%= distance_of_time_in_words(start_time, end_time)  %></h3></div>
                           </figure>
                           <div class="course-1-content pb-4">
-                          <B>Instructor:</B><%= course.user.names + " " + course.user.last_name%><br>
+                          <B>Instructor:</B><%= course.user.names%>  <%=course.user.last_name%><br>
                           <h2><%= course.title%>/<%= course.credit_number %>CPD Credits</h2>
-                          
+
                           <p class="desc mb-4"><%= course.content_attract.truncate(75)%>
                           <p><%= link_to 'Enroll In This Course', course, class:"btn btn-primary rounded-0 px-4",:"data-no-turbolink"=>true,method:"get" %></p>
                           </div>
@@ -50,4 +50,3 @@
         </div>
     </div>
 
-   
