@@ -56,6 +56,9 @@
         <h4 class="card-title">Course Description</h4>
         <!-- Text -->
         <p class="card-text"><%=@course.content.html_safe%></p>
+        <p>
+          <video controls width="640" height="480" src="<%= @course.video %>"></video>
+        </p>
       </div>
       <% if user_signed_in? && current_user.user_role== 'instructor'%>
       <div class="card">

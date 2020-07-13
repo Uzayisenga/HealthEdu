@@ -1,8 +1,9 @@
 <div class="container">
-
-<%= link_to 'New Book', new_book_path %>
+<% if user_signed_in? && current_user.user_role== 'admin'%>
+   <%= link_to 'New Book', new_book_path %>
+<% end %>
 <% @books.each do |book| %>
-<div class="post-entry-big horizontal d-flex mb-4">
+<div class="post-entry horizontal d-flex mb-4">
 <a  class="img-link mr-4">
   <% if book.image_url %>
   <%= image_tag book.image_url,:alt => "doctor feed",class:"img-thumbnail"  %>

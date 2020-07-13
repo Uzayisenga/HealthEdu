@@ -94,7 +94,7 @@
                     <div class="course-1-content pb-4">
                     <B><%= course.title%>/<%= course.credit_number %>CPD Credits</B>
                     <h5>Instructor:<%= course.user.names%> <%=course.user.last_name%></h5>
-                    
+
                     <p class="desc mb-4"><%= course.content_attract.truncate(75)%>
                       <p><%= link_to 'Enroll In This Course', course, class:"btn btn-primary rounded-0 px-4",:"data-no-turbolink"=>true,method:"get" %></p>
 
@@ -103,7 +103,10 @@
         </div>
        <% end %>
     </div>
-    <%= link_to 'View All', all_course_courses_path, style:'font-weight:bolder;color:#81c784;background:green;padding:8px;border:1px;border-style:solid;border-color:#81c784;position:center' %>
+    <center>
+      <button class="dropbtn btn-lg"><i class="fa fa-refresh" aria-hidden="true" style="color:white;"></i>
+      <%= link_to "View All",  all_course_courses_path,class:"text-white",:"data-no-turbolink"=>true,method:"get" %></button>
+    </center>
 </div>
 
 
