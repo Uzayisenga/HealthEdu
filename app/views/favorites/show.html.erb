@@ -163,6 +163,7 @@
                   <button class="btn btn-primary rounded-0 btn-lg px-5"><i class="fa fa-download" aria-hidden="true" style="color:white;"></i>
                   <%= link_to "Download", credit.upload_file_url,class:"text-white", target: :_blank %></button>
                 </p>
+
                 </div>
 
                 <h1><%=  credit.name%></h1>
@@ -179,11 +180,91 @@
         <a href="<%= @favorite.course.quiz_link%>" target="_blank" rel="noopener noreferrer" class= "btn btn-info">Take quiz here</a>
         <% end %>
         <% else %>
-        <div class="msg">
+        <section class="padding-y-100 bg-light-v2">
+        <section class="padding-y-100 bg-light-v2">
+        <div class="container">
 
-        <h2 class="hdr">Notyet pay, Please Pay <%= @favorite.course.course_price %> on Bank of Kigali <br>Bank Account: 00262-06949899-22 / Top-Upgrade Ltd or use MTN Mobile Money on 0788848750 registered to Uwandamiye Emmanuella or 0730300074 registered to Jean Damascene BIGIRIMANA. In case you have a question, contact of of those phone numbers or e-mail: healthedultd@gmail.com to access all modules <b><br> Thank You!!</h2>
+         <div class="row">
+           <div class="col-lg-8 m-auto text-center">
+             <h2 class="h1">
+             Notyet pay please pay <%= @favorite.course.course_price %>frw
+             </h2>
+             <div class="width-4rem height-4 bg-primary rounded mt-4 marginBottom-40 mx-auto"></div>
+           </div>
 
-        </div>
+              <div class="col-12 mt-4">
+                <div id="accordion-7" class="accordion-style-7 bg-white shadow-v1">
+
+                  <div class="accordion-item border-bottom border-light">
+
+                    <div id="acc7_1" class="shadow p-3 mb-5 bg-white rounded" data-parent="#accordion-7">
+                      <div class="px-4">
+                         <p>
+                         Notyet pay, Please Pay <%= @favorite.course.course_price %>frw on Bank of Kigali <br>
+                         Bank Account: 00262-06949899-22 / Top-Upgrade Ltd or use MTN Mobile Money on 0788848750
+                         registered to Uwandamiye Emmanuella or 0730300074 registered to Jean Damascene BIGIRIMANA. In case you have a question, contact of of those phone numbers
+                         or e-mail: healthedultd@gmail.com to access all modules <b><br> Thank You!!
+                         </p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+            <div class="col-sm-4">
+            <center><h4>pay by bank or <i class="fa fa-hand-o-right" aria-hidden="true"></i></h4></center>
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                  <h1>Bank of Kigali</h1>
+                  <p>Account: 00262-06949899-22</p>
+                  <p>Name:Top-Upgrade Ltd </p>
+                  <p>Name:You have request CPD course, Please make payment on <i class="fa fa-hand-o-up" ></i>  or pay <i class="fa fa-hand-o-right" aria-hidden="true"></i> </p>
+                  </div>
+                  <div class="flip-card-back">
+                  <img src="/assets/images1.jpeg" alt="Avatar" style="width:300px;height:200px;">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+            <center><h4>pay by MTN mobile or<i class="fa fa-hand-o-right" aria-hidden="true"></i></h4></center>
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <h1>MTN Mobile</h1>
+                    <p>Number: 0788848750</p>
+                    <p>Names: Uwandamiye Emmanuella</p>
+                    <p>You have request CPD course, Please make payment on <i class="fa fa-hand-o-up" ></i>  or pay <i class="fa fa-hand-o-right" aria-hidden="true"></i></p>
+
+                  </div>
+                  <div class="flip-card-back">
+                  <img src="/assets/images2.jpeg" alt="Avatar" style="width:300px;height:200px;">
+                  </div>
+                </div>
+              </div>
+            </div><div class="col-sm-4">
+            <center><h4> pay by AITEL money</h4></center>
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                <h1>AITEL Mobile</h1>
+                <p>Number: 0730300074 </p>
+                <p>Name:Jean Damascene BIGIRIMANA</p>
+                <p>You have request healthedu CPD course Please make payment on <i class="fa fa-hand-o-up" ></i></i></p>
+                </div>
+                <div class="flip-card-back">
+                <img src="/assets/images3.jpeg" alt="Avatar" style="width:300px;height:200px;">
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+</div> <!-- END accordion-item-->
+
+
+   </div> <!-- END row-->
+
+  </div> <!-- END container-->
+</section> <!-- END section-->
 
         <% end %>
 
