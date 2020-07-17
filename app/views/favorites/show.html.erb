@@ -176,7 +176,7 @@
           </html>
 
         </p>
-        <% if ((DateTime.now.to_time - @favorite.created_at.to_time)/1.hours).to_i > 5 %>
+        <% if ((DateTime.now.to_time - @favorite.created_at.to_time)/1.hours).to_i > 1%>
         <a href="<%= @favorite.course.quiz_link%>" target="_blank" rel="noopener noreferrer" class= "btn btn-info">Take quiz here</a>
         <% end %>
         <% else %>
