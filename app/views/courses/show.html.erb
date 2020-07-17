@@ -56,9 +56,7 @@
         <h4 class="card-title">Course Description</h4>
         <!-- Text -->
         <p class="card-text"><%=@course.content.html_safe%></p>
-        <p>
-          <video controls width="640" height="480" src="<%= @course.video %>"></video>
-        </p>
+        
       </div>
       <% if user_signed_in? && current_user.user_role== 'instructor'%>
       <div class="card">
@@ -85,13 +83,6 @@
         <%end%>
         </div>
         <div class="ld-content-action">
-        <form class="sfwd-mark-complete" method="post" action="https://unloc.online/topic/understanding-branding-and-marketing-of-products-services"><input type="hidden" value="8569" name="post">
-            <input type="hidden" value="604" name="course_id">
-            <input type="hidden" value="f3dc49ec44" name="sfwd_mark_complete">
-            <input type="submit" value="Mark Complete" class="learndash_mark_complete_button"></form>		</div>
-
-
-
-  </div><br>
+        <br>
 
 
