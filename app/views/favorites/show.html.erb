@@ -79,6 +79,7 @@
 
                 </div>
             </span>
+
             <!-- Separator without title -->
             <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
                 <small>OTHERS</small>
@@ -139,6 +140,7 @@
         <p>
           <strong>Prepayed by:</strong>
           <%= @favorite.course.user.names%>  <%=@favorite.course.user.last_name%>
+          <%=@favorite.user.email%>
         </p>
 
         <% if @favorite.status == "paid" %>
