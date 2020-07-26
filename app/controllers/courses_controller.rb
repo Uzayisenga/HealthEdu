@@ -17,7 +17,9 @@ class CoursesController < ApplicationController
   end
 
   def all_course
-    @courses = Course.all
+    #@courses = Course.all
+    @q = Course.ransack(params[:q])
+    @courses = @q.result(distinct: true)
   end
 
   # GET /courses/1

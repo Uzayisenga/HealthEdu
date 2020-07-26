@@ -1,23 +1,6 @@
 class UsersController < ApplicationController
+  
   before_action :only_council, except: [:show]
-  def search
-    q = params[:q]
-    @users    = User.search(names_cont: q).result
-    @courses = Course.search(title_cont: q).result
-    #@users    = User.search(name_cont: q).result
-  end
-  def index
-
-    if params[:id]
-      @users = User.where(" names Like ?", "%#{params[:id]}%")
-    else
-      @users = User.all
-    end
-
-    @q = User.ransack(params[:q])
-    @users = @q.result.includes(:user).page(params[:page])
-
-  end
 
   def show
     @user = User.find(params[:id])
@@ -38,6 +21,17 @@ class UsersController < ApplicationController
   def professional
     @professionals = User.where(user_role: 'professional')
   end
+  
+  def index
+  
+    @professionals = User.all
+    User.where('names LIKE ? or last_name LIKE ?', "%#{params[:search]}%","%#{params[:search]}%")
+end
+
+def search
+  @professionals =professional.search(params[:search])
+  @user = User.all
+end
 
   def instructor
     @instructors = User.where(user_role: 'instructor')
@@ -64,5 +58,14 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+  private
+
+  def sign_up_params
+    params.require(:user).permit(:names, :email, :phone, :gender, :province, :district, :password, :password_confirmation, :user_role, :reguratory_body, :apload_diploma, :apload_cv, :working_place, :last_name, :search)
+  end
+
+  def account_update_params
+    params.require(:user).permit(:names, :email, :phone, :gender, :province, :district, :password, :password_confirmation, :user_role, :reguratory_body, :apload_diploma, :apload_cv, :working_place, :last_name, :search)
   end
 end

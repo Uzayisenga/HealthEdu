@@ -23,10 +23,10 @@ Rails.application.routes.draw do
   get 'welcome/index'
   get 'exam/assesment'
   get 'users/index'
-  get 'professional', to: 'users#professional', as: 'professional'
   get 'report', to: 'favorites#report', as: 'report'
   get 'all_favorite', to: 'favorites#all_favorite', as: 'all_favorite'
   get 'instructor', to: 'users#instructor', as: 'instructor'
+  get 'professional', to: 'users#professional', as: 'professional'
   get 'search', to: 'users#search', as: :search
   get 'quiz', to: 'users#quiz', as: 'quiz'
 

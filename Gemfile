@@ -59,7 +59,7 @@ gem 'mini_magick'
 gem 'bootstrap', '~> 4.4.1'
 gem 'bootstrap-sass'
 
-gem 'ransack'
+
 gem 'bootstrap-will_paginate', '0.0.6'
 
 gem "font-awesome-rails"
@@ -94,3 +94,4 @@ gem 'capistrano', '~> 3.11'
 gem 'capistrano-rails', '~> 1.4'
 gem 'capistrano-passenger', '~> 0.2.0'
 gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
+
