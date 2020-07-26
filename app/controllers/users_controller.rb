@@ -19,7 +19,13 @@ class UsersController < ApplicationController
     end
   end
   def professional
-    @professionals = User.where(user_role: 'professional')
+    
+    if params[:term1]
+      @professionals = User.where('lower(names) LIKE lower(?) or last_name LIKE ?', "%#{params[:term1]}%")
+      flash[:notice] = "No result found for professionals #{params[:term1]}" if @professionals.nil? || @professionals.blank?
+    else
+      @professionals = User.where(user_role: 'professional')
+    end
   end
   
   def index
@@ -29,12 +35,18 @@ class UsersController < ApplicationController
 end
 
 def search
-  @professionals =professional.search(params[:search])
+  @professionals = professional.search(params[:search])
   @user = User.all
 end
 
   def instructor
-    @instructors = User.where(user_role: 'instructor')
+    if params[:term1]
+      @instructors = User.where('lower(names) LIKE lower(?) or lower(last_name) LIKE ?', "%#{params[:term1]}%")
+      flash[:notice] = "No result found for professionals #{params[:term1]}" if @instructors.nil? || @instructors.blank? 
+    else
+      @instructors = User.where(user_role: 'instructor')
+    end
+    
   end
   def quiz
     

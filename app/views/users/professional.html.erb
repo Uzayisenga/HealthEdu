@@ -1,7 +1,8 @@
+
 <%= form_tag(professional_path, method: :get, class:"form-inline") do %>
-    <%= text_field_tag :search, params[:search], placeholder:'Search By Names Or last_name', class:"form-control mr-sm-2" %>
-    <%= submit_tag 'search', name: nil %>
-<% end %>
+  <%= text_field_tag :term1, params[:term1], placeholder:'Search By Name Or last_name', class:"form-control mr-sm-2"  %>
+  <%= submit_tag ' Search', name: nil %>
+ <% end %>
   
   <div class="sidebar">
     <a <%= link_to 'Instructors List', instructor_path %></a>
@@ -22,12 +23,9 @@
         <th>Email</th>
         <th>Reguratory Body</th>
         <th>Level</th>
-        <th>District</th>
-        <th>Gender</th>
-        <th>Apload_diploma</th>
-        <th>Apload_cv </th>
-        <th>Image</th>
         <th>Phone</th>
+       
+        <th>More actions</th>
         
       </tr>
     </thead>
@@ -37,21 +35,16 @@
         <tr>
            <td><%= professional.names %></td>
            <td><%= professional.last_name %></td>
-           <td><%= professional.working_place %></td>
-           <td><%= professional.email %></td>
-           <td><%= professional.reguratory_body %></td>
-           <td><%= professional.level %></td>
-           <td><%= professional.district %></td>
-           <td><%= professional.gender %></td>
-           <td><%= link_to "Download", professional.apload_diploma_url %></td>
-           <td><%= link_to "Download", professional.apload_cv_url %></td>
-           <td><% if professional.image_url %>
-               <%= image_tag professional.image_url, style:"width:100px;height:100px;" %></td>
-           <% end %>
+          <td><%= professional.working_place %></td>
+          <td><%= professional.email %></td>
+          <td><%= professional.reguratory_body %></td>
+          <td><%= professional.level %></td>
            <td><%= professional.phone %></td>
-        </tr>
+           <td><%= link_to "Show", user_path(professional.id) %></td>
+           
         <% end %>
       </tbody>
     </table>
   </div>
   </div>
+

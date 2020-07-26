@@ -100,7 +100,7 @@ class User < ApplicationRecord
         :Social_Work_Practitioner, :Optometry_Practitioner, :Theatre_Operating_Therapist, :Nurse,
         :Midwife, :Medical_Doctor, :Dental_Surgion,
         :Orthopaedic_Surgeon, :Cardiologist, :Pathologist, :Oncologist,
-        :Neurosurgeons, :Radiologists, :Internists_practitioners, :Pharmacists, :Other,]
+        :Neurosurgeons, :Radiologists, :Internists_practitioners, :Pharmacists, :Student, :Other,]
 
 
 end

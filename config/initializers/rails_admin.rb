@@ -148,6 +148,7 @@ RailsAdmin.config do |config|
       field :district
       field :reguratory_body
       field :level
+      field :user_role
       field :working_place
       field :last_name
       field :uid

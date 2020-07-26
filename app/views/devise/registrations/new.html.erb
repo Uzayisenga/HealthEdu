@@ -5,16 +5,16 @@
     <h2> Sign Up </h2>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
        <%= render "devise/shared/error_messages", resource: resource %>
-    
+
 
         <div class="row">
           <div class="col-50">
-            
+
             <i class="fa fa-envelope"></i> <%= f.label :email %>
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
-            <i class="fa fa-user"></i><%= f.label :first_name %> 
+            <i class="fa fa-user"></i><%= f.label :first_name %>
             <%= f.text_field :names, class:"form-control" %>
-            <i class="fa fa-user"></i><%= f.label :last_name %> 
+            <i class="fa fa-user"></i><%= f.label :last_name %>
             <%= f.text_field :last_name, class:"form-control" %>
             <i class="fa fa-key icon"></i>
             <%= f.label :password %>
@@ -24,11 +24,11 @@
             <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
             <i class="fa fa-key icon"></i> <%= f.label :password_confirmation %>
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
-            
-           
+
+
 
             <div class="row">
-             
+
               <div class="col-50">
               <%= f.label :gender %> :<br>
               <%= f.radio_button :gender, 'Male' %> Male <%= f.radio_button :gender, 'Female' %> Female
@@ -36,21 +36,21 @@
             </div>
           </div>
           <div class="col-50">
-           
+
             <div class="icon-container">
-              
+
             </div>
-            
+
             <i class="fa fa-phone"></i><%= f.label :Phone %>
             <%= f.number_field :phone, class:"form-control" %>
             <i class="fa fa-institution"></i><%= f.label :district %>
             <%= f.text_field :district, class:"form-control" %>
             <%= f.select :reguratory_body, options_for_select([
-                  ["Regulatory Body:", ""], 
-                  "RAHPC", 
-                  "NPC", 
-                  "RMDC", 
-                  "NCNM"]), 
+                  ["Regulatory Body:", ""],
+                  "RAHPC",
+                  "NPC",
+                  "RMDC",
+                  "NCNM"]),
                   {}, { class: "form form-group form-control" } %>
             <%= f.label :upload_diploma %>
             <%= f.file_field :apload_diploma, class:"form-control" %>
@@ -60,76 +60,77 @@
               <div class="col-50">
                 <%= f.select :level, options_for_select([
                   ["Upload your
-                  Certicate", ""], 
-                  "certificate(A2)", 
-                  "Advanced_Diploma", 
-                  "Bachelor_Degree", 
+                  Certicate", ""],
+                  "certificate_A2",
+                  "Advanced_Diploma",
+                  "Bachelor_Degree",
                   "Masters_Degree",
                   "PHD",
-                  "Others"]), 
+                  "Others"]),
                   {}, { class: "form form-group form-control" } %>
                 </div>
                 <div class="col-50">
                 <%= f.select :working_place, options_for_select([
-                  ["Anaesthesia_Practitioner", ""], 
-                  "Biomedical_Engineer", 
-                  "Medical_Laboratory_Practitioner", 
-                  "BOccupational_Therapist", 
+                  ["Anaesthesia_Practitioner", ""],
+                  "Biomedical_Engineer",
+                  "Medical_Laboratory_Practitioner",
+                  "BOccupational_Therapist",
                   "Dental_Therapist",
                   "Nutritionist",
                   "Environmental_Health_Professional",
-                  "Clinial_Psychologist", 
-                  "Chiropractor", 
-                  "Clinical_Medicine Practitioner", 
-                  "Speech_and_Language Pathologist",
+                  "Clinial_Psychologist",
+                  "Chiropractor",
+                  "Clinical_Medicine_Practitioner",
+                  "Speech_and_Language_Pathologist",
                   "Clinical_Perfusionist",
                   "Emergency_Care_Practitioner",
-                  "Physiotherapist", 
-                  "Medical_Imaging_Practitioner", 
-                  "Prosthetists_and_Orthotist", 
-                  "Orthopeadic_Clinical_Officer", 
+                  "Physiotherapist",
+                  "Medical_Imaging_Practitioner",
+                  "Prosthetists_and_Orthotist",
+                  "Orthopeadic_Clinical_Officer",
                   "Public_Health_Practitioner",
                   "Ophthalmic_Clinical_Officer",
                   "Social_Work_Practitioner",
-                  "Optometry_Practitioner", 
-                  "Theatre_Operating_Therapist", 
-                  "Nurse", 
+                  "Optometry_Practitioner",
+                  "Theatre_Operating_Therapist",
+                  "Nurse",
                   "Midwife",
                   "Medical_Doctor",
                   "Dental_Surgion",
                   "Emergency_Care_Practitioner",
                   "Physiotherapist",
-                  "Ophthalmologist", 
-                  "Pathologist", 
-                  "Oncologist", 
+                  "Ophthalmologist",
+                  "Pathologist",
+                  "Oncologist",
                   "Orthopaedic_Surgeon",
                   "Cardiologist",
                   "Neurosurgeons",
-                  "Radiologists ", 
-                  "Internists_practitioners", 
-                  "Pharmacists", 
-                  "Others"]), 
+                  "Radiologists ",
+                  "Internists_practitioners",
+                  "Pharmacists",
+                  "Student",
+                  "Others"]),
                   {}, { class: "form form-group form-control" } %>
                 </div>
                 <div class="col-50">
                 <%= f.select :user_role, options_for_select([
-                  ["professional", ""], 
-                  "admin", 
-                  "instructor", 
-                  "council"]), 
+                  ["professional", ""],
+                  "admin",
+                  "instructor",
+                  "council"]),
                   {}, disabled: (true unless current_user && current_user.user_role == 'admin') %>
               </div>
             </div>
           </div>
 
         </div>
-    
+
         <div class="actions">
         <%= f.submit "Sign up", :"data-no-turbolink"=>true,method:"get" %>
       </div>
     <% end %>
-    
-    
+
+
     </div>
   </div>
 

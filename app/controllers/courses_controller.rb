@@ -3,11 +3,11 @@ class CoursesController < ApplicationController
 
   before_action :authenticate_user!
   before_action :can_create_course, only: [:new, :create]
-  
+
   # before_action :only_admin, only: [:edit, :new]
 
   # before_action :only_admin, only: [:edit, :new]
-  
+
 
   # GET /courses
   # GET /courses.json
@@ -27,7 +27,7 @@ class CoursesController < ApplicationController
   def show
    @comment = Comment.all
    @favorite = current_user.favorites.find_by(course_id: @course.id)
-   
+
   end
 
   # GET /courses/new
@@ -54,14 +54,14 @@ class CoursesController < ApplicationController
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end
-   
+
   end
 
   # PATCH/PUT /courses/1
   # PATCH/PUT /courses/1.json
   def update
     @course = Course.find(params[:id])
-    
+
     respond_to do |format|
       if @course.update(course_params)
         format.html { redirect_to @course, notice: 'Course was successfully updated.' }
@@ -84,7 +84,7 @@ class CoursesController < ApplicationController
   end
 
   private
-  
+
   def course_params
     params.require(:course).permit(:image, :image_cache)
   end
@@ -95,18 +95,18 @@ class CoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def course_params
-      params.require(:course).permit(:image, :title, :credit_number, :content, :content_attract, :course_price, :quiz_link, :marks, :attemption, :user_id ,{file: []})
+      params.require(:course).permit(:image, :title, :credit_number, :content, :content_attract, :course_price, :quiz_link, :video, :attemption, :user_id ,{file: []})
     end
 
     def only_admin
       unless current_user.user_role == 'instructor'
-         redirect_to courses_url, notice: 'you are not allowed to access this page.' 
+         redirect_to courses_url, notice: 'you are not allowed to access this page.'
       end
     end
 
     def only_admin
       unless current_user.user_role == 'instructor'
-         redirect_to courses_url, notice: 'you are not allowed to access this page.' 
+         redirect_to courses_url, notice: 'you are not allowed to access this page.'
       end
     end
     def uploadFile

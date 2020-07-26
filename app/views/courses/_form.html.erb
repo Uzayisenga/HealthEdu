@@ -1,5 +1,5 @@
 
-  
+
    <%= form_with(model: course, local: true) do |form| %>
      <% if course.errors.any? %>
          <div id="error_explanation">
@@ -62,8 +62,12 @@
         <%= form.hidden_field :user_id, class:"form-control" %>
     </div>
     <div class="form-group">
+    <%= form.label :video %>
+    <%= form.file_field :video, id: :video_file %>
+  </div>
+    <div class="form-group">
     <%= form.cktext_area :content, :ckeditor => {:toolbar => 'img', :customConfig => asset_path('ckeditor/config.js')} %>
-    
+
     </div>
     <%= form.submit class:"btn btn-primary" %>
   </form>

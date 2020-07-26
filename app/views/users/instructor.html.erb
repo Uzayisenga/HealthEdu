@@ -1,6 +1,8 @@
-<%= form_tag(instructor_path, method: :get, class:"form-inline") do %>
-  <%= text_field_tag :search, params[:search], placeholder:'Search By Name Or last_name', class:"form-control mr-sm-2" %>
-  <%= submit_tag 'search' %>
+
+
+ <%= form_tag(instructor_path, method: :get, class:"form-inline") do %>
+  <%= text_field_tag :term1, params[:term1], placeholder:'Search By Name Or last_name', class:"form-control mr-sm-2" %>
+  <%= submit_tag ' Search' %>
  <% end %>
 
 <div class="sidebar">
@@ -50,6 +52,7 @@
         <%= image_tag instructor.image_url, style:"width:100px;height:100px;" %></td>
     <% end %>
     <td><%= instructor.phone %></td>
+    
  </tr>
 <% end %>
 </tbody>
