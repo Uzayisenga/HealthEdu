@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def professional
     
     if params[:term1]
-      @professionals = User.where('lower(names) LIKE lower(?) or last_name LIKE ?', "%#{params[:term1]}%")
+      @professionals = User.where('lower(names) LIKE lower(?)', "%#{params[:term1]}%")
       flash[:notice] = "No result found for professionals #{params[:term1]}" if @professionals.nil? || @professionals.blank?
     else
       @professionals = User.where(user_role: 'professional')
@@ -41,8 +41,8 @@ end
 
   def instructor
     if params[:term1]
-      @instructors = User.where('lower(names) LIKE lower(?) or lower(last_name) LIKE ?', "%#{params[:term1]}%")
-      flash[:notice] = "No result found for professionals #{params[:term1]}" if @instructors.nil? || @instructors.blank? 
+      @instructors = User.where('lower(names) LIKE lower(?)', "%#{params[:term1]}%")
+      flash[:notice] = "No result found for this instructors #{params[:term1]}" if @instructors.nil? || @instructors.blank? 
     else
       @instructors = User.where(user_role: 'instructor')
     end
