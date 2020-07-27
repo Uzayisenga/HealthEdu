@@ -1,10 +1,13 @@
-<!-- Search form -->
-<div class="search">
-<input class="form-control" type="text" placeholder="Search" aria-label="Search">
-</div>
+
+
+ <%= form_tag(instructor_path, method: :get, class:"form-inline") do %>
+  <%= text_field_tag :term1, params[:term1], placeholder:'Search By Name Or last_name', class:"form-control mr-sm-2" %>
+  <%= submit_tag ' Search' %>
+ <% end %>
+
 <div class="sidebar">
   <a class="active"<%= link_to 'Instructors List', instructor_path %></a>
-  <a <%= link_to 'Professionals List', professional_path %></a>
+  <a <%= link_to 'Professionals List',  professional_path %></a>
   <a href="#contact">Contact</a>
   <a href="#about">About</a>
 </div>
@@ -16,6 +19,7 @@
 <thead>
   <tr>
     <th>Name</th>
+    <th>LastName</th>
     <th>Working_place</th>
     <th>Email</th>
     <th>Reguratory Body</th>
@@ -35,6 +39,7 @@
 <% @instructors.each do |instructor| %>
  <tr>
     <td><%= instructor.names %></td>
+    <td><%= instructor.last_name %></td>  
     <td><%= instructor.working_place %></td>
     <td><%= instructor.email %></td>
     <td><%= instructor.reguratory_body %></td>
@@ -47,6 +52,7 @@
         <%= image_tag instructor.image_url, style:"width:100px;height:100px;" %></td>
     <% end %>
     <td><%= instructor.phone %></td>
+    
  </tr>
 <% end %>
 </tbody>

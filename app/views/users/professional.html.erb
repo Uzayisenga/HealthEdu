@@ -1,54 +1,50 @@
-<!-- Search form -->
-<div class="search">
-<input class="form-control" type="text" placeholder="Search" aria-label="Search">
-</div>
-<div class="sidebar">
-  <a <%= link_to 'Instructors List', instructor_path %></a>
-  <a class="active" <%= link_to 'Professionals List', professional_path %></a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
-</div>
 
-<!-- Page content -->
-<div class="content">
-<div class="table-responsive">
-<table class="table table-striped table-bordered table-hover">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Working_place</th>
-      <th>Email</th>
-      <th>Reguratory Body</th>
-      <th>Level</th>
-      <th>District</th>
-      <th>Gender</th>
-      <th>Apload_diploma</th>
-      <th>Apload_cv </th>
-      <th>Image</th>
-      <th>Phone</th>
-      
-    </tr>
-  </thead>
-
-    <tbody>
-    <% @professionals.each do |professional| %>
+<%= form_tag(professional_path, method: :get, class:"form-inline") do %>
+  <%= text_field_tag :term1, params[:term1], placeholder:'Search By Name Or last_name', class:"form-control mr-sm-2"  %>
+  <%= submit_tag ' Search', name: nil %>
+ <% end %>
+  
+  <div class="sidebar">
+    <a <%= link_to 'Instructors List', instructor_path %></a>
+    <a class="active" <%= link_to 'Professionals List', professional_path %></a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+  </div>
+  
+  <!-- Page content -->
+  <div class="content">
+  <div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
       <tr>
-         <td><%= professional.names %></td>
-         <td><%= professional.working_place %></td>
-         <td><%= professional.email %></td>
-         <td><%= professional.reguratory_body %></td>
-         <td><%= professional.level %></td>
-         <td><%= professional.district %></td>
-         <td><%= professional.gender %></td>
-         <td><%= link_to "Download", professional.apload_diploma_url %></td>
-         <td><%= link_to "Download", professional.apload_cv_url %></td>
-         <td><% if professional.image_url %>
-             <%= image_tag professional.image_url, style:"width:100px;height:100px;" %></td>
-         <% end %>
-         <td><%= professional.phone %></td>
+        <th>Name</th>
+        <th>LastName</th>
+        <th>Working_place</th>
+        <th>Email</th>
+        <th>Reguratory Body</th>
+        <th>Level</th>
+        <th>Phone</th>
+       
+        <th>More actions</th>
+        
       </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-</div>
+    </thead>
+  
+      <tbody>
+      <% @professionals.each do |professional| %>
+        <tr>
+           <td><%= professional.names %></td>
+           <td><%= professional.last_name %></td>
+          <td><%= professional.working_place %></td>
+          <td><%= professional.email %></td>
+          <td><%= professional.reguratory_body %></td>
+          <td><%= professional.level %></td>
+           <td><%= professional.phone %></td>
+           <td><%= link_to "Show", user_path(professional.id) %></td>
+           
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  </div>
+
