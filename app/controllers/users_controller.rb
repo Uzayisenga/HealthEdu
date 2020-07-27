@@ -43,12 +43,12 @@ class UsersController < ApplicationController
     @instructors = User.where(user_role: 'instructor')
   end
   def quiz
-    
+
   end
 
   def create
     @user = User.new(params[:user])
- 
+
     respond_to do |format|
       if @user.save
 
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
         #UserMailer.with(user: @user).welcome_email.deliver_later
         #UserNotifierMailer.with(user: @user).email.deliver_now!
         UserNotifierMailer.send_signup_email(@user).deliver
- 
+
         format.html { redirect_to(@user, notice: 'User was successfully created.') }
         format.json { render json: @user, status: :created, location: @user }
       else
