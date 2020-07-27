@@ -39,20 +39,20 @@
 <% @instructors.each do |instructor| %>
  <tr>
     <td><%= instructor.names %></td>
-    <td><%= instructor.last_name %></td>  
+    <td><%= instructor.last_name %></td>
     <td><%= instructor.working_place %></td>
     <td><%= instructor.email %></td>
     <td><%= instructor.reguratory_body %></td>
     <td><%= instructor.level %></td>
     <td><%= instructor.district %></td>
     <td><%= instructor.gender %></td>
-    <td><%= link_to "Download", instructor.apload_diploma_url %></td>
-    <td><%= link_to "Download", instructor.apload_cv_url %></td>
+    <td><%= link_to "Open", instructor.apload_diploma_url %></td>
+    <td><%= link_to "Open", instructor.apload_cv_url %></td>
     <td><% if instructor.image_url %>
         <%= image_tag instructor.image_url, style:"width:100px;height:100px;" %></td>
     <% end %>
     <td><%= instructor.phone %></td>
-    
+
  </tr>
 <% end %>
 </tbody>
