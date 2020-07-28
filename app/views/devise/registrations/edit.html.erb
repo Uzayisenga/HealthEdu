@@ -1,17 +1,18 @@
-<div class="profile_pic_div text-center ml-4 border border-light">
+<div style="margin-bottom:50px;height:700px">
+<div class="profile_pic_div text-center ml-4 border p-5">
   <h4>Profile Picture</h4>
   <% if current_user.profile == nil %>
-        <p><%= image_tag 'default.png', class:"rounded-circle" %></p>
+        <p><%= image_tag 'default.png', class:"rounded-circle profile" %></p>
         <% else %>
-        <% if current_user.profile.image? %>        
-            <p><%= image_tag current_user.profile.image.url, class:"profile" %></p>    
-        <% end %> 
+        <% if current_user.profile.image? %>
+            <p><%= image_tag current_user.profile.image.url, class:"profile" %></p>
+        <% end %>
     <% end %>
     <%= link_to 'Edit Picture', profiles_path, class:'btn btn-success btn-sm', :"data-no-turbolink"=>true,method:"get" %>
 </div>
 
 <!-- Default form register -->
-<div class="profile_content_div ml-4 text-center border border-light p-5">
+<div class="profile_content_div ml-4 text-center border p-5">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -71,22 +72,22 @@
             <div class="col">
                 <!-- First name -->
                 <%= f.select :reguratory_body, options_for_select([
-                ["Regulatory Body:", ""], 
-                "RAHPC", 
-                "NPC", 
-                "RMDC", 
-                "NCNM"]), 
+                ["Regulatory Body:", ""],
+                "RAHPC",
+                "NPC",
+                "RMDC",
+                "NCNM"]),
                 {}, { class: "form form-group form-control" } %>
             </div>
             <div class="col">
                 <%= f.select :level, options_for_select([
-                    ["Select Your Level", ""], 
-                    "certificate(A2)", 
-                    "Advanced_Diploma", 
-                    "Bachelor_Degree", 
+                    ["Select Your Level", ""],
+                    "certificate(A2)",
+                    "Advanced_Diploma",
+                    "Bachelor_Degree",
                     "Masters_Degree",
                     "PHD",
-                    "Others"]), 
+                    "Others"]),
                     {}, { class: "form form-group form-control" } %>
             </div>
         </div>
@@ -104,9 +105,10 @@
 
         <!-- Sign up button -->
         <%= f.submit "Save Details", class:"btn btn-info my-4 btn-block" %>
-    
 
-        
+
+
         </div>
     <% end %>
+</div>
 </div>
