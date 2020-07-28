@@ -165,6 +165,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
+    json (2.3.1)
     jwt (2.2.1)
     kaminari (1.2.0)
       activesupport (>= 4.1.0)
@@ -255,6 +256,11 @@ GEM
     polyamorous (2.3.2)
       activerecord (>= 5.2.1)
     popper_js (1.16.0)
+    postmark (1.21.1)
+      json
+    postmark-rails (0.20.0)
+      actionmailer (>= 3.0.0)
+      postmark (~> 1.15)
     prawn (2.2.2)
       pdf-core (~> 0.7.0)
       ttfunk (~> 1.5)
@@ -436,6 +442,7 @@ DEPENDENCIES
   pdfkit
   pdfkit-amd64
   pg (>= 0.18, < 2.0)
+  postmark-rails
   prawn
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.1)
@@ -454,7 +461,6 @@ DEPENDENCIES
   webdrivers
   webpacker (~> 4.0)
   wicked_pdf (= 1.4.0)
-  will_paginate
   wkhtmltopdf-binary
 
 RUBY VERSION
