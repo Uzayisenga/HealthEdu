@@ -13,7 +13,7 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @currentUser = current_user.id
-    @courses = current_user.courses.all.order('created_at DESC').page (params[:page]).per (5)
+    @courses = current_user.courses.all.order('created_at DESC').page (params[:page])
   end
 
   def all_course
