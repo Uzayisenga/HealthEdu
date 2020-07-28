@@ -1724,9 +1724,8 @@ section {
   <div class="col mb-4">
     <div class="card h-100">
     <% if course.image_url %>
-          <%= image_tag course.image_url,:alt => "doctor feed", style:'width:100%;height:40%' %>
-
-        <% end %>
+        <%= image_tag course.image_url,:alt => "doctor feed", style:'width:100%;height:40%' %>
+    <% end %>
       <div class="card-body">
         <h5 class="card-title" style="color:green"><b><%= course.title%>/<%= course.credit_number %>credits &nbsp;&nbsp; - &nbsp;&nbsp;<%= course.course_price%>&nbsp;Frws</b></h5>
         <p class="card-text content"><b><%= course.content[0,100]..%></b></p>

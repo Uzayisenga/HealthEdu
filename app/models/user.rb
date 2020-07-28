@@ -42,6 +42,22 @@ class User < ApplicationRecord
           user.save
           user
         end
+        
+        def self.search(search)
+          if term
+            where('names LIKE ? or last_name', "%#{search}%")
+          else
+            order('id desc')
+          end
+        end
+        def self.order_list(sort_order)
+          if sort_order == "names"
+            order(names: :desc)
+          else
+            order(created_at: :desc)
+          end
+        end
+       
 
         def self.find_for_facebook(auth)
           user = User.find_by(email: auth.info.email)

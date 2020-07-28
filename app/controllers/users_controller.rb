@@ -1,23 +1,6 @@
 class UsersController < ApplicationController
+  
   before_action :only_council, except: [:show]
-  def search
-    q = params[:q]
-    @users    = User.search(names_cont: q).result
-    @courses = Course.search(title_cont: q).result
-    #@users    = User.search(name_cont: q).result
-  end
-  def index
-
-    if params[:id]
-      @users = User.where(" names Like ?", "%#{params[:id]}%")
-    else
-      @users = User.all
-    end
-
-    @q = User.ransack(params[:q])
-    @users = @q.result.includes(:user).page(params[:page])
-
-  end
 
   def show
     @user = User.find(params[:id])
@@ -36,19 +19,42 @@ class UsersController < ApplicationController
     end
   end
   def professional
-    @professionals = User.where(user_role: 'professional')
+    
+    if params[:term1]
+      @professionals = User.where('lower(names) LIKE lower(?)', "%#{params[:term1]}%")
+      flash[:notice] = "No result found for professionals #{params[:term1]}" if @professionals.nil? || @professionals.blank?
+    else
+      @professionals = User.where(user_role: 'professional')
+    end
   end
+  
+  def index
+  
+    @professionals = User.all
+    User.where('names LIKE ? or last_name LIKE ?', "%#{params[:search]}%","%#{params[:search]}%")
+end
+
+def search
+  @professionals = professional.search(params[:search])
+  @user = User.all
+end
 
   def instructor
-    @instructors = User.where(user_role: 'instructor')
+    if params[:term1]
+      @instructors = User.where('lower(names) LIKE lower(?)', "%#{params[:term1]}%")
+      flash[:notice] = "No result found for this instructors #{params[:term1]}" if @instructors.nil? || @instructors.blank? 
+    else
+      @instructors = User.where(user_role: 'instructor')
+    end
+    
   end
   def quiz
-    
+
   end
 
   def create
     @user = User.new(params[:user])
- 
+
     respond_to do |format|
       if @user.save
 
@@ -56,7 +62,7 @@ class UsersController < ApplicationController
         #UserMailer.with(user: @user).welcome_email.deliver_later
         #UserNotifierMailer.with(user: @user).email.deliver_now!
         UserNotifierMailer.send_signup_email(@user).deliver
- 
+
         format.html { redirect_to(@user, notice: 'User was successfully created.') }
         format.json { render json: @user, status: :created, location: @user }
       else
@@ -64,5 +70,14 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+  private
+
+  def sign_up_params
+    params.require(:user).permit(:names, :email, :phone, :gender, :province, :district, :password, :password_confirmation, :user_role, :reguratory_body, :apload_diploma, :apload_cv, :working_place, :last_name, :search)
+  end
+
+  def account_update_params
+    params.require(:user).permit(:names, :email, :phone, :gender, :province, :district, :password, :password_confirmation, :user_role, :reguratory_body, :apload_diploma, :apload_cv, :working_place, :last_name, :search)
   end
 end

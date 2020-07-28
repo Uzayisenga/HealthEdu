@@ -1,27 +1,28 @@
-<div class="container">
 <% if user_signed_in? && current_user.user_role== 'admin'%>
-   <%= link_to 'New Book', new_book_path %>
+  <%= link_to 'New Book', new_book_path %>
 <% end %>
 <% @books.each do |book| %>
-<div class="post-entry horizontal d-flex mb-4">
-<a  class="img-link mr-4">
-  <% if book.image_url %>
-  <%= image_tag book.image_url,:alt => "doctor feed",class:"img-thumbnail"  %>
-<% end %>
-</a>
-<div class="post-content">
-  <div class="post-meta">
-    <a href="#"><% start_time = book.created_at %>
-    <% end_time   =  DateTime.now %>
-    <%= distance_of_time_in_words(start_time, end_time)  %></a>
-    <span class="mx-1">/</span>
-    <a href="#"><%= book.author_name %></a>, <a href="#">great book</a>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <% if book.image_url %>
+        <%= image_tag book.image_url,:alt => "doctor feed",class:"img-thumbnail"  %>
+      <% end %>
+    </div>
+    <div class="col-md-8">
+      <a href="#"><% start_time = book.created_at %>
+      <% end_time   =  DateTime.now %>
+      <%= distance_of_time_in_words(start_time, end_time)  %></a>
+
+      <a href="#"><%= book.author_name %></a>, <a href="#">great book</a>
+      <h3><%= link_to book.book_name[0,30], book,:"data-no-turbolink"=>true,method:"get" %></h3>
+      <div>
+      <p><%= book.summary[0,200]... %></p>
+    </div>
   </div>
-  <h3 class="post-heading"><%= link_to book.book_name[0,30], book,:"data-no-turbolink"=>true,method:"get" %></h3>
-  <div class="card" style="width: 90%;">
-    <center><p ><%= book.summary[0,200]... %></p></center>
+     </div>
+  </div>
 </div>
-</div>
-</div>
-<% end %>
-</div>
+
+    <% end %>
+
