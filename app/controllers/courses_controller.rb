@@ -13,7 +13,7 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @currentUser = current_user.id
-    @courses = current_user.courses.all.order('created_at DESC').page (params[:page])
+    @courses = current_user.courses.all.order('created_at DESC').page (params[:page]).per (5)
   end
 
   def all_course
@@ -23,7 +23,7 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-   @comment = Comment.all
+   @courses = Course.paginate(:page => params[:page], :per_page=>5)
    @favorite = current_user.favorites.find_by(course_id: @course.id)
 
   end

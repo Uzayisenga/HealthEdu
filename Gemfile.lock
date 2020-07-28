@@ -454,6 +454,7 @@ DEPENDENCIES
   webdrivers
   webpacker (~> 4.0)
   wicked_pdf (= 1.4.0)
+  will_paginate
   wkhtmltopdf-binary
 
 RUBY VERSION
