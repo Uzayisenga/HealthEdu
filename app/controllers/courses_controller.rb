@@ -25,7 +25,7 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-   @comment = Comment.all
+   @courses = Course.paginate(:page => params[:page], :per_page=>5)
    @favorite = current_user.favorites.find_by(course_id: @course.id)
 
   end

@@ -2,7 +2,6 @@
         <div class="container">
           <div class="row align-items-end">
             <div class="col-lg-7">
-              <%= paginate @courses %>
               <h2 class="mb-0">Courses</h2>
               <p>Create course, assign more module and create quiz</p>
             </div>
@@ -10,7 +9,7 @@
         </div>
       </div>
 
-
+     
     <div class="custom-breadcrumns border-bottom">
       <div class="container">
         <%= link_to "Home", homepage_index_path,:"data-no-turbolink"=>true,method:"get" %>
@@ -68,9 +67,9 @@
   </tbody>
 </table>
   </div>
-  <%= paginate @courses %>
 </div>
 </div>
+
 </div>
 
 
