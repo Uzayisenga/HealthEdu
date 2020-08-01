@@ -14,6 +14,7 @@ class User < ApplicationRecord
          mount_uploader :image, ImageUploader
          mount_uploader :apload_diploma, AploadDiplomaUploader
          mount_uploader :apload_cv, AploadCvUploader
+         validates :reguratory_body, :working_place, presence: true
          def self.create_unique_string
           SecureRandom.uuid
         end
@@ -42,7 +43,7 @@ class User < ApplicationRecord
           user.save
           user
         end
-        
+
         def self.search(search)
           if term
             where('names LIKE ? or last_name', "%#{search}%")
@@ -57,7 +58,7 @@ class User < ApplicationRecord
             order(created_at: :desc)
           end
         end
-       
+
 
         def self.find_for_facebook(auth)
           user = User.find_by(email: auth.info.email)
