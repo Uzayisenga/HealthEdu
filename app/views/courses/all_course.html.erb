@@ -39,7 +39,7 @@
                           </figure>
                           <div class="course-1-content pb-4">
                           <B>Instructor:</B><%= course.user.names%>  <%=course.user.last_name%><br>
-                          <h2><%= course.title%>/<%= pluralize(course.credits.count, "CPD credit") %></h2>
+                          <h2><%= course.title%>/<%= course.credit_number%>CPD credits</h2>
 
                           <p class="desc mb-4"><%= course.content_attract.truncate(75)%>
                           <p><%= link_to 'Enroll In This Course', course, class:"btn btn-primary rounded-0 px-4",:"data-no-turbolink"=>true,method:"get" %></p>
