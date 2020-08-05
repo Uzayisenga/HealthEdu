@@ -29,6 +29,11 @@
   </div>
  <%= form.hidden_field :course_id, :value => params[:course_id] %>
 
+ <div class="field">
+ <%= form.label :video %>
+ <%= form.text_field :video, :required => true %>
+</div>
+
 
   <div class="actions">
     <%= form.submit %>
