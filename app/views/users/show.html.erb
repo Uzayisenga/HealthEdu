@@ -52,7 +52,7 @@
 
         <% credit = 0 %>
            <% @user.favorites.each do |pro| %>
-            <% credit += pro.course.credit.count %>
+            <% credits += pro.course.credits.count %>
             <% end %>
            <td><%= Credit %></td>
     </tr>
@@ -84,7 +84,7 @@
         <td><%= favorite.course.user.names %></td>
         <td>HealthEdu LTD</td>
         <td>HealthEdu LTD</td>
-        <td> </td>
+        <td> <img src="images/signature.jpeg" alt="Image" class="img-fluid", style:"width:100px;height:100px;"></td>
     </tr>
     <% end %>
     </tbody>

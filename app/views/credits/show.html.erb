@@ -1,18 +1,38 @@
+<div class="custom-breadcrumns border-bottom">
+      <div class="container">
+        <%= link_to "Home", homepage_index_path,:"data-no-turbolink"=>true,method:"get" %>
+        <span class="mx-3 icon-keyboard_arrow_right"></span>
+        <%= link_to "Courses", courses_path,:"data-no-turbolink"=>true,method:"get" %>
+        <span class="mx-3 icon-keyboard_arrow_right"></span>
+        <span class="current">Module</span>
+      </div>
+    </div>
 
-
-<div class="card p-5" style='width:70%;margin:auto'>
+<div class="card" style='width:70%;margin:auto'>
 <!-- Card content -->
 <div class="card-body">
-<h3 class="card-title"><b>
-<div class="container"></p><%= @credit.name %></h3></div>
+<div class="site-section">
 
-<div class="card-body">
-<h4 class="card-title">Credit Description</h4>
-<p class="card-text"><%= @credit.discription.html_safe %></p>
+                <div class="col-lg-12 ml-auto align-self-center">
+                        <h2 class="section-title-underline mb-5">
+                            <span><%= @credit.name %></span>
+                        </h2>
+
+                        <p><%= @credit.discription.html_safe %></p>
+
+
+
+
+
+                    </div>
+
+    </div>
+
+
+
 </div>
+</div><br><br>
 
 
 
-<%= link_to 'Back', favorites_path %>
-</div>
-</div>
+
