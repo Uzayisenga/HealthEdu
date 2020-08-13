@@ -30,7 +30,7 @@
       <th>District</th>
       <th>Gender</th>
       <th>Phone</th>
-      <th>Working_place</th>
+      <th>Professional Category</th>
       <th>Number of requested courses</th>
       <th>Total # of modules</th>
 
@@ -52,9 +52,9 @@
 
         <% credit = 0 %>
            <% @user.favorites.each do |pro| %>
-            <% credit += pro.course.credits.count %>
+            <% credit += pro.course.credit.count %>
             <% end %>
-           <td><%= credit %></td>
+           <td><%= Credit %></td>
     </tr>
     </tbody>
 </table>
@@ -71,7 +71,6 @@
       <th>Instructor</th>
       <th>Institution organizer</th>
       <th>Venues</th>
-      <th>Signature of participant</th>
       <th>Signature and Stamp of provider</th>
     </tr>
   </thead>
@@ -81,15 +80,11 @@
     <tr>
     <td><%= favorite.created_at %></td>
         <td><%= favorite.course.title %></td>
-        <td><%= favorite.course.credits.count %></td>
+        <td><%= favorite.course.credit.count %></td>
         <td><%= favorite.course.user.names %></td>
         <td>HealthEdu LTD</td>
         <td>HealthEdu LTD</td>
         <td> </td>
-        <td> </td>
-
-
-
     </tr>
     <% end %>
     </tbody>
