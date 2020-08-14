@@ -52,7 +52,7 @@
 
         <% credit = 0 %>
            <% @user.favorites.each do |pro| %>
-            <% credits += pro.course.credits.count %>
+            <% credits = credits + pro.course.credits.count %>
             <% end %>
            <td><%= Credit %></td>
     </tr>
