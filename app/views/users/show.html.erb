@@ -53,7 +53,6 @@
 
         <% cpd = 0 %>
            <% @user.favorites.each do |pro| %>
-            >
             <% cpd += pro.course.credit_number if pro.course.present? %>
             <% end %>
 
