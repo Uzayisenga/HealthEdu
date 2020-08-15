@@ -32,7 +32,7 @@
       <th>Phone</th>
       <th>Professional Category</th>
       <th>Number of requested courses</th>
-      <th>Total # of modules</th>
+      <th>Total Number of CPD Credits</th>
 
 
     </tr>
@@ -50,11 +50,14 @@
         <td><%= @user.working_place %></td>
         <td><%= @user.favorites.count %></td>
 
-        <% credit = 0 %>
+
+        <% cpd = 0 %>
            <% @user.favorites.each do |pro| %>
-            <% credits += pro.course.credits.count %>
+            >
+            <% cpd += pro.course.credit_number if pro.course.present? %>
             <% end %>
-           <td><%= Credit %></td>
+
+           <td><%= cpd %></td>
     </tr>
     </tbody>
 </table>
@@ -80,7 +83,7 @@
     <tr>
     <td><%= favorite.created_at %></td>
         <td><%= favorite.course.title %></td>
-        <td><%= favorite.course.credit.count %></td>
+        <td><%= favorite.course.credits.count %></td>
         <td><%= favorite.course.user.names %></td>
         <td>HealthEdu LTD</td>
         <td>HealthEdu LTD</td>
