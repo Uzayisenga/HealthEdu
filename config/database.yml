@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: HealthEdu_production
-  username: HealthEdu
+  username: healtheducat
   password: <%= ENV['HEALTHEDU_DATABASE_PASSWORD'] %>
