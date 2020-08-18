@@ -9,13 +9,7 @@ class ApplicationController < ActionController::Base
     end
 
      helper_method :request_text
-    def default_url_options
-    if Rails.env.production?
-      {:host => "www.healtheducat.rw"}
-    else  
-      {}
-    end
-   end
+    
 
     protected
         def configure_permitted_parameters
