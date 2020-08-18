@@ -32,7 +32,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
 
-config.hosts << "healtheducat.rw"
+config.hosts << "www.healtheducat.rw"
 
 
   # Don't care if the mailer can't send.
