@@ -59,6 +59,6 @@
 #     auth_methods: %w(publickey password)
 #     # password: 'please use keys'
 #   }
-server '64.227.3.3', user: 'healtheducat', roles: %w{app db web}
+server '174.138.34.143', user: 'nadine', roles: %w{app db web}
 
 
