@@ -82,4 +82,4 @@ production:
   <<: *default
   database: HealthEdu_production
   username: HealthEdu
-  password: <%= ENV['HEALTHEDU_DATABASE_PASSWORD'] %>
+  password: Admin@12345LTD
