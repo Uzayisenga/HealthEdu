@@ -58,17 +58,14 @@ type = "image/x-icon">
         <li class="nav-item active">
           <%= link_to "Home", main_app.homepage_index_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
         </li>
+
+        <% if user_signed_in? && current_user.names== '' %>
         <li class="nav-item">
-        <%= link_to 'Help', main_app.pages_help_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
-        </li>
-        <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "My Courses", main_app.all_favorite_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
-          </li>
-          <li class="nav-item">
-            <%=link_to 'All Courses',main_app.all_course_courses_path, class:"nav-link",:"data-no-turbolink"=>true,method:"get" %>
-          </li>
-        <% else %>
+        please fill missed information before continuing
+          <%= link_to 'Add your profile', main_app.edit_user_registration_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %></li>
+          <%= link_to "Logout", main_app.destroy_user_session_path, class: "nav-link", :method => :get %>
+
+        <% elsif user_signed_in? %>
           <li class="nav-item">
           <%= link_to 'About Us', main_app.pages_about_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
           </li>
@@ -76,12 +73,18 @@ type = "image/x-icon">
           <%= link_to 'Gallery', main_app.pages_gallery_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
           </li>
           <li class="nav-item">
+          <%= link_to "My Courses", main_app.all_favorite_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
+        </li>
+        <li class="nav-item">
+          <%=link_to 'All Courses',main_app.all_course_courses_path, class:"nav-link",:"data-no-turbolink"=>true,method:"get" %>
+        </li>
+          <li class="nav-item">
           <%= link_to 'Courses', main_app.all_course_courses_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
           </li>
-
-
-        <% end %>
-        <% if user_signed_in? && current_user.user_role== 'admin'%>
+          <li class="nav-item">
+          <%= link_to 'Help', main_app.pages_help_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
+          </li>
+          <% if user_signed_in? && current_user.user_role== 'admin'%>
           <li class="nav-item">
               <%= link_to "Admin Panel",  rails_admin.dashboard_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
           </li>
@@ -99,9 +102,10 @@ type = "image/x-icon">
             <%= link_to 'Check', instructor_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
           </li>
         <% end %>
-     </ul>
+        </ul>
+
+
       <div class="w-25 d-flex">
-        <% if user_signed_in? %>
           <strong><%= current_user.email %></strong>
           <i class="fa fa-bell" aria-hidden="true"></i><%= link_to pluralize(Notification.unread_count(current_user), ''), notifications_path, :class => 'navbar-link'  %>
           <div class="dropdown">
