@@ -32,7 +32,7 @@ Rails.application.config.hosts = nill
   config.active_storage.service = :local
 
 
-  config.hosts.clear
+  
 
 
   # Don't care if the mailer can't send.
