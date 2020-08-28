@@ -77,7 +77,6 @@ config.action_mailer.smtp_settings = {
   :authentication => :cram_md5
 }
 
-
 end
 
 
