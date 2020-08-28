@@ -32,7 +32,11 @@ Rails.application.config.hosts = nill
   config.active_storage.service = :local
 
 
-config.hosts << "www.healtheducat.rw"
+  config.hosts << "www.healtheducat.rw"
+  # Whitelist a test domain. Rails adds \A and \z around
+  # your regular expressions.
+  config.hosts << /application\.local/
+
 
 
   # Don't care if the mailer can't send.
