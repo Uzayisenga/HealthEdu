@@ -9,6 +9,7 @@
 <div class="card-body">
 <h4 class="card-title">Credit Description</h4>
 <p class="card-text"><%= @credit.discription.html_safe %></p>
+<iframe src='https://www.youtube.com/embed/<%= @credit.video %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen></iframe>
 
 </div>
 

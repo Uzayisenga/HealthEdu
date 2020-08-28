@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   before_action :only_council, except: [:show]
 
   def show
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     end
   end
   def professional
-    
+
     if params[:term1]
       @professionals = User.where('lower(names) LIKE lower(?)', "%#{params[:term1]}%")
       flash[:notice] = "No result found for professionals #{params[:term1]}" if @professionals.nil? || @professionals.blank?
@@ -27,9 +27,9 @@ class UsersController < ApplicationController
       @professionals = User.where(user_role: 'professional')
     end
   end
-  
+
   def index
-  
+
     @professionals = User.all
     User.where('names LIKE ? or last_name LIKE ?', "%#{params[:search]}%","%#{params[:search]}%")
 end
@@ -42,11 +42,11 @@ end
   def instructor
     if params[:term1]
       @instructors = User.where('lower(names) LIKE lower(?)', "%#{params[:term1]}%")
-      flash[:notice] = "No result found for this instructors #{params[:term1]}" if @instructors.nil? || @instructors.blank? 
+      flash[:notice] = "No result found for this instructors #{params[:term1]}" if @instructors.nil? || @instructors.blank?
     else
       @instructors = User.where(user_role: 'instructor')
     end
-    
+
   end
   def quiz
 
@@ -80,4 +80,5 @@ end
   def account_update_params
     params.require(:user).permit(:names, :email, :phone, :gender, :province, :district, :password, :password_confirmation, :user_role, :reguratory_body, :apload_diploma, :apload_cv, :working_place, :last_name, :search)
   end
+
 end

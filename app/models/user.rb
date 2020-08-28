@@ -14,6 +14,7 @@ class User < ApplicationRecord
          mount_uploader :image, ImageUploader
          mount_uploader :apload_diploma, AploadDiplomaUploader
          mount_uploader :apload_cv, AploadCvUploader
+         validates :reguratory_body, :working_place, presence: true
          def self.create_unique_string
           SecureRandom.uuid
         end
@@ -42,7 +43,7 @@ class User < ApplicationRecord
           user.save
           user
         end
-        
+
         def self.search(search)
           if term
             where('names LIKE ? or last_name', "%#{search}%")
@@ -57,7 +58,7 @@ class User < ApplicationRecord
             order(created_at: :desc)
           end
         end
-       
+
 
         def self.find_for_facebook(auth)
           user = User.find_by(email: auth.info.email)
@@ -86,6 +87,7 @@ class User < ApplicationRecord
   def before_import_save(record)
     self.allow_blank_uid = true
   end
+
         # def self.search(search)
 
         #   #  where('names LIKE ?', "%#{search}%")
@@ -94,8 +96,8 @@ class User < ApplicationRecord
         enum reguratory_body: [:RAHPC, :NPC, :RMDC, :NCNM]
         enum level: [:certificate_A2, :Advanced_Diploma, :Bachelor_Degree, :Masters_Degree, :PHD, :Others]
         enum working_place: [:Anaesthesia_Practitioner, :Biomedical_Engineer, :Medical_Laboratory_Practitioner, :BOccupational_Therapist,
-        :Chiropractor, :Nutritionist, :Environmental_Health_Professional, :Clinial_Psychologist,:Dental_Therapist,
-        :Emergency_Care_Practitioner, :Physiotherapist, :Speech_and_Language_Pathologist, :Medical_Imaging_Practitioner,
+        :Chiropractor, :Clinical_Medicine_Practitioner, :Nutritionist, :Environmental_Health_Professional, :Clinial_Psychologist, :Dental_Therapist,
+        :Emergency_Care_Practitioner, :Clinical_Perfusionist, :Physiotherapist, :Speech_and_Language_Pathologist, :Medical_Imaging_Practitioner,
         :Prosthetists_and_Orthotist, :Orthopeadic_Clinical_Officer, :Public_Health_Practitioner, :Ophthalmic_Clinical_Officer,
         :Social_Work_Practitioner, :Optometry_Practitioner, :Theatre_Operating_Therapist, :Nurse,
         :Midwife, :Medical_Doctor, :Dental_Surgion,
