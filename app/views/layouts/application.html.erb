@@ -56,7 +56,7 @@ type = "image/x-icon">
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
 
-        <% if user_signed_in? && current_user.names== nil %>
+        <% if user_signed_in? && current_user.names== '' %>
         <li class="nav-item">
           <div class="alert alert-warning">
              <strong>Warning!</strong> please click here <%= link_to 'Add More', main_app.edit_user_registration_path,:"data-no-turbolink"=>true,method:"get" %> and fill missed information before continuing.
