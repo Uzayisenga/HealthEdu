@@ -1,4 +1,4 @@
-Rails.application.configure do
+Rails.application.config.hosts = nill
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -32,7 +32,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
 
-config.hosts << "healtheducat.rw"
+  config.hosts.clear
 
 
   # Don't care if the mailer can't send.

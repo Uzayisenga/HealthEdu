@@ -15,4 +15,5 @@ class Favorite < ApplicationRecord
   def week
     self.created_at.strftime('%B')
   end
+
 end

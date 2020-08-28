@@ -21,11 +21,11 @@
         <div class="form-row mb-4">
             <div class="col">
                 <!-- First name -->
-                <%= f.text_field :names, class:"form-control", id:"defaultRegisterFormFirstName"  %>
+                <%= f.text_field :names, class:"form-control", id:"defaultRegisterFormFirstName",placeholder:'Enter  Your First name'  %>
                 </div>
                 <div class="col">
                     <!-- Last name -->
-                    <%= f.text_field :last_name, class:"form-control" %>
+                    <%= f.text_field :last_name, class:"form-control",placeholder:'Enter  Your Last name'  %>
                 </div>
             </div>
 
@@ -39,7 +39,7 @@
             <% end %>
             <div class="col">
                 <!-- Phone Number -->
-                <%= f.number_field :phone, class:"form-control" %>
+                <%= f.number_field :phone, class:"form-control",placeholder:'Enter  Your Phone'  %>
             </div>
         </div>
 
@@ -64,7 +64,7 @@
             </div>
             <div class="col">
                 <!-- District -->
-                <%= f.text_field :district, class:"form-control" %>
+                <%= f.text_field :district, class:"form-control",placeholder:'Enter  Your District'  %>
             </div>
         </div>
 

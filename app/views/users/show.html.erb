@@ -30,9 +30,9 @@
       <th>District</th>
       <th>Gender</th>
       <th>Phone</th>
-      <th>Working_place</th>
+      <th>Professional Category</th>
       <th>Number of requested courses</th>
-      <th>Total # of modules</th>
+      <th>Total Number of CPD Credits</th>
 
 
     </tr>
@@ -50,11 +50,13 @@
         <td><%= @user.working_place %></td>
         <td><%= @user.favorites.count %></td>
 
-        <% credit = 0 %>
+
+        <% cpd = 0 %>
            <% @user.favorites.each do |pro| %>
-            <% credit += pro.course.credits.count %>
+            <% cpd += pro.course.credit_number if pro.course.present? %>
             <% end %>
-           <td><%= credit %></td>
+
+           <td><%= cpd %></td>
     </tr>
     </tbody>
 </table>
@@ -71,7 +73,6 @@
       <th>Instructor</th>
       <th>Institution organizer</th>
       <th>Venues</th>
-      <th>Signature of participant</th>
       <th>Signature and Stamp of provider</th>
     </tr>
   </thead>
@@ -85,11 +86,7 @@
         <td><%= favorite.course.user.names %></td>
         <td>HealthEdu LTD</td>
         <td>HealthEdu LTD</td>
-        <td> </td>
-        <td> </td>
-
-
-
+        <td> <img src="images/signature.jpeg" alt="Image" class="img-fluid", style:"width:100px;height:100px;"></td>
     </tr>
     <% end %>
     </tbody>

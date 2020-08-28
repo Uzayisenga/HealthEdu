@@ -15,7 +15,7 @@ module HealthEdu
     config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
 
     config.action_mailer.delivery_method = :postmark
-
+    config.hosts << "www.healtheducat.rw"
 config.action_mailer.postmark_settings = {
   api_token: Rails.application.secrets.postmark_api_token
 }

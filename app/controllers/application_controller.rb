@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     end
 
      helper_method :request_text
-
+    
 
     protected
         def configure_permitted_parameters
