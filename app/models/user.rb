@@ -14,7 +14,7 @@ class User < ApplicationRecord
          mount_uploader :image, ImageUploader
          mount_uploader :apload_diploma, AploadDiplomaUploader
          mount_uploader :apload_cv, AploadCvUploader
-         validates :working_place, presence: true
+         validates :reguratory_body, :level, :working_place, :gender, :phone, :district, presence: true
          def self.create_unique_string
           SecureRandom.uuid
         end

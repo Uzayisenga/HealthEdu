@@ -55,6 +55,19 @@ type = "image/x-icon">
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+        <%= link_to 'About Us', main_app.pages_about_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
+        </li>
+        <li class="nav-item">
+        <%= link_to 'Gallery', main_app.pages_gallery_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
+        </li>
+        <li class="nav-item">
+        <%= link_to 'Courses', main_app.all_course_courses_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
+        </li>
+
+        <li class="nav-item">
+        <%= link_to 'Help', main_app.pages_help_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
+        </li>
 
         <% if user_signed_in? && current_user.names== '' %>
         <li class="nav-item">
@@ -63,21 +76,11 @@ type = "image/x-icon">
           </div>
 
         <% elsif user_signed_in? %>
-          <li class="nav-item">
-          <%= link_to 'About Us', main_app.pages_about_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
-          </li>
-          <li class="nav-item">
-          <%= link_to 'Gallery', main_app.pages_gallery_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
-          </li>
+
           <li class="nav-item">
           <%= link_to "My Courses", main_app.all_favorite_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
         </li>
-          <li class="nav-item">
-          <%= link_to 'Courses', main_app.all_course_courses_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
-          </li>
-          <li class="nav-item">
-          <%= link_to 'Help', main_app.pages_help_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
-          </li>
+
           <% if user_signed_in? && current_user.user_role== 'admin'%>
           <li class="nav-item">
               <%= link_to "Admin Panel",  rails_admin.dashboard_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
@@ -96,7 +99,7 @@ type = "image/x-icon">
             <%= link_to 'Check', instructor_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
           </li>
         <% end %>
-        </ul>
+
 
 
       <div class="w-25 d-flex">
@@ -110,6 +113,7 @@ type = "image/x-icon">
             </div>
           </div>
           <% else %>
+
             <button class="dropbtn btn-sm"><i class="fa fa-users" aria-hidden="true" style="color:white;text-decoration:none;"></i>
             <%= link_to "Register",  new_user_registration_path,class:"text-white", :"data-no-turbolink"=>true,method:"get" %></button>&nbsp;&nbsp;&nbsp;
             <button class="dropbtn btn-sm"><i class="fa fa-lock" aria-hidden="true" style="color:white;"></i>
