@@ -19,4 +19,5 @@ Rails.application.config.assets.precompile += %w( owl.carousel.min.css )
 Rails.application.config.assets.precompile += %w( owl.theme.default.min.css )
 Rails.application.config.assets.precompile += %w( bootstrap-datepicker.css )
 Rails.application.config.assets.precompile += %w( aos.css )
+Rails.application.config.assets.precompile += %w( colors.css )
 Rails.application.config.assets.precompile += %w[ckeditor/config.js]

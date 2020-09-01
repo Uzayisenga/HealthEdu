@@ -1,496 +1,744 @@
-<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-<div class="container-fluid bg-overlay">
-	<div class="home ">
-		<h1 class="text-success">CPD COURSE FOR HEALTHCARE PROVIDERS</h1>
-        <h4>This platform will expose you to a big number of health "<strong>specialists</strong>" in Rwanda,<br>
-        Africa and worldwide.</h4><h1 class="aa text-center">Keep updated with us</h1>
-	</div>
-</div>
-    <div class="site-section">
-      <div class="container">
-        <div class="row mb-5 justify-content-center text-center">
-          <div class="col-lg-4 mb-5">
-            <h2 class="section-title-underline mb-5">
-              <span>HealthEdu Services</span>
-            </h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-            <div class="feature-1 border">
-              <div class="icon-wrapper bg-primary">
-                <center><i class="fa fa-book" aria-hidden="true" style="font-size:50px;color:#fff;"></i><center>
-                <span class="flaticon-mortarboard text-white"></span>
-              </div>
-              <div class="feature-1-content">
-                <h2>Trusted Courses</h2>
-                <p>Courses delivered by HealthEdu are to be trusted, they are prepared by Experienced
-                Health Professionals,</p>
-                <p><a href="#" class="btn btn-primary px-4 rounded-0">Learn More</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-            <div class="feature-1 border">
-              <div class="icon-wrapper bg-primary">
-                <center><i class="fa fa-institution" aria-hidden="true" style="font-size:50px;color:#fff;"></i><center>
-              </div>
-              <div class="feature-1-content">
-                <h2>Tools for Professionals</h2>
-                <p>With the current platform, we deliver as our contribution to healthcare in general in
-                Countries</p>
-                <p><a href="#" class="btn btn-primary px-4 rounded-0">Learn More</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-            <div class="feature-1 border">
-              <div class="icon-wrapper bg-primary">
-                <center><i class="fas fa-graduation-cap" aria-hidden="true" style="font-size:50px;color:#fff;"></i><center>
-              </div>
-              <div class="feature-1-content">
-                <h2>Certificate</h2>
-                <p>Our web application delivers certificates to successful applicants who score 80% and
-                above in evaluation from different </p>
-                <p><a href="#" class="btn btn-primary px-4 rounded-0">Learn More</a></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="site-section">
-      <div class="container">
-        <div class="row mb-5 justify-content-center text-center">
-          <div class="col-lg-6 mb-5">
-            <h2 class="section-title-underline mb-3">
-              <span>Popular Courses</span>
-            </h2>
-            <p>Below are our popular courses in different Health Professional categories</p>
-          </div>
-        </div>
-      </div>
-      <!--Carousel Wrapper-->
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="container">
-    <div class="row">
-      <% @courses.each do |course| %>
-        <div class="col-lg-4 col-md-6 mb-4">
+<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-              <div class="course-1-item">
-                  <figure class="thumnail">
-                  <a href="#">
-                  <% if course.image_url %>
-                    <%= image_tag course.image_url,:alt => "doctor feed",class:'card-image'%>
-                  <% end %>
-                  </a>
-                  <div class="price"><%= course.course_price%>&nbsp;Frws</div>
-                  <div class="category"><h3><i class="fa fa-calendar"></i> Updated
-                    <% start_time = course.created_at %>
-                    <% end_time   =  DateTime.now %>
-                    <%= distance_of_time_in_words(start_time, end_time)  %></h3>
-                  </div>
-                    </figure>
-                    <div class="course-1-content pb-4">
-                    <B><%= course.title%>/<%= course.credit_number %>CPD Credits</B>
-                    <h5>Instructor:<%= course.user.names%> <%=course.user.last_name%></h5>
+        <title>HealthEdu</title>
 
-                    <p class="desc mb-4"><%= course.content_attract.truncate(75)%>
-                      <p><%= link_to 'Enroll In This Course', course, class:"btn btn-primary rounded-0 px-4",:"data-no-turbolink"=>true,method:"get" %></p>
+		<!-- Favicon -->
+		<link rel="shortcut icon" type="image/jpg" href="assets/logoo.jpg">
 
-                  </div>
-              </div>
-        </div>
-       <% end %>
-    </div>
-    <center>
-      <button class="dropbtn btn-lg"><i class="fa fa-refresh" aria-hidden="true" style="color:white;"></i>
-      <%= link_to "View All",  all_course_courses_path,class:"text-white",:"data-no-turbolink"=>true,method:"get" %></button>
-    </center>
-</div>
+        <!-- Custom CSS -->
+        <link href="assets/styles.css" rel="stylesheet">
+		<!-- Custom Color Option -->
+		<link href="assets/colors.css" rel="stylesheet">
+
+    </head>
+
+    <body class="red-skin">
+        <!-- ============================================================== -->
+        <!-- Main wrapper - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <div id="main-wrapper">
+
+            <!-- ============================================================== -->
+            <!-- Top header  -->
+            <!-- ============================================================== -->
+            <!-- Start Navigation -->
+			<div class="header header-light">
+				<div class="container">
+					<nav id="navigation" class="navigation navigation-landscape">
+						<div class="nav-header">
+							<a class="nav-brand" href="#">
+								<img src="assets/green-logo.jpg" class="logo" alt="" />
+							</a>
+							<div class="nav-toggle"></div>
+						</div>
+						<div class="nav-menus-wrapper">
+							<ul class="nav-menu ">
+
+								<li><a href="index.html">Home</a></li>
+
+								<li><a href="courses.html">Courses</a></li>
+
+								<li><a href="about-us.html">About us</a></li>
+
+								<li><a href="gallery.html">Gallery</a></li>
+
+								<li><a href="contact.html">Contact</a></li>
+
+							</ul>
+
+							<ul class="nav-menu nav-menu-social align-to-right">
+
+								<li class="login_click green light">
+									<a href="#" data-toggle="modal" data-target="#login">Sign in</a>
+								</li>
+								<li class="login_click bg-green btn">
+									<a href="register.html">Sign up</a>
+								</li>
+							</ul>
+						</div>
+					</nav>
+				</div>
+			</div>
+			<!-- End Navigation -->
+			<div class="clearfix"></div>
+			<!-- ============================================================== -->
+			<!-- Top header  -->
+			<!-- ============================================================== -->
+
+			<!-- ============================ Hero Banner  Start================================== -->
+			<div class="image-cover half_banner" style="background:#0b2248 url(assets/doct2.jpeg) no-repeat;">
+				<div class="container">
+					<!-- Type -->
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12">
+							<div class="banner-search-2">
+								<h1 class="cl_2 mb-0">Learn on your<br>schedule</h1>
+								<p>Study any topic, anytime. Choose from thousands of expert-led courses now.</p>
+								<div class="input-group mt-3">
+									<input type="text" class="form-control" placeholder="What do you want to learn?">
+									<div class="input-group-append">
+										<button class="btn btn-outline-secondary" type="button"><img src="assets/search.svg" class="search-icon" alt="" /></button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ============================ Hero Banner End ================================== -->
+
+			<!-- ============================ Trips Facts Start ================================== -->
+			<div class="trips_wrap full">
+				<div class="container">
+					<div class="row m-0">
+
+						<div class="col-lg-4 col-md-4 col-sm-12">
+							<div class="trips">
+								<div class="trips_icons">
+									<i class="ti-medall"></i>
+								</div>
+								<div class="trips_detail">
+									<h4>Trusted Courses</h4>
+									<p>Courses delivered by HealthEdu are to be trusted, they are prepared by Experienced Health Professionals,</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-4 col-sm-12">
+							<div class="trips">
+								<div class="trips_icons">
+									<i class="ti-medall"></i>
+								</div>
+								<div class="trips_detail">
+									<h4>Tools for Professionals</h4>
+									<p>With the current platform, we deliver as our contribution to healthcare in general in Countries</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-4 col-sm-12">
+							<div class="trips none">
+								<div class="trips_icons">
+									<i class="ti-medall"></i>
+								</div>
+								<div class="trips_detail">
+									<h4>Certificate</h4>
+									<p>Our web application delivers certificates to successful applicants who score 80% and above in evaluation from different</p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!-- ============================ Trips Facts Start ================================== -->
+				<section>
+				<div class="container">
+
+					<div class="row align-items-center">
+
+						<div class="col-lg-6 col-md-6 col-sm-12">
+							<div class="about-short">
+								<div class="sec-heading mb-3">
+									<h2>Know about <span class="theme-cl">e-Learn</span> learning platform</h2>
+								</div>
+								<p>HealthEdu Ltd is a Company created with the support of Health Volunteers Overseas (HVO) – United States of America; it was initiated by Jean Damascene Bigirimana, who developed a web-based platform for online trainings in 2016. With the support of Student Alumni of Misercodia University (USA), Jean Damascene Bigirimana was able to establish the online training.</p>
+								<p>It started with an office at Kimironko KG147 Street (Acts of Gratitude), has shifted to Impact Hub Kiyovu, Telecom House and now we are based in Westewelle Startup Haus at Kimihurura KG 622 Street Kigali.</p>
+								<div class="cource_facts">
+									<ul>
+										<li><span class="theme-cl">349</span>Active CPD Credits</li>
+										<li><span class="theme-cl">4k</span>Student Learning</li>
+										<li><span class="theme-cl">2</span>Free Cources</li>
+									</ul>
+								</div>
+								<a href="about-us.html" class="btn  bg-green" >Know More</a>
+							</div>
+						</div>
+
+						<div class="col-lg-6 col-md-6 col-sm-12">
+							<div class="list_facts_wrap_img">
+
+								<img src="assets/edu_2.png" class="img-fluid" alt="">
+
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</section>
+
+			<!-- ============================ Featured Courses Start ================================== -->
+			<section class="gray">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-lg-5 col-md-6 col-sm-12">
+							<div class="sec-heading center">
+								<h2><span class="theme-cl">Recent</span> Courses on platform</h2>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+
+						<!-- Cource Grid 1 -->
+						<div class="col-lg-4 col-md-6">
+							<div class="education_block_grid style_2">
+								<div class="education_block_thumb n-shadow">
+									<a href="single.html" data-toggle="modal" data-target="#login"><img src="assets/co-1.jpg" class="img-fluid" alt="" ></a>
+									<div class="cources_price">10,000<span class="theme-cl"> Rwf</span></div>
+								</div>
+
+								<div class="education_block_body">
+									<h4 class="bl-title"><a href="single.html" data-toggle="modal" data-target="#login">Tableau For Beginners: Get CA Certified, Grow Your Career</a></h4>
+								</div>
+
+								<div class="cources_info_style3">
+									<ul>
+										<li><i class="ti-star mr-1"></i>8 CPD Credits</li>
+									</ul>
+								</div>
+
+								<div class="education_block_footer">
+									<div class="education_block_author">
+										<div class="path-img"><a href="instructor-detail.html"><img src="assets/gihozo.jpg" class="img-fluid" alt=""></a></div>
+										<h5><a href="#"> Yvonnes Keeza</a></h5>
+									</div>
+									<div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>8 Hours</div>
+								</div>
+
+							</div>
+						</div>
+
+						<!-- Cource Grid 1 -->
+						<div class="col-lg-4 col-md-6">
+							<div class="education_block_grid style_2">
+
+								<div class="education_block_thumb n-shadow">
+									<a href="single.html" data-toggle="modal" data-target="#login"><img src="assets/co-1.jpg" class="img-fluid" alt="" ></a>
+									<div class="cources_price">10,000<span class="theme-cl"> Rwf</span></div>
+								</div>
+
+								<div class="education_block_body">
+									<h4 class="bl-title"><a href="single.html" data-toggle="modal" data-target="#login">Tableau For Beginners: Get CA Certified, Grow Your Career</a></h4>
+								</div>
+
+								<div class="cources_info_style3">
+									<ul>
+										<li><i class="ti-star mr-1"></i>8 CPD Credits</li>
+									</ul>
+								</div>
+
+								<div class="education_block_footer">
+									<div class="education_block_author">
+										<div class="path-img"><a href="instructor-detail.html"><img src="assets/gihozo.jpg" class="img-fluid" alt=""></a></div>
+										<h5><a href="#"> Yvonnes Keeza</a></h5>
+									</div>
+									<div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>8 Hours</div>
+								</div>
+
+							</div>
+						</div>
+
+						<!-- Cource Grid 1 -->
+						<div class="col-lg-4 col-md-6">
+							<div class="education_block_grid style_2">
+
+								<div class="education_block_thumb n-shadow">
+									<a href="single.html" data-toggle="modal" data-target="#login"><img src="assets/co-1.jpg" class="img-fluid" alt="" ></a>
+									<div class="cources_price">10,000<span class="theme-cl"> Rwf</span></div>
+								</div>
+
+								<div class="education_block_body">
+									<h4 class="bl-title"><a href="single.html" data-toggle="modal" data-target="#login">Tableau For Beginners: Get CA Certified, Grow Your Career</a></h4>
+								</div>
+
+								<div class="cources_info_style3">
+									<ul>
+										<li><i class="ti-star mr-1"></i>8 CPD Credits</li>
+									</ul>
+								</div>
+
+								<div class="education_block_footer">
+									<div class="education_block_author">
+										<div class="path-img"><a href="instructor-detail.html"><img src="assets/gihozo.jpg" class="img-fluid" alt=""></a></div>
+										<h5><a href="#"> Yvonnes Keeza</a></h5>
+									</div>
+									<div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>8 Hours</div>
+								</div>
+
+							</div>
+						</div>
+						<!-- Cource Grid 1 -->
+						<div class="col-lg-4 col-md-6">
+							<div class="education_block_grid style_2">
+
+								<div class="education_block_thumb n-shadow">
+									<a href="single.html" data-toggle="modal" data-target="#login"><img src="assets/co-1.jpg" class="img-fluid" alt="" ></a>
+									<div class="cources_price">10,000<span class="theme-cl"> Rwf</span></div>
+								</div>
+
+								<div class="education_block_body">
+									<h4 class="bl-title"><a href="single.html" data-toggle="modal" data-target="#login">Tableau For Beginners: Get CA Certified, Grow Your Career</a></h4>
+								</div>
+
+								<div class="cources_info_style3">
+									<ul>
+										<li><i class="ti-star mr-1"></i>8 CPD Credits</li>
+									</ul>
+								</div>
+
+								<div class="education_block_footer">
+									<div class="education_block_author">
+										<div class="path-img"><a href="instructor-detail.html"><img src="assets/gihozo.jpg" class="img-fluid" alt=""></a></div>
+										<h5><a href="#"> Yvonnes Keeza</a></h5>
+									</div>
+									<div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>8 Hours</div>
+								</div>
+
+							</div>
+						</div>
+						<!-- Cource Grid 1 -->
+						<div class="col-lg-4 col-md-6">
+							<div class="education_block_grid style_2">
+
+								<div class="education_block_thumb n-shadow">
+									<a href="single.html" data-toggle="modal" data-target="#login"><img src="assets/co-1.jpg" class="img-fluid" alt="" ></a>
+									<div class="cources_price">10,000<span class="theme-cl"> Rwf</span></div>
+								</div>
+
+								<div class="education_block_body">
+									<h4 class="bl-title"><a href="single.html" data-toggle="modal" data-target="#login">Tableau For Beginners: Get CA Certified, Grow Your Career</a></h4>
+								</div>
+
+								<div class="cources_info_style3">
+									<ul>
+										<li><i class="ti-star mr-1"></i>8 CPD Credits</li>
+									</ul>
+								</div>
+
+								<div class="education_block_footer">
+									<div class="education_block_author">
+										<div class="path-img"><a href="instructor-detail.html"><img src="assets/gihozo.jpg" class="img-fluid" alt=""></a></div>
+										<h5><a href="#"> Yvonnes Keeza</a></h5>
+									</div>
+									<div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>8 Hours</div>
+								</div>
+
+							</div>
+						</div>
+						<!-- Cource Grid 1 -->
+						<div class="col-lg-4 col-md-6">
+							<div class="education_block_grid style_2">
+
+								<div class="education_block_thumb n-shadow">
+									<a href="single.html" data-toggle="modal" data-target="#login"><img src="assets/co-1.jpg" class="img-fluid" alt="" ></a>
+									<div class="cources_price">10,000<span class="theme-cl"> Rwf</span></div>
+								</div>
+
+								<div class="education_block_body">
+									<h4 class="bl-title"><a href="single.html" data-toggle="modal" data-target="#login">Tableau For Beginners: Get CA Certified, Grow Your Career</a></h4>
+								</div>
+
+								<div class="cources_info_style3">
+									<ul>
+										<li><i class="ti-star mr-1"></i>8 CPD Credits</li>
+									</ul>
+								</div>
+
+								<div class="education_block_footer">
+									<div class="education_block_author">
+										<div class="path-img"><a href="instructor-detail.html"><img src="assets/gihozo.jpg" class="img-fluid" alt=""></a></div>
+										<h5><a href="#"> Yvonnes Keeza</a></h5>
+									</div>
+									<div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>8 Hours</div>
+								</div>
+
+							</div>
+						</div><!-- Cource Grid 1 -->
+						<div class="col-lg-4 col-md-6">
+							<div class="education_block_grid style_2">
+
+								<div class="education_block_thumb n-shadow">
+									<a href="single.html" data-toggle="modal" data-target="#login"><img src="assets/co-1.jpg" class="img-fluid" alt="" ></a>
+									<div class="cources_price">10,000<span class="theme-cl"> Rwf</span></div>
+								</div>
+
+								<div class="education_block_body">
+									<h4 class="bl-title"><a href="single.html" data-toggle="modal" data-target="#login">Tableau For Beginners: Get CA Certified, Grow Your Career</a></h4>
+								</div>
+
+								<div class="cources_info_style3">
+									<ul>
+										<li><i class="ti-star mr-1"></i>8 CPD Credits</li>
+									</ul>
+								</div>
+
+								<div class="education_block_footer">
+									<div class="education_block_author">
+										<div class="path-img"><a href="instructor-detail.html"><img src="assets/gihozo.jpg" class="img-fluid" alt=""></a></div>
+										<h5><a href="#"> Yvonnes Keeza</a></h5>
+									</div>
+									<div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>8 Hours</div>
+								</div>
+
+							</div>
+						</div>
+						<!-- Cource Grid 1 -->
+						<div class="col-lg-4 col-md-6">
+							<div class="education_block_grid style_2">
+
+								<div class="education_block_thumb n-shadow">
+									<a href="single.html" data-toggle="modal" data-target="#login"><img src="assets/co-1.jpg" class="img-fluid" alt="" ></a>
+									<div class="cources_price">10,000<span class="theme-cl"> Rwf</span></div>
+								</div>
+
+								<div class="education_block_body">
+									<h4 class="bl-title"><a href="single.html" data-toggle="modal" data-target="#login">Tableau For Beginners: Get CA Certified, Grow Your Career</a></h4>
+								</div>
+
+								<div class="cources_info_style3">
+									<ul>
+										<li><i class="ti-star mr-1"></i>8 CPD Credits</li>
+									</ul>
+								</div>
+
+								<div class="education_block_footer">
+									<div class="education_block_author">
+										<div class="path-img"><a href="instructor-detail.html"><img src="assets/gihozo.jpg" class="img-fluid" alt=""></a></div>
+										<h5><a href="#"> Yvonnes Keeza</a></h5>
+									</div>
+									<div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>8 Hours</div>
+								</div>
+
+							</div>
+						</div>
+						<!-- Cource Grid 1 -->
+						<div class="col-lg-4 col-md-6">
+							<div class="education_block_grid style_2">
+
+								<div class="education_block_thumb n-shadow">
+									<a href="single.html" data-toggle="modal" data-target="#login"><img src="assets/co-1.jpg" class="img-fluid" alt="" ></a>
+									<div class="cources_price">10,000<span class="theme-cl"> Rwf</span></div>
+								</div>
+
+								<div class="education_block_body">
+									<h4 class="bl-title"><a href="single.html" data-toggle="modal" data-target="#login">Tableau For Beginners: Get CA Certified, Grow Your Career</a></h4>
+								</div>
+
+								<div class="cources_info_style3">
+									<ul>
+										<li><i class="ti-star mr-1"></i>8 CPD Credits</li>
+									</ul>
+								</div>
+
+								<div class="education_block_footer">
+									<div class="education_block_author">
+										<div class="path-img"><a href="instructor-detail.html"><img src="assets/gihozo.jpg" class="img-fluid" alt=""></a></div>
+										<h5><a href="#"> Yvonnes Keeza</a></h5>
+									</div>
+									<div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>8 Hours</div>
+								</div>
+
+							</div>
+						</div>
+
+						<!-- Cource Grid 1 -->
+						<div class="col-lg-12 col-md-12 col-sm-12 text-center">
+							<button type="button" class="btn btn-loader">Load More<i class="ti-reload ml-3"></i></button>
+						</div>
+
+					</div>
+
+				</div>
+			</section>
+			<!-- ============================ Featured Courses End ================================== -->
+			<section class="bg-light">
+				<div class="container">
+
+					<div class="row justify-content-center">
+						<div class="col-lg-5 col-md-6 col-sm-12">
+							<div class="sec-heading center">
+								<h3>Our Partners</h3>
+								<p>We work closely with a wide range of Partners from different sectors</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12">
+
+							<div class="four_slide-dots articles arrow_middle">
+
+								<!-- Single Slide -->
+								<div class="singles_items">
+									<div class="instructor_wrap">
+										<div class="instructor_thumb">
+											<a href="https://www.250.rw/"><img src="assets/250STARTUPS.jpg" class="img-fluid" alt=""></a>
+										</div>
+									</div>
+								</div>
+
+								<!-- Single Slide -->
+								<div class="singles_items">
+									<div class="instructor_wrap">
+										<div class="instructor_thumb">
+											<a href="#"><img src="assets/KISMITS.png" class="img-fluid" alt=""></a>
+										</div>
+									</div>
+								</div>
+
+								<!-- Single Slide -->
+								<div class="singles_items">
+									<div class="instructor_wrap">
+										<div class="instructor_thumb">
+											<a href="#"><img src="assets/PlusPhysio.png" class="img-fluid" alt=""></a>
+										</div>
+									</div>
+								</div>
+
+								<!-- Single Slide -->
+								<div class="singles_items">
+									<div class="instructor_wrap">
+										<div class="instructor_thumb">
+											<a href="https://kigali.westerwelle.haus/en"><img src="assets/WSH.png" class="img-fluid" alt=""></a>
+										</div>
+									</div>
+								</div>
+
+								<!-- Single Slide -->
+								<div class="singles_items">
+									<div class="instructor_wrap">
+										<div class="instructor_thumb">
+											<a href="#"><img src="assets/NPC.png" class="img-fluid" alt=""></a>
+										</div>
+									</div>
+								</div>
+								<!-- Single Slide -->
+								<div class="singles_items">
+									<div class="instructor_wrap">
+										<div class="instructor_thumb">
+											<a href="#"><img src="assets/NCNM.png" class="img-fluid" alt=""></a>
+										</div>
+									</div>
+								</div>
+								<!-- Single Slide -->
+								<div class="singles_items">
+									<div class="instructor_wrap">
+										<div class="instructor_thumb">
+											<a href="http://www.rahpc.org.rw/welcome"><img src="assets/RAHPC.jpg" class="img-fluid" alt=""></a>
+										</div>
+									</div>
+								</div>
+								<!-- Single Slide -->
+								<div class="singles_items">
+									<div class="instructor_wrap">
+										<div class="instructor_thumb">
+											<a href="#"><img src="assets/RMDC.jfif" class="img-fluid" alt=""></a>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</section>
+
+			<!-- ============================ Testimonial Start ================================== -->
+			<section style="background:url(assets/testimonial.png)">
+				<div class="container">
+
+					<div class="row justify-content-center">
+						<div class="col-lg-5 col-md-6 col-sm-12">
+							<div class="sec-heading center">
+								<p>What Other People Say?</p>
+								<h2>Testimonials</h2>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<div id="testimonials_style" class="slick-carousel-3 arrow_middle">
+								<div class="testimonial-detail">
+									<div class="client-detail-box">
+										<div class="pic">
+											<img src="assets/julie.jpg" alt="">
+										</div>
+										<div class="client-detail">
+											<h3 class="testimonial-title">Marie Julie</h3>
+											<span class="post">B.L Scientist</span>
+										</div>
+									</div>
+									<p class="description">
+										 "I have enjoyed doing courses online and helped me to save time and money,this process allowed me to balance my work"
+									</p>
+								</div>
+
+								<div class="testimonial-detail">
+									<div class="client-detail-box">
+										<div class="pic">
+											<img src="assets/aline.jpg" alt="">
+										</div>
+										<div class="client-detail">
+											<h3 class="testimonial-title">Aline Uwera</h3>
+											<span class="post">B.L Technologist</span>
+										</div>
+									</div>
+									<p class="description">
+										" It is not easy to work and keep learning at the same time, this is why I like HealthEdu Online Courses; I just need only internet."
+									</p>
+								</div>
+
+								<div class="testimonial-detail">
+									<div class="client-detail-box">
+										<div class="pic">
+											<img src="assets/gihozo.jpg" alt="">
+										</div>
+										<div class="client-detail">
+											<h3 class="testimonial-title">Marie Fidele</h3>
+											<span class="post">Anaesthetist</span>
+										</div>
+									</div>
+									<p class="description">
+										"U can take advantages and get skills being at home or at work with HealthEdu platform. They have strong team ready to support"
+									</p>
+								</div>
+
+								<div class="testimonial-detail">
+									<div class="client-detail-box">
+										<div class="pic">
+											<img src="assets/amicale.jpg" alt="">
+										</div>
+										<div class="client-detail">
+											<h3 class="testimonial-title">Ashimwe Amicale</h3>
+											<span class="post">O.C.O</span>
+										</div>
+									</div>
+									<p class="description">
+										"Healthedu courses enabled me to gain skills, I appreciated the service rendered to me, it is smart, saving maney and time.,"
+
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</section>
+			<!-- ============================ Testimonial End ================================== -->
+
+			<!-- ========================== About Facts List Section =============================== -->
+
+			<!-- ========================== About Facts List Section =============================== -->
+
+
+
+			<!-- ============================ Footer Start ================================== -->
+			<footer class="dark-footer skin-dark-footer">
+				<div class="footer-bottom">
+					<div class="container">
+						<div class="row align-items-center">
+
+							<div class="col-lg-6 col-md-6">
+								<p class="mb-0">© 2020 HealthEdu</p>
+							</div>
+
+							<div class="col-lg-6 col-md-6 text-right">
+								<ul class="footer-bottom-social">
+									<li><a href="#"><i class="ti-facebook"></i></a></li>
+									<li><a href="#"><i class="ti-twitter"></i></a></li>
+									<li><a href="#"><i class="ti-instagram"></i></a></li>
+									<li><a href="#"><i class="ti-linkedin"></i></a></li>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!-- ============================ Footer End ================================== -->
+            <!-- Log In Modal -->
+			<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="registermodal" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered login-pop-form" role="document">
+					<div class="modal-content" id="registermodal">
+						<span class="mod-close" data-dismiss="modal" aria-hidden="true"><i class="ti-close"></i></span>
+						<div class="modal-body">
+							<h4 class="modal-header-title"><img src="assets/green-logo.jpg" class="logo img-responsive" alt="" /></h4>
+							<div class="login-form">
+								<form>
+
+									<div class="form-group">
+										<label>User Name</label>
+										<input type="text" class="form-control" placeholder="Username">
+									</div>
+
+									<div class="form-group">
+										<label>Password</label>
+										<input type="password" class="form-control" placeholder="*******">
+									</div>
+
+									<div class="form-group">
+										<button type="submit" class="btn btn-md btn-info full-width pop-login bg-green">Login</button>
+									</div>
+
+								</form>
+							</div>
+
+							<div class="social-login mb-3">
+								<ul>
+									<li>
+										<input id="reg" class="checkbox-custom" name="reg" type="checkbox">
+										<label for="reg" class="checkbox-custom-label">Save Password</label>
+									</li>
+									<li><a href="recover-password.html" class="theme-cl">Forget Password?</a></li>
+								</ul>
+							</div>
+
+							<div class="text-center">
+								<p class="mt-2">Have Any Account? <a href="register.html" class="link">Click here</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Modal -->
 
 
 
 
-<!--/.Carousel Wrapper-->
-    </div>
-    <div class="section-bg style-1" style="background-image: url('/assets/about.jpg');">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4">
-            <h2 class="section-title-underline style-2">
-              <span>About Our Company</span>
-            </h2>
-          </div>
-          <div class="col-lg-8">
-            <p class="lead">HealthEdu Ltd is a Company created with the support of Health Volunteers Overseas (HVO) – United States of America; it was initiated by Jean Damascene Bigirimana, who developed a web-based platform for
-            online trainings in 2016. With the support of Student Alumni of Misercodia University (USA), Jean Damascene Bigirimana was able to establish the online training.
-
-            </p>
-            <p><%= link_to 'Read more', pages_about_path,:"data-no-turbolink"=>true,method:"get" %></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container text-center ">
-    <div class="row">
-       <div class="col-12 mb-5">
-          <div class="display-4 ">Our Partners</div>
-          <p class="lead">We work closely with a wide range of Partners from different sectors</p>
-       </div>
-    </div>
-    <div class="clients-all-logo">
-     <div class="row text-center justify-content-center">
-       <div class="col-lg-3 col-md-3 ">
-          <img src="/assets/250STARTUPS.jpg" class="partner " alt="Web designer in India ">
-       </div>
-       <div class="col-lg-3 col-md-3 ">
-          <img src="/assets/KISMITS.png" class="partner " alt="Web designer in India ">
-       </div>
-      <div class="col-lg-3 col-md-3 ">
-        <img src="/assets/PlusPhysio.png" class="img-fluid" alt="Freelance Web Developer india">
-      </div>
-      <div class="col-lg-3 col-md-3 ">
-            <img src="/assets/WSH.png" class="img-fluid" alt="Freelance Web Designer in Delhi, india ">
-
-      </div>
-      <div class="col-lg-3 col-md-3 ">
-          <img src="/assets/NPC.png" class="partner " alt="Web designer in India ">
-       </div>
-       <div class="col-lg-3 col-md-3 ">
-        <img src="/assets/NCNM.png" class="partner " alt="Web designer in India ">
-     </div>
-      <div class="col-lg-3 col-md-3">
-        <img src="/assets/RAHPC.jpg" class="img-fluid" alt="Freelance Web Developer in India">
-      </div>
-      <div class="col-lg-3 col-md-3">
-          <img src="/assets/RMDC.jfif" class="partner " alt="Web designer in India ">
-      </div>
-
-    </div>
-  </div>
-</div>
-</div>
-
-    <!-- // 05 - Block -->
-  <div class="site-section">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-lg-4">
-            <h2 class="section-title-underline">
-              <span>Testimonials</span>
-            </h2>
-          </div>
-        </div>
-        <!--Carousel Wrapper-->
-        <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-
-          <!--Controls-->
-
-          <!--/.Indicators-->
-
-          <!--Slides-->
-          <div class="carousel-inner" role="listbox">
-
-            <!--First slide-->
-            <div class="carousel-item active">
-
-              <div class="col-md-3" style="float:left">
-               <div class="card mb-2">
-               <h4 class="card-title text-center">Marie Julie </h4>
-                  <div class="card-body text-center"><br>
-                    <div class="feature-1 img-top person text-center">
-                  <img class="card-img-top"
-                  src="/assets/julie.jpg" alt="Card image cap">
-                  </div>
-                    <p class="card-text ">"I have enjoyed doing courses online and helped me to save time and money,this process allowed me to balance my work"
-                      </p>
-                    <a class="btn btn-primary">B.L Scientist
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-3" style="float:left">
-                <div class="card mb-2">
-                <h4 class="card-title text-center"> Uwera Aline</h4>
-                  <div class="card-body text-center">
-                    <br>
-                    <div class="feature-1 img-top person text-center">
-                  <img class="card-img-top"
-                  src="/assets/aline.jpg" alt="Card image cap">
-                  </div>
-                    <p class="card-text ">" It is not easy to work and keep learning at the same time, this is why I like HealthEdu Online Courses; I just need only internet."
-                      </p>
-                    <a class="btn btn-primary">B.L Technologist
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-3" style="float:left">
-                <div class="card mb-2">
-                <h4 class="card-title text-center"> Marie Fidele</h4>
-                <div class="card-body text-center">
-                  <br>
-                  <div class="feature-1 img-top person text-center">
-                <img class="card-img-top"
-                src="/assets/gihozo.jpg" alt="Card image cap">
-                </div>
-                  <p class="card-text">"U can take advantages and get skills being at home or at work with HealthEdu platform. They have strong team ready to support"
-                    </p>
-                  <a class="btn btn-primary">Anaesthetist
-                  </a>
-                  </div>
-                </div>
-              </div>
-
-               <div class="col-md-3" style="float:left">
-                <div class="card mb-2">
-                <h4 class="card-title text-center">Ashimwe Amicale </h4>
-                <div class="card-body"><br>
-                  <div class="feature-1 img-top person text-center">
-                <img class="card-img-top"
-                src="/assets/amicale.jpg" alt="Card image cap">
-                </div>
-                  <p class="card-text">"Healthedu courses enabled me to gain skills, I appreciated the service rendered to me, it is smart, saving maney and time.,"
-                    </p>
-                  <a class="btn btn-primary">O.C.O
-                  </a>
-                    </div>
-                  </div>
-              </div>
-
-            </div>
-            <!--/.First slide-->
-
-            <!--Second slide-->
-            <div class="carousel-item">
-
-              <div class="col-md-3" style="float:left">
-                <div class="card mb-2">
-                <h4 class="card-title text-center"> Marie Julie </h4>
-                <div class="card-body text-center">
-                  <br>
-                  <div class="feature-1 img-top person text-center">
-                <img class="card-img-top"
-                src="/assets/julie.jpg" alt="Card image cap">
-                </div>
-                  <p class="card-text">"I have enjoyed doing courses online and helped me to save time and money,this process allowed me to balance my work"
-                    </p>
-                  <a class="btn btn-primary ">B.L Scientist
-                  </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-3" style="float:left">
-              <div class="card mb-2">
-              <h4 class="card-title text-center">Uwera Aline  </h4>
-                <div class="card-body text-center">
-                  <br>
-                  <div class="feature-1 img-top person text-center">
-                <img class="card-img-top"
-                src="/assets/aline.jpg" alt="Card image cap">
-                </div>
-                  <p class="card-text text-center">" It is not easy to work and keep learning at the same time, this is why I like HealthEdu Online Courses; I just need only internet."
-                    </p>
-                  <a class="btn btn-primary">B.L Technologist
-                  </a>
-                </div>
-              </div>
-              </div>
-
-              <div class="col-md-3" style="float:left">
-              <div class="card mb-2">
-              <h4 class="card-title text-center"> Marie Fidele</h4>
-              <div class="card-body text-center">
-                <br>
-                <div class="feature-1 img-top person text-center">
-              <img class="card-img-top"
-              src="/assets/gihozo.jpg" alt="Card image cap">
-              </div>
-                <p class="card-text">"U can take advantages and get skills being at home or at work with HealthEdu platform. They have strong team ready to support"
-                  </p>
-                <a class="btn btn-primary">Anaesthetist
-                </a>
-                </div>
-              </div>
-              </div>
-
-              <div class="col-md-3" style="float:left">
-                <div class="card mb-2">
-                <h4 class="card-title text-center">Ashimwe Amicale </h4>
-                <div class="card-body text-center"><br>
-                  <div class="feature-1 img-top person text-center">
-                <img class="card-img-top"
-                src="/assets/amicale.jpg" alt="Card image cap">
-                </div>
-                  <p class="card-text">"Healthedu courses enabled me to gain skills, I appreciated the service rendered to me, it is smart, saving maney and time.,"
-                    </p>
-                  <a class="btn btn-primary">O.C.O
-                  </a>
-                    </div>
-                  </div>
-              </div>
-
-            </div>
-            <!--/.Second slide-->
+			<a id="back2Top" class="top-scroll" title="Back to top" href="#"><i class="ti-arrow-up"></i></a>
 
 
+		</div>
+		<!-- ============================================================== -->
+		<!-- End Wrapper -->
+		<!-- ============================================================== -->
 
-          </div>
-          <center>
-          <!--/.Slides-->
-          <div class="controls-top">
-          <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-          <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
-              class="fas fa-chevron-right"></i></a>
-          </div>
-        <!--/.Controls-->
+		<!-- ============================================================== -->
+		<!-- All Jquery -->
+		<!-- ============================================================== -->
+		<script src="assets/jquery.min.js"></script>
+		<script src="assets/popper.min.js"></script>
+		<script src="assets/bootstrap.min.js"></script>
+		<script src="assets/select2.min.js"></script>
+		<script src="assets/slick.js"></script>
+		<script src="assets/jquery.counterup.min.js"></script>
+		<script src="assets/counterup.min.js"></script>
+		<script src="assets/custom.js"></script>
+		<!-- ============================================================== -->
+		<!-- This page plugins -->
+		<!-- ============================================================== -->
 
-        <!--Indicators-->
-        <ol class="carousel-indicators">
-          <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-          <li data-target="#multi-item-example" data-slide-to="1"></li>
-        </ol>
-        </center>
-        </div>
+	</body>
 
-        <!--/.Carousel Wrapper-->
-      </div>
-    </div>
-    <div class="section-bg style-1" style="background-image: url('/assets/image1.jpg');">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
-            <span class="icon flaticon-mortarboard"></span>
-            <h3>Our Philosophy</h3>
-            <p>Our philosophy is aiming at the highest quality of continuous professional development in
-            health, we empower companies, healthcare facilities and health professionals with
-            competent education materials.</p>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
-            <span class="icon flaticon-school-material"></span>
-            <h3>HealthEdu Principles</h3>
-            <p>Our principles are:
-            ● Top Customer Care services
-            ● Enabling learning from the centers to all corners of the country and East Africa
-            ● Facilitating payments in installments
-            ● Closing our deals with a smile on the face of the customer</p>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
-            <span class="icon flaticon-library"></span>
-            <h3>Key of Success</h3>
-            <p>The key to our success is established by the quality of the web application, quality of
-            learning materials and evaluation methods with us and the experience of trainers we hire.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-<div class="news-updates">
-      <div class="container">
-    <div class="row">
-          <div class="col-lg-9">
-             <div class="section-heading">
-              <h2 class="text-black">Books &amp; Updates</h2>
-              <%= link_to 'Read All Books', books_path %>
-            </div>
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="post-entry-big">
-                  <a href="news-single.html" class="img-link">
-                  <%= image_tag("course.jpg", class:"img-fluid") %>
-                  </a>
-                  <div class="post-content">
-                    <div class="post-meta">
-                      <a href="#">June 6, 2019</a>
-                      <span class="mx-1">/</span>
-                      <%= link_to 'heavy books', books_path %>, <%= link_to 'Start Now', books_path %>
-                    </div>
-                    <h3 class="post-heading"><%= link_to 'Read Book and Increasing Experience', books_path %></h3>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="post-entry-big horizontal d-flex mb-4">
-                  <a href="news-single.html" class="img-link mr-4">
-                  <%= image_tag("study1.jpg", class:"img-fluid") %>
-                  </a>
-                  <div class="post-content">
-                    <div class="post-meta">
-                      <a href="#">June 6, 2019</a>
-                      <span class="mx-1">/</span>
-                      <%= link_to 'Read All Books', books_path %>
-                    </div>
-                    <h3 class="post-heading"><%= link_to 'Read Book and Increasing Experience', books_path %></h3>
-                  </div>
-                </div>
 
-                <div class="post-entry-big horizontal d-flex mb-4">
-                  <a href="news-single.html" class="img-link mr-4">
-                  <%= image_tag("study2.jpg", class:"img-fluid") %>
-                  </a>
-                  <div class="post-content">
-                    <div class="post-meta">
-                      <a href="#">June 6, 2019</a>
-                      <span class="mx-1">/</span>
-                      <%= link_to 'Read All Books', books_path %>
-                    </div>
-                    <h3 class="post-heading"><%= link_to 'Read Book and Increasing Experience', books_path %></h3>
-                  </div>
-                </div>
-
-                <div class="post-entry-big horizontal d-flex mb-4">
-                  <a href="news-single.html" class="img-link mr-4">
-                  <%= image_tag("lab.jpeg", class:"img-fluid") %>
-                  </a>
-                  <div class="post-content">
-                    <div class="post-meta">
-                      <a href="#">June 6, 2019</a>
-                      <span class="mx-1">/</span>
-                      <%= link_to 'Read All Books', books_path %>
-                    </div>
-                    <h3 class="post-heading"><%= link_to 'Read Book and Increasing Experience', books_path %></h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="section-heading">
-              <h2 class="text-black">Professional</h2>
-
-            </div>
-            <div class="embed-responsive embed-responsive-16by9">
-              <%= video_tag "healthEdu.mp4", :controls => true, class:"embed-responsive-item"%>
-            </div>
-
-            <div class="embed-responsive embed-responsive-16by9"></br>
-              <%= video_tag "adv.mp4", :controls => true, class:"embed-responsive-item"%>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="site-section ftco-subscribe-1" style="background-image: url('/assets/bg_1.jpg')">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-7">
-            <h2>Subscribe to us!</h2>
-            <p>By entering your e-mail here, you subscribe to the best of our newsletters and updates.
-            Whenever we upload new contents, be the first to access them.</p>
-          </div>
-          <div class="col-lg-5">
-            <form action="" class="d-flex">
-              <input type="text" class="rounded form-control mr-2 py-3" placeholder="Enter your email">
-              <button class="btn btn-primary rounded py-3 px-4" type="submit">Send</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
 </html>
