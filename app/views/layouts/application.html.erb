@@ -4,120 +4,77 @@
     <title>HealthEdu</title>
 
 <!-- add icon link -->
-<link rel = "icon" href =
-"https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200X200.png"
+<link rel = "icon" href ="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200X200.png"
 type = "image/x-icon">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name='viewport' content='initial-scale=1, viewport-fit=cover'>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag Ckeditor.cdn_url %>
-
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <%= stylesheet_link_tag 'style', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <%= stylesheet_link_tag "bootstrap.min" %>
-    <%= stylesheet_link_tag "owl.carousel.min" %>
-    <%= stylesheet_link_tag "owl.theme.default.min" %>
-    <%= stylesheet_link_tag "bootstrap-datepicker" %>
-    <%= stylesheet_link_tag "aos" %>
 </head>
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color:whitesmoke;">
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-      <a class="nav-link" href="#" style="color:#51be78;"><i class="fa fa-envelope" aria-hidden="true"></i> healthedultd@gmail.com</a>
-      </li>
-      <li class="nav-item active">
-      <a class="nav-link" href="#" style="color:#51be78;"><i class="fa fa-whatsapp" aria-hidden="true"></i> +250(789044439)</a>
-      </li>
-    </ul>
-    <span class="navbar-text">
-      <a href="https://web.facebook.com/HealthEdu-433949913673935/?eid=ARDKqokWU2Ib01gPms4Z-RceenkCySDZJA0xGWJA06sfR0nY4gn_yAqJBIc7kZRfkX3tuBafmju_w-G6" style="color:#51be78;" target="_blank"><i class="fab fa-facebook" style="font-size:30px;"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="https://twitter.com/HEALTHEDULTD1" style="color:#51be78;" target="_blank"><i class="fab fa-twitter" style="font-size:30px;" ></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="#" style="color:#51be78;"><i class="fab fa-linkedin" style="font-size:30px;"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-      </span>
-  </div>
-</nav>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"><%= image_tag("logo1.png", class:"img-fluid") %></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<div id="main-wrapper">
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-
-        <% if user_signed_in? && current_user.names== '' %>
-        <li class="nav-item">
-          <div class="alert alert-warning">
-             <strong>Warning!</strong> please click here <%= link_to 'Add More', main_app.edit_user_registration_path,:"data-no-turbolink"=>true,method:"get" %> and fill missed information before continuing.
-          </div>
-
-        <% elsif user_signed_in? %>
-          <li class="nav-item">
-          <%= link_to 'About Us', main_app.pages_about_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
-          </li>
-          <li class="nav-item">
-          <%= link_to 'Gallery', main_app.pages_gallery_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
-          </li>
-          <li class="nav-item">
-          <%= link_to "My Courses", main_app.all_favorite_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
-        </li>
-          <li class="nav-item">
-          <%= link_to 'Courses', main_app.all_course_courses_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
-          </li>
-          <li class="nav-item">
-          <%= link_to 'Help', main_app.pages_help_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
-          </li>
-          <% if user_signed_in? && current_user.user_role== 'admin'%>
-          <li class="nav-item">
-              <%= link_to "Admin Panel",  rails_admin.dashboard_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
-          </li>
-          <li class="nav-item">
-              <%= link_to "reports",  report_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
-          </li>
-        <% end %>
-        <% if user_signed_in? && current_user.user_role== 'instructor'%>
-          <li class="nav-item">
-            <%= link_to 'Instractor Panel', main_app.courses_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
-          </li>
-        <% end %>
-        <% if user_signed_in? && current_user.user_role== 'council'%>
-          <li class="nav-item">
-            <%= link_to 'Check', instructor_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
-          </li>
-        <% end %>
-        </ul>
-
-
-      <div class="w-25 d-flex">
-          <strong><%= current_user.email %></strong>
-          <i class="fa fa-bell" aria-hidden="true"></i><%= link_to pluralize(Notification.unread_count(current_user), ''), notifications_path, :class => 'navbar-link'  %>
-          <div class="dropdown">
-            <button class="dropbtn btn-sm"><i class="fa fa-gear fa-spin" style="font-size:24px"></i>Settings</button>
-            <div class="dropdown-content">
-              <%= link_to "Logout", main_app.destroy_user_session_path, class:'a', :method => :get %>
-              <%= link_to 'View Profile', main_app.edit_user_registration_path, class:'a',:"data-no-turbolink"=>true,method:"get" %>
-            </div>
-          </div>
-          <% else %>
-            <button class="dropbtn btn-sm"><i class="fa fa-users" aria-hidden="true" style="color:white;text-decoration:none;"></i>
-            <%= link_to "Register",  new_user_registration_path,class:"text-white", :"data-no-turbolink"=>true,method:"get" %></button>&nbsp;&nbsp;&nbsp;
-            <button class="dropbtn btn-sm"><i class="fa fa-lock" aria-hidden="true" style="color:white;"></i>
-            <%= link_to "Log in",  new_user_session_path,class:"text-white",:"data-no-turbolink"=>true,method:"get" %></button>
-        <% end %>
-      </div>
+    <!-- ============================================================== -->
+    <!-- Top header  -->
+    <!-- ============================================================== -->
+    <!-- Start Navigation -->
+<div class="header header-light">
+<div class="container">
+  <nav id="navigation" class="navigation navigation-landscape">
+    <div class="nav-header">
+      <a class="nav-brand" href="#">
+        <img src="assets/green-logo.jpg" class="logo" alt="" />
+      </a>
+      <div class="nav-toggle"></div>
     </div>
-</nav>
+    <div class="nav-menus-wrapper">
+      <ul class="nav-menu ">
+
+        <li><a href="index.html">Home</a></li>
+
+        <li><a href="courses.html">Courses</a></li>
+
+        <li><a href="about-us.html">About us</a></li>
+
+        <li><a href="gallery.html">Gallery</a></li>
+
+        <li><a href="contact.html">Contact</a></li>
+
+      </ul>
+
+      <ul class="nav-menu nav-menu-social align-to-right">
+
+        <li class="login_click green light">
+          <a href="#" data-toggle="modal" data-target="#login">Sign in</a>
+        </li>
+        <li class="login_click bg-green btn">
+          <a href="register.html">Sign up</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+</div>
+<!-- End Navigation -->
+<div class="clearfix"></div>
+<!-- ============================================================== -->
+<!-- Top header  -->
+<!-- ============================================================== -->
 <% if notice %>
       <p class="alert alert-success", style='margin:2%'><%= notice %></p>
     <% end %>
@@ -178,6 +135,16 @@ type = "image/x-icon">
         </div>
       </div>
   </div>
+    <%= javascript_pack_tag 'jquery' %>
+		<%= javascript_pack_tag 'popper' %>
+		<%= javascript_pack_tag 'bootstrap' %>
+		<%= javascript_pack_tag 'select2' %>
+    <%= javascript_pack_tag 'slick' %>
+    <%= javascript_pack_tag 'metisMenu' %>
+    <%= javascript_pack_tag 'slickmin' %>
+		<%= javascript_pack_tag 'jquerycounterup' %>
+		<%= javascript_pack_tag 'counterup' %>
+		<%= javascript_pack_tag 'custom' %>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
