@@ -1,161 +1,114 @@
-// Place all the styles related to the homepage controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.slick-slide {
+    margin: 0px 20px;
+}
 
-a{
-    text-decoration: none;
-}
-.home{
-    margin: 15%;
-
-}
-.card-image{
-    width: 50px;
-}
-.listt{
-    padding: 1%;
-}
-.msg{
-    background-color: green;
-}
-.hdr{
-    color: white;
-}
-.card{
+.slick-slide img {
     width: 100%;
 }
-.partner{
-    width: 40%;
-}
-#body-row {
-  margin-left:0;
-  margin-right:0;
-}
-#sidebar-container {
-  min-height: 100vh;
-  background-color: #333;
-  padding: 0;
+
+.slick-slider
+{
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+            user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+        touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
 }
 
-#body-row {
-  margin-left:0;
-  margin-right:0;
+.slick-list
+{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
-#sidebar-container {
-  min-height: 100vh;
-  background-color: #333;
-  padding: 0;
+.slick-list:focus
+{
+    outline: none;
 }
-
-/* Sidebar sizes when expanded and expanded */
-.sidebar-expanded {
-  width: 230px;
-}
-.sidebar-collapsed {
-  width: 60px;
-}
-
-/* Menu item*/
-#sidebar-container .list-group a {
-  height: 50px;
-  color: white;
+.slick-list.dragging
+{
+    cursor: pointer;
+    cursor: hand;
 }
 
-/* Submenu item*/
-#sidebar-container .list-group .sidebar-submenu a {
-  height: 45px;
-  padding-left: 30px;
-}
-.sidebar-submenu {
-  font-size: 0.9rem;
-}
-
-/* Separators */
-.sidebar-separator-title {
-  background-color: #333;
-  height: 35px;
-}
-.sidebar-separator {
-  background-color: #333;
-  height: 25px;
-}
-.logo-separator {
-  background-color: #333;
-  height: 60px;
+.slick-slider .slick-track,
+.slick-slider .slick-list
+{
+    -webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+         -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
 }
 
-/* Closed submenu icon */
-#sidebar-container .list-group .list-group-item[aria-expanded="false"] .submenu-icon::after {
-content: " \f0d7";
-font-family: FontAwesome;
-display: inline;
-text-align: right;
-padding-left: 10px;
+.slick-track
+{
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
 }
-/* Opened submenu icon */
-#sidebar-container .list-group .list-group-item[aria-expanded="true"] .submenu-icon::after {
-content: " \f0da";
-font-family: FontAwesome;
-display: inline;
-text-align: right;
-padding-left: 10px;
+.slick-track:before,
+.slick-track:after
+{
+    display: table;
+    content: '';
 }
-.barr{
-width: 100%;
-
+.slick-track:after
+{
+    clear: both;
 }
-.menuu{
-width: 17%;
-float: left;
-}
-/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
-.flip-card {
-  background-color: transparent;
-  width: 300px;
-  height: 200px;
-  border: 1px solid #f1f1f1;
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+.slick-loading .slick-track
+{
+    visibility: hidden;
 }
 
-/* This container is needed to position the front and back side */
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
+.slick-slide
+{
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
 }
-
-/* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
+[dir='rtl'] .slick-slide
+{
+    float: right;
 }
-
-/* Position the front and back side */
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
-  backface-visibility: hidden;
+.slick-slide img
+{
+    display: block;
 }
-
-/* Style the front side (fallback if image is missing) */
-.flip-card-front {
-  background-color: dodgerblue;
-  color: white;
-
+.slick-slide.slick-loading img
+{
+    display: none;
 }
-
-/* Style the back side */
-.flip-card-back {
-  background-color: dodgerblue;
-  color: white;
-  transform: rotateY(180deg);
+.slick-slide.dragging img
+{
+    pointer-events: none;
 }
-.hr1{
-height: 3px;
-background-color: #51be78;
+.slick-initialized .slick-slide
+{
+    display: block;
 }
-
+.slick-loading .slick-slide
+{
+    visibility: hidden;
+}
+.slick-vertical .slick-slide
+{
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+}
+.slick-arrow.slick-hidden {
+    display: none;
+}
