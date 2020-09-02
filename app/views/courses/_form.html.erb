@@ -8,7 +8,17 @@
 						<div class="col-lg-3 col-md-3 p-0">
 							<div class="dashboard-navbar">
 								<div class="d-user-avater">
-									<img src="assets/img/default-profile.png" class="img-fluid avater" alt="">
+									<% if user_signed_in? %>
+										<% if current_user.profile == nil %>
+											<p><%= image_tag 'default.png', class:"img-fluid avater" %></p>
+											<%= link_to 'upload a profile picture', new_profile_path, class: "btn btn-success " %>
+										<% else %>
+										<% if current_user.profile.image? %>
+											<p><%= image_tag current_user.profile.image.url, class:"img-fluid avater" %></p>
+											<%= link_to 'view Profile picture', profiles_path, class:"pull-right", style:"margin-left:70em; margin-top: -10px;" %></li>
+										<% end %>
+										<% end %>
+									<% end %>
 									<h4>Keeza Yvonnes</h4>
 									<span>Dentist</span>
 								</div>
