@@ -1,4 +1,4 @@
-Rails.application.config.hosts = nill
+Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -22,24 +22,16 @@ Rails.application.config.hosts = nill
     config.public_file_server.headers = {
       'Cache-Control' => "public, max-age=#{2.days.to_i}"
     }
-  else
-    config.action_controller.perform_caching = false
+    else
+      config.action_controller.perform_caching = false
 
-    config.cache_store = :null_store
-  end
+      config.cache_store = :null_store
+    end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
-
-
-  config.hosts.clear
-
-
-  # Don't care if the mailer can't send.
-
-
+  # Don't care if the mailer can't send
   config.action_mailer.perform_caching = false
-
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -78,5 +70,3 @@ config.action_mailer.smtp_settings = {
 }
 
 end
-
-

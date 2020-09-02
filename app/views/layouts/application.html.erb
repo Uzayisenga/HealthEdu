@@ -79,7 +79,6 @@ type = "image/x-icon">
           <%= link_to 'Courses', main_app.all_course_courses_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
           </li>
 
-
         <% end %>
         <% if user_signed_in? && current_user.user_role== 'admin'%>
           <li class="nav-item">
