@@ -1,79 +1,127 @@
 
 
-   <%= form_with(model: course, local: true) do |form| %>
-     <% if course.errors.any? %>
-         <div id="error_explanation">
-            <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+<section class="gray pt-0">
+				<div class="container-fluid">
+										
+					<div class="row">
+					
+						<div class="col-lg-3 col-md-3 p-0">
+							<div class="dashboard-navbar">
+								<div class="d-user-avater">
+									<img src="assets/img/default-profile.png" class="img-fluid avater" alt="">
+									<h4>Keeza Yvonnes</h4>
+									<span>Dentist</span>
+								</div>
+								
+								<div class="d-navigation">
+									<ul id="side-menu">
+										<li ><a href="settings.html"><i class="ti-user"></i>My Profile</a></li>
+										<li><a href="password.html"><i class="ti-settings"></i>Change my Password</a></li>
+										<li class="dropdown">
+											<a href="all-courses.html"><i class="ti-layers"></i>My Courses<span class="ti-angle-left"></span></a>
+											<ul class="nav nav-second-level">
+												<li><a href="course-settings.html">0038 Primary Eye Healthcare Modules</a></li>
+												<li><a href="course-settings.html">0038 Primary Eye Healthcare Modules</a></li>
+												<li><a href="course-settings.html">0038 Primary Eye Healthcare Modules</a></li>
+												<li><a href="course-settings.html">0038 Primary Eye Healthcare Modules</a></li>
+											</ul>
+										</li>
+										<li class="active"><a href="add-new-course.html"><i class="ti-plus"></i>Add new Course</a></li>
+										<li><a href="add-new-book.html"><i class="ti-plus"></i>Add new Book</a></li>
+										<li><a href="#"><i class="ti-power-off"></i>Log Out</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-9 col-md-9 col-sm-12">
+							<!-- Row -->
+							<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12 pt-4 pb-4">
+									<nav aria-label="breadcrumb">
+										<ol class="breadcrumb">
+											<li class="breadcrumb-item"><a href="#">Home</a></li>
+											<li class="breadcrumb-item"><a href="#">My Dashboard</a></li>
+    
+                                     <%= link_to "Add New Course", new_course_path, class: "breadcrumb-item active",:"data-no-turbolink"=>true,method:"get" %>
+										</ol>
+									</nav>
+								</div>
+							</div>
+							<!-- /Row -->
+							
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+									<div class="prc_wrap">
+											<div class="prc_wrap-body">
+											<%= form_with(model: course, local: true) do |form| %>
+												<% if course.errors.any? %>
+													<div id="error_explanation">
+													   <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+										   
+													  <ul>
+														 <% course.errors.full_messages.each do |message| %>
+														   <li><%= message %></li>
+														 <% end %>
+													   </ul>
+													 </div>
+												 <% end %>
+										   
+											 <div class="card-body">
+											   <div class="table-responsive">
+											   <form>
+											   <div class="form-row">
+												 <div class="form-group col-md-6">
+												   <%= form.file_field :image, class:"form-control simple", placeholder:"Image" %>
+												 </div>
+												 <div class="form-group col-md-6">
+												   <%= form.text_field :title, class:"form-control simple", placeholder:"Enter Title", :required => true %>
+												 </div>
+											   </div>
+											   <div class="form-row">
+												 <div class="form-group col-md-6">
+												   <%= form.text_area :content_attract, class:"form-control simple", placeholder:"Enter Content that will attract user", :required => true %>
+												 </div>
+												 <div class="form-group col-md-6">
+												   <%= form.text_field :credit_number, class:"form-control simple", placeholder:"Enter Credit Number", :required => true %>
+												 </div>
+											   </div>
+											   <div class="form-row">
+												 <div class="form-group col-md-6">
+												   <%= form.text_field :quiz_link, class:"form-control simple", placeholder:"Enter Quiz Link", :required => true %>
+												 </div>
+												 <div class="form-group col-md-6">
+												   <%= form.text_field :course_price, class:"form-control simple", placeholder:"Enter Course Price", :required => true %>
+												 </div>
+											   </div>
+											   <div class="form-group">
+												   <%= form.hidden_field :user_id, class:"form-control simple" %>
+											   </div>
+											   <div class="form-group">
+											   <%= form.label :video %>
+											   <%= form.file_field :video, id: :video_file %>
+											 </div>
+											   <div class="form-group">
+											   <%= form.cktext_area :content, :ckeditor => {:toolbar => 'img', :customConfig => asset_path('ckeditor/config.js')} %>
+										   
+											   </div>
+											   <%= form.submit class:"btn btn-primary" %>
+											 </form>
+											 </div>
+										   </div>
+										   </div>
+										   <% end %>
+										   
+												
+										</div>
 
-           <ul>
-              <% course.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-      <% end %>
-<div class="container">
-<h5 style="text-align:center;">New Courses</h5>
-<div class="card text-center">
-  <div class="card-header">
-    <ul class="nav nav-tabs card-header-tabs">
-      <li class="nav-item">
-        <%= link_to "Courses", courses_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "New Course", new_course_path, class: "nav-link active",:"data-no-turbolink"=>true,method:"get" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to 'Add module', courses_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to 'Reply Question', courses_path, class: "nav-link",:"data-no-turbolink"=>true,method:"get" %>
-      </li>
-    </ul>
-  </div>
-  <div class="card-body">
-    <div class="table-responsive">
-    <form>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <%= form.file_field :image, class:"form-control", placeholder:"Image" %>
-      </div>
-      <div class="form-group col-md-6">
-        <%= form.text_field :title, class:"form-control", placeholder:"Enter Title", :required => true %>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <%= form.text_area :content_attract, class:"form-control", placeholder:"Enter Content that will attract user", :required => true %>
-      </div>
-      <div class="form-group col-md-6">
-        <%= form.text_field :credit_number, class:"form-control", placeholder:"Enter Credit Number", :required => true %>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <%= form.text_field :quiz_link, class:"form-control", placeholder:"Enter Quiz Link", :required => true %>
-      </div>
-      <div class="form-group col-md-6">
-        <%= form.text_field :course_price, class:"form-control", placeholder:"Enter Course Price", :required => true %>
-      </div>
-    </div>
-    <div class="form-group">
-        <%= form.hidden_field :user_id, class:"form-control" %>
-    </div>
-    <div class="form-group">
-    <%= form.label :video %>
-    <%= form.file_field :video, id: :video_file %>
-  </div>
-    <div class="form-group">
-    <%= form.cktext_area :content, :ckeditor => {:toolbar => 'img', :customConfig => asset_path('ckeditor/config.js')} %>
 
-    </div>
-    <%= form.submit class:"btn btn-primary" %>
-  </form>
-  </div>
-</div>
-</div>
-</div>
-<% end %>
+
+								</div>
+							</div>
+					
+					</div>
+					
+					</div>
+				</div>
+			</section>
 

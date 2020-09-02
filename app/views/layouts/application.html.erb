@@ -54,18 +54,45 @@ type = "image/x-icon">
         <li><%= link_to 'Gallery', main_app.pages_gallery_path,:"data-no-turbolink"=>true,method:"get" %></li>
 
         <li><a href="contact.html">Contact</a></li>
+        <% if user_signed_in? && current_user.user_role== 'professional'%>
+          <li><%= link_to "Dashboard", main_app.all_favorite_path,:"data-no-turbolink"=>true,method:"get" %></li>
+        <% end %>
+
+        <% if user_signed_in? && current_user.user_role== 'admin'%>
+          <li>
+              <%= link_to "Dashboard",  rails_admin.dashboard_path,:"data-no-turbolink"=>true,method:"get" %>
+          </li>
+          <li>
+              <%= link_to "reports",  report_path,:"data-no-turbolink"=>true,method:"get" %>
+          </li>
+        <% end %>
+        <% if user_signed_in? && current_user.user_role== 'instructor'%>
+          <li>
+            <%= link_to 'Dashboard', main_app.courses_path,:"data-no-turbolink"=>true,method:"get" %>
+          </li>
+        <% end %>
+        <% if user_signed_in? && current_user.user_role== 'council'%>
+          <li>
+            <%= link_to 'Dashboard', instructor_path,:"data-no-turbolink"=>true,method:"get" %>
+          </li>
+        <% end %>
 
       </ul>
-
-      <ul class="nav-menu nav-menu-social align-to-right">
-
-        <li class="login_click green light">
-          <a href="#" data-toggle="modal" data-target="#login">Sign in</a>
-        </li>
-        <li class="login_click bg-green btn">
-          <a href="register.html">Sign up</a>
-        </li>
-      </ul>
+        <ul class="nav-menu nav-menu-social align-to-right">
+          <% if user_signed_in? %>
+            <li class="login_click green light">
+              <%= link_to "Logout", main_app.destroy_user_session_path, :method => :get %>
+            </li>
+            <% else %>
+              <li class="login_click green light">
+                <%= link_to "Sign in",  new_user_session_path,:"data-no-turbolink"=>true,method:"get" %>
+              </li>
+              <li class="login_click bg-green btn">
+              <%= link_to "Sign up",  new_user_registration_path, :"data-no-turbolink"=>true,method:"get" %>
+              </li>
+          <% end %>
+        </ul>
+      
     </div>
   </nav>
 </div>
