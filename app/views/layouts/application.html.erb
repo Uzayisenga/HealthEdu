@@ -47,11 +47,11 @@ type = "image/x-icon">
 
         <li><a href="index.html">Home</a></li>
 
-        <li><a href="courses.html">Courses</a></li>
+        <li><%= link_to 'Courses', main_app.all_course_courses_path,:"data-no-turbolink"=>true,method:"get" %></li>
 
-        <li><a href="about-us.html">About us</a></li>
+        <li><%= link_to 'About Us', main_app.pages_about_path,:"data-no-turbolink"=>true,method:"get" %></li>
 
-        <li><a href="gallery.html">Gallery</a></li>
+        <li><%= link_to 'Gallery', main_app.pages_gallery_path,:"data-no-turbolink"=>true,method:"get" %></li>
 
         <li><a href="contact.html">Contact</a></li>
 

@@ -119,7 +119,7 @@
 										<li><span class="theme-cl">2</span>Free Cources</li>
 									</ul>
 								</div>
-								<a href="about-us.html" class="btn  bg-green" >Know More</a>
+								<%= link_to 'Know More', main_app.pages_about_path,class:"btn  bg-green",:"data-no-turbolink"=>true,method:"get" %>
 							</div>
 						</div>
 
@@ -146,270 +146,42 @@
 							</div>
 						</div>
 					</div>
-
 					<div class="row">
+					    <% @courses.each do |course| %>
 
-						<!-- Cource Grid 1 -->
-						<div class="col-lg-4 col-md-6">
-							<div class="education_block_grid style_2">
-								<div class="education_block_thumb n-shadow">
-									<a href="single.html" data-toggle="modal" data-target="#login"><img src="assets/co-1.jpg" class="img-fluid" alt="" ></a>
-									<div class="cources_price">10,000<span class="theme-cl"> Rwf</span></div>
-								</div>
-
-								<div class="education_block_body">
-									<h4 class="bl-title"><a href="single.html" data-toggle="modal" data-target="#login">Tableau For Beginners: Get CA Certified, Grow Your Career</a></h4>
-								</div>
-
-								<div class="cources_info_style3">
-									<ul>
-										<li><i class="ti-star mr-1"></i>8 CPD Credits</li>
-									</ul>
-								</div>
-
-								<div class="education_block_footer">
-									<div class="education_block_author">
-										<div class="path-img"><a href="instructor-detail.html"><img src="assets/gihozo.jpg" class="img-fluid" alt=""></a></div>
-										<h5><a href="#"> Yvonnes Keeza</a></h5>
+							<!-- Cource Grid 1 -->
+							<div class="col-lg-4 col-md-6">
+								<div class="education_block_grid style_2">
+									<div class="education_block_thumb n-shadow">
+										<a href="single.html" data-toggle="modal" data-target="#login">
+										<% if course.image_url %>
+										<%= image_tag course.image_url,:alt => "",class:'img-fluid'%>
+									  <% end %></a>
+										<div class="cources_price"><%= course.course_price%><span class="theme-cl"> Rwf</span></div>
 									</div>
-									<div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>8 Hours</div>
-								</div>
 
-							</div>
-						</div>
-
-						<!-- Cource Grid 1 -->
-						<div class="col-lg-4 col-md-6">
-							<div class="education_block_grid style_2">
-
-								<div class="education_block_thumb n-shadow">
-									<a href="single.html" data-toggle="modal" data-target="#login"><img src="assets/co-1.jpg" class="img-fluid" alt="" ></a>
-									<div class="cources_price">10,000<span class="theme-cl"> Rwf</span></div>
-								</div>
-
-								<div class="education_block_body">
-									<h4 class="bl-title"><a href="single.html" data-toggle="modal" data-target="#login">Tableau For Beginners: Get CA Certified, Grow Your Career</a></h4>
-								</div>
-
-								<div class="cources_info_style3">
-									<ul>
-										<li><i class="ti-star mr-1"></i>8 CPD Credits</li>
-									</ul>
-								</div>
-
-								<div class="education_block_footer">
-									<div class="education_block_author">
-										<div class="path-img"><a href="instructor-detail.html"><img src="assets/gihozo.jpg" class="img-fluid" alt=""></a></div>
-										<h5><a href="#"> Yvonnes Keeza</a></h5>
+									<div class="education_block_body">
+										<h4 class="bl-title"><a href="single.html" data-toggle="modal" data-target="#login"><%= course.title%></a></h4>
 									</div>
-									<div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>8 Hours</div>
-								</div>
 
-							</div>
-						</div>
-
-						<!-- Cource Grid 1 -->
-						<div class="col-lg-4 col-md-6">
-							<div class="education_block_grid style_2">
-
-								<div class="education_block_thumb n-shadow">
-									<a href="single.html" data-toggle="modal" data-target="#login"><img src="assets/co-1.jpg" class="img-fluid" alt="" ></a>
-									<div class="cources_price">10,000<span class="theme-cl"> Rwf</span></div>
-								</div>
-
-								<div class="education_block_body">
-									<h4 class="bl-title"><a href="single.html" data-toggle="modal" data-target="#login">Tableau For Beginners: Get CA Certified, Grow Your Career</a></h4>
-								</div>
-
-								<div class="cources_info_style3">
-									<ul>
-										<li><i class="ti-star mr-1"></i>8 CPD Credits</li>
-									</ul>
-								</div>
-
-								<div class="education_block_footer">
-									<div class="education_block_author">
-										<div class="path-img"><a href="instructor-detail.html"><img src="assets/gihozo.jpg" class="img-fluid" alt=""></a></div>
-										<h5><a href="#"> Yvonnes Keeza</a></h5>
+									<div class="cources_info_style3">
+										<ul>
+											<li><i class="ti-star mr-1"></i><%= course.credit_number%> CPD Credits</li>
+										</ul>
 									</div>
-									<div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>8 Hours</div>
-								</div>
 
-							</div>
-						</div>
-						<!-- Cource Grid 1 -->
-						<div class="col-lg-4 col-md-6">
-							<div class="education_block_grid style_2">
-
-								<div class="education_block_thumb n-shadow">
-									<a href="single.html" data-toggle="modal" data-target="#login"><img src="assets/co-1.jpg" class="img-fluid" alt="" ></a>
-									<div class="cources_price">10,000<span class="theme-cl"> Rwf</span></div>
-								</div>
-
-								<div class="education_block_body">
-									<h4 class="bl-title"><a href="single.html" data-toggle="modal" data-target="#login">Tableau For Beginners: Get CA Certified, Grow Your Career</a></h4>
-								</div>
-
-								<div class="cources_info_style3">
-									<ul>
-										<li><i class="ti-star mr-1"></i>8 CPD Credits</li>
-									</ul>
-								</div>
-
-								<div class="education_block_footer">
-									<div class="education_block_author">
-										<div class="path-img"><a href="instructor-detail.html"><img src="assets/gihozo.jpg" class="img-fluid" alt=""></a></div>
-										<h5><a href="#"> Yvonnes Keeza</a></h5>
+									<div class="education_block_footer">
+										<div class="education_block_author">
+											<div class="path-img"><a href="instructor-detail.html"><img src="assets/default.png" class="img-fluid" alt=""></a></div>
+											<h5><a href="#"> <%= course.user.names%>  <%=course.user.last_name%></a></h5>
+										</div>
+										<div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>8 Hours</div>
 									</div>
-									<div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>8 Hours</div>
-								</div>
 
+								</div>
 							</div>
-						</div>
-						<!-- Cource Grid 1 -->
-						<div class="col-lg-4 col-md-6">
-							<div class="education_block_grid style_2">
-
-								<div class="education_block_thumb n-shadow">
-									<a href="single.html" data-toggle="modal" data-target="#login"><img src="assets/co-1.jpg" class="img-fluid" alt="" ></a>
-									<div class="cources_price">10,000<span class="theme-cl"> Rwf</span></div>
-								</div>
-
-								<div class="education_block_body">
-									<h4 class="bl-title"><a href="single.html" data-toggle="modal" data-target="#login">Tableau For Beginners: Get CA Certified, Grow Your Career</a></h4>
-								</div>
-
-								<div class="cources_info_style3">
-									<ul>
-										<li><i class="ti-star mr-1"></i>8 CPD Credits</li>
-									</ul>
-								</div>
-
-								<div class="education_block_footer">
-									<div class="education_block_author">
-										<div class="path-img"><a href="instructor-detail.html"><img src="assets/gihozo.jpg" class="img-fluid" alt=""></a></div>
-										<h5><a href="#"> Yvonnes Keeza</a></h5>
-									</div>
-									<div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>8 Hours</div>
-								</div>
-
-							</div>
-						</div>
-						<!-- Cource Grid 1 -->
-						<div class="col-lg-4 col-md-6">
-							<div class="education_block_grid style_2">
-
-								<div class="education_block_thumb n-shadow">
-									<a href="single.html" data-toggle="modal" data-target="#login"><img src="assets/co-1.jpg" class="img-fluid" alt="" ></a>
-									<div class="cources_price">10,000<span class="theme-cl"> Rwf</span></div>
-								</div>
-
-								<div class="education_block_body">
-									<h4 class="bl-title"><a href="single.html" data-toggle="modal" data-target="#login">Tableau For Beginners: Get CA Certified, Grow Your Career</a></h4>
-								</div>
-
-								<div class="cources_info_style3">
-									<ul>
-										<li><i class="ti-star mr-1"></i>8 CPD Credits</li>
-									</ul>
-								</div>
-
-								<div class="education_block_footer">
-									<div class="education_block_author">
-										<div class="path-img"><a href="instructor-detail.html"><img src="assets/gihozo.jpg" class="img-fluid" alt=""></a></div>
-										<h5><a href="#"> Yvonnes Keeza</a></h5>
-									</div>
-									<div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>8 Hours</div>
-								</div>
-
-							</div>
-						</div><!-- Cource Grid 1 -->
-						<div class="col-lg-4 col-md-6">
-							<div class="education_block_grid style_2">
-
-								<div class="education_block_thumb n-shadow">
-									<a href="single.html" data-toggle="modal" data-target="#login"><img src="assets/co-1.jpg" class="img-fluid" alt="" ></a>
-									<div class="cources_price">10,000<span class="theme-cl"> Rwf</span></div>
-								</div>
-
-								<div class="education_block_body">
-									<h4 class="bl-title"><a href="single.html" data-toggle="modal" data-target="#login">Tableau For Beginners: Get CA Certified, Grow Your Career</a></h4>
-								</div>
-
-								<div class="cources_info_style3">
-									<ul>
-										<li><i class="ti-star mr-1"></i>8 CPD Credits</li>
-									</ul>
-								</div>
-
-								<div class="education_block_footer">
-									<div class="education_block_author">
-										<div class="path-img"><a href="instructor-detail.html"><img src="assets/gihozo.jpg" class="img-fluid" alt=""></a></div>
-										<h5><a href="#"> Yvonnes Keeza</a></h5>
-									</div>
-									<div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>8 Hours</div>
-								</div>
-
-							</div>
-						</div>
-						<!-- Cource Grid 1 -->
-						<div class="col-lg-4 col-md-6">
-							<div class="education_block_grid style_2">
-
-								<div class="education_block_thumb n-shadow">
-									<a href="single.html" data-toggle="modal" data-target="#login"><img src="assets/co-1.jpg" class="img-fluid" alt="" ></a>
-									<div class="cources_price">10,000<span class="theme-cl"> Rwf</span></div>
-								</div>
-
-								<div class="education_block_body">
-									<h4 class="bl-title"><a href="single.html" data-toggle="modal" data-target="#login">Tableau For Beginners: Get CA Certified, Grow Your Career</a></h4>
-								</div>
-
-								<div class="cources_info_style3">
-									<ul>
-										<li><i class="ti-star mr-1"></i>8 CPD Credits</li>
-									</ul>
-								</div>
-
-								<div class="education_block_footer">
-									<div class="education_block_author">
-										<div class="path-img"><a href="instructor-detail.html"><img src="assets/gihozo.jpg" class="img-fluid" alt=""></a></div>
-										<h5><a href="#"> Yvonnes Keeza</a></h5>
-									</div>
-									<div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>8 Hours</div>
-								</div>
-
-							</div>
-						</div>
-						<!-- Cource Grid 1 -->
-						<div class="col-lg-4 col-md-6">
-							<div class="education_block_grid style_2">
-
-								<div class="education_block_thumb n-shadow">
-									<a href="single.html" data-toggle="modal" data-target="#login"><img src="assets/co-1.jpg" class="img-fluid" alt="" ></a>
-									<div class="cources_price">10,000<span class="theme-cl"> Rwf</span></div>
-								</div>
-
-								<div class="education_block_body">
-									<h4 class="bl-title"><a href="single.html" data-toggle="modal" data-target="#login">Tableau For Beginners: Get CA Certified, Grow Your Career</a></h4>
-								</div>
-
-								<div class="cources_info_style3">
-									<ul>
-										<li><i class="ti-star mr-1"></i>8 CPD Credits</li>
-									</ul>
-								</div>
-
-								<div class="education_block_footer">
-									<div class="education_block_author">
-										<div class="path-img"><a href="instructor-detail.html"><img src="assets/gihozo.jpg" class="img-fluid" alt=""></a></div>
-										<h5><a href="#"> Yvonnes Keeza</a></h5>
-									</div>
-									<div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>8 Hours</div>
-								</div>
-
-							</div>
-						</div>
+						<% end %>
+                    </div>
 
 						<!-- Cource Grid 1 -->
 						<div class="col-lg-12 col-md-12 col-sm-12 text-center">
