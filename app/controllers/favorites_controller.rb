@@ -47,4 +47,3 @@ class FavoritesController < ApplicationController
     @favorites = Favorite.all
   end
   end
-

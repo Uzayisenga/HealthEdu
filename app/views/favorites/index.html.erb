@@ -29,7 +29,11 @@
 										<li><a href="password.html"><i class="ti-settings"></i>Change my Password</a></li>
 										<li class="active"><a href="paid-courses.html"><i class="ti-layers"></i>Paid Courses</a></li>
 										<li><a href="available-books.html"><i class="ti-layers"></i>Books to read</a></li>
-										<li><a href="index.html"><i class="ti-power-off"></i>Log Out</a></li>
+										<li><a href="index.html"><i class="ti-power-off"></i></a>Messages <span class="badge badge-pill badge-primary ml-2"><%= link_to pluralize(Notification.unread_count(current_user), ''), notifications_path, :class => 'menu-collapsed'  %></span></span>
+
+
+										<li><a href="available-books.html"><i class="ti-layers"></i>Books to read</a></li>
+										<li><a href="index.html"><i class="fa fa-power-off mr-3" aria-hidden="true""></i>Log Out</a></li>
 									</ul>
 								</div>
 
@@ -128,8 +132,7 @@
 																    <%= image_tag favorite.course.image_url,:alt => "",class:'img-fluid'%>
 															    <% end %>
 																<div class="dashboard_action">
-
-																	<a href="course-detail.html" class="btn btn-ect">View</a>
+																	<%= link_to 'view course', favorite, class:"btn btn-ect",:"data-no-turbolink"=>true,method:"get" %>
 																</div>
 															</div>
 															<div class="dashboard_single_course_caption">

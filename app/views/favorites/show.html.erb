@@ -169,7 +169,7 @@
                 <h1><%=  credit.name%></h1>
                 <p>Thank You for your hard work!! continue to read the next module.</p>
               </div>
-              <p>If you have any question, don't hesitate to contact us </p>
+              <p>If you have any question, dont hesitate to contact us </p>
               <% end %>
             </div>
           </body>
@@ -283,7 +283,94 @@
     </div><!-- Main Col END -->
 
 </div><!-- body-row END -->
+<div class="ed_detail_head">
+				<div class="container">
+					<div class="row align-items-center">
+						<div class="col-lg-4 col-md-5">
 
+							<div class="property_video">
+								<div class="thumb">
+                  <% if @favorite.course.image_url %>
+                  <%= image_tag @favorite.course.image_url,:alt => "",class:'pro_img img-fluid w100'%>
+                <% end %>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="col-lg-8 col-md-7">
+							<div class="ed_detail_wrap">
+								<div class="ed_header_caption">
+									<h2 class="ed_title"><%= @favorite.course.title %></h2>
+								</div>
+								<div class="ed_header_short">
+									<h4 class="edu_title">Course Overview</h4>
+									<p><%= @favorite.course.content.html_safe %></p>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ============================ Page Title End ================================== -->
+
+			<!-- ============================ Course Detail ================================== -->
+			<section class="bg-light">
+				<div class="container">
+					<div class="row">
+
+						<div class="col-lg-12 col-md-12">
+
+							<!-- Overview -->
+
+							<div class="edu_wraper">
+                <h4 class="edu_title">Course Circullum</h4>
+
+								<div id="accordionExample" class="accordion shadow circullum">
+                <% @favorite.course.credits.each do |credit| %>
+									<!-- Part 1 -->
+									<div class="card">
+									  <div id="headingOne" class="card-header bg-white shadow-sm border-0">
+										<h6 class="mb-0 accordion_title"><a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="d-block position-relative text-dark collapsible-link py-2"><%=  credit.name%>: How To Learn Web Designing Step by Step</a></h6>
+									  </div>
+									  <div id="collapseOne" aria-labelledby="headingOne" data-parent="#accordionExample" class="collapse show">
+										<div class="card-body pl-3 pr-3">
+											<p><%=  credit.discription.html_safe%></p>
+											<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+											<div class="form-group  ">
+                        <%= link_to "click here to Open this Module", credit.upload_file_url,class:"bg-red btn", target: :_blank %>
+											</div>
+										</div>
+									  </div>
+									</div>
+                  <% end %>
+									<div class="card">
+									  <div id="headingFour" class="card-header bg-white shadow-sm border-0 text-center">
+                    <% if ((DateTime.now.to_time - @favorite.created_at.to_time)/1.hours).to_i > 1%>
+                    <a href="<%= @favorite.course.quiz_link%>" target="_blank" rel="noopener noreferrer" class= "bg-red btn">Do assessment for this course</a>
+                    <span class="menu-collapsed"><%= link_to 'Back', all_favorite_path %></span>
+                    <% end %>
+									  </div>
+
+									</div>
+
+								</div>
+							</div>
+
+							<!-- instructor -->
+							<div class="single_instructor">
+								<div class="single_instructor_caption">
+									<h4><a href="#"><%= @favorite.course.user.names%>  <%=@favorite.course.user.last_name%></a></h4>
+									<ul class="instructor_info">
+										<li><i class="ti-control-forward"></i>12 Courses</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
 
 
