@@ -1,39 +1,120 @@
-<div class="container">
-<%= form_with(model: credit, local: true) do |form| %>
-  <% if credit.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(credit.errors.count, "error") %> prohibited this credit from being saved:</h2>
 
-      <ul>
-        <% credit.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<section class="gray pt-0">
+				<div class="container-fluid">
+										
+					<div class="row">
+					
+						<div class="col-lg-3 col-md-3 p-0">
+							<div class="dashboard-navbar">								
+                <div class="d-user-avater">                
+                <% if user_signed_in? %>
+                <% if current_user.profile == nil %>
+                  <p><%= image_tag 'default.png', class:"img-fluid avater" %></p>
+                  <%= link_to 'upload a profile picture', new_profile_path, class: "btn btn-success " %>
+                <% else %>
+                <% if current_user.profile.image? %>
+                  <p><%= image_tag current_user.profile.image.url, class:"img-fluid avater" %></p>
+                  <%= link_to 'view Profile picture', profiles_path, class:"pull-right", style:"margin-left:70em; margin-top: -10px;" %></li>
+                <% end %>
+                <% end %>
+              <% end %>
+              <h4><%= current_user.names %> <%= current_user.last_name %></h4>
+              <span class="text-secondary"><%= current_user.working_place %></span>
+            </div>
+								
+								<div class="d-navigation">
+									<ul id="side-menu">
+										<li ><a href="settings.html"><i class="ti-user"></i>My Profile</a></li>
+										<li><a href="password.html"><i class="ti-settings"></i>Change my Password</a></li>
+										<li class="dropdown active">
+											<a href="#"><i class="ti-layers"></i>My Courses<span class="ti-angle-left"></span></a>
+											<ul class="nav nav-second-level show">
+												<li><a href="course-settings.html">0038 Primary Eye Healthcare Modules</a></li>
+												<li class="active"><a href="course-settings.html">0038 Primary Eye Healthcare Modules</a></li>
+												<li><a href="course-settings.html">0038 Primary Eye Healthcare Modules</a></li>
+												<li><a href="course-settings.html">0038 Primary Eye Healthcare Modules</a></li>
+											</ul>
+										</li>
+										<li><a href="add-new-course.html"><i class="ti-plus"></i>Add new Course</a></li>
+										<li><a href="add-new-book.html"><i class="ti-plus"></i>Add new Book</a></li>
+										<li><a href="#"><i class="ti-power-off"></i>Log Out</a></li>
+									</ul>
+								</div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, :required => true %>
-  </div>
+							</div>
+						</div>
+						<div class="col-lg-9 col-md-9 col-sm-12">
+							<!-- Row -->
+							<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12 pt-4 pb-4">
+									<nav aria-label="breadcrumb">
+										<ol class="breadcrumb">
+											<li class="breadcrumb-item"><a href="#">Home</a></li>
+											<li class="breadcrumb-item"><a href="#">My Dashboard</a></li>
+											<li class="breadcrumb-item"><a href="#">My Courses</a></li>
+											<li class="breadcrumb-item"><a href="#">Modules</a></li>
+											<li class="breadcrumb-item active" aria-current="page">Add new Module</li>
+										</ol>
+									</nav>
+								</div>
+							</div>
+							<!-- /Row -->
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+									<div class="prc_wrap">
+                      <div class="prc_wrap-body">
+                      <%= form_with(model: credit, local: true) do |form| %>
+                        <% if credit.errors.any? %>
+                          <div id="error_explanation">
+                            <h2><%= pluralize(credit.errors.count, "error") %> prohibited this credit from being saved:</h2>
+                      
+                            <ul>
+                              <% credit.errors.full_messages.each do |message| %>
+                                <li><%= message %></li>
+                              <% end %>
+                            </ul>
+                          </div>
+                        <% end %>
+                       
 
-  <div class="form-group">
-    <%= form.label :Description %>
-    <%= form.cktext_area :discription, :ckeditor => {:toolbar => 'img', :customConfig => asset_path('ckeditor/config.js')} %>
-  </div>
+												<div class="row">
+													<div class="col-lg-6 col-md-12">
+														<div class="form-group">
+															<label>Module Title</label>
+                              <%= form.text_field :name, :required => true, class:"form-control simple" %>
+														</div>
+													</div>
+													<div class="col-lg-6 col-md-12">
+														<div class="form-group">
+															<label>Upload file</label>
+                              <%= form.file_field :upload_file, class:"form-control simple disabled" %>
+														</div>
+													</div>
+													<div class="col-lg-12 col-md-6">
+														<div class="form-group">
+															<label>Description</label>
+                              <%= form.cktext_area :discription, :ckeditor => {:toolbar => 'img', :customConfig => asset_path('ckeditor/config.js')} %>
+														</div>
+                          </div>
+                          <div class="col-lg-12 col-md-6">
+                          <div class="form-group">
+                            <%= form.hidden_field :course_id, :value => params[:course_id] %>
+                          </div>
+                        </div>
+												</div>
+												<div class="form-group">
+                        <%= form.submit class:"btn btn-success"%>
+												</div>
+											</div>
 
+										</div>
 
-  <div class="field">
-    <%= form.label :upload_file %>
-    <%= form.file_field :upload_file, class:"form-control" %>
-  </div>
- <%= form.hidden_field :course_id, :value => params[:course_id] %>
-
-
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
-</div>
-</div>
+								</div>
+							</div>
+					
+					</div>
+					
+					</div>
+				</div>
+      </section>
+      <% end %>
