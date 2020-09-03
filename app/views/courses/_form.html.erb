@@ -19,8 +19,8 @@
 										<% end %>
 										<% end %>
 									<% end %>
-									<h4>Keeza Yvonnes</h4>
-									<span>Dentist</span>
+									<h4><%= current_user.names %> <%= current_user.last_name %></h4>
+									<span class="text-secondary"><%= current_user.working_place %></span>
 								</div>
 								
 								<div class="d-navigation">
@@ -123,8 +123,6 @@
 										   
 												
 										</div>
-
-
 
 								</div>
 							</div>
