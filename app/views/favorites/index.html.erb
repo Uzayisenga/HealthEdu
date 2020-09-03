@@ -1,36 +1,3 @@
-<div class="container">
-<h5 style="text-align:center;">My Request Courses</h5>
-<div class="card">
-<% @favorites.each do |favorite| %>
-<%if favorite.user.names == current_user.names %>
-<%if favorite.present?%>
-  <div class="card-header">
-    <ul class="nav nav-tabs card-header-tabs">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Courses</a>
-      </li>
-      <li class="nav-item">
-        <%= link_to 'view course', favorite, class:"nav-link",:"data-no-turbolink"=>true,method:"get" %>
-      </li>
-    </ul>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title"><%= favorite.course.title %></h5>/<%= favorite.course.credit_number%>CPD Credits
-    <p class="card-text">Uploaded by:<%= favorite.course.user.names%> <%=favorite.course.user.last_name%></p>
-
-    <h3>Course Description</h3>
-    <p class="card-text"><%= favorite.course.content.html_safe %></p>
-    <center><div class="favorite"><%= favorite.status%></div><center>
-  </div>
-  <%else%>
-  <p class="card-text">No favorite yet.</p>
-  <% end %>
-<% end %>
-
-<% end %>
-</div>
-</div><br>
-
 <section class="gray pt-0">
 				<div class="container-fluid">
 
@@ -41,17 +8,26 @@
 							<div class="dashboard-navbar">
 
 								<div class="d-user-avater">
-									<img src="assets/img/default-profile.png" class="img-fluid avater" alt="">
-									<h4>Yvonnes Keeza</h4>
-									<span>Dentist</span>
+									<% if user_signed_in? %>
+										<% if current_user.profile == nil %>
+											<p><%= image_tag 'default.png', class:"img-fluid avater" %></p>
+											<%= link_to 'upload a profile picture', new_profile_path, class: "btn btn-success " %>
+											<% else %>
+											<% if current_user.profile.image? %>
+												<p><%= image_tag current_user.profile.image.url, class:"img-fluid avater" %></p>
+												<%= link_to 'view Profile picture', profiles_path, class:"pull-right", style:"margin-left:70em; margin-top: -10px;" %></li>
+											<% end %>
+										<% end %>
+									<% end %>
+									<h4><%= current_user.names %> <%= current_user.last_name %></h4>
+									<span class="text-secondary"><%= current_user.working_place %></span>
 								</div>
 
 								<div class="d-navigation">
 									<ul id="side-menu">
 										<li ><a href="settings.html"><i class="ti-user"></i>My Profile</a></li>
 										<li><a href="password.html"><i class="ti-settings"></i>Change my Password</a></li>
-										<li><a href="paid-courses.html"><i class="ti-layers"></i>Paid Courses</a></li>
-										<li class="active"><a href="pending-courses.html"><i class="ti-layers"></i>Pending Courses</a></li>
+										<li class="active"><a href="paid-courses.html"><i class="ti-layers"></i>Paid Courses</a></li>
 										<li><a href="available-books.html"><i class="ti-layers"></i>Books to read</a></li>
 										<li><a href="index.html"><i class="ti-power-off"></i>Log Out</a></li>
 									</ul>
@@ -59,64 +35,11 @@
 
 							</div>
 
+
 						</div>
 
+
 						<div class="col-lg-9 col-md-9 col-sm-12">
-
-							<!-- Row -->
-							<div class="row">
-								<div class="col-lg-12 col-md-12 col-sm-12 pt-4 pb-4">
-									<nav aria-label="breadcrumb">
-										<ol class="breadcrumb">
-											<li class="breadcrumb-item"><a href="#">Home</a></li>
-											<li class="breadcrumb-item active" aria-current="page">My pending courses</li>
-										</ol>
-									</nav>
-								</div>
-							</div>
-							<!-- /Row -->
-
-							<!-- Row -->
-							<div class="row">
-								<div class="col-lg-12 col-md-12 col-sm-12">
-									<div class="dashboard_container">
-										<div class="dashboard_container_body">
-											<div class="table-responsive">
-												<table class="table">
-													<thead class="thead-dark">
-														<tr>
-															<th scope="col">Course </th>
-															<th scope="col">Date</th>
-															<th scope="col">Status</th>
-															<th scope="col">Price</th>
-														</tr>
-													</thead>
-                          <tbody>
-                            <% @favorites.each do |favorite| %>
-                              <%if favorite.user.names == current_user.names %>
-                                <%if favorite.present?%>
-                                  <tr>
-                                    <th scope="row"><a href="single-requested.html"> <%= favorite.course.title %>/<%= favorite.course.credit_number%>CPD Credits</a></th>
-                                    <td>02 July 2020</td>
-                                    <td><span class="payment_status pending"><%= favorite.status %></h5></span></td>
-                                    <td><%= favorite.course.course_price %><span>Rwf</span></td>
-
-                                  </tr>
-                                  <%else%>
-                                  <p class="card-text">No favorite yet.</p>
-                                <% end %>
-                              <% end %>
-                            <% end %>
-													</tbody>
-												</table>
-											</div>
-										</div>
-
-									</div>
-								</div>
-							</div>
-              <!-- /Row -->
-              <div class="col-lg-9 col-md-9 col-sm-12">
 
 							<!-- Row -->
 							<div class="row">
@@ -131,22 +54,60 @@
 							</div>
 							<!-- /Row -->
 
-							<!-- Row -->
-							<div class="row">
-								<div class="col-lg-12 col-md-12 col-sm-12">
 
+							<!-- Row -->
+							<div class="row ">
+								<div class="col-lg-12 col-md-12 col-sm-12 ">
+									<div class="card">
+									  <div id="headingOne" class="card-header bg-white shadow-sm border-0">
+										<h6 class="mb-0 accordion_title"><a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="d-block position-relative text-dark collapsible-link py-2">My Pending Courses</a></h6>
+									  </div>
+									  <div id="collapseOne" aria-labelledby="headingOne" data-parent="#accordionExample" class="collapse show">
+										<div class="card-body pl-3 pr-3">
+											<div class="table-responsive">
+												<table class="table tbl">
+													<thead class="thead-dark">
+														<tr>
+															<th scope="col">Course </th>
+															<th scope="col">Date</th>
+															<th scope="col">Status</th>
+															<th scope="col">Price</th>
+														</tr>
+													</thead>
+													<tbody>
+														<% @favorites.each do |favorite| %>
+														<%if favorite.user.email == current_user.email %>
+															<%if favorite.present?%>
+															<tr>
+																<th scope="row"><a href="single-requested.html"> <%= favorite.course.title %>/<%= favorite.course.credit_number%>CPD Credits</a></th>
+																<td>02 July 2020</td>
+																<td><span class="payment_status pending"><%= favorite.status %></h5></span></td>
+																<td><%= favorite.course.course_price %><span>Rwf</span></td>
+
+															</tr>
+															<%else%>
+															<p class="card-text">No favorite yet.</p>
+															<% end %>
+														<% end %>
+														<% end %>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									  </div>
+									</div>
 									<!-- Course Style 1 For Student -->
-									<div class="dashboard_container">
-										<div class="dashboard_container_header">
+									<div class="dashboard_container scroll-row scrollbar-light-blue">
+										<div class="dashboard_container_header" >
 											<div class="dashboard_fl_1">
 											<h4>All Courses</h4>
 											</div>
-											<div class="dashboard_fl_2">
+											<div class="dashboard_fl_2 tbl">
 												<ul class="mb0">
 													<li class="list-inline-item">
 
 													</li>
-													<li class="list-inline-item">
+													<li class="list-inline-item" >
 														<form class="form-inline my-2 my-lg-0">
 															<input class="form-control" type="search" placeholder="Search Courses" aria-label="Search">
 															<button class="btn my-2 my-sm-0" type="submit"><i class="ti-search"></i></button>
@@ -155,118 +116,62 @@
 												</ul>
 											</div>
 										</div>
-										<div class="dashboard_container_body">
+										<div class="dashboard_container_body" style="font-size:12px">
 
 											<!-- Single Course -->
-											<div class="dashboard_single_course">
-												<div class="dashboard_single_course_thumb">
-													<img src="assets/img/co-1.jpg" class="img-fluid" alt="" />
-													<div class="dashboard_action">
+											<% @favorites.each do |favorite| %>
+												<%if favorite.user.email == current_user.email %>
+												    <%if favorite.present?%>
+														<div class="dashboard_single_course">
+															<div class="dashboard_single_course_thumb">
+																<% if favorite.course.image_url %>
+																    <%= image_tag favorite.course.image_url,:alt => "",class:'img-fluid'%>
+															    <% end %>
+																<div class="dashboard_action">
 
-														<a href="course-detail.html" class="btn btn-ect">View</a>
-													</div>
-												</div>
-												<div class="dashboard_single_course_caption">
-													<div class="dashboard_single_course_head">
-														<div class="dashboard_single_course_head_flex">
-															<h4 class="dashboard_course_title">Radiation protection in Operation Theatre</h4>
-															<span class="dashboard_instructor">By Yvonnes Keza</span>
-															<div class="dashboard_rats">
-																<div class="dashboard_rating">
-																	<i class="ti-star"></i>
+																	<a href="course-detail.html" class="btn btn-ect">View</a>
 																</div>
-																<span>(25 CPD Credits)</span>
+															</div>
+															<div class="dashboard_single_course_caption">
+																<div class="dashboard_single_course_head">
+																	<div class="dashboard_single_course_head_flex">
+																		<h4 class="dashboard_course_title"><%= favorite.course.title %></h4>
+																		<span class="dashboard_instructor"><%= favorite.user.names%> <%= favorite.user.last_name%></span>
+																		<div class="dashboard_rats">
+																			<div class="dashboard_rating">
+																				<i class="ti-star"></i>
+																			</div>
+																			<span>(<%= favorite.course.credit_number%> CPD Credits)</span>
+																		</div>
+																	</div>
+																</div>
+																<div class="dashboard_single_course_des">
+																	<p><%= favorite.course.content_attract%></p>
+																</div>
+																<div class="dashboard_single_course_progress">
+																	<div class="dashboard_single_course_progress_1">
+																		<label>Completed</label>
+																	</div>
+																	<div class="dashboard_single_course_progress_2">
+																		<ul class="m-0">
+																			<li class="list-inline-item"><i class="ti-user mr-1"></i>451 Enrolled</li>
+																		</ul>
+																	</div>
+																</div>
 															</div>
 														</div>
-													</div>
-													<div class="dashboard_single_course_des">
-														<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-													</div>
-													<div class="dashboard_single_course_progress">
-														<div class="dashboard_single_course_progress_1">
-															<label>Completed</label>
-														</div>
-														<div class="dashboard_single_course_progress_2">
-															<ul class="m-0">
-																<li class="list-inline-item"><i class="ti-user mr-1"></i>451 Enrolled</li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!-- Single Course -->
-											<div class="dashboard_single_course">
-												<div class="dashboard_single_course_thumb">
-													<img src="assets/img/co-1.jpg" class="img-fluid" alt="" />
-													<div class="dashboard_action">
+														<%else%>
+													    <p class="card-text">No favorite yet.</p>
+													<% end %>
+												<% end %>
+											<% end %>
 
-														<a href="course-detail.html" class="btn btn-ect">View</a>
-													</div>
-												</div>
-												<div class="dashboard_single_course_caption">
-													<div class="dashboard_single_course_head">
-														<div class="dashboard_single_course_head_flex">
-															<h4 class="dashboard_course_title">Radiation protection in Operation Theatre</h4>
-															<span class="dashboard_instructor">By Yvonnes Keza</span>
-															<div class="dashboard_rats">
-																<div class="dashboard_rating">
-																	<i class="ti-star"></i>
-																</div>
-																<span>(25 CPD Credits)</span>
-															</div>
-														</div>
-													</div>
-													<div class="dashboard_single_course_des">
-														<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-													</div>
-													<div class="dashboard_single_course_progress">
-														<div class="dashboard_single_course_progress_1">
-															<label>Completed</label>
-														</div>
-														<div class="dashboard_single_course_progress_2">
-															<ul class="m-0">
-																<li class="list-inline-item"><i class="ti-user mr-1"></i>451 Enrolled</li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="dashboard_single_course">
-												<div class="dashboard_single_course_thumb">
-													<img src="assets/img/co-1.jpg" class="img-fluid" alt="" />
-													<div class="dashboard_action">
+										</div>
+									</div>
 
-														<a href="course-detail.html" class="btn btn-ect">View</a>
-													</div>
-												</div>
-												<div class="dashboard_single_course_caption">
-													<div class="dashboard_single_course_head">
-														<div class="dashboard_single_course_head_flex">
-															<h4 class="dashboard_course_title">Radiation protection in Operation Theatre</h4>
-															<span class="dashboard_instructor">By Yvonnes Keza</span>
-															<div class="dashboard_rats">
-																<div class="dashboard_rating">
-																	<i class="ti-star"></i>
-																</div>
-																<span>(25 CPD Credits)</span>
-															</div>
-														</div>
-													</div>
-													<div class="dashboard_single_course_des">
-														<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-													</div>
-													<div class="dashboard_single_course_progress">
-														<div class="dashboard_single_course_progress_1">
-															<label>Completed</label>
-														</div>
-														<div class="dashboard_single_course_progress_2">
-															<ul class="m-0">
-																<li class="list-inline-item"><i class="ti-user mr-1"></i>451 Enrolled</li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
+								</div>
+							</div>
+							<!-- /Row -->
 
 						</div>
 
@@ -275,5 +180,3 @@
 
 				</div>
 			</section>
-
-
