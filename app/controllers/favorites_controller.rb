@@ -1,10 +1,10 @@
 class FavoritesController < ApplicationController
   before_action :can_request_course, only: [:create]
 
-  def all_favorite
+  def index
       @favorites=Favorite.all
     end
-    def index
+    def create
       favorite = current_user.favorites.create(course_id: params[:course_id])
       redirect_to homepage_index_url, notice: "You have requested this course, Please make your payment at Bank of Kigali Account: 00262-06949899-22 / HealthEdu Ltd or use MTN Mobile Money on 0788848750 registered to Uwandamiye Emmanuella or Momo Pay: 000602. Contact us to this e-mail: healthedultd@gmail.com or Tel.: 0789044439."
     end

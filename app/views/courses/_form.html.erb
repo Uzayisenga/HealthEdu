@@ -2,9 +2,9 @@
 
 <section class="gray pt-0">
 				<div class="container-fluid">
-										
+
 					<div class="row">
-					
+
 						<div class="col-lg-3 col-md-3 p-0">
 							<div class="dashboard-navbar">
 								<div class="d-user-avater">
@@ -22,7 +22,7 @@
 									<h4>Keeza Yvonnes</h4>
 									<span>Dentist</span>
 								</div>
-								
+
 								<div class="d-navigation">
 									<ul id="side-menu">
 										<li ><a href="settings.html"><i class="ti-user"></i>My Profile</a></li>
@@ -51,14 +51,14 @@
 										<ol class="breadcrumb">
 											<li class="breadcrumb-item"><a href="#">Home</a></li>
 											<li class="breadcrumb-item"><a href="#">My Dashboard</a></li>
-    
+
                                      <%= link_to "Add New Course", new_course_path, class: "breadcrumb-item active",:"data-no-turbolink"=>true,method:"get" %>
 										</ol>
 									</nav>
 								</div>
 							</div>
 							<!-- /Row -->
-							
+
                             <div class="row">
                                 <div class="col-lg-12 col-md-12">
 									<div class="prc_wrap">
@@ -67,7 +67,7 @@
 												<% if course.errors.any? %>
 													<div id="error_explanation">
 													   <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
-										   
+
 													  <ul>
 														 <% course.errors.full_messages.each do |message| %>
 														   <li><%= message %></li>
@@ -75,7 +75,7 @@
 													   </ul>
 													 </div>
 												 <% end %>
-										   
+
 											 <div class="card-body">
 											   <div class="table-responsive">
 											   <form>
@@ -112,25 +112,25 @@
 											 </div>
 											   <div class="form-group">
 											   <%= form.cktext_area :content, :ckeditor => {:toolbar => 'img', :customConfig => asset_path('ckeditor/config.js')} %>
-										   
+
 											   </div>
-											   <%= form.submit class:"btn btn-primary" %>
+											   <%= form.submit class:"btn btn-info" %><br>
 											 </form>
 											 </div>
 										   </div>
-										   </div>
+										   </div><br><br>
 										   <% end %>
-										   
-												
+
+
 										</div>
 
 
 
 								</div>
 							</div>
-					
+
 					</div>
-					
+
 					</div>
 				</div>
 			</section>
