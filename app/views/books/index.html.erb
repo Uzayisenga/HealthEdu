@@ -1,28 +1,132 @@
-<% if user_signed_in? && current_user.user_role== 'admin'%>
-  <%= link_to 'New Book', new_book_path %>
-<% end %>
-<% @books.each do |book| %>
-<div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <% if book.image_url %>
-        <%= image_tag book.image_url,:alt => "doctor feed",class:"img-thumbnail"  %>
-      <% end %>
-    </div>
-    <div class="col-md-8">
-      <a href="#"><% start_time = book.created_at %>
-      <% end_time   =  DateTime.now %>
-      <%= distance_of_time_in_words(start_time, end_time)  %></a>
+<section class="gray pt-0">
+				<div class="container-fluid">
+					
+					<!-- Row -->
+					<div class="row">
+					
+						<div class="col-lg-3 col-md-3 p-0">
+							<div class="dashboard-navbar">
+								
+                <div class="d-user-avater">
+                <% if user_signed_in? %>
+                <% if current_user.profile == nil %>
+                  <p><%= image_tag 'default.png', class:"img-fluid avater" %></p>
+                  <%= link_to 'upload a profile picture', new_profile_path, class: "btn btn-success " %>
+                <% else %>
+                <% if current_user.profile.image? %>
+                  <p><%= image_tag current_user.profile.image.url, class:"img-fluid avater" %></p>
+                  <%= link_to 'view Profile picture', profiles_path, class:"pull-right", style:"margin-left:70em; margin-top: -10px;" %></li>
+                <% end %>
+                <% end %>
+              <% end %>
+              <h4><%= current_user.names %> <%= current_user.last_name %></h4>
+              <span class="text-secondary"><%= current_user.working_place %></span>                
+								
+								</div>
 
-      <a href="#"><%= book.author_name %></a>, <a href="#">great book</a>
-      <h3><%= link_to book.book_name[0,30], book,:"data-no-turbolink"=>true,method:"get" %></h3>
-      <div>
-      <p><%= book.summary[0,200]... %></p>
-    </div>
-  </div>
-     </div>
-  </div>
-</div>
+								<div class="d-navigation">
+									<ul id="side-menu">
+										<li ><a href="settings.html"><i class="ti-user"></i>My Profile</a></li>
+										<li><a href="password.html"><i class="ti-settings"></i>Change my Password</a></li>
+										<li ><a href="paid-courses.html"><i class="ti-layers"></i>Paid Courses</a></li>
+										<li><a href="pending-courses.html"><i class="ti-layers"></i>Pending Courses</a></li>
+										<li class="active"><a href="available-books.html"><i class="ti-layers"></i>Books to read</a></li>
+										<li><a href="index.html"><i class="ti-power-off"></i>Log Out</a></li>
+									</ul>
+								</div>
+								
+							</div>
+							
+							
+						</div>	
+						
+						<div class="col-lg-9 col-md-9 col-sm-12">
+							
+							<!-- Row -->
+							<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12 pt-4 pb-4">
+									<nav aria-label="breadcrumb">
+										<ol class="breadcrumb">
+											<li class="breadcrumb-item"><a href="#">Home</a></li>
+											<li class="breadcrumb-item active" aria-current="page">Available Books</li>
+										</ol>
+									</nav>
+								</div>
+							</div>
+							<!-- /Row -->
 
-    <% end %>
+							<!-- Row -->
+							<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12">
+									
+									<!-- Course Style 1 For Student -->
+									<div class="dashboard_container">
+										<div class="dashboard_container_header">
+											<div class="dashboard_fl_1">
+											<h4>All Books</h4>
+											</div>
+											<div class="dashboard_fl_2">
+												<ul class="mb0">
+													<li class="list-inline-item">
+														
+													</li>
+													<li class="list-inline-item">
+														<form class="form-inline my-2 my-lg-0">
+															<input class="form-control" type="search" placeholder="Search book" aria-label="Search">
+															<button class="btn my-2 my-sm-0" type="submit"><i class="ti-search"></i></button>
+														</form>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="dashboard_container_body">
+											
+                      <!-- Single book -->
+                      <% @books.each do |book| %>
+											<div class="dashboard_single_course">
+												<div class="">
+                          <% if book.image_url %>
+                            <%= image_tag book.image_url,:alt => "",class:"img-fluid"  %>
+                          <% end %>
+													<div class="ed_view_link">
+                            <button class="btn-sm enroll-btn bg-green">
+                            <%= link_to "Download", book.book_url,class:"text-white", target: :_blank %><i class="fa fa-download" aria-hidden="true" style="color:white;"></i></button>
+													</div>
+												</div>
+
+												<div class="dashboard_single_course_caption">
+													<div class="dashboard_single_course_head">
+														<div class="dashboard_single_course_head_flex">
+															<h4 class="dashboard_course_title"><%= book.book_name %></h4>
+															<span class="dashboard_instructor">By <%= book.author_name %></span>
+														</div>
+													</div>
+													<div class="dashboard_single_course_des">
+														<p><%= book.summary %>  </p>
+													</div>
+													<div class="dashboard_single_course_progress">
+
+														<div class="dashboard_single_course_progress_2">
+															<ul class="m-0">
+																<li class="list-inline-item"> Downloads <i class="ti-download"></i></li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+                      <% end %>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+							<!-- /Row -->
+							
+						</div>
+					
+					</div>
+					<!-- Row -->
+					
+				</div>
+			</section>
 
