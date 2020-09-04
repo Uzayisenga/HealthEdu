@@ -445,6 +445,14 @@
 .darkblue-skin .btn.btn-theme-light, .darkblue-skin .theme-bg-light{
 	background:rgba(15, 82, 186, 0.1);
 }
+#owl-demo .item{
+	margin: 3px;
+}
+#owl-demo .item img{
+display: block;
+width: 100%;
+height: auto;
+}
 /*-------------- Ocean Green Color Option --------------------*/
 .oceangreen-skin .theme-bg,.oceangreen-skin .property-search-type label:hover, .oceangreen-skin .property-search-type label.active,
 .oceangreen-skin li.login-attri.theme-log a,
