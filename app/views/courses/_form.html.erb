@@ -1,5 +1,3 @@
-
-
 <section class="gray pt-0">
 				<div class="container-fluid">
 
@@ -50,7 +48,7 @@
 									<nav aria-label="breadcrumb">
 										<ol class="breadcrumb">
 											<li class="breadcrumb-item"><a href="#">Home</a></li>
-											<li class="breadcrumb-item"><a href="#">My Dashboard</a></li>
+											<li class="breadcrumb-item"><%= link_to "My Dashboard", courses_path,:"data-no-turbolink"=>true,method:"get" %></li>
 
                                      <%= link_to "Add New Course", new_course_path, class: "breadcrumb-item active",:"data-no-turbolink"=>true,method:"get" %>
 										</ol>
