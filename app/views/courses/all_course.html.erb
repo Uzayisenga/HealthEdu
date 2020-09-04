@@ -1,5 +1,4 @@
-
- <!-- ============================ Full Width Courses  ================================== -->
+<!-- ============================ Full Width Courses  ================================== -->
     <section class="gray">
       <div class="container">
         <div class="row justify-content-center">
@@ -12,26 +11,24 @@
 
         <div class="row">
           <% @courses.each do |course| %>
-
             <!-- Cource Grid 1 -->
             <div class="col-lg-4 col-md-6">
               <div class="education_block_grid style_2">
-
                 <div class="education_block_thumb n-shadow">
-                  <a href="single.html" data-toggle="modal" data-target="#login">
+                <%= link_to course do %>
                   <% if course.image_url %>
                     <%= image_tag course.image_url,:alt => "",class:'img-fluid'%>
-                  <% end %></a>
+                  <% end %><%end%>
                   <div class="cources_price"><%= course.course_price%><span class="theme-cl"> Rwf</span></div>
                 </div>
 
                 <div class="education_block_body">
-                  <h4 class="bl-title"><a href="single.html" data-toggle="modal" data-target="#login"><%= course.title%></a></h4>
+                  <h4 class="bl-title"><%= link_to course.title, course,:"data-no-turbolink"=>true,method:"get" %></h4>
                 </div>
 
                 <div class="cources_info_style3">
                   <ul>
-                    <li><i class="ti-star mr-1"></i><%= course.credit_number%> CPD Credits</li>
+                    <li><i class="fa fa-star"></i><%= course.credit_number%>CPD Credits</li>
                   </ul>
                 </div>
 
@@ -40,7 +37,7 @@
                     <div class="path-img"><a href="instructor-detail.html"><img src="assets/img/gihozo.jpg" class="img-fluid" alt=""></a></div>
                     <h5><a href="#"> <%= course.user.names%>  <%=course.user.last_name%></a></h5>
                   </div>
-                  <div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>8 Hours</div>
+                  <div class="foot_lecture"><i class="fa fa-fast-forward mr-2"></i>8 Hours</div>
                 </div>
               </div>
             </div>

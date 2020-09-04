@@ -1,289 +1,90 @@
-<!-- Bootstrap row -->
-<div class="barr" id="body-row">
-    <!-- Sidebar -->
-    <div class="menuu" id="sidebar-container" class="sidebar-expanded d-none d-md-block"><!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
-        <!-- Bootstrap List Group -->
-        <ul class="list-group">
-            <!-- Separator with title -->
-            <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
-                <small><%= @favorite.course.title[0,15] %></small>
-            </li>
-            <!-- /END Separator -->
-            <!-- Menu with submenu -->
-            <% @favorite.course.credits.each do |credit| %>
-            <span class="bg-dark list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-start align-items-center">
-                <span class="fa fa-tasks fa-fw mr-3" style="color:white;"></span>
-                <span class="menu-collapsed"><%=credit.name[0,15] %></span>
-                <% if @favorite.status == "paid" %>
-                  <span class="fa fa-download ml-auto" aria-hidden="true" style="color:white;"><%= link_to "Download", credit.upload_file_url, target: :_blank %></span>
+<div class="ed_detail_head">
+				<div class="container">
+					<div class="row align-items-center">
+						<div class="col-lg-4 col-md-5">
+
+							<div class="property_video">
+								<div class="thumb">
+                  <% if @favorite.course.image_url %>
+                  <%= image_tag @favorite.course.image_url,:alt => "",class:'pro_img img-fluid w100'%>
                 <% end %>
-            </div>
-        </span>
-            <% end %>
-            <!-- Submenu content -->
-            <div id='submenu1' class="collapse sidebar-submenu">
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
-                    <span class="menu-collapsed">Charts</span>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
-                    <span class="menu-collapsed">Reports</span>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
-                    <span class="menu-collapsed">Tables</span>
-                </a>
-            </div>
-            <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-user fa-fw mr-3"></span>
-                    <span class="menu-collapsed">Profile</span>
-                    <span class="submenu-icon ml-auto"></span>
-                </div>
-            </a>
-            <!-- Submenu content -->
-            <div id='submenu2' class="collapse sidebar-submenu">
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
-                    <span class="menu-collapsed">Settings</span>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
-                    <span class="menu-collapsed">Password</span>
-                </a>
-            </div>
-            <span class="bg-dark list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-tasks fa-fw mr-3" style="color:white;"></span>
-                    <span class="menu-collapsed"><%= link_to 'Courses', main_app.all_course_courses_path, class: "menu-collapsed",:"data-no-turbolink"=>true,method:"get" %></span>
-                </div>
-            </span>
-            <!-- Separator with title -->
-            <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
-                <small>OPTIONS</small>
-            </li>
-            <!-- /END Separator -->
-            <span class="bg-dark list-group-item list-group-item-action d-flex align-items-center">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-arrow-circle-left mr-3" aria-hidden="true" style="color:white;"></span>
-                    <span class="menu-collapsed"><%= link_to 'My Courses', all_favorite_path %></span>
-                </div>
-            </span>
-            <a href="#" class="bg-dark list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-calendar fa-fw mr-3"></span>
-                    <span class="menu-collapsed">Calendar</span>
-                </div>
-            </a>
-            <span class="bg-dark list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-envelope-o fa-fw mr-3" style="color:white;"></span>
-                    <span class="menu-collapsed" style="color:white;">Messages <span class="badge badge-pill badge-primary ml-2"><%= link_to pluralize(Notification.unread_count(current_user), ''), notifications_path, :class => 'menu-collapsed'  %></span></span>
+								</div>
+							</div>
 
-                </div>
-            </span>
+						</div>
 
-            <!-- Separator without title -->
-            <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
-                <small>OTHERS</small>
-            </li>
-            <span  class="bg-dark list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-paper-plane mr-3" style="color:white;"></span>
-                    <span class="menu-collapsed"><%= link_to 'Gallery', main_app.pages_gallery_path, class: "menu-collapsed",:"data-no-turbolink"=>true,method:"get" %></span>
-                </div>
-            </span>
-            <span  class="bg-dark list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-question fa-fw mr-3" style="color:white;"></span>
-                    <span class="menu-collapsed"><%= link_to 'Help', main_app.pages_help_path, class: "menu-collapsed",:"data-no-turbolink"=>true,method:"get" %></span>
-                </div>
-            </span>
-            <span class="bg-dark list-group-item list-group-item-action d-flex align-items-center">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-power-off mr-3" aria-hidden="true" style="color:white;"></span>
-                    <span class="menu-collapsed"><%= link_to "Logout", main_app.destroy_user_session_path, class:'menu-collapsed', :method => :get %></span>
-                </div>
-            </span>
-            <!-- Logo -->
+						<div class="col-lg-8 col-md-7">
+							<div class="ed_detail_wrap">
+								<div class="ed_header_caption">
+									<h2 class="ed_title"><%= @favorite.course.title %></h2>
+								</div>
+								<div class="ed_header_short">
+									<h4 class="edu_title">Course Overview</h4>
+									<p><%= @favorite.course.content.html_safe %></p>
+								</div>
 
-        </ul><!-- List Group END-->
-    </div><!-- sidebar-container END -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ============================ Page Title End ================================== -->
 
-    <!-- MAIN -->
-    <div class="contentt">
- <div class="site-section">
-<div class="row">
-        <p id="notice"><%= notice %></p>
+			<!-- ============================ Course Detail ================================== -->
+			<section class="bg-light">
+				<div class="container">
+					<div class="row">
 
-        <p>
-          <strong>Status:</strong>
-          <%= @favorite.status %><%= @favorite.user.id %>
-        </p>
-        <div class="card">
-        <div class="card-header">
-            <ul class="nav nav-tabs card-header-tabs">
-              <li class="nav-item">
-                <a class="nav-link active" href="#">Course</a>
-              </li>
+						<div class="col-lg-12 col-md-12">
 
+							<!-- Overview -->
 
-            </ul>
-          </div>
-          <div class="card-body">
+							<div class="edu_wraper">
+                <h4 class="edu_title">Course Circullum</h4>
 
-            <div class="alert alert-success">
-              <strong>Introduction to Course <%= @favorite.course.title %>/</strong> <%= @favorite.course.credit_number%>CPD Credits
-            </div>
+								<div id="accordionExample" class="accordion shadow circullum">
+                <% @favorite.course.credits.each do |credit| %>
+									<!-- Part 1 -->
+									<div class="card">
+									  <div id="headingOne" class="card-header bg-white shadow-sm border-0">
+										<h6 class="mb-0 accordion_title"><a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="d-block position-relative text-dark collapsible-link py-2"><%=  credit.name%>: How To Learn Web Designing Step by Step</a></h6>
+									  </div>
+									  <div id="collapseOne" aria-labelledby="headingOne" data-parent="#accordionExample" class="collapse show">
+										<div class="card-body pl-3 pr-3">
+											<p><%=  credit.discription.html_safe%></p>
+											<div class="form-group  ">
+                        <%= link_to "click here to Open this Module", credit.upload_file_url,class:"bg-red btn", target: :_blank %>
+											</div>
+										</div>
+									  </div>
+									</div>
+                  <% end %>
+									<div class="card">
+									  <div id="headingFour" class="card-header bg-white shadow-sm border-0 text-center">
+                    <% if ((DateTime.now.to_time - @favorite.created_at.to_time)/1.hours).to_i > 1%>
+                    <a href="<%= @favorite.course.quiz_link%>" target="_blank" rel="noopener noreferrer" class= "bg-red btn">Do assessment for this course</a>
+                    <span class="menu-collapsed"><%= link_to 'Back', all_favorite_path %></span>
+                    <% end %>
+									  </div>
 
-                <h3>Course Description</h3>
-                <p class="card-text"><%= @favorite.course.content.html_safe %></p>
-          </div>
+									</div>
 
-        <p>
-          <strong>Prepayed by:</strong>
-          <%= @favorite.course.user.names%>  <%=@favorite.course.user.last_name%>
-          <%=@favorite.user.email%>
-        </p>
+								</div>
+							</div>
 
-        <% if @favorite.status == "paid" %>
-        <p>
-        <h3 class="card-title"><b>Modules course of <%= @favorite.course.title %></b></h3>
-          <hr class="hr">
-
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <meta name="viewport" content="width=device-width,initial-scale=1">
-            <body class="rails-default-error-page">
-            <!-- This file lives in public/404.html -->
-            <div class="dialog">
-              <div>
-              <% @favorite.course.credits.each do |credit| %>
-                <div class="module">
-                <i class="fa fa-file-pdf-o fa_custom"></i>  <%=  credit.name%><br><%=  credit.discription.html_safe%>
-                <p>
-                  <button class="btn btn-primary rounded-0 btn-lg px-5"><i class="fa fa-download" aria-hidden="true" style="color:white;"></i>
-                  <%= link_to "Download", credit.upload_file_url,class:"text-white", target: :_blank %></button>
-                </p>
-
-                </div>
-
-                <h1><%=  credit.name%></h1>
-                <p>Thank You for your hard work!! continue to read the next module.</p>
-              </div>
-              <p>If you have any question, don't hesitate to contact us </p>
-              <% end %>
-            </div>
-          </body>
-          </html>
-
-        </p>
-        <% if ((DateTime.now.to_time - @favorite.created_at.to_time)/1.hours).to_i > 1%>
-        <a href="<%= @favorite.course.quiz_link%>" target="_blank" rel="noopener noreferrer" class= "btn btn-info">Take quiz here</a>
-        <% end %>
-        <% else %>
-        <section class="padding-y-100 bg-light-v2">
-        <section class="padding-y-100 bg-light-v2">
-        <div class="container">
-
-         <div class="row">
-           <div class="col-lg-8 m-auto text-center">
-             <h2 class="h1">
-             Not yet paid, please make your payment <%= @favorite.course.course_price %>frw
-             </h2>
-             <div class="width-4rem height-4 bg-primary rounded mt-4 marginBottom-40 mx-auto"></div>
-           </div>
-
-              <div class="col-12 mt-4">
-                <div id="accordion-7" class="accordion-style-7 bg-white shadow-v1">
-
-                  <div class="accordion-item border-bottom border-light">
-
-                    <div id="acc7_1" class="shadow p-3 mb-5 bg-white rounded" data-parent="#accordion-7">
-                      <div class="px-4">
-                         <p class="mb-4">
-                         Not yet paid, Please  make Payment of <%= @favorite.course.course_price %>at Bank of Kigali <br>
-                         Please make your payment at Bank of Kigali Account: 00262-06949899-22 / HealthEdu Ltd or use MTN Mobile Money on 0788848750
-                         registered to Uwandamiye Emmanuella or Momo Pay: 000602. Contact us to this e-mail: healthedultd@gmail.com or Tel.: 0789044439.
-                         or e-mail: healthedultd@gmail.com to access all modules <b><br> Thank You!!
-                         </p>
-                      </div>
-                    </div>
-
-            <div class="row">
-            <div class="col-sm-4">
-            <center><h4 style="font-family: "Quicksand";">Pay by Bank Or <i class="fa fa-hand-o-right" aria-hidden="true"></i></h4></center>
-              <div class="flip-card">
-                <div class="flip-card-inner">
-                  <div class="flip-card-front">
-                    <img src="/assets/bk1.jpg" alt="Avatar" style="width:300px;height:200px;">
-                  </div>
-                  <div class="flip-card-back">
-                  <h1>Bank of Kigali</h1>
-                  <p>Account: 00262-06949899-22</p>
-                  <p>Name:HealthEdu Ltd </p>
-                  <p>Name:You have requested a CPD course, Please make payment on <i class="fa fa-hand-o-up" ></i>  or pay <i class="fa fa-hand-o-right" aria-hidden="true"></i> </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-4">
-            <center><h4 style="font-family: "Quicksand";">Pay by MTN Mobile or<i class="fa fa-hand-o-right" aria-hidden="true"></i></h4></center>
-              <div class="flip-card">
-                <div class="flip-card-inner">
-                  <div class="flip-card-front">
-                    <img src="/assets/mtn.jpg" alt="Avatar" style="width:300px;height:200px;">
-                  </div>
-                  <div class="flip-card-back">
-                    <h1>MTN Mobile</h1>
-                    <p>Number: 0788848750</p>
-                    <p>Names: Uwandamiye Emmanuella</p>
-                    <p>You have requested a CPD course, Please make payment on <i class="fa fa-hand-o-up" ></i>  or pay <i class="fa fa-hand-o-right" aria-hidden="true"></i></p>
-                  </div>
-                </div>
-              </div>
-            </div><div class="col-sm-4">
-            <center><h4> Pay by Momo pay</h4></center>
-            <div class="flip-card">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <img src="/assets/momo1.png" alt="Avatar" style="width:300px;height:200px;">
-                </div>
-                <div class="flip-card-back">
-                <h1>Momo Pay</h1>
-                <p>Code: 000602</p>
-                <p>Name:HealthEdu ltd</p>
-                <p>Contact us to this e-mail: healthedultd@gmail.com or Tel.: 0789044439.<i class="fa fa-hand-o-up" ></i></i></p>
-                </div>
-              </div>
-            </div>
-            </div>
-          </div>
-</div> <!-- END accordion-item-->
-
-
-   </div> <!-- END row-->
-
-  </div> <!-- END container-->
-</section> <!-- END section-->
-
-        <% end %>
-
-
-        </div>
-        <%= link_to 'Back', all_favorite_path %><br><br>
-
-        </div>
-
-        </div><br><br>
-
-
-
-
-
-
-    </div><!-- Main Col END -->
-
-</div><!-- body-row END -->
-
+							<!-- instructor -->
+							<div class="single_instructor">
+								<div class="single_instructor_caption">
+									<h4><a href="#"><%= @favorite.course.user.names%>  <%=@favorite.course.user.last_name%></a></h4>
+									<ul class="instructor_info">
+										<li><i class="ti-control-forward"></i>12 Courses</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
 
 
