@@ -12,11 +12,12 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
-Rails.application.config.assets.precompile += %w( favorite.scss )
-Rails.application.config.assets.precompile += %w( style.css )
-Rails.application.config.assets.precompile += %w( bootstrap.min.css )
-Rails.application.config.assets.precompile += %w( owl.carousel.min.css )
-Rails.application.config.assets.precompile += %w( owl.theme.default.min.css )
-Rails.application.config.assets.precompile += %w( bootstrap-datepicker.css )
-Rails.application.config.assets.precompile += %w( aos.css )
-Rails.application.config.assets.precompile += %w[ckeditor/config.js]
+# Rails.application.config.assets.precompile += %w( favorite.scss )
+# Rails.application.config.assets.precompile += %w( style.css )
+# Rails.application.config.assets.precompile += %w( bootstrap.min.css )
+# Rails.application.config.assets.precompile += %w( owl.carousel.min.css )
+# Rails.application.config.assets.precompile += %w( owl.theme.default.min.css )
+# Rails.application.config.assets.precompile += %w( bootstrap-datepicker.css )
+# Rails.application.config.assets.precompile += %w( aos.css )
+# Rails.application.config.assets.precompile += %w( colors.css )
+# Rails.application.config.assets.precompile += %w[ckeditor/config.js]

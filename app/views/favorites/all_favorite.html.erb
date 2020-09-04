@@ -1,176 +1,185 @@
-<div class="site-section ftco-subscribe-1 site-blocks-cover pb-4" style="background-image: url('/assets/bg_1.jpg')">
-        <div class="container">
-          <div class="row align-items-end">
-            <div class="col-lg-7">
-              <h2 class="mb-0">To Request Course Click The Button Bellow</h2>
-              <p>After request the course pay amount of course and get access of learning</p>
-            </div>
-          </div>
-        </div>
-      </div>
+<section class="gray pt-0">
+				<div class="container-fluid">
+
+					<!-- Row -->
+					<div class="row">
+
+						<div class="col-lg-3 col-md-3 p-0">
+							<div class="dashboard-navbar">
+
+								<div class="d-user-avater">
+									<% if user_signed_in? %>
+										<% if current_user.profile == nil %>
+											<p><%= image_tag 'default.png', class:"img-fluid avater" %></p>
+											<%= link_to 'upload a profile picture', new_profile_path, class: "btn btn-success " %>
+											<% else %>
+											<% if current_user.profile.image? %>
+												<p><%= image_tag current_user.profile.image.url, class:"img-fluid avater" %></p>
+												<%= link_to 'view Profile picture', profiles_path, class:"pull-right", style:"margin-left:70em; margin-top: -10px;" %></li>
+											<% end %>
+										<% end %>
+									<% end %>
+									<h4><%= current_user.names %> <%= current_user.last_name %></h4>
+									<span class="text-secondary"><%= current_user.working_place %></span>
+								</div>
+
+								<div class="d-navigation">
+									<ul id="side-menu">
+										<li ><a href="settings.html"><i class="fa fa-user"></i>My Profile</a></li>
+										<li><a href="password.html"><i class="fa fa-cog"></i>Change my Password</a></li>
+										<li class="active"><a href="paid-courses.html"><i class="fas fa-layer-group"></i>Paid Courses</a></li>
+										<li><a href="available-books.html"><i class="fas fa-layer-group"></i>Books to read</a></li>
+										<li><a href="index.html"><i class="ti-power-off"></i></a>Messages <span class="badge badge-pill badge-primary ml-2"><%= link_to pluralize(Notification.unread_count(current_user), ''), notifications_path, :class => 'menu-collapsed'  %></span></span>
 
 
-    <div class="custom-breadcrumns border-bottom">
-      <div class="container">
-        <%= link_to "Home", homepage_index_path,:"data-no-turbolink"=>true,method:"get" %>
-        <span class="mx-3 icon-keyboard_arrow_right"></span>
-        <%= link_to "Courses", all_course_courses_path,:"data-no-turbolink"=>true,method:"get" %>
-        <span class="mx-3 icon-keyboard_arrow_right"></span>
-        <span class="current">Requested</span>
-      </div>
-    </div><br>
+										<li><a href="available-books.html"><i class="ti-layers"></i>Books to read</a></li>
+										<li><i class="ti-power-off"></i><%= link_to "Logout", destroy_user_session_path, method: :delete, style:"color:steelblue" %></li>
+									</ul>
+								</div>
 
-<!-- Bootstrap row -->
-<div class="barr" id="body-row">
-    <!-- Sidebar -->
-    <div class="menuu" id="sidebar-container" class="sidebar-expanded d-none d-md-block"><!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
-        <!-- Bootstrap List Group -->
-        <ul class="list-group">
-            <!-- Separator with title -->
-            <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
-                <small>MY COURSES</small>
-            </li>
-            <!-- /END Separator -->
-            <!-- Menu with submenu -->
-            <% @favorites.each do |favorite| %>
-              <%if favorite.user.names == current_user.names %>
-              <%if favorite.present?%>
-              <span  class="bg-dark list-group-item list-group-item-action">
-              <div class="d-flex w-100 justify-content-start align-items-center">
-              <span class="fa fa-dashboard fa-fw mr-3" style="color:white;"></span>
-                  <span class="menu-collapsed"><%= link_to favorite.course.title[0,15], favorite, class:"menu-collapsed",:"data-no-turbolink"=>true,method:"get" %></span>
-
-              </div>
-          </span>
-
-            <%else%>
-            <p class="card-text">No favorite yet.</p>
-
-            <% end %>
-            <% end %>
-            <% end %>
-            <!-- Submenu content -->
-            <div id='submenu1' class="collapse sidebar-submenu">
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
-                    <span class="menu-collapsed">Charts</span>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
-                    <span class="menu-collapsed">Reports</span>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
-                    <span class="menu-collapsed">Tables</span>
-                </a>
-            </div>
-            <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-user fa-fw mr-3"></span>
-                    <span class="menu-collapsed">Profile</span>
-                    <span class="submenu-icon ml-auto"></span>
-                </div>
-            </a>
-                <span class="bg-dark list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fas fa-money-check-alt mr-3" style="color:white;"></span>
-                    <span class="menu-collapsed" style="color:white;">Approval_id <span class="badge badge-pill badge-primary ml-2"><%= current_user.id %></span></span>
-
-                </div>
-                </span>
-            <!-- Submenu content -->
-            <div id='submenu2' class="collapse sidebar-submenu">
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
-                    <span class="menu-collapsed">Settings</span>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
-                    <span class="menu-collapsed">Password</span>
-                </a>
-            </div>
-            <span class="bg-dark list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-tasks fa-fw mr-3" style="color:white;"></span>
-                    <span class="menu-collapsed"><%= link_to 'Courses', main_app.all_course_courses_path, class: "menu-collapsed",:"data-no-turbolink"=>true,method:"get" %></span>
-                </div>
-            </span>
-            <!-- Separator with title -->
-            <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
-                <small>OPTIONS</small>
-            </li>
-            <!-- /END Separator -->
-            <a href="#" class="bg-dark list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-calendar fa-fw mr-3"></span>
-                    <span class="menu-collapsed">Calendar</span>
-                </div>
-            </a>
-            <span class="bg-dark list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-envelope-o fa-fw mr-3" style="color:white;"></span>
-                    <span class="menu-collapsed" style="color:white;">Messages <span class="badge badge-pill badge-primary ml-2"><%= link_to pluralize(Notification.unread_count(current_user), ''), notifications_path, :class => 'menu-collapsed'  %></span></span>
-
-                </div>
-            </span>
-            <!-- Separator without title -->
-            <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
-                <small>OTHERS</small>
-            </li>
-            <span  class="bg-dark list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-paper-plane mr-3" style="color:white;"></span>
-                    <span class="menu-collapsed"><%= link_to 'Gallery', main_app.pages_gallery_path, class: "menu-collapsed",:"data-no-turbolink"=>true,method:"get" %></span>
-                </div>
-            </span>
-            <span  class="bg-dark list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-question fa-fw mr-3" style="color:white;"></span>
-                    <span class="menu-collapsed"><%= link_to 'Help', main_app.pages_help_path, class: "menu-collapsed",:"data-no-turbolink"=>true,method:"get" %></span>
-                </div>
-            </span>
-            <span class="bg-dark list-group-item list-group-item-action d-flex align-items-center">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-power-off mr-3" aria-hidden="true" style="color:white;"></span>
-                    <span class="menu-collapsed"><%= link_to "Logout", main_app.destroy_user_session_path, class:'menu-collapsed', :method => :get %></span>
-                </div>
-            </span>
-            <!-- Logo -->
-
-        </ul><!-- List Group END-->
-    </div><!-- sidebar-container END -->
-
-    <!-- MAIN -->
-    <div class="contentt">
-
-        <h1>
-           Click on the Button to view more details
-            <small class="text-muted">Healthedu CPD</small>
-        </h1>
+							</div>
 
 
-        <div class="site-section">
-
-      <div class="row">
-      <% @favorites.each do |favorite| %>
+						</div>
 
 
-        <%if favorite.user.names == current_user.names %>
-        <%if favorite.present?%>
-          <div class="col-lg-4 col-md-6 mb-4">
-                <div class="course-1-item">
-                  <div class="course-1-content pb-4">
-                    <b><%= favorite.course.title.truncate(30)%></b>
-                    <p class="desc mb-4"><%= favorite.course.content_attract.truncate(70)%>
-                    <p><%= link_to favorite.status, favorite, class:"btn btn-primary rounded-0 px-4",:"data-no-turbolink"=>true,method:"get" %></p>
-                    </div>
-                </div>
-          </div>
-          <%else%>
-          <p class="card-text">No favorite yet.</p>
-          <% end %>
-        <% end %>
-        <% end %>
-      </div>
-  </div>
+						<div class="col-lg-9 col-md-9 col-sm-12">
+
+							<!-- Row -->
+							<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12 pt-4 pb-4">
+									<nav aria-label="breadcrumb">
+										<ol class="breadcrumb">
+											<li class="breadcrumb-item"><a href="#">Home</a></li>
+											<li class="breadcrumb-item active" aria-current="page">Paid Courses</li>
+										</ol>
+									</nav>
+								</div>
+							</div>
+							<!-- /Row -->
 
 
+							<!-- Row -->
+							<div class="row ">
+								<div class="col-lg-12 col-md-12 col-sm-12 ">
+									<div class="card">
+									  <div id="headingOne" class="card-header bg-white shadow-sm border-0">
+										<h6 class="mb-0 accordion_title"><a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="d-block position-relative text-dark collapsible-link py-2">My Pending Courses</a></h6>
+									  </div>
+									  <div id="collapseOne" aria-labelledby="headingOne" data-parent="#accordionExample" class="collapse show">
+										<div class="card-body pl-3 pr-3">
+											<div class="table-responsive">
+												<table class="table tbl">
+													<thead class="thead-dark">
+														<tr>
+															<th scope="col">Course </th>
+															<th scope="col">Date</th>
+															<th scope="col">Status</th>
+															<th scope="col">Price</th>
+														</tr>
+													</thead>
+													<tbody>
+														<% @favorites.each do |favorite| %>
+														<%if favorite.user.email == current_user.email %>
+															<%if favorite.present?%>
+															<tr>
+																<th scope="row"><a href="single-requested.html"> <%= favorite.course.title %>/<%= favorite.course.credit_number%>CPD Credits</a></th>
+																<td>02 July 2020</td>
+																<td><span class="payment_status pending"><%= favorite.status %></h5></span></td>
+																<td><%= favorite.course.course_price %><span>Rwf</span></td>
 
-    </div><!-- Main Col END -->
+															</tr>
+															<%else%>
+															<p class="card-text">No favorite yet.</p>
+															<% end %>
+														<% end %>
+														<% end %>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									  </div>
+									</div>
+									<!-- Course Style 1 For Student -->
+									<div class="dashboard_container scroll-row scrollbar-light-blue">
+										<div class="dashboard_container_header" >
+											<div class="dashboard_fl_1">
+											<h4>All Courses</h4>
+											</div>
+											<div class="dashboard_fl_2 tbl">
+												<ul class="mb0">
+													<li class="list-inline-item">
 
-</div><!-- body-row END -->
+													</li>
+													<li class="list-inline-item" >
+														<form class="form-inline my-2 my-lg-0">
+															<input class="form-control" type="search" placeholder="Search Courses" aria-label="Search">
+															<button class="btn my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+														</form>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="dashboard_container_body" style="font-size:12px">
+
+											<!-- Single Course -->
+											<% @favorites.each do |favorite| %>
+												<%if favorite.user.email == current_user.email %>
+												    <%if favorite.present?%>
+														<div class="dashboard_single_course">
+															<div class="dashboard_single_course_thumb">
+																<% if favorite.course.image_url %>
+																    <%= image_tag favorite.course.image_url,:alt => "",class:'img-fluid'%>
+															    <% end %>
+																<div class="dashboard_action">
+																	<%= link_to 'view course', favorite, class:"btn btn-ect",:"data-no-turbolink"=>true,method:"get" %>
+																</div>
+															</div>
+															<div class="dashboard_single_course_caption">
+																<div class="dashboard_single_course_head">
+																	<div class="dashboard_single_course_head_flex">
+																		<h4 class="dashboard_course_title"><%= favorite.course.title %></h4>
+																		<span class="dashboard_instructor"><%= favorite.user.names%> <%= favorite.user.last_name%></span>
+																		<div class="dashboard_rats">
+																			<div class="dashboard_rating">
+																				<i class="ti-star"></i>
+																			</div>
+																			<span>(<%= favorite.course.credit_number%> CPD Credits)</span>
+																		</div>
+																	</div>
+																</div>
+																<div class="dashboard_single_course_des">
+																	<p><%= favorite.course.content_attract%></p>
+																</div>
+																<div class="dashboard_single_course_progress">
+																	<div class="dashboard_single_course_progress_1">
+																		<label>Completed</label>
+																	</div>
+																	<div class="dashboard_single_course_progress_2">
+																		<ul class="m-0">
+																			<li class="list-inline-item"><i class="ti-user mr-1"></i>451 Enrolled</li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<%else%>
+													    <p class="card-text">No favorite yet.</p>
+													<% end %>
+												<% end %>
+											<% end %>
+
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<!-- /Row -->
+
+						</div>
+
+					</div>
+					<!-- Row -->
+
+				</div>
+			</section>

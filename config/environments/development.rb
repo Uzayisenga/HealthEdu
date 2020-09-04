@@ -22,11 +22,11 @@ Rails.application.configure do
     config.public_file_server.headers = {
       'Cache-Control' => "public, max-age=#{2.days.to_i}"
     }
-  else
-    config.action_controller.perform_caching = false
+    else
+      config.action_controller.perform_caching = false
 
-    config.cache_store = :null_store
-  end
+      config.cache_store = :null_store
+    end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
@@ -39,7 +39,6 @@ Rails.application.configure do
 
 
   config.action_mailer.perform_caching = false
-
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -77,7 +76,4 @@ config.action_mailer.smtp_settings = {
   :authentication => :cram_md5
 }
 
-
 end
-
-
