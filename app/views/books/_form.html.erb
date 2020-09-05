@@ -1,5 +1,5 @@
 
-  
+
 
 
 
@@ -9,13 +9,13 @@
 
 <section class="gray pt-0">
 				<div class="container-fluid">
-										
+
 					<div class="row">
-					
+
 						<div class="col-lg-3 col-md-3 p-0">
 							<div class="dashboard-navbar">
-                <div class="d-user-avater">               
-									
+                <div class="d-user-avater">
+
                 <% if user_signed_in? %>
                 <% if current_user.profile == nil %>
                   <p><%= image_tag 'default.png', class:"img-fluid avater" %></p>
@@ -30,23 +30,15 @@
               <h4><%= current_user.names %> <%= current_user.last_name %></h4>
               <span class="text-secondary"><%= current_user.working_place %></span>
 						</div>
-								
+
 								<div class="d-navigation">
 									<ul id="side-menu">
-										<li ><a href="settings.html"><i class="ti-user"></i>My Profile</a></li>
-										<li><a href="password.html"><i class="ti-settings"></i>Change my Password</a></li>
-										<li class="dropdown">
-											<a href=""><i class="ti-layers"></i>My Courses<span class="ti-angle-left"></span></a>
-											<ul class="nav nav-second-level">
-												<li><a href="course-settings.html">0038 Primary Eye Healthcare Modules</a></li>
-												<li><a href="course-settings.html">0038 Primary Eye Healthcare Modules</a></li>
-												<li><a href="course-settings.html">0038 Primary Eye Healthcare Modules</a></li>
-												<li><a href="course-settings.html">0038 Primary Eye Healthcare Modules</a></li>
-											</ul>
-										</li>
-										<li><a href="add-new-course.html"><i class="ti-plus"></i>Add new Course</a></li>
-										<li class="active"><a href="add-new-book.html"><i class="ti-plus"></i>Add new Book</a></li>
-										<li><a href="#"><i class="ti-power-off"></i>Log Out</a></li>
+									<li><%= link_to profiles_path do %><i class="fa fa-user"></i>My Profile<%end%></li>
+										<li><%= link_to edit_user_registration_path do %><i class="fa fa-cog"></i>Change my Password<%end%></li>
+										<li ><%= link_to new_course_path do %><i class="fas fa-layer-group"></i>Add New Course<%end%></li>
+										<li class="active"><%= link_to new_book_path do %><i class="fas fa-layer-group"></i>Add New Book<%end%></li>
+										<li><%= link_to courses_path do %><i class="fas fa-layer-group"></i>My courses<%end%></li>
+										<li><%= link_to destroy_user_session_path do %><i class="fa fa-power-off"></i>Logout<%end%></li>
 									</ul>
 								</div>
 							</div>
@@ -73,7 +65,7 @@
                         <% if book.errors.any? %>
                           <div id="error_explanation">
                             <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
-                    
+
                             <ul>
                               <% book.errors.full_messages.each do |message| %>
                                 <li><%= message %></li>
@@ -94,7 +86,7 @@
                               <%= form.text_field :author_name, class:"form-control simple", placeholder:"Enter Author Name", :required => true  %>
 														</div>
                           </div>
-                          
+
                           <div class="col-lg-6 col-md-6">
                           <div class="form-group">
                             <label>Upload Image</label>
@@ -105,18 +97,18 @@
 													<div class="col-lg-6 col-md-6">
 											<div class="form-group">
                         <label>Upload book file</label>
-                        <%= form.file_field :book, class:"form-control simple", placeholder:"Upload book files" %>											
+                        <%= form.file_field :book, class:"form-control simple", placeholder:"Upload book files" %>
 											</div>
 										</div>
 												</div>
 
 												<div class="form-group">
                           <label>Book Description</label>
-                          <%= form.text_area :summary, class:"form-control simple", placeholder:"Enter Summary Book", :required => true  %>													
+                          <%= form.text_area :summary, class:"form-control simple", placeholder:"Enter Summary Book", :required => true  %>
 												</div>
 
 												<div class="form-group">
-                        
+
                           <%= form.submit "Create book", class:"bg-green btn" %>
 												</div>
 											</div>
@@ -127,9 +119,9 @@
 
 								</div>
 							</div>
-					
+
 					</div>
-					
+
 					</div>
 				</div>
       </section>

@@ -147,55 +147,52 @@
 						</div>
 					</div>
 					<div class="row">
-					    <% @courses.each do |course| %>
+          <% @courses.each do |course| %>
+            <!-- Cource Grid 1 -->
+            <div class="col-lg-4 col-md-6">
+              <div class="education_block_grid style_2">
+                <div class="education_block_thumb n-shadow">
+                <%= link_to course do %>
+                  <% if course.image_url %>
+                    <%= image_tag course.image_url,:alt => "",class:'img-fluid'%>
+                  <% end %><%end%>
+                  <div class="cources_price"><%= course.course_price%><span class="theme-cl"> Rwf</span></div>
+                </div>
 
-							<!-- Cource Grid 1 -->
-							<div class="col-lg-4 col-md-6">
-								<div class="education_block_grid style_2">
-									<div class="education_block_thumb n-shadow">
-										<a href="single.html" data-toggle="modal" data-target="#login">
-										<% if course.image_url %>
-										<%= image_tag course.image_url,:alt => "",class:'img-fluid'%>
-									  <% end %></a>
-										<div class="cources_price"><%= course.course_price%><span class="theme-cl"> Rwf</span></div>
-									</div>
+                <div class="education_block_body">
+                  <h4 class="bl-title"><%= link_to course.title, course,:"data-no-turbolink"=>true,method:"get" %></h4>
+                </div>
 
-									<div class="education_block_body">
-										<h4 class="bl-title"><a href="single.html" data-toggle="modal" data-target="#login"><%= course.title%></a></h4>
-									</div>
+                <div class="cources_info_style3">
+                  <ul>
+                    <li><i class="fa fa-star"></i><%= course.credit_number%>CPD Credits</li>
+                  </ul>
+                </div>
 
-									<div class="cources_info_style3">
-										<ul>
-											<li><i class="fa fa-star mr-1"></i><%= course.credit_number%>CPD Credits</li>
-										</ul>
-									</div>
+                <div class="education_block_footer">
+                  <div class="education_block_author">
+                    <div class="path-img"><a href="instructor-detail.html">
+                    <% @profiles.each do |profile| %>
 
-									<div class="education_block_footer">
-										<div class="education_block_author">
-											<div class="path-img"><a href="instructor-detail.html">
+                      <% if course.user.id == profile.user_id %>
+                      <%= image_tag profile.image_url,:alt => "",class:'img-fluid'%>
 
-
-											<% @profiles.each do |profile| %>
-
-											  <% if course.user.id == profile.user_id %>
-												<%= image_tag profile.image_url,:alt => "",class:'img-fluid'%>
-
-											  <% end %>
-											<% end %>
-											</a></div>
-											<h5><a href="#"> <%= course.user.names%>  <%=course.user.last_name%></a></h5>
-										</div>
-										<div class="foot_lecture"><i class="fa fa-fast-forward mr-2"></i>8 Hours</div>
-									</div>
-
-								</div>
-							</div>
-						<% end %>
-                    </div>
+                      <% end %>
+                    <% end %>
+                    </a></div>
+                    <h5><a href="#"> <%= course.user.names%>  <%=course.user.last_name%></a></h5>
+                  </div>
+                  <div class="foot_lecture"><i class="fa fa-fast-forward mr-2"></i>8 Hours</div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
 
 						<!-- Cource Grid 1 -->
 						<div class="col-lg-12 col-md-12 col-sm-12 text-center">
-							<button type="button" class="btn btn-loader">Load More<i class="fa fa-fast-forward ml-3"></i></button>
+							<button class="btn btn-loader">
+							<%= link_to "Load More",  all_course_courses_path,class:"text-success",:"data-no-turbolink"=>true,method:"get" %><i class="fa fa-fast-forward ml-3" aria-hidden="true"></i></button>
 						</div>
 
 					</div>
@@ -379,103 +376,6 @@
 
 				</div>
 			</section>
-			<!-- ============================ Footer Start ================================== -->
-			<footer class="dark-footer skin-dark-footer">
-				<div class="footer-bottom">
-					<div class="container">
-						<div class="row align-items-center">
-
-							<div class="col-lg-6 col-md-6">
-								<p class="mb-0">© 2020 HealthEdu</p>
-							</div>
-
-							<div class="col-lg-6 col-md-6 text-right">
-								<ul class="footer-bottom-social">
-									<li><a href="#"><i class="ti-facebook"></i></a></li>
-									<li><a href="#"><i class="ti-twitter"></i></a></li>
-									<li><a href="#"><i class="ti-instagram"></i></a></li>
-									<li><a href="#"><i class="ti-linkedin"></i></a></li>
-								</ul>
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</footer>
-			<!-- ============================ Footer End ================================== -->
-            <!-- Log In Modal -->
-			<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="registermodal" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered login-pop-form" role="document">
-					<div class="modal-content" id="registermodal">
-						<span class="mod-close" data-dismiss="modal" aria-hidden="true"><i class="ti-close"></i></span>
-						<div class="modal-body">
-							<h4 class="modal-header-title"><img src="assets/green-logo.jpg" class="logo img-responsive" alt="" /></h4>
-							<div class="login-form">
-								<form>
-
-									<div class="form-group">
-										<label>User Name</label>
-										<input type="text" class="form-control" placeholder="Username">
-									</div>
-
-									<div class="form-group">
-										<label>Password</label>
-										<input type="password" class="form-control" placeholder="*******">
-									</div>
-
-									<div class="form-group">
-										<button type="submit" class="btn btn-md btn-info full-width pop-login bg-green">Login</button>
-									</div>
-
-								</form>
-							</div>
-
-							<div class="social-login mb-3">
-								<ul>
-									<li>
-										<input id="reg" class="checkbox-custom" name="reg" type="checkbox">
-										<label for="reg" class="checkbox-custom-label">Save Password</label>
-									</li>
-									<li><a href="recover-password.html" class="theme-cl">Forget Password?</a></li>
-								</ul>
-							</div>
-
-							<div class="text-center">
-								<p class="mt-2">Have Any Account? <a href="register.html" class="link">Click here</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- End Modal -->
-
-
-
-
-			<a id="back2Top" class="top-scroll" title="Back to top" href="#"><i class="ti-arrow-up"></i></a>
-
-
-		</div>
-		<!-- ============================================================== -->
-		<!-- End Wrapper -->
-		<!-- ============================================================== -->
-
-		<!-- ============================================================== -->
-		<!-- All Jquery -->
-		<!-- ============================================================== -->
-
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/popper.min.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
-		<script src="assets/js/select2.min.js"></script>
-		<script src="assets/js/slick.js"></script>
-		<script src="assets/js/jquery.counterup.min.js"></script>
-		<script src="assets/js/counterup.min.js"></script>
-		<script src="assets/js/custom.js"></script>
-		<!-- ============================================================== -->
-		<!-- This page plugins -->
-		<!-- ============================================================== -->
-
 	</body>
 
 

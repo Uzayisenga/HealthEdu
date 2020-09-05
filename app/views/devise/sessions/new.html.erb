@@ -125,12 +125,7 @@
 <div class="signin-form">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <h2>Sign in</h2>
-        <p class="hint-text">Sign in with your social media account</p>
-    <div class="social-btn text-center">
-      <a href="#" class="btn btn-primary btn-lg" title="Facebook"><i class="fa fa-facebook"></i></a>
-      <a href="#" class="btn btn-danger btn-lg" title="Google"><i class="fa fa-google"></i></a>
-    </div>
-    <div class="or-seperator"><b>or</b></div>
+
         <div class="form-group">
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control input-lg", placeholder:"Email", required:"required" %>
         </div>
@@ -146,6 +141,13 @@
         <div class="form-group">
             <%= f.submit "Log in", class:"btn btn-success btn-lg btn-block signup-btn" %>
         </div>
+        <div class="or-seperator"><b>or</b></div>
+        <p class="hint-text">Sign in with your social media account</p>
+
+        <div class="form-group">
+        <%= link_to 'G+  Login with Google +', user_google_omniauth_authorize_path, class:"btn btn-danger btn-lg btn-block " %>
+     </div>
+
     </form>
     <% end %>
     <div class="text-center small"><%= render "devise/shared/links" %></div>
