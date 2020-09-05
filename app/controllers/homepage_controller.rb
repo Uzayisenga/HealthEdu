@@ -1,6 +1,6 @@
 class HomepageController < ApplicationController
   def index
-    @courses = Course.all.last(8)
+    @courses = Course.all.last(9)
 
     @profiles =Profile.all
 

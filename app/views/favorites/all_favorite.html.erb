@@ -25,15 +25,13 @@
 
 								<div class="d-navigation">
 									<ul id="side-menu">
-										<li ><a href="settings.html"><i class="fa fa-user"></i>My Profile</a></li>
-										<li><a href="password.html"><i class="fa fa-cog"></i>Change my Password</a></li>
-										<li class="active"><a href="paid-courses.html"><i class="fas fa-layer-group"></i>Paid Courses</a></li>
-										<li><a href="available-books.html"><i class="fas fa-layer-group"></i>Books to read</a></li>
-										<li><a href="index.html"><i class="ti-power-off"></i></a>Messages <span class="badge badge-pill badge-primary ml-2"><%= link_to pluralize(Notification.unread_count(current_user), ''), notifications_path, :class => 'menu-collapsed'  %></span></span>
+										<li><%= link_to profiles_path do %><i class="fa fa-user"></i>My Profile<%end%></li>
+										<li><%= link_to edit_user_registration_path do %><i class="fa fa-cog"></i>Change my Password<%end%></li>
+										<li class="active"><a href="#"><i class="fas fa-layer-group"></i>Paid Courses</a></li>
+										<li><%= link_to books_path do %><i class="fas fa-layer-group"></i>Books to read<%end%></li>
+										<li>Messages <span class="badge badge-pill badge-primary ml-2"><%= link_to pluralize(Notification.unread_count(current_user), ''), notifications_path, :class => 'menu-collapsed'  %></span></span>
+										<li><%= link_to destroy_user_session_path do %><i class="fa fa-power-off"></i>Logout<%end%></li>
 
-
-										<li><a href="available-books.html"><i class="ti-layers"></i>Books to read</a></li>
-										<li><i class="ti-power-off"></i><%= link_to "Logout", destroy_user_session_path, method: :delete, style:"color:steelblue" %></li>
 									</ul>
 								</div>
 
@@ -51,7 +49,7 @@
 									<nav aria-label="breadcrumb">
 										<ol class="breadcrumb">
 											<li class="breadcrumb-item"><a href="#">Home</a></li>
-											<li class="breadcrumb-item active" aria-current="page">Paid Courses</li>
+											<li class="breadcrumb-item active" aria-current="page">Requested Courses</li>
 										</ol>
 									</nav>
 								</div>
@@ -80,19 +78,21 @@
 													</thead>
 													<tbody>
 														<% @favorites.each do |favorite| %>
-														<%if favorite.user.email == current_user.email %>
-															<%if favorite.present?%>
-															<tr>
-																<th scope="row"><a href="single-requested.html"> <%= favorite.course.title %>/<%= favorite.course.credit_number%>CPD Credits</a></th>
-																<td>02 July 2020</td>
-																<td><span class="payment_status pending"><%= favorite.status %></h5></span></td>
-																<td><%= favorite.course.course_price %><span>Rwf</span></td>
+															<% if favorite.status == "not_paid" %>
+																<%if favorite.user.email == current_user.email %>
+																	<%if favorite.present?%>
+																		<tr>
+																			<th scope="row"><a href="single-requested.html"> <%= favorite.course.title %>/<%= favorite.course.credit_number%>CPD Credits</a></th>
+																			<td><%= favorite.created_at %></td>
+																			<td><span class="payment_status pending"><%= favorite.status %></h5></span></td>
+																			<td><%= favorite.course.course_price %><span>Rwf</span></td>
 
-															</tr>
-															<%else%>
-															<p class="card-text">No favorite yet.</p>
+																		</tr>
+																		<%else%>
+																		<p class="card-text">No favorite yet.</p>
+																	<% end %>
+																<% end %>
 															<% end %>
-														<% end %>
 														<% end %>
 													</tbody>
 												</table>
@@ -104,7 +104,7 @@
 									<div class="dashboard_container scroll-row scrollbar-light-blue">
 										<div class="dashboard_container_header" >
 											<div class="dashboard_fl_1">
-											<h4>All Courses</h4>
+											<h4>Paid Courses</h4>
 											</div>
 											<div class="dashboard_fl_2 tbl">
 												<ul class="mb0">
@@ -124,49 +124,52 @@
 
 											<!-- Single Course -->
 											<% @favorites.each do |favorite| %>
-												<%if favorite.user.email == current_user.email %>
-												    <%if favorite.present?%>
-														<div class="dashboard_single_course">
-															<div class="dashboard_single_course_thumb">
-																<% if favorite.course.image_url %>
-																    <%= image_tag favorite.course.image_url,:alt => "",class:'img-fluid'%>
-															    <% end %>
-																<div class="dashboard_action">
-																	<%= link_to 'view course', favorite, class:"btn btn-ect",:"data-no-turbolink"=>true,method:"get" %>
+												<% if favorite.status == "paid" %>
+													<%if favorite.user.email == current_user.email %>
+														<%if favorite.present?%>
+															<div class="dashboard_single_course">
+																<div class="dashboard_single_course_thumb">
+																	<% if favorite.course.image_url %>
+																		<%= image_tag favorite.course.image_url,:alt => "",class:'img-fluid'%>
+																	<% end %>
+																	<div class="dashboard_action">
+																		<%= link_to 'view course', favorite, class:"btn btn-ect",:"data-no-turbolink"=>true,method:"get" %>
+																	</div>
 																</div>
-															</div>
-															<div class="dashboard_single_course_caption">
-																<div class="dashboard_single_course_head">
-																	<div class="dashboard_single_course_head_flex">
-																		<h4 class="dashboard_course_title"><%= favorite.course.title %></h4>
-																		<span class="dashboard_instructor"><%= favorite.user.names%> <%= favorite.user.last_name%></span>
-																		<div class="dashboard_rats">
-																			<div class="dashboard_rating">
-																				<i class="ti-star"></i>
+																<div class="dashboard_single_course_caption">
+																	<div class="dashboard_single_course_head">
+																		<div class="dashboard_single_course_head_flex">
+																			<h4 class="dashboard_course_title"><%= favorite.course.title %></h4>
+																			<span class="dashboard_instructor"><%= favorite.user.names%> <%= favorite.user.last_name%></span>
+																			<div class="dashboard_rats">
+																				<div class="dashboard_rating">
+																					<i class="fa fa-star"></i>
+																				</div>
+																				<span>(<%= favorite.course.credit_number%> CPD Credits)</span>
 																			</div>
-																			<span>(<%= favorite.course.credit_number%> CPD Credits)</span>
+																		</div>
+																	</div>
+																	<div class="dashboard_single_course_des">
+																		<p><%= favorite.course.content_attract%></p>
+																	</div>
+																	<div class="dashboard_single_course_progress">
+																		<div class="dashboard_single_course_progress_1">
+																			<label>Completed</label>
+																		</div>
+																		<div class="dashboard_single_course_progress_2">
+																			<ul class="m-0">
+																				<li class="list-inline-item"><i class="fa fa-user mr-1"></i>451 Enrolled</li>
+																			</ul>
 																		</div>
 																	</div>
 																</div>
-																<div class="dashboard_single_course_des">
-																	<p><%= favorite.course.content_attract%></p>
-																</div>
-																<div class="dashboard_single_course_progress">
-																	<div class="dashboard_single_course_progress_1">
-																		<label>Completed</label>
-																	</div>
-																	<div class="dashboard_single_course_progress_2">
-																		<ul class="m-0">
-																			<li class="list-inline-item"><i class="ti-user mr-1"></i>451 Enrolled</li>
-																		</ul>
-																	</div>
-																</div>
 															</div>
-														</div>
-														<%else%>
-													    <p class="card-text">No favorite yet.</p>
+															<%else%>
+															<p class="card-text">No favorite yet.</p>
+														<% end %>
 													<% end %>
 												<% end %>
+
 											<% end %>
 
 										</div>

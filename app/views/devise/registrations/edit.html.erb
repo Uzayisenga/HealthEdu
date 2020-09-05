@@ -1,163 +1,195 @@
-<div style="margin-bottom:50px;height:700px">
-<div class="profile_pic_div text-center ml-4 border p-5">
-  <h4>Profile Picture</h4>
-  <% if current_user.profile == nil %>
-        <p><%= image_tag 'default.png', class:"rounded-circle profile" %></p>
-        <% else %>
-        <% if current_user.profile.image? %>
-            <p><%= image_tag current_user.profile.image.url, class:"profile" %></p>
-        <% end %>
-    <% end %>
-    <%= link_to 'Edit Picture', profiles_path, class:'btn btn-success btn-sm', :"data-no-turbolink"=>true,method:"get" %>
-</div>
+<section class="page-title">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12 col-md-12">
 
-<!-- Default form register -->
-<div class="profile_content_div ml-4 text-center border p-5">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-
-        <p class="h4 mb-4">Profile</p>
-
-        <div class="form-row mb-4">
-            <div class="col">
-                <!-- First name -->
-                <%= f.text_field :names, class:"form-control", id:"defaultRegisterFormFirstName",placeholder:'Enter  Your First name'  %>
+                <div class="breadcrumbs-wrap">
+                  <h1 class="breadcrumb-title">Update An Account</h1>
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="#">Home</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Update</li>
+                    </ol>
+                  </nav>
                 </div>
-                <div class="col">
-                    <!-- Last name -->
-                    <%= f.text_field :last_name, class:"form-control",placeholder:'Enter  Your Last name'  %>
+
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- ============================ Page Title End ================================== -->
+
+        <!-- ========================== Login Section =============================== -->
+        <section class="pt-0">
+          <div class="container">
+
+            <div class="row">
+
+              <div class="col-lg-12 col-lg-offset-1 col-sm-12">
+                <div class="log_wrap">
+                  <h4>Update</h4>
+                  <div class="login-form">
+                  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                    <%= render "devise/shared/error_messages", resource: resource %>
+
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                          <label>First Name</label><span class="theme-cl">*</span>
+                          <%= f.text_field :names, class:"form-control" %>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                          <label>Last Name</label><span class="theme-cl">*</span>
+                          <%= f.text_field :last_name, class:"form-control" %>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6">
+                        <label>Gender<span class="theme-cl">*</span></label>
+                        <%= f.select :gender, options_for_select([
+                        ["Gender:", ""],
+                        "Male",
+                        "Female",]),
+                        {}, { class: "form form-group form-control" } %>
+                      </div>
+                      <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                          <label>Email</label><span class="theme-cl">*</span>
+                          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                          <label>Phone Number</label><span class="theme-cl">*</span>
+                          <%= f.number_field :phone, class:"form-control" %>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                          <label>Regulatory Body<span class="theme-cl">*</span></label>
+                          <%= f.select :reguratory_body, options_for_select([
+                          ["Regulatory Body:", ""],
+                          "RAHPC",
+                          "NPC",
+                          "RMDC",
+                          "NCNM"]),
+                          {}, { class: "form form-group form-control" } %>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                          <label>Professional category<span class="theme-cl">*</span></label>
+                          <%= f.select :working_place, options_for_select([
+                        ["Select your work place", ""],
+                        "Anaesthesia_Practitioner",
+                        "Biomedical_Engineer",
+                        "Medical_Laboratory_Practitioner",
+                        "BOccupational_Therapist",
+                        "Dental_Therapist",
+                        "Nutritionist",
+                        "Environmental_Health_Professional",
+                        "Clinial_Psychologist",
+                        "Chiropractor",
+                        "Clinical_Medicine_Practitioner",
+                        "Speech_and_Language_Pathologist",
+                        "Clinical_Perfusionist",
+                        "Emergency_Care_Practitioner",
+                        "Physiotherapist",
+                        "Medical_Imaging_Practitioner",
+                        "Prosthetists_and_Orthotist",
+                        "Orthopeadic_Clinical_Officer",
+                        "Public_Health_Practitioner",
+                        "Ophthalmic_Clinical_Officer",
+                        "Social_Work_Practitioner",
+                        "Optometry_Practitioner",
+                        "Theatre_Operating_Therapist",
+                        "Nurse",
+                        "Midwife",
+                        "Medical_Doctor",
+                        "Dental_Surgion",
+                        "Emergency_Care_Practitioner",
+                        "Physiotherapist",
+                        "Ophthalmologist",
+                        "Pathologist",
+                        "Oncologist",
+                        "Orthopaedic_Surgeon",
+                        "Cardiologist",
+                        "Neurosurgeons",
+                        "Radiologists ",
+                        "Internists_practitioners",
+                        "Pharmacists",
+                        "Student",
+                        "Others"]),
+                        {}, { class: "form form-group form-control" } %>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                          <label>Select your degree<span class="theme-cl">*</span></label>
+                          <%= f.select :level, options_for_select([
+                          ["Upload your
+                          Certicate", ""],
+                          "certificate_A2",
+                          "Advanced_Diploma",
+                          "Bachelor_Degree",
+                          "Masters_Degree",
+                          "PHD",
+                          "Others"]),
+                          {}, { class: "form form-group form-control" } %>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                          <label>District<span class="theme-cl">*</span></label>
+                          <%= f.text_field :district, class:"form-control" %>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                          <label>Upload your Degree<span class="theme-cl"></span></label>
+                          <%= f.file_field :apload_diploma, class:"form-control" %>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                          <label>Upload your Resume<span class="theme-cl"></span></label>
+                          <%= f.file_field :apload_cv, class:"form-control" %>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                          <label>Old Password<span class="theme-cl">*</span></label>
+                          <!-- current_password -->
+                          <%= f.password_field :current_password, autocomplete: "current-password",class:"form-control",placeholder:'Old Password' %>
+
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                          <label>New Password<span class="theme-cl"><i>(leave blank if you dont want to change it)</i></span></label>
+                          <%= f.password_field :password, autocomplete: "new-password",class:"form-control",placeholder:'Enter new Pasword if you want to change it' %>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                          <label>Confirm Password<span class="theme-cl"></span></label>
+                          <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
+
+                        </div>
+                      </div>
+
+
+                      <div class="col-lg-12 col-md-6 ">
+                        <div class="form-group  ">
+                          <%= f.submit "Update", class:"bg-green btn", :"data-no-turbolink"=>true,method:"get" %>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
                 </div>
+                </div>
+              </div>
             </div>
-
-        <div class="form-row mb-4">
-            <div class="col">
-                <!--email -->
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
-            </div>
-            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-            <% end %>
-            <div class="col">
-                <!-- Phone Number -->
-                <%= f.number_field :phone, class:"form-control",placeholder:'Enter  Your Phone'  %>
-            </div>
-        </div>
-
-        <div class="field">
-            <%= f.label :password %> <i>(leave blank if you dont want to change it)</i><br />
-        </div>
-
-        <div class="form-row mb-4">
-            <div class="col">
-                <%= f.password_field :password, autocomplete: "new-password",class:"form-control",placeholder:'Enter new Pasword if you want to change it' %>
-            </div>
-            <div class="col">
-                <!-- password confirmation -->
-                <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control",placeholder:'Confirm Password' %>
-            </div>
-        </div>
-
-        <div class="form-row mb-4">
-            <div class="col">
-                <!-- current_password -->
-                <%= f.password_field :current_password, autocomplete: "current-password",class:"form-control",placeholder:'Old Password' %>
-            </div>
-            <div class="col">
-                <!-- District -->
-                <%= f.text_field :district, class:"form-control",placeholder:'Enter  Your District'  %>
-            </div>
-        </div>
-
-        <div class="form-row mb-4">
-            <div class="col">
-                <!-- First name -->
-                <%= f.select :reguratory_body, options_for_select([
-                ["Regulatory Body:", ""],
-                "RAHPC",
-                "NPC",
-                "RMDC",
-                "NCNM"]),
-                {}, { class: "form form-group form-control" } %>
-            </div>
-            <div class="col">
-                <%= f.select :level, options_for_select([
-                    ["Select Your Level", ""],
-                    "certificate(A2)",
-                    "Advanced_Diploma",
-                    "Bachelor_Degree",
-                    "Masters_Degree",
-                    "PHD",
-                    "Others"]),
-                    {}, { class: "form form-group form-control" } %>
-            </div>
-        </div>
-        <div class="form-row mb-4">
-        <div class="col">
-        <%= f.select :working_place, options_for_select([
-            ["Select your work place", ""],
-            "Anaesthesia_Practitioner",
-            "Biomedical_Engineer",
-            "Medical_Laboratory_Practitioner",
-            "BOccupational_Therapist",
-            "Dental_Therapist",
-            "Nutritionist",
-            "Environmental_Health_Professional",
-            "Clinial_Psychologist",
-            "Chiropractor",
-            "Clinical_Medicine_Practitioner",
-            "Speech_and_Language_Pathologist",
-            "Clinical_Perfusionist",
-            "Emergency_Care_Practitioner",
-            "Physiotherapist",
-            "Medical_Imaging_Practitioner",
-            "Prosthetists_and_Orthotist",
-            "Orthopeadic_Clinical_Officer",
-            "Public_Health_Practitioner",
-            "Ophthalmic_Clinical_Officer",
-            "Social_Work_Practitioner",
-            "Optometry_Practitioner",
-            "Theatre_Operating_Therapist",
-            "Nurse",
-            "Midwife",
-            "Medical_Doctor",
-            "Dental_Surgion",
-            "Emergency_Care_Practitioner",
-            "Physiotherapist",
-            "Ophthalmologist",
-            "Pathologist",
-            "Oncologist",
-            "Orthopaedic_Surgeon",
-            "Cardiologist",
-            "Neurosurgeons",
-            "Radiologists ",
-            "Internists_practitioners",
-            "Pharmacists",
-            "Student",
-            "Others"]),
-            {}, { class: "form form-group form-control" } %>
-        </div>
-        <div class="col">
-
-        </div>
-    </div>
-
-        <div class="form-row mb-4">
-            <div class="col">
-            <%= f.label :upload_diploma %>
-            <%= f.file_field :apload_diploma, class:"form-control" %>
-            </div>
-            <div class="col">
-                <%= f.label :upload_cv %>
-                <%= f.file_field :apload_cv, class:"form-control" %>
-            </div>
-        </div>
-
-        <!-- Sign up button -->
-        <%= f.submit "Save Details", class:"btn btn-info my-4 btn-block" %>
-
-
-
-        </div>
-    <% end %>
-</div>
-</div>
+          </div>
+        </section>

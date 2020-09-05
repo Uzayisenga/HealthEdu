@@ -20,6 +20,7 @@ class CoursesController < ApplicationController
     #@courses = Course.all
     @q = Course.ransack(params[:q])
     @courses = @q.result(distinct: true)
+    @profiles =Profile.all
   end
 
   # GET /courses/1

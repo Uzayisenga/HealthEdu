@@ -34,7 +34,15 @@
 
                 <div class="education_block_footer">
                   <div class="education_block_author">
-                    <div class="path-img"><a href="instructor-detail.html"><img src="assets/img/gihozo.jpg" class="img-fluid" alt=""></a></div>
+                    <div class="path-img"><a href="instructor-detail.html">
+                    <% @profiles.each do |profile| %>
+
+                      <% if course.user.id == profile.user_id %>
+                      <%= image_tag profile.image_url,:alt => "",class:'img-fluid'%>
+
+                      <% end %>
+                    <% end %>
+                    </a></div>
                     <h5><a href="#"> <%= course.user.names%>  <%=course.user.last_name%></a></h5>
                   </div>
                   <div class="foot_lecture"><i class="fa fa-fast-forward mr-2"></i>8 Hours</div>

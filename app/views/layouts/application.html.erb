@@ -34,7 +34,7 @@
     <div class="nav-menus-wrapper">
       <ul class="nav-menu ">
 
-        <li><a href="index.html">Home</a></li>
+        <li><%= link_to 'Home', main_app.homepage_index_path,:"data-no-turbolink"=>true,method:"get" %></li>
 
         <li><%= link_to 'Courses', main_app.all_course_courses_path,:"data-no-turbolink"=>true,method:"get" %></li>
 
@@ -42,7 +42,7 @@
 
         <li><%= link_to 'Gallery', main_app.pages_gallery_path,:"data-no-turbolink"=>true,method:"get" %></li>
 
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#">Contact</a></li>
         <% if user_signed_in? && current_user.user_role== 'professional'%>
           <li><%= link_to "Dashboard", main_app.all_favorite_path,:"data-no-turbolink"=>true,method:"get" %></li>
         <% end %>
