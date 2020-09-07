@@ -3,29 +3,29 @@
 				<div class="container">
 					<div class="row align-items-center">
 						<div class="col-lg-6 col-md-6">
-							
+
 							<div class="property_video lg">
 								<div class="thumb">
-                 
+
                   <%if @course.image.url%>
                     <%= image_tag @course.image.url, class:"pro_img img-fluid w100",alt:""%>
                  <% end%>
 
 								</div>
 							</div>
-							
+
 						</div>
-						
+
 						<div class="col-lg-6 col-md-6">
 							<div class="ed_detail_wrap">
 								<ul class="list_ed_detail2">
-									<li class="tag-3"><i class="ti-money"></i><strong>Course Price:</strong><%=@course.course_price %><span>Rwf</span></li>
-									<li class="tag-3"><i class="ti-star"></i><strong>Course Credit :</strong><%=@course.credit_number%><span>CPD</span></li>
-									<li class="tag-1"><i class="ti-calendar"></i><strong>Duration:</strong>10<span>Hours</span></li>
-									<li class="tag-1"><i class="ti-user"></i><strong>Instructor:</strong><span><%= @course.user.names%>  <%=@course.user.last_name%></span></li>
-									<li class="tag-1"><i class="ti-user"></i><strong>Enrolled:</strong>712 <span>Professionals</span></li>
-									<li class="tag-1"><i class="ti-flag"></i><strong>Language:</strong>English</li>
-									<li class="tag-1"><i class="ti-tag"></i><strong>Course for:</strong><%=@course.title%></li>
+									<li class="tag-3"><i class="fas fa-dollar-sign"></i><strong>Course Price:</strong><%=@course.course_price %><span>Rwf</span></li>
+									<li class="tag-3"><i class="fa fa-star"></i><strong>Course Credit :</strong><%=@course.credit_number%><span>CPD</span></li>
+									<li class="tag-1"><i class="fa fa-calendar"></i><strong>Duration:</strong><%=@course.credit_number%><span>Hours</span></li>
+									<li class="tag-1"><i class="fa fa-user"></i><strong>Instructor:</strong><span><%= @course.user.names%>  <%=@course.user.last_name%></span></li>
+									<li class="tag-1"><i class="fa fa-user"></i><strong>Enrolled:</strong>712 <span>Professionals</span></li>
+									<li class="tag-1"><i class="fa fa-flag"></i><strong>Language:</strong>English</li>
+									<li class="tag-1"><i class="fa fa-tag"></i><strong>Course for:</strong><%=@course.title%></li>
 								</ul>
 							</div>
 						</div>
@@ -33,25 +33,24 @@
 				</div>
 			</div>
 			<!-- ============================ Course Header Info End ================================== -->
-			
+
 			<!-- ============================ Course Detail ================================== -->
 			<section>
 				<div class="container">
 					<div class="row">
-					
+
 						<div class="col-lg-12 col-md-12">
-							
+
 							<!-- Overview -->
 							<div class="edu_wraper border">
 								<h4 class="edu_title">Course Overview</h4>
-								<p><%=@course.content.html_safe%></p>		
-                <div class="ed_view_link">
-                <% if @favorite.present? %>
-                <%= link_to 'Course requested', favorite_path(id: @favorite.id), method: :delete, class: 'btn  enroll-btn btn-danger' %>
-                <% else %>
-                  <%= link_to 'Request this course Now', favorites_path(course_id: @course.id), method: :post, class: 'btn  enroll-btn bg-green' %>
-              <% end %>
-									<a href="#" class="btn  enroll-btn bg-green" >Request this course Now<i class="ti-angle-right"></i></a>
+								<p><%=@course.content.html_safe%></p>
+									<div class="ed_view_link">
+									<% if @favorite.present? %>
+										<%= link_to 'Course requested', favorite_path(id: @favorite.id), method: :delete, class: 'btn  enroll-btn btn-danger' %>
+										<% else %>
+										<%= link_to 'Request this course Now', favorites_path(course_id: @course.id), method: :post, class: 'btn  enroll-btn bg-green' %>
+								    <% end %>
 								</div>
 							</div>
 						</div>
