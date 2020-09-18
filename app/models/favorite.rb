@@ -1,4 +1,6 @@
 class Favorite < ApplicationRecord
+  has_many :completes, dependent: :destroy
+  has_many :complete_users, through: :completes, source: :user
   enum status: [:not_paid, :paid]
   belongs_to :user
   belongs_to :course

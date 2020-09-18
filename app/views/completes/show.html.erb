@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @complete.user_id %>
+</p>
+
+<p>
+  <strong>Favorite:</strong>
+  <%= @complete.favorite_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @complete.status %>
+</p>
+
+<%= link_to 'Edit', edit_complete_path(@complete) %> |
+<%= link_to 'Back', completes_path %>

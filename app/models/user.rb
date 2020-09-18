@@ -11,6 +11,7 @@ class User < ApplicationRecord
          has_many :comments, dependent: :destroy
          has_many :favorites, dependent: :destroy
          has_many :courses, dependent: :destroy
+         has_many :completes, dependent: :destroy
          mount_uploader :image, ImageUploader
          mount_uploader :apload_diploma, AploadDiplomaUploader
          mount_uploader :apload_cv, AploadCvUploader

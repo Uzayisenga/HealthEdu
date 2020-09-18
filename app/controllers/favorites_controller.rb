@@ -25,6 +25,7 @@ class FavoritesController < ApplicationController
             dpi: 75
         end
       end
+      @complete = current_user.completes.find_by(favorite_id: @favorite.id)
     end
 
   def destroy

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'pages/about'
   get 'pages/gallery'
   get 'pages/help'
+  get 'pages/payment'
   resources :profiles
   get 'certificate/index'
   get 'requests/update'
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
   resources :replies
   resources :homepage
   resources :favorites, only: [:index, :destroy, :create, :show]
+  resources :completes, only: [:create, :destroy]
 
   get 'comments/create'
   get 'course/assesment'

@@ -1,13 +1,13 @@
-<div class="ed_detail_head">
+            <div class="ed_detail_head">
 				<div class="container">
 					<div class="row align-items-center">
 						<div class="col-lg-4 col-md-5">
 
 							<div class="property_video">
 								<div class="thumb">
-                  <% if @favorite.course.image_url %>
-                  <%= image_tag @favorite.course.image_url,:alt => "",class:'pro_img img-fluid w100'%>
-                <% end %>
+									<% if @favorite.course.image_url %>
+									   <%= image_tag @favorite.course.image_url,:alt => "",class:'pro_img img-fluid w100'%>
+									<% end %>
 								</div>
 							</div>
 
@@ -40,35 +40,38 @@
 							<!-- Overview -->
 
 							<div class="edu_wraper">
-                <h4 class="edu_title">Course Circullum</h4>
+                            <h4 class="edu_title">Course Circullum</h4>
 
 								<div id="accordionExample" class="accordion shadow circullum">
-                <% @favorite.course.credits.each do |credit| %>
-									<!-- Part 1 -->
-									<div class="card">
-									  <div id="headingOne" class="card-header bg-white shadow-sm border-0">
-										<h6 class="mb-0 accordion_title"><a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="d-block position-relative text-dark collapsible-link py-2"><%=  credit.name%>: How To Learn Web Designing Step by Step</a></h6>
-									  </div>
-									  <div id="collapseOne" aria-labelledby="headingOne" data-parent="#accordionExample" class="collapse show">
-										<div class="card-body pl-3 pr-3">
-											<p><%=  credit.discription.html_safe%></p>
-											<div class="form-group  ">
-                                    <%= link_to "click here to Open this Module", credit.upload_file_url,class:"bg-red btn", target: :_blank %>
+                                    <% @favorite.course.credits.each do |credit| %>
+										<!-- Part 1 -->
+										<div class="card">
+										<div id="headingOne" class="card-header bg-white shadow-sm border-0">
+											<h6 class="mb-0 accordion_title"><a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="d-block position-relative text-dark collapsible-link py-2"><%=  credit.name%>: How To Learn Web Designing Step by Step</a></h6>
+										</div>
+										<div id="collapseOne" aria-labelledby="headingOne" data-parent="#accordionExample" class="collapse show">
+											<div class="card-body pl-3 pr-3">
+												<p><%=  credit.discription.html_safe%></p>
+												<div class="form-group  ">
+										        <%= link_to "click here to Open this Module", credit.upload_file_url,class:"bg-red btn", target: :_blank %>
+												</div>
 											</div>
 										</div>
-									  </div>
-									</div>
-                  <% end %>
+										</div>
+                                    <% end %>
 									<div class="card">
-									  <div id="headingFour" class="card-header bg-white shadow-sm border-0 text-center">
-                    <% if ((DateTime.now.to_time - @favorite.created_at.to_time)/1.hours).to_i > 1%>
-                    <a href="<%= @favorite.course.quiz_link%>" target="_blank" rel="noopener noreferrer" class= "bg-red btn">Do assessment for this course</a>
-                    <span class="menu-collapsed"><%= link_to 'Back', all_favorite_path %></span>
-                    <% end %>
-									  </div>
-
+									    <div id="headingFour" class="card-header bg-white shadow-sm border-0 text-center">
+											<% if ((DateTime.now.to_time - @favorite.created_at.to_time)/1.hours).to_i > 1%>
+												<a href="<%= @favorite.course.quiz_link%>" target="_blank" rel="noopener noreferrer" class= "bg-red btn">Do assessment for this course</a>
+												<span class="menu-collapsed"><%= link_to 'Back', all_favorite_path %>
+											<% end %>
+											<% if @complete.present? %>
+												<button type = "button" class = "btn btn-danger disabled">Completed</button>
+												<% else %>
+												<%= link_to 'Make it a complete', completes_path(favorite_id: @favorite.id), method: :post, class: 'btn btn-primary' %>
+											<% end %>
+									    </div>
 									</div>
-
 								</div>
 							</div>
 

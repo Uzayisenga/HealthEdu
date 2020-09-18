@@ -12,6 +12,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
 </head>
 <!-- ============================================================== -->
 <!-- Main wrapper - style you can find in pages.scss -->
@@ -38,7 +39,7 @@
 
         <li><%= link_to 'Courses', main_app.all_course_courses_path,:"data-no-turbolink"=>true,method:"get" %></li>
 
-        <li><%= link_to 'About Us', main_app.homepage_index_path,:"data-no-turbolink"=>true,method:"get" %></li>
+        <li><%= link_to 'About Us', main_app.pages_about_path,:"data-no-turbolink"=>true,method:"get" %></li>
 
         <li><%= link_to 'Gallery', main_app.pages_gallery_path,:"data-no-turbolink"=>true,method:"get" %></li>
 
