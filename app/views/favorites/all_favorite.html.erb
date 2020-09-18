@@ -74,6 +74,7 @@
 															<th scope="col">Date</th>
 															<th scope="col">Status</th>
 															<th scope="col">Price</th>
+															<th scope="col">Method</th>
 														</tr>
 													</thead>
 													<tbody>
@@ -86,6 +87,7 @@
 																			<td><%= favorite.created_at %></td>
 																			<td><span class="payment_status pending"><%= favorite.status %></h5></span></td>
 																			<td><%= favorite.course.course_price %><span>Rwf</span></td>
+																			<td><span class="payment_status pending"><%= link_to 'Pay', pages_payment_path %></span></td>
 
 																		</tr>
 																		<%else%>

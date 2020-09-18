@@ -65,11 +65,7 @@
 												<a href="<%= @favorite.course.quiz_link%>" target="_blank" rel="noopener noreferrer" class= "bg-red btn">Do assessment for this course</a>
 												<span class="menu-collapsed"><%= link_to 'Back', all_favorite_path %>
 											<% end %>
-											<% if @complete.present? %>
-												<button type = "button" class = "btn btn-danger disabled">Completed</button>
-												<% else %>
-												<%= link_to 'Make it a complete', completes_path(favorite_id: @favorite.id), method: :post, class: 'btn btn-primary' %>
-											<% end %>
+
 									    </div>
 									</div>
 								</div>
