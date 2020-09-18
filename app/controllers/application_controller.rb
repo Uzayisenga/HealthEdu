@@ -10,7 +10,13 @@ class ApplicationController < ActionController::Base
 
      helper_method :request_text
     
-
+def default_url_options
+  if Rails.env.production?
+   {:host => "healtheducat.rw"}
+  else  
+   {}
+  end
+ end
     protected
         def configure_permitted_parameters
             # devise_parameter_sanitizer.for(:sign_up)  {|u| u.permit(:names, :email, :password, :user_role, :reguratory_body, :level, :working_place, :gender,:province, :district, :sector, :cell, :upload_diploma, :upload_cv, :availability_hour, :image, :phone) }

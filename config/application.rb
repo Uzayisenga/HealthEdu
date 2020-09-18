@@ -10,7 +10,8 @@ Bundler.require(*Rails.groups)
 module HealthEdu
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.hosts << "www.healtheducat.rw"
+    config.hosts << "healtheducat.rw"
+    config.action_mailer.default_url_options = { host: 'healtheducat.rw' }
     config.load_defaults 6.0
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
