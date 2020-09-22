@@ -114,9 +114,9 @@
 								<p>It started with an office at Kimironko KG147 Street (Acts of Gratitude), has shifted to Impact Hub Kiyovu, Telecom House and now we are based in Westewelle Startup Haus at Kimihurura KG 622 Street Kigali.</p>
 								<div class="cource_facts">
 									<ul>
-										<li><span class="theme-cl">349</span>Active CPD Credits</li>
-										<li><span class="theme-cl">4k</span>Student Learning</li>
-										<li><span class="theme-cl">2</span>Free Cources</li>
+										<li><span class="theme-cl"><%= Course.all.sum(:credit_number)%></span>Active CPD Credits</li>
+										<li><span class="theme-cl"><%= User.count%></span>Student Learning</li>
+										<li><span class="theme-cl"><%= Course.where(course_price: 0).count %></span>Free Cources</li>
 									</ul>
 								</div>
 								<%= link_to 'Know More', main_app.pages_about_path,class:"btn  bg-green",:"data-no-turbolink"=>true,method:"get" %>
@@ -153,10 +153,14 @@
               <div class="education_block_grid style_2">
                 <div class="education_block_thumb n-shadow">
                 <%= link_to course do %>
-                  <% if course.image_url %>
-                    <%= image_tag course.image_url,:alt => "",class:'img-fluid'%>
-                  <% end %><%end%>
-                  <div class="cources_price"><%= course.course_price%><span class="theme-cl"> Rwf</span></div>
+					<% if course.image_url %>
+						<%= image_tag course.image_url,:alt => "",class:'img-fluid'%>
+					<% end %><%end%>
+					<% if course.course_price == 0 %>
+						<div class="cources_price">free<span class="theme-cl"> Course</span></div>
+						<% else %>
+						<div class="cources_price"><%= course.course_price%><span class="theme-cl"> Rwf</span></div>
+					<% end %>
                 </div>
 
                 <div class="education_block_body">

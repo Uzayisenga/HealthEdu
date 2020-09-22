@@ -19,7 +19,11 @@
                   <% if course.image_url %>
                     <%= image_tag course.image_url,:alt => "",class:'img-fluid'%>
                   <% end %><%end%>
-                  <div class="cources_price"><%= course.course_price%><span class="theme-cl"> Rwf</span></div>
+                  <% if course.course_price == 0 %>
+                    <div class="cources_price">free<span class="theme-cl"> Course</span></div>
+                    <% else %>
+                    <div class="cources_price"><%= course.course_price%><span class="theme-cl"> Rwf</span></div>
+                  <% end %>
                 </div>
 
                 <div class="education_block_body">

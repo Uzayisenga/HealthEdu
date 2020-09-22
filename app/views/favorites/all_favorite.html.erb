@@ -79,19 +79,21 @@
 													</thead>
 													<tbody>
 														<% @favorites.each do |favorite| %>
-															<% if favorite.status == "not_paid" %>
-																<%if favorite.user.email == current_user.email %>
-																	<%if favorite.present?%>
-																		<tr>
-																			<th scope="row"><a href="single-requested.html"> <%= favorite.course.title %>/<%= favorite.course.credit_number%>CPD Credits</a></th>
-																			<td><%= favorite.created_at %></td>
-																			<td><span class="payment_status pending"><%= favorite.status %></h5></span></td>
-																			<td><%= favorite.course.course_price %><span>Rwf</span></td>
-																			<td><span class="payment_status pending"><%= link_to 'Pay', pages_payment_path %></span></td>
+															<% unless favorite.course.course_price == 0 %>
+																<% if favorite.status == "not_paid" %>
+																	<%if favorite.user.email == current_user.email %>
+																		<%if favorite.present?%>
+																			<tr>
+																				<th scope="row"><%= link_to favorite.course.title, pages_payment_path,:"data-no-turbolink"=>true,method:"get" %>/<%= favorite.course.credit_number%>CPD Credits</a></th>
+																				<td><%= favorite.created_at %></td>
+																				<td><span class="payment_status pending"><%= favorite.status %></h5></span></td>
+																				<td><%= favorite.course.course_price %><span>Rwf</span></td>
+																				<td><span class="payment_status pending"><%= link_to 'Pay', pages_payment_path %></span></td>
 
-																		</tr>
-																		<%else%>
-																		<p class="card-text">No favorite yet.</p>
+																			</tr>
+																			<%else%>
+																			<p class="card-text">No favorite yet.</p>
+																		<% end %>
 																	<% end %>
 																<% end %>
 															<% end %>
@@ -126,7 +128,7 @@
 
 											<!-- Single Course -->
 											<% @favorites.each do |favorite| %>
-												<% if favorite.status == "paid" %>
+												<% if favorite.status == "paid" || favorite.course.course_price == 0 %>
 													<%if favorite.user.email == current_user.email %>
 														<%if favorite.present?%>
 															<div class="dashboard_single_course">
