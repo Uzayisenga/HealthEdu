@@ -134,6 +134,16 @@ RailsAdmin.config do |config|
       end
     end
   end
+  config.model 'Favorite' do
+    edit do
+      configure :completes do
+        hide
+      end
+      configure :complete_users do
+        hide
+      end
+    end
+  end
   config.actions do
     all
     import
@@ -154,6 +164,23 @@ RailsAdmin.config do |config|
       field :uid
       field :provider
 
+    end
+  end
+  config.model "Favorite" do
+    list do
+      field :id
+      field :user do
+        pretty_value do
+          value.names + ' ' + value.last_name
+        end
+      end
+      field :status
+      field :created_at
+      field :course do
+        pretty_value do
+          value.title
+        end
+      end
     end
   end
 end
