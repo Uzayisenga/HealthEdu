@@ -171,7 +171,7 @@ RailsAdmin.config do |config|
       field :id
       field :user do
         pretty_value do
-          value.names + ' ' + value.last_name
+          value.names
         end
       end
       field :status
