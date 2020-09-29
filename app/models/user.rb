@@ -12,6 +12,7 @@ class User < ApplicationRecord
          has_many :favorites, dependent: :destroy
          has_many :courses, dependent: :destroy
          has_many :completes, dependent: :destroy
+         validates :reguratory_body, :level, :working_place, :gender, :phone, :district, presence: true
          mount_uploader :image, ImageUploader
          mount_uploader :apload_diploma, AploadDiplomaUploader
          mount_uploader :apload_cv, AploadCvUploader
