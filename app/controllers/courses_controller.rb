@@ -12,14 +12,18 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @currentUser = current_user.id
-    @courses = current_user.courses.all.order('created_at DESC').page (params[:page])
+      @currentUser = current_user.id
+      @courses = current_user.courses.all.order('created_at DESC').page (params[:page])
   end
 
   def all_course
     #@courses = Course.all
-    @q = Course.ransack(params[:q])
-    @courses = @q.result(distinct: true)
+    if (params.has_key?(:course_for))
+      @courses = Course.where(course_for: params[:course_for]).order("created_at desc")
+    else
+      @q = Course.ransack(params[:q])
+      @courses = @q.result(distinct: true)
+    end
     @profiles =Profile.all
   end
 
@@ -96,7 +100,7 @@ class CoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def course_params
-      params.require(:course).permit(:image, :title, :credit_number, :content, :content_attract, :course_price, :quiz_link, :video, :attemption, :user_id ,{file: []})
+      params.require(:course).permit(:image, :title, :credit_number, :content, :content_attract, :course_price, :quiz_link, :video, :attemption, :user_id, :course_for)
     end
 
     def only_admin
