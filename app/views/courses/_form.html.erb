@@ -96,10 +96,18 @@
 											   <div class="form-group">
 												   <%= form.hidden_field :user_id, class:"form-control simple" %>
 											   </div>
-											   <div class="form-group">
-											   <%= form.label :video %>
-											   <%= form.file_field :video, id: :video_file %>
-											 </div>
+											 <div class="form-row">
+												 <div class="form-group col-md-6">
+												 <%= form.label :video %>
+												 <%= form.file_field :video, id: :video_file %>
+												 </div>
+												 <div class="form-group col-md-6">
+												 <%= form.select :course_for, options_for_select([
+												 ["Select course for if it's for secondary", ""],
+												 "secondary"]),
+												 {}, { class: "form-control simple" } %>
+											   </div>
+											   </div>
 											   <div class="form-group">
 											   <%= form.cktext_area :content, :ckeditor => {:toolbar => 'img', :customConfig => asset_path('ckeditor/config.js')} %>
 
