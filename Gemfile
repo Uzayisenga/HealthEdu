@@ -97,3 +97,8 @@ gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
 gem "ransack"
 gem 'postmark-rails'
 
+
+
+
+
+
