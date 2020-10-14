@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5f2a6e215e75630012258309&product=sticky-share-buttons' async='async'></script>
 
+    <script src="https://cdn.gravitec.net/storage/1bec3f0269c059864db1626179c54d7e/client.js" async></script>
 </head>
 <!-- ============================================================== -->
 <!-- Main wrapper - style you can find in pages.scss -->
@@ -50,7 +51,17 @@
 
         <li><%= link_to 'Gallery', main_app.pages_gallery_path,:"data-no-turbolink"=>true,method:"get" %></li>
 
-        <li><a href="#">Contact</a></li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Contact us
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown"><%= link_to "https://api.whatsapp.com/send?phone=250789044439", class:"dropdown-item" do %>Whatsapp Us
+       <% end %>
+          <div class="dropdown-divider"></div>
+          <%= mail_to "healthedultd@gmail.com", class:"dropdown-item" do %>Email Us
+         <% end %>
+        </div>
+      </li>
         <% if user_signed_in? && current_user.user_role== 'professional'%>
           <li><%= link_to "Dashboard", main_app.all_favorite_path,:"data-no-turbolink"=>true,method:"get" %></li>
         <% end %>
