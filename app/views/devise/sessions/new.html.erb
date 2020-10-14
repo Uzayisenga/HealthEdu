@@ -1,158 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style type="text/css">
-  body {
-    color: #434343;
-    background: #dfe7e9;
-    font-family: 'Varela Round', sans-serif;
-  }
-    .form-control {
-    font-size: 16px;
-    transition: all 0.4s;
-    box-shadow: none;
-  }
-  .form-control:focus {
-        border-color: #5cb85c;
-    }
-    .form-control, .btn {
-        border-radius: 50px;
-    outline: none !important;
-    }
-  .signin-form {
-    width: 400px;
-      margin: 0 auto;
-    padding: 30px 0;
-  }
-    .signin-form form {
-    border-radius: 5px;
-      margin-bottom: 20px;
-        background: #fff;
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-        padding: 40px;
-    }
-  .signin-form a {
-    color: #5cb85c;
-  }
-  .signin-form h2 {
-    text-align: center;
-    font-size: 34px;
-    margin: 10px 0 15px;
-  }
-  .signin-form .hint-text {
-    color: #999;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .signin-form .form-group {
-    margin-bottom: 20px;
-  }
-    .signin-form .btn {
-        font-size: 18px;
-    line-height: 26px;
-        font-weight: bold;
-    text-align: center;
-    }
-    .signin-form .small {
-        font-size: 13px;
-    }
-  .signup-btn {
-    text-align: center;
-    border-color: #5cb85c;
-    transition: all 0.4s;
-  }
-  .signup-btn:hover {
-    background: #5cb85c;
-    opacity: 0.8;
-  }
-    .or-seperator {
-        margin: 50px 0 15px;
-        text-align: center;
-        border-top: 1px solid #e0e0e0;
-    }
-    .or-seperator b {
-        padding: 0 10px;
-    width: 40px;
-    height: 40px;
-    font-size: 16px;
-    text-align: center;
-    line-height: 40px;
-    background: #fff;
-    display: inline-block;
-        border: 1px solid #e0e0e0;
-    border-radius: 50%;
-        position: relative;
-        top: -22px;
-        z-index: 1;
-    }
-    .social-btn .btn {
-    color: #fff;
-        margin: 10px 0 0 30px;
-    font-size: 15px;
-        width: 55px;
-        height: 55px;
-        line-height: 38px;
-        border-radius: 50%;
-    font-weight: normal;
-        text-align: center;
-    border: none;
-    transition: all 0.4s;
-    }
-  .social-btn .btn:first-child {
-    margin-left: 0;
-  }
-  .social-btn .btn:hover {
-    opacity: 0.8;
-  }
-  .social-btn .btn-primary {
-    background: #507cc0;
-  }
-  .social-btn .btn-info {
-    background: #64ccf1;
-  }
-  .social-btn .btn-danger {
-    background: #df4930;
-  }
-  .social-btn .btn i {
-    font-size: 20px;
-  }
-</style>
-</head>
-<body>
-<div class="signin-form">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <h2>Sign in</h2>
 
+<head>
+		<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+</head>
+<body class="red-skin">
+<!-- End Navigation -->
+<div class="clearfix"></div>
+<!-- ============================================================== -->
+<!-- Top header  -->
+<!-- ============================================================== -->
+
+<!-- ============================ Hero Banner  Start================================== -->
+<div class="image-cover half_banner" style="background:#0b2248 url(../assets/Computer.jpg) no-repeat;">
+<div class="container">
+  <!-- Type -->
+  <div class="row" >
+    <div class="modal-dialog modal-dialog-centered" style="">
+  <div class="modal-content">
+    <div class="modal-body">
+      <h4 class="modal-header-title"><img src="../assets/green-logo.jpg" class="logo img-responsive" alt="" /></h4>
+      <div class="login-form">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <h2>Sign in</h2>
+
+            <div class="form-group">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control input-lg", placeholder:"Email", required:"required" %>
+            </div>
         <div class="form-group">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control input-lg", placeholder:"Email", required:"required" %>
+                <%= f.password_field :password, autocomplete: "current-password", class:"form-control input-lg",placeholder:"Password", required:"required" %>
+            </div>
+            <div class="form-group">
+                <%= f.submit "Log in", class:"btn btn-success btn-lg btn-block signup-btn" %>
+            </div>
+            <div class="form-group line">
+							<h6 class="text-center">OR</h6>
+						</div>
+            <div class="form-group">
+            <%= link_to 'G+  Login with Google +', user_google_omniauth_authorize_path, class:"btn btn-danger btn-lg btn-block " %>
         </div>
-    <div class="form-group">
-            <%= f.password_field :password, autocomplete: "current-password", class:"form-control input-lg",placeholder:"Password", required:"required" %>
+
+        </form>
         </div>
-        <% if devise_mapping.rememberable? %>
+
+      <div class="social-login mb-3">
+        <ul>
+          <li>
+          <% if devise_mapping.rememberable? %>
           <div class="form-group">
               <%= f.check_box :remember_me %>
               <%= f.label :remember_me %>
           </div>
         <% end %>
-        <div class="form-group">
-            <%= f.submit "Log in", class:"btn btn-success btn-lg btn-block signup-btn" %>
-        </div>
-        <div class="or-seperator"><b>or</b></div>
-        <p class="hint-text">Sign in with your social media account</p>
-
-        <div class="form-group">
-        <%= link_to 'G+  Login with Google +', user_google_omniauth_authorize_path, class:"btn btn-danger btn-lg btn-block " %>
-     </div>
-
-    </form>
-    <% end %>
+          </li>
+          <li><a href="recover-password.html" class="theme-cl">Forget Password?</a></li>
+        </ul>
+      </div>
+      
+      <% end %>
+      <div class="text-center">new_user_registration
+        <p class="mt-2">Haven't Any Account? <%= link_to "Click here",  new_user_registration_path, :"data-no-turbolink"=>true,method:"get" %></p>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
 </div>
 </body>
 </html>
-
-
-
