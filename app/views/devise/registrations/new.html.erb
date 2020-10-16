@@ -182,7 +182,38 @@
                       <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                           <label>District<span class="theme-cl">*</span></label>
-                          <%= f.text_field :district, class:"form-control" %>
+                          <%= f.select :district, options_for_select([
+                        ["Select your District", ""],
+                              "Bugesera",
+															"Gatsibo",
+															"Kayonza",
+															"Kirehe",
+															"Ngoma",
+															"Nyagatare",
+															"Rwamagana",
+															"Gasabo",
+															"Kicukiro",
+															"Nyarugenge",
+															"Burera",
+															"Gakenke",
+															"Musanze",
+															"Rulindo",
+															"Gisagara",
+															"Huye",
+															"Kamonyi",
+															"Muhanga",
+															"Nyamagabe",
+															"Nyanza",
+															"Nyaruguru",
+															"Ruhango",
+															"Karongi",
+															"Ngororero",
+															"Nyabihu",
+															"Nyamasheke",
+															"Rubavu",
+															"Rusizi",
+															"Rutsiro"]),
+                        {}, { class: "form form-group form-control" } %>
                         </div>
                       </div>
                       <div class="col-lg-6 col-md-6">
