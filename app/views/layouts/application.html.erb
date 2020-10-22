@@ -50,9 +50,11 @@
         <li><%= link_to 'About Us', main_app.pages_about_path,:"data-no-turbolink"=>true,method:"get" %></li>
 
         <li><%= link_to 'Gallery', main_app.pages_gallery_path,:"data-no-turbolink"=>true,method:"get" %></li>
+        <li> <embed src="study/sample.pdf" type="application/pdf"   height="300px" width="100%" class="responsive">
+        <a href="../assets/Terms and Conditions HealthEdu Ltd.pdf" target="_blank" rel="noopener noreferrer">Terms</a></li>
 
         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="dro dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Contact us
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown"><%= link_to "https://api.whatsapp.com/send?phone=250789044439", class:"dropdown-item" do %>Whatsapp Us
