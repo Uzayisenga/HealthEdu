@@ -51,12 +51,13 @@
         <li><%= link_to 'About Us', main_app.pages_about_path,:"data-no-turbolink"=>true,method:"get" %></li>
 
         <li><%= link_to 'Gallery', main_app.pages_gallery_path,:"data-no-turbolink"=>true,method:"get" %></li>
+        
 
         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="dro dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Contact us
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown"><%= link_to "https://api.whatsapp.com/send?phone=250789044439", class:"dropdown-item" do %>Whatsapp Us
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown"><%= link_to "https://api.whatsapp.com/send?phone=250789044439", target: :_blank, class:"dropdown-item" do %>Whatsapp Us
        <% end %>
           <div class="dropdown-divider"></div>
           <%= mail_to "healthedultd@gmail.com", class:"dropdown-item" do %>Email Us
