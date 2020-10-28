@@ -71,12 +71,30 @@
 								</div>
 							</div>
 
+
+							<!-- Forum start -->
+							<div class="container">
+					<!-- ============================ Questions ================================== -->
+					<!-- Submit Reviews -->
+							<div class="edu_wraper">
+								<h2 class="ed_title">Thank you for taking this course ,if you have any issue, we are here for you. click here</h2>
+								
+							<div class="list-single-main-item-title fl-wrap" id="Ask">
+								<h4><span class="text-center icona" data-toggle="collapse" data-target="ask" aria-expanded="false" aria-controls="Ask" ><i class="fa fa-edit" aria-hidden="true"></i></span> <span class="text-center"><%= link_to 'Ask a question', new_course_comment_path(@favorite)%><i  class="fa fa-arrow-left" aria-hidden="true"></i> <%= link_to 'View Questions', course_comments_path(@favorite)%></span></h4>
+										
+							</div>
+							</div>
+							<!-- Forums End -->
+
+
 							<!-- instructor -->
 							<div class="single_instructor">
 								<div class="single_instructor_caption">
 									<h4><a href="#"><%= @favorite.course.user.names%>  <%=@favorite.course.user.last_name%></a></h4>
 									<ul class="instructor_info">
 										<li><i class="ti-control-forward"></i>12 Courses</li>
+										<li><%= link_to 'Ask Question', new_course_comment_path(@favorite)%></li>
+										<li><%= link_to 'View Questions', course_comments_path(@favorite)%></li>
 									</ul>
 								</div>
 							</div>
