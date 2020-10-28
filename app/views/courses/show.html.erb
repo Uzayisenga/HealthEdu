@@ -47,7 +47,7 @@
 								<p><%=@course.content.html_safe%></p>
 									<div class="ed_view_link">
 									<% if @favorite.present? %>
-										<%= link_to 'Course requested', favorite_path(id: @favorite.id), method: :delete, class: 'btn  enroll-btn btn-danger' %>
+										<%= link_to 'Course requested', all_favorite_path(id: @favorite.id), method: :delete, class: 'btn  enroll-btn btn-danger' %>
 										<% else %>
 										<%= link_to 'Request this course Now', favorites_path(course_id: @course.id), method: :post, class: 'btn  enroll-btn bg-green' %>
 								    <% end %>
