@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
   def index
     @course=Course.find(params[:course_id])
     @comments = @course.comments.all
+    @profiles =Profile.all
   end
 
   # GET /comments/1
