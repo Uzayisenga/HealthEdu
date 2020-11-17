@@ -1,39 +1,79 @@
-<p id="notice"><%= notice %></p>
+<section class="bg-light">
+				<div class="container">
+					<!-- ============================ Questions ================================== -->
+					<!-- Submit Reviews -->
+							<div class="edu_wraper">
+								<h2 class="ed_title">0053 Discusion forum beetween instructor and professional</h2>
+								<p>Clinical laboratories are healthcare facilities providing a wide range of laboratory procedures which aid the physicians in carrying out the diagnosis, treatment, and management of patients. These laboratories are manned by medical technologists (clinical laboratory scientists) who are trained to perform various tests to samples of biological specimens collected from its patients.</p>
+								<p ><span class="text-center"><i class="fa fa-check-square" aria-hidden="true"></i> 120 Answers</span></p>
+							<div class="list-single-main-item-title fl-wrap" id="Ask">
+								<h4><span class="text-center icona" data-toggle="collapse" data-target="#ask" aria-expanded="false" aria-controls="Ask" ><i class="fa fa-edit" aria-hidden="true"></i>Ask a question</span> <span class="text-center"><a href="course-detail.html"><i  class="fa fa-arrow-left" aria-hidden="true"></i> Back to dashboard</a></span></h4>
+										<div class="col-lg-8 col-md-12 col-sm-12 collapse" id="ask" aria-labelledby="Ask" data-parent="#replyExample">
+											<div class="review-form-box form-submit">
+												<form>
+													<div class="row ">
+														<div class="col-lg-12 col-md-12 col-sm-12 ">
+															<div class="form-group ">
+																<textarea class="form-control ht-140" placeholder="Type your Question Here"></textarea>
+															</div>
+														</div>
+														<div class="col-lg-12 col-md-12 col-sm-12">
+															<div class="form-group">
+																<button type="submit" class="btn btn-sm bg-green ">Post your Question</button>
+															</div>
+														</div>
 
-<div class="container">
-<h1>Questions and Answers</h1>
-
-<br>
-<% @comments.each do |comment| %>
-<div class="col-lg-4 col-md-6">
-<div class="card">
-<li class="list-group-item d-flex justify-content-between align-items-center">
-<%= comment.content %>
-  <td><%= link_to 'Delete', [comment.course, comment], method: :delete, data: { confirm: 'Are you sure?' }%></td>
-  <span class="badge badge-primary badge-pill"><%= link_to 'reply', new_reply_path(:comment_id => comment.id), :"data-no-turbolink" => true, method: "get"  %></span>
-
-</li>
-</div>
-</div>
-<div class="col-lg-4 col-md-6"></br>
-
-    <!--Card Primary-->
-    
-    
-      <div class="card-body">
-        <% comment.replies.each do |reply| %>
-        <h5 class="font-weight-bold amber-text mt-2 mb-3"><div class="Twitter"><%=reply.user.names%></div>
-        <%=reply.user.names%>&nbsp;&nbsp<%=reply.content%><i class="far fa-heart ml-3"></i></h5>
-          <span class="badge badge-success badge-pill"><%= link_to 'reply', new_reply_path(:comment_id => comment.id), :"data-no-turbolink" => true, method: "get"  %></span>
-        
-
-          <%end%></p>
-      </div>
-    <!--/.Card Primary-->
-
-  </div></br>
-<% end %>
-<%= link_to 'New Question', new_course_comment_path, :"data-no-turbolink"=>true,method:"get" %>
-</div>
-<div class="Twitter">Twitter</div>
-
+													</div>
+												</form>
+											</div>
+										</div>
+							</div>
+							</div>
+					<!-- Reviews -->
+							<div class="list-single-main-item fl-wrap ">
+								<div class="reviews-comments-wrap">
+									<!-- reviews-comments-item -->
+									<div class="reviews-comments-item">
+										<% @comments.each do |comment| %>
+											<div class="review-comments-avatar">
+												<% if current_user.profile == nil %>
+													<p><%= image_tag 'default.png', class:"img-fluid avater" %></p>
+													<% else %>
+													<% if current_user.profile.image? %>
+														<p><%= image_tag current_user.profile.image.url, class:"img-fluid avater" %></p>
+													<% end %>
+											   <% end %>
+											</div>
+											<div class="reviews-comments-item-text outgoing-chats-msg" id="replyExample" >
+												<h4><a href="#"><%= comment.user.names %> <%= comment.user.last_name %></a><span class="reviews-comments-item-date"><i class="fa fa-calendar" aria-hidden="true"></i><%= comment.created_at%></span></h4>
+												<div class="clearfix"></div>
+												<p>" <%= comment.content %> "</p>
+												<div class="comment-reply" id="ReplyOne" >
+													<a data-toggle="collapse" data-target="#One" aria-expanded="false" aria-controls="ReplyOne"><span class="icona"><%= link_to 'reply', new_reply_path(:comment_id => comment.id), :"data-no-turbolink" => true, method: "get"  %> <i class="fa fa-reply" aria-hidden="true"></i></span></a>
+												</div>
+											</div>
+											<div class="reviews-comments-item">
+												<% comment.replies.each do |reply| %>
+													<div class="review-comments-avatar">
+													<% if current_user.profile == nil %>
+														<p><%= image_tag 'default.png', class:"img-fluid avater" %></p>
+														<% else %>
+														<% if current_user.profile.image? %>
+															<p><%= image_tag current_user.profile.image.url, class:"img-fluid avater" %></p>
+														<% end %>
+											       <% end %>
+												</div>
+												<div class="reviews-comments-item-text reply-msg">
+													<h4><a href="#"><%= reply.user.names %> <%= reply.user.last_name %></a><span class="reviews-comments-item-date"><i class="fa fa-calendar theme-cl" aria-hidden="true"></i><%=reply.created_at%></span></h4>
+													<div class="clearfix"></div>
+													<p>" <%=reply.content%> "</p>
+												</div>
+												<% end %>
+											</div>
+										<% end %>
+									</div>		
+							   </div>
+					       <!-- ============================ Questions-End ================================== -->
+				        </div>
+				    </div>
+     

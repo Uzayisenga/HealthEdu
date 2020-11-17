@@ -1,40 +1,47 @@
-<%= form_for([@course, @course.comments.build]) do |form| %>
-  <% if comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-
-      <ul>
-        <% comment.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+<!-- ============================ Hero Banner  Start================================== -->
+<section class="bg-light">
+				<div class="container">
+        <div class="edu_wraper">
+        <h2 class="ed_title">Leave Comment or Question Here</h2>
+        <%= form_for([@course, @course.comments.build]) do |form| %>
+          <% if comment.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+    
+              <ul>
+                <% comment.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+    
+          <div class="field">
+            <%= form.label :content %>
+            <%= form.text_area :content, class:"form-control" %>
+          </div>
+    
+          <div class="field">
+          <%  if user_signed_in? %>
+          <%= form.hidden_field :user_id, value: current_user.id%>
+          <%end%>
+          </div>
+    
+          <div class="field">
+            <%= form.hidden_field :course_id%>
+          </div>
+    
+          <div class="actions">
+            <%= form.submit class:"btn btn-sm btn-success" %>
+            <%= link_to 'Back', course_comments_path,class:"btn btn-sm btn-success" %>
+          </div>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
+      </div>
+				</div>
+			</section>
+			<!-- ============================ Hero Banner End ================================== -->
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content, class:"form-control" %><br>
-  </div>
 
-  <div class="field">
-  <%  if user_signed_in? %>
-  <%= form.hidden_field :user_id, value: current_user.id%>
-  <%end%>
+<div class="container bg-light">
+    
   </div>
-
-  <div class="field">
-    <%= form.hidden_field :course_id%>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
-<div class="col-lg-4 col-md-6">
-<div class="card">
-<li class="list-group-item d-flex justify-content-between align-items-center">
-Cras justo odio
-<span class="badge badge-primary badge-pill">14</span>
-</li>
-</div>
-</div>

@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
   def index
     @course=Course.find(params[:course_id])
     @comments = @course.comments.all
+    @profiles =Profile.all
   end
 
   # GET /comments/1
@@ -31,7 +32,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to course_comments_url, notice: 'question was successfully created.' }
+        format.html { redirect_to course_comments_url, notice: 'question or comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }

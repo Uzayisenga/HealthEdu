@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-  
+
     <title>HealthEdu</title>
-    
+
 <!-- add icon link -->
 <link rel = "icon" href ="../assets/logoo.jpg">
     <%= csrf_meta_tags %>
@@ -16,6 +16,8 @@
     <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5f2a6e215e75630012258309&product=sticky-share-buttons' async='async'></script>
     <script charset="UTF-8" src="//web.webpushs.com/js/push/c86930fe34217418c13de610eb008552_1.js" async></script>
     <script src="https://cdn.gravitec.net/storage/1bec3f0269c059864db1626179c54d7e/client.js" async></script>
+    <script data-ad-client="ca-pub-7304528658053210" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5f2a6e215e75630012258309&product=sticky-share-buttons' async='async'></script>
 </head>
 <!-- ============================================================== -->
 <!-- Main wrapper - style you can find in pages.scss -->
@@ -51,11 +53,13 @@
 
         <li><%= link_to 'Gallery', main_app.pages_gallery_path,:"data-no-turbolink"=>true,method:"get" %></li>
 
+
+
         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="dro dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Contact us
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown"><%= link_to "https://api.whatsapp.com/send?phone=250789044439", class:"dropdown-item" do %>Whatsapp Us
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown"><%= link_to "https://api.whatsapp.com/send?phone=250789044439", target: :_blank, class:"dropdown-item" do %>Whatsapp Us
        <% end %>
           <div class="dropdown-divider"></div>
           <%= mail_to "healthedultd@gmail.com", class:"dropdown-item" do %>Email Us
@@ -81,7 +85,7 @@
         <% end %>
         <% if user_signed_in? && current_user.user_role== 'council'%>
           <li>
-            <%= link_to 'Dashboard', instructor_path,:"data-no-turbolink"=>true,method:"get" %>
+            <%= link_to 'Dashboard', professional_path,:"data-no-turbolink"=>true,method:"get" %>
           </li>
         <% end %>
 
@@ -218,6 +222,17 @@
 		<!-- ============================================================== -->
 		<!-- This page plugins -->
 		<!-- ============================================================== -->
-    
+<script data-cfasync="false">
+(function(W,i,s,e,P,o,p){W['WisePopsObject']=P;W[P]=W[P]||function(){(W[P].q=W[P].q||[]).push(arguments)},W[P].l=1*new Date();o=i.createElement(s),p=i.getElementsByTagName(s)[0];o.defer=1;o.src=e;p.parentNode.insertBefore(o,p)})(window,document,'script','//loader.wisepops.com/get-loader.js?v=1&site=WaFaEvLqER','wisepops');
+</script>
+<!-- Start of LiveChat (www.livechatinc.com) code -->
+<script>
+    window.__lc = window.__lc || {};
+    window.__lc.license = 12321120;
+    ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
+</script>
+<noscript><a href="https://www.livechatinc.com/chat-with/12321120/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechatinc.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
+<!-- End of LiveChat code -->
+
 </body>
 </html>
