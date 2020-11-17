@@ -17,8 +17,8 @@ class User < ApplicationRecord
          mount_uploader :apload_diploma, AploadDiplomaUploader
          mount_uploader :apload_cv, AploadCvUploader
          def self.create_unique_string
-          SecureRandom.uuid
-        end
+           SecureRandom.uuid
+         end
          def self.find_for_google(auth)
           user = User.find_by(email: auth.info.email)
           unless user
@@ -94,7 +94,7 @@ class User < ApplicationRecord
         #   #  where('names LIKE ?', "%#{search}%")
 
         # end
-        enum reguratory_body: [:RAHPC, :NPC, :RMDC, :NCNM]
+        enum reguratory_body: [:RAHPC, :NPC, :RMDC, :NCNM, :others, :student]
         enum level: [:certificate_A2, :Advanced_Diploma, :Bachelor_Degree, :Masters_Degree, :PHD, :Others]
         enum working_place: [:Anaesthesia_Practitioner, :Biomedical_Engineer, :Medical_Laboratory_Practitioner, :BOccupational_Therapist,
         :Chiropractor, :Clinical_Medicine_Practitioner, :Nutritionist, :Environmental_Health_Professional, :Clinial_Psychologist, :Dental_Therapist,

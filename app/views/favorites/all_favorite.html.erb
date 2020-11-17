@@ -116,10 +116,13 @@
 
 													</li>
 													<li class="list-inline-item" >
-														<form class="form-inline my-2 my-lg-0">
-															<input class="form-control" type="search" placeholder="Search Courses" aria-label="Search">
-															<button class="btn my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
-														</form>
+													
+													<%= form_tag all_favorite_path, :method => 'get'  do %>
+														<%= text_field_tag :search, params[:search]%>
+														<%= submit_tag "Search", :title => nil  %>
+													  <% end %>
+
+				
 													</li>
 												</ul>
 											</div>

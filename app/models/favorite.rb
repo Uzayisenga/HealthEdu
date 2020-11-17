@@ -18,4 +18,12 @@ class Favorite < ApplicationRecord
     self.created_at.strftime('%B')
   end
 
+  def self.search(search, id)
+    if search
+      where(['title LIKE ?', "%#{search}%"])
+    else
+     scoped
+    end
+   end
+
 end
