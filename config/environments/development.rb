@@ -15,7 +15,7 @@ Rails.application.configure do
 
   # Show full error reports.
   config.consider_all_requests_local = false
-
+  config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join('tmp', 'caching-dev.txt').exist?
@@ -70,8 +70,8 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: ENV['MAIL_HOST'] }
   config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
-  :user_name => '804ca78e2fe2c8',
-  :password => 'e72d3caf7d8ef4',
+  :user_name => '42e75837d62e45',
+  :password => 'deea2f42714497',
   :address => 'smtp.mailtrap.io',
   :domain => 'smtp.mailtrap.io',
   :port => '2525',
