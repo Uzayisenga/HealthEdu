@@ -99,10 +99,10 @@
                                                             <th scope="row"><%= professional.names %></th>
                                                             <td><%= professional.last_name %></td>
                                                             <td><%= professional.gender %></td>
-															<td><%= professional.district %></td>
+															                              <td><%= professional.district %></td>
                                                             <td> </td>
                                                             
-                                                            <td><%= link_to "View", user_path(professional.id) %><i class="fas fa-eye"></i></td>
+                                                            <td><%= link_to user_path(professional.id) do %><i class="fas fa-eye"></i><%end%></td>
                                                         </tr>
                                                         <tr>
                                                        <% end %>

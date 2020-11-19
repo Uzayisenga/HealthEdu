@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'pages/gallery'
   get 'pages/help'
   get 'pages/payment'
+  get 'pages/covid'
   resources :profiles
   get 'certificate/index'
   get 'requests/update'

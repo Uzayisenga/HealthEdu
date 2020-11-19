@@ -10,4 +10,6 @@ class PagesController < ApplicationController
   end
   def payment
   end
+  def covid
+  end
 end
