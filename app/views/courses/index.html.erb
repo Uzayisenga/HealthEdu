@@ -55,7 +55,7 @@
 									<div class="dashboard_container">
 										<div class="dashboard_container_body">
 											<div class="table-responsive">
-                        <table class="table">
+                                                 <table class="table">
 
 													<thead class="thead-dark">
 														<tr>
@@ -63,8 +63,8 @@
 															<th scope="col">Action</th>
 														</tr>
 													</thead>
-                          <tbody>
-                          <% @courses.each do |course| %>
+                                                 <tbody>
+                                                 <% @courses.each do |course| %>
 														<tr>
 															<th scope="row"><%= course.title%> /<%= course.credit_number %>CPD Credits</th>
                               <td><%= link_to 'Show', course, class:"login_click bg-green btn-sm" ,style:"color:white"%>
