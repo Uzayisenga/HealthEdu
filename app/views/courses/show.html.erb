@@ -57,6 +57,7 @@
 					</div>
 				</div>
 			</section>
+			<% if user_signed_in? && current_user.user_role== 'instructor'%>
 				<div class="container">
 					<div class="row">
 
@@ -72,6 +73,7 @@
 													<thead class="thead-dark">
 														<tr>
 															<th scope="col">Course </th>
+															<th scope="col">Status </th>
 															<th scope="col">Action</th>
 														</tr>
 													</thead>
@@ -79,6 +81,7 @@
 													<% @course.favorites.each do |favorite| %>
 														<tr>
 															<th scope="row"><%= link_to(favorite.user.names, favorite.user) %></th>
+															<th scope="row"><%= link_to(favorite.status, favorite.user) %></th>
 															<td><%= link_to 'View More', favorite.user, class:"login_click bg-green btn-sm" ,style:"color:white"%></td>
 														</tr>
 													<% end %>		
@@ -90,5 +93,7 @@
 						</div>
 					</div>
 				</div>
+		    <% end %>
+			
 
 
