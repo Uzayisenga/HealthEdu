@@ -57,5 +57,43 @@
 					</div>
 				</div>
 			</section>
+			<% if user_signed_in? && current_user.user_role== 'instructor'%>
+				<div class="container">
+					<div class="row">
+
+						<div class="col-lg-12 col-md-12">
+
+							<!-- Overview -->
+							<div class="edu_wraper border">
+								<h4 class="edu_title">Studentent Requested Course</h4>
+									<div class="ed_view_link">
+									<div class="table-responsive">
+                                                 <table class="table">
+
+													<thead class="thead-dark">
+														<tr>
+															<th scope="col">Course </th>
+															<th scope="col">Status </th>
+															<th scope="col">Action</th>
+														</tr>
+													</thead>
+												 <tbody>
+													<% @course.favorites.each do |favorite| %>
+														<tr>
+															<th scope="row"><%= link_to(favorite.user.names, favorite.user) %></th>
+															<th scope="row"><%= link_to(favorite.status, favorite.user) %></th>
+															<td><%= link_to 'View More', favorite.user, class:"login_click bg-green btn-sm" ,style:"color:white"%></td>
+														</tr>
+													<% end %>		
+													</tbody>
+												</table>
+											</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		    <% end %>
+			
 
 

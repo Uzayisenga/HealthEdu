@@ -7,18 +7,8 @@ class FavoritesController < ApplicationController
     def index
       favorite = current_user.favorites.create(course_id: params[:course_id])
       redirect_to homepage_index_url, notice: "You have requested this course, Please make your payment at Bank of Kigali Account: 00262-06949899-22 / HealthEdu Ltd or use MTN Mobile Money on 0788848750 registered to Uwandamiye Emmanuella or Momo Pay: 000602. Contact us to this e-mail: healthedultd@gmail.com or Tel.: 0789044439."
-      
-      if params[:search]
-        @favorites = Favorite.courses.search(params[:search]).order("created_at DESC")
-      else
-        @favorites = Favorite.courses.all.order('created_at DESC')
-      end
     end
-  
 
-    
-
-    
   def show
       #@favorite = current_user.favorites.find_by(course_id: @course.id)
       @favorite = Favorite.find(params[:id])
