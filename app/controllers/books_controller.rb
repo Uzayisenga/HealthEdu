@@ -6,6 +6,8 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @books = Book.all
+    @books = Book.where('lower(book_name) LIKE lower(?)', "%#{params[:term1]}%")
+    flash[:notice] = "No result for books you want #{params[:term1]}" if @books.blank?
   end
 
   # GET /books/1
@@ -20,6 +22,11 @@ class BooksController < ApplicationController
 
   # GET /books/1/edit
   def edit
+  end
+  def search
+    @books = book_name.search(params[:search])
+    @book = Book.all
+    
   end
 
   # POST /books

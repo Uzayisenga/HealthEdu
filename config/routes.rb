@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   mount Notifications::Engine => "/notifications"
 
   get '/search' => 'pages#search', :as => 'search_page'
+  
   get 'pages/quiz'
   get 'pages/about'
   get 'pages/gallery'

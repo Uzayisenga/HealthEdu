@@ -71,10 +71,11 @@
 
 													</li>
 													<li class="list-inline-item">
-														<form class="form-inline my-2 my-lg-0">
-															<input class="form-control" type="search" placeholder="Search book" aria-label="Search">
-															<button class="btn my-2 my-sm-0" type="submit"><i class="ti-search"></i></button>
-														</form>
+													<%= form_tag(books_path, method: :get, class:"form-inline") do%>
+													  <%= text_field_tag :term1, params[:term1], placeholder:'Search By name', class:"form-control mr-sm-2"  %>
+													  <%= submit_tag 'Search', name: nil, class:'btn btn-success' %>
+													<% end %>
+													  
 													</li>
 												</ul>
 											</div>
