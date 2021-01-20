@@ -131,7 +131,7 @@
 
 											<!-- Single Course -->
 											<% @favorites.each do |favorite| %>
-												<% if favorite.status == "paid" || favorite.course.course_price == 0 %>
+												<% if favorite.status == "paid" || favorite.course.course_price == 0 || favorite.status == "annual_subscription" %>
 													<%if favorite.user.email == current_user.email %>
 														<%if favorite.present?%>
 															<div class="dashboard_single_course">
