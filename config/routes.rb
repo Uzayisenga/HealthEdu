@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :room_messages
+  resources :rooms
   resources :books
   resources :categories
   mount Ckeditor::Engine => '/ckeditor'
