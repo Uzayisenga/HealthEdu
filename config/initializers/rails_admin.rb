@@ -29,22 +29,19 @@ RailsAdmin.config do |config|
   ## == Gravatar integration ==
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
-  
-  module RailsAdmin::NonFilterable
 
-  extend ActiveSupport::Concern
-
-  included do
-    rails_admin do
-      model_class = self.abstract_model.model_name.constantize
-      model_class.column_names.each do |column|
-        code = "field :#{column.to_sym} do \r\n searchable [] \r\n queryable false \r\n filterable false \r\n end"
-        eval(code)
+  config.model Team do
+    list do
+      filters [:name, :manager]
+      # Manually enable/disable per field
+      field :name do
+        filterable true
+      end
+      field :manager do
+        filterable true
       end
     end
   end
-
-end
 
   config.actions do
     dashboard                     # mandatory
